@@ -1,0 +1,487 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:wnetinstance="http://www.semanticwebbuilder.org/swb4/wnet/instances#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:wnet="http://www.semanticwebbuilder.org/swb4/wnet#"
+    xmlns:swb="http://www.semanticwebbuilder.org/swb4/ontology#"
+  xml:base="http://www.semanticwebbuilder.org/swb4/wnet">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+    <owl:imports rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="WordSense">
+    <rdfs:label xml:lang="en">Sense</rdfs:label>
+    <rdfs:label xml:lang="es">Significado</rdfs:label>
+    <swb:classCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WordSense</swb:classCodeName>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBClass"/>
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <owl:disjointWith>
+      <swb:Class rdf:ID="SynSet">
+        <owl:disjointWith rdf:resource="#WordSense"/>
+        <rdfs:label xml:lang="es">Sinónimos</rdfs:label>
+        <swb:classCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >SynSet</swb:classCodeName>
+        <rdfs:label xml:lang="en">SynSet</rdfs:label>
+        <rdfs:comment xml:lang="es">Un SynSet desde el punto de vista de WordNet es un conjunto de palabras cuyo significado es el mismo en cierto contexto.</rdfs:comment>
+        <owl:disjointWith>
+          <swb:Class rdf:ID="Word">
+            <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBClass"/>
+            <rdfs:label xml:lang="en">Word</rdfs:label>
+            <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+            >true</swb:autogenId>
+            <rdfs:label xml:lang="es">Palabra</rdfs:label>
+            <swb:classCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Word</swb:classCodeName>
+            <rdfs:comment xml:lang="es">Esta clase representa una palabra en cierto contexto. Una palabra es un conjunto de uno o más símbolos que representan un concepto. Cada palabra tiene una forma léxica (la palabra en sí como conjunto de caracteres), una raíz o lexema (su parte invariante) y un sentido o significado (modificado por el contexto).</rdfs:comment>
+            <owl:disjointWith rdf:resource="#WordSense"/>
+            <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+          </swb:Class>
+        </owl:disjointWith>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBClass"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+      </swb:Class>
+    </owl:disjointWith>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="VerbWordSense">
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdfs:subClassOf rdf:resource="#WordSense"/>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LexicalContext">
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBClass"/>
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="VerbSynSet">
+    <rdfs:comment xml:lang="es">Un SynSet que contiene verbos.</rdfs:comment>
+    <rdfs:label xml:lang="es">Sinónimos verbales</rdfs:label>
+    <rdfs:label xml:lang="en">Verb SynSet</rdfs:label>
+    <swb:classCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VerbSynSet</swb:classCodeName>
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdfs:subClassOf rdf:resource="#SynSet"/>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AdjectiveWordSense">
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdfs:subClassOf rdf:resource="#WordSense"/>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AdverbSynSet">
+    <rdfs:comment xml:lang="es">Un conjunto de sinónimos con sólo adverbios.</rdfs:comment>
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdfs:subClassOf rdf:resource="#SynSet"/>
+    <swb:classCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AdverbSynSet</swb:classCodeName>
+    <rdfs:label xml:lang="es">Sinónimos adverbiales</rdfs:label>
+    <rdfs:label xml:lang="en">Adverb SynSet</rdfs:label>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AdjectiveSatelliteSynSet">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="AdjectiveSynSet"/>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en">Adjective Satellite SynSet</rdfs:label>
+    <rdfs:label xml:lang="es">Sinónimos Adjetivo-satelitales</rdfs:label>
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <swb:classCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AdjectiveSatelliteSynSet</swb:classCodeName>
+    <rdfs:comment xml:lang="es">Un adjetivo en un grupo que representa un concepto con significado similar al de  otro concepto.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:about="#AdjectiveSynSet">
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdfs:subClassOf rdf:resource="#SynSet"/>
+    <swb:classCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AdjectiveSynSet</swb:classCodeName>
+    <rdfs:comment xml:lang="es">Un SynSet que contiene adjetivos. Un adjetivo es una palabra que acompaña al sustantivo y que lo califica o modifica. Es decir, le atribuye características concretas o abstractas.</rdfs:comment>
+    <rdfs:label xml:lang="es">Sinónimos adjetivales</rdfs:label>
+    <rdfs:label xml:lang="en">Adjective SynSet</rdfs:label>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AdverbWordSense">
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdfs:subClassOf rdf:resource="#WordSense"/>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NounWordSense">
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdfs:subClassOf rdf:resource="#WordSense"/>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NounSynSet">
+    <rdfs:label xml:lang="es">Sinónimos sustantivales</rdfs:label>
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdfs:subClassOf rdf:resource="#SynSet"/>
+    <swb:classCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NounSynSet</swb:classCodeName>
+    <rdfs:label xml:lang="en">Noun SynSet</rdfs:label>
+    <rdfs:comment xml:lang="es">Un conjunto de sinónimos con sólo sustantivos.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasMeronym">
+    <rdfs:comment xml:lang="es">Un concepto puede tener uno o más merónimos (sólo aplica para sustantivos). Un merónimo es un concepto que representa una parte de un todo. Es decir, esta propiedad indica que el concepto asociado al dominio (holónimo) está compuesto por el concepto asociado al rango (merónimo). Esta propiedad es equivalente a la propiedad holonymOf de WordNet.</rdfs:comment>
+    <rdfs:label xml:lang="en">Meronym</rdfs:label>
+    <rdfs:label xml:lang="es">Merónimo</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasMeronym</swb:propertyCodeName>
+    <rdfs:range rdf:resource="#NounSynSet"/>
+    <rdfs:domain rdf:resource="#NounSynSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasHolonym">
+    <rdfs:comment xml:lang="es">Un concepto puede tener uno o más holónimos (sólo aplica para sustantivos). Un holónimo es un concepto que representa un todo conpuesto por otros conceptos. Es decir, esta propiedad indica que el concepto asociado al dominio (merónimo) es parte de (compone a) el concepto asociado al rango (holónimo). Esta propiedad es equivalente a la propiedad meronymOf de WordNet.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#hasMeronym"/>
+    <rdfs:range rdf:resource="#NounSynSet"/>
+    <rdfs:label xml:lang="en">Holonym</rdfs:label>
+    <rdfs:label xml:lang="es">Holónimo</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasHolonym</swb:propertyCodeName>
+    <rdfs:domain rdf:resource="#NounSynSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasClassifiedSynSet">
+    <rdfs:label xml:lang="en">Classified SynSet</rdfs:label>
+    <rdfs:label xml:lang="es">Sinónimo clasificado</rdfs:label>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="hasClassifier"/>
+    </owl:inverseOf>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasClassifiedSynSet</swb:propertyCodeName>
+    <rdfs:domain rdf:resource="#NounSynSet"/>
+    <rdfs:range rdf:resource="#SynSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMemberHolonym">
+    <rdfs:comment xml:lang="es">Un holónimo miembro representa una relación de afiliación con (tiene de miembro a) el merónimo. Es decir, esta propiedad indica que al concepto asociado al dominio (merónimo miembro), está afiliado a (es miembro de) el concepto asociado al rango (holónimo miembro). Esta propiedad es equivalente a la propiedad memberMeronymOf de WordNet.</rdfs:comment>
+    <rdfs:label xml:lang="en">Membership</rdfs:label>
+    <rdfs:label xml:lang="es">Afiliación</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasMemberHolonym</swb:propertyCodeName>
+    <rdfs:subPropertyOf rdf:resource="#hasHolonym"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="hasMemberMeronym"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#NounSynSet"/>
+    <rdfs:domain rdf:resource="#NounSynSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasSubstanceHolonym">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="hasSubstanceMeronym"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#NounSynSet"/>
+    <rdfs:comment xml:lang="es">Un holónimo substancia representa una relación de composición con (tiene como substancia componente a) el merónimo. Es decir, esta propiedad indica que el concepto asociado al dominio (merónimo substancia), es componente del concepto asociado al rango (holónimo substancia). Esta propiedad es equivalente a la propiedad substanceMeronymOf de WordNet.</rdfs:comment>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasSubstanceHolonym</swb:propertyCodeName>
+    <rdfs:subPropertyOf rdf:resource="#hasHolonym"/>
+    <rdfs:domain rdf:resource="#NounSynSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasDerivationallyRelatedSense">
+    <rdfs:comment xml:lang="es">Especifica que existe una relación de derivación del significado asociado al dominio respecto al significado asociado al verbo. Por ejemplo, el significado de la palabra 'crema' está derivacionalmente relacionado con el significado de 'encremar' y 'cremoso'. Esta propiedad es equivalente a la propiedad derivationallyRelated de WordNet.</rdfs:comment>
+    <rdfs:label xml:lang="en">Derivationally related</rdfs:label>
+    <rdfs:label xml:lang="es">Derivacionalmente relacionado</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasDerivationallyRelatedSense</swb:propertyCodeName>
+    <rdfs:range rdf:resource="#WordSense"/>
+    <rdfs:domain rdf:resource="#WordSense"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inSynset">
+    <rdfs:label xml:lang="en">SynSet</rdfs:label>
+    <rdfs:label xml:lang="es">Grupo de sinónimos</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inSynset</swb:propertyCodeName>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="hasWordSense"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#SynSet"/>
+    <rdfs:domain rdf:resource="#WordSense"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasWordSense">
+    <rdfs:label xml:lang="en">Sense</rdfs:label>
+    <rdfs:label xml:lang="es">Significado</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasWordSense</swb:propertyCodeName>
+    <rdfs:range rdf:resource="#WordSense"/>
+    <rdfs:domain rdf:resource="#SynSet"/>
+    <rdfs:comment xml:lang="es">Una palabra puede tener varios significados (sentidos). Cada palabra con distinto significado se considera un concepto independiente. Un SynSet contiene varias palabras con el mismo sentido. Esta propiedad es equivalente a la propiedad containsWordSense de WordNet.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasPartMeronym">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="hasPartHolonym"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#NounSynSet"/>
+    <rdfs:comment xml:lang="es">Un merónimo parte representa una relación de inclusión (es parte de) el holónimo. Es decir, esta propiedad indica que el concepto asociado al dominio (holónimo parte), está compuesto por el concepto asociado al rango (merónimo parte). Esta propiedad es equivalente a la propiedad partHolonymOf de WordNet.</rdfs:comment>
+    <rdfs:label xml:lang="en">Part</rdfs:label>
+    <rdfs:label xml:lang="es">Parte</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="#hasMeronym"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasPartMeronym</swb:propertyCodeName>
+    <rdfs:domain rdf:resource="#NounSynSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="word">
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >word</swb:propertyCodeName>
+    <rdfs:range rdf:resource="#Word"/>
+    <rdfs:domain rdf:resource="#WordSense"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasModifiedNoun">
+    <rdfs:domain rdf:resource="#AdjectiveSynSet"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasModifiedNoun</swb:propertyCodeName>
+    <rdfs:label xml:lang="es">Sustantivo modificado</rdfs:label>
+    <rdfs:label xml:lang="en">Modified noun</rdfs:label>
+    <rdfs:range rdf:resource="#NounSynSet"/>
+    <rdfs:comment xml:lang="es">Cada adjetivo puede modificar a uno o más sustantivos. Es decir, esta propiedad indica que el concepto en el dominio modifica o califica al concepto del rango. Esta propiedad es equivalente a la propiedad attributeOf de WordNet.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasClassifier">
+    <rdfs:label xml:lang="en">Classifier</rdfs:label>
+    <owl:inverseOf rdf:resource="#hasClassifiedSynSet"/>
+    <rdfs:label xml:lang="es">Clasificador</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasClassifier</swb:propertyCodeName>
+    <rdfs:range rdf:resource="#NounSynSet"/>
+    <rdfs:domain rdf:resource="#SynSet"/>
+    <rdfs:comment xml:lang="es">Especifica que el dominio ha sido clasificado como un miembro de la clase, grupo, categoría, tópico, región o uso representado por el rango. Esta propiedad es equivalente a la propiedad classifiedBy de WordNet.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasImpliedVerb">
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasImpliedVerb</swb:propertyCodeName>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="hasEntailerVerb"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#VerbSynSet"/>
+    <rdfs:domain rdf:resource="#VerbSynSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasTopicClassifier">
+    <rdfs:subPropertyOf rdf:resource="#hasClassifier"/>
+    <rdfs:range rdf:resource="#NounSynSet"/>
+    <rdfs:domain rdf:resource="#SynSet"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasTopicClassifier</swb:propertyCodeName>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasRegionClassifier">
+    <rdfs:subPropertyOf rdf:resource="#hasClassifier"/>
+    <rdfs:range rdf:resource="#NounSynSet"/>
+    <rdfs:domain rdf:resource="#SynSet"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasRegionClassifier</swb:propertyCodeName>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasMemberMeronym">
+    <rdfs:comment xml:lang="es">Un merónimo miembro representa una relación de pertenencia sobre (es miembro de) el holónimo. Es decir, esta propiedad indica que el concepto asociado al rango (merónimo miembro), es parte de (como miembro) el concepto asociado al dominio (holónimo miembro). Esta propiedad es equivalente a la propiedad memberHolonymOf de WordNet.</rdfs:comment>
+    <rdfs:label xml:lang="es">Miembro</rdfs:label>
+    <rdfs:label xml:lang="en">Member</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="#hasMeronym"/>
+    <rdfs:range rdf:resource="#NounSynSet"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasMemberMeronym</swb:propertyCodeName>
+    <rdfs:domain rdf:resource="#NounSynSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasSubstanceMeronym">
+    <rdfs:comment xml:lang="es">Un merónimo substancia representa una relación de pertenencia con (compone a) el holónimo. Es decir, esta propiedad indica que el concepto asociado al rango (merónimo substancia), es parte de (como substancia) el concepto asociado al dominio (holónimo substancia). Esta propiedad es equivalente a la propiedad substanceHolonymOf de WordNet.</rdfs:comment>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasSubstanceMeronym</swb:propertyCodeName>
+    <owl:inverseOf rdf:resource="#hasSubstanceHolonym"/>
+    <rdfs:range rdf:resource="#NounSynSet"/>
+    <rdfs:subPropertyOf rdf:resource="#hasMeronym"/>
+    <rdfs:domain rdf:resource="#NounSynSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasHyponym">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="hasHypernym"/>
+    </owl:inverseOf>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasHyponym</swb:propertyCodeName>
+    <rdfs:range rdf:resource="#SynSet"/>
+    <rdfs:domain rdf:resource="#SynSet"/>
+    <rdfs:label xml:lang="es">Hipónimos</rdfs:label>
+    <rdfs:label xml:lang="en">Hyponym</rdfs:label>
+    <rdfs:comment xml:lang="es">Un hipónimo es una palabra que puede ser englobada en otra más general, pero que tiene rasgos que la diferencian de la segunda. Es decir, esta propiedad indica que el concepto en el dominio engloba (es superclase de) a aquellos conceptos en el rango (subclases). Esta propiedad es equivalente a la propiedad hypernymOf de WordNet.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasSimilar">
+    <rdfs:domain rdf:resource="#AdjectiveSynSet"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasSimilar</swb:propertyCodeName>
+    <rdfs:label xml:lang="es">Adjetivo similar</rdfs:label>
+    <rdfs:label xml:lang="en">Similar adjective</rdfs:label>
+    <rdfs:range rdf:resource="#AdjectiveSynSet"/>
+    <rdfs:comment xml:lang="es">Esta propiedad indica que el rango (adjetivo satélite) es similar en significado con el dominio (adjetivo). Sin embargo, el primero tiene un contexto particular que lo diferencía del segundo. Esta propiedad es equivalente a la propiedad similarTo de WordNet</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="lexicalContext">
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >lexicalContext</swb:propertyCodeName>
+    <rdfs:range rdf:resource="#LexicalContext"/>
+    <rdfs:domain rdf:resource="#WordSense"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasAntonym">
+    <rdfs:comment xml:lang="es">Un antónimo es el opuesto de algo. Es decir, esta propiedad indica que el significado asociado al dominio expresa una idea opuesta al significado asociado al rango. Esta propiedad es equivalente a la propiedad antonymOf de WordNet.</rdfs:comment>
+    <rdfs:label xml:lang="en">Antonym</rdfs:label>
+    <rdfs:label xml:lang="es">Antónimo</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasAntonym</swb:propertyCodeName>
+    <rdfs:range rdf:resource="#WordSense"/>
+    <rdfs:domain rdf:resource="#WordSense"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasEntailerVerb">
+    <owl:inverseOf rdf:resource="#hasImpliedVerb"/>
+    <rdfs:range rdf:resource="#VerbSynSet"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasEntailerVerb</swb:propertyCodeName>
+    <rdfs:domain rdf:resource="#VerbSynSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasAttribute">
+    <rdfs:comment xml:lang="es">Un sustantivo puede ser modificado por uno o más adjetivos. Esta propiedad indica que el concepto en el rango modifica al (es un atributo del) concepto en el dominio. Esta propiedad es equivalente a la propiedad attribute de WordNet.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#hasModifiedNoun"/>
+    <rdfs:label xml:lang="en">Attribute</rdfs:label>
+    <rdfs:label xml:lang="es">Atributo</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasAttribute</swb:propertyCodeName>
+    <rdfs:domain rdf:resource="#NounSynSet"/>
+    <rdfs:range rdf:resource="#AdjectiveSynSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasHypernym">
+    <rdfs:domain rdf:resource="#SynSet"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasHypernym</swb:propertyCodeName>
+    <rdfs:range rdf:resource="#SynSet"/>
+    <owl:inverseOf rdf:resource="#hasHyponym"/>
+    <rdfs:label xml:lang="es">Hiperónimos</rdfs:label>
+    <rdfs:label xml:lang="en">Hypernyms</rdfs:label>
+    <rdfs:comment xml:lang="es">Un hiperónimo es una palabra general cuyo significado engloba el de otras palabras más específicas. Es decir,esta propiedad indica que el concepto en el dominio (subclase) puede ser englobado en el concepto del rango (superclase). Esta propiedad es equivalente a la propiedad hyponymOf de WordNet.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasCausingVerb">
+    <rdfs:label xml:lang="en">Causing</rdfs:label>
+    <rdfs:label xml:lang="es">Causante</rdfs:label>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="hasCausedVerb"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="es">Un verbo puede ser consecuencia de otro verbo. Esta propiedad indica que el verbo asociado al dominio es causado por el verbo asociado al rango. Esta propiedad es equivalente a la propiedad causedBy de WordNet.</rdfs:comment>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasCausingVerb</swb:propertyCodeName>
+    <rdfs:range rdf:resource="#VerbSynSet"/>
+    <rdfs:domain rdf:resource="#VerbSynSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasCausedVerb">
+    <rdfs:comment xml:lang="es">Un verbo puede haber causado otro verbo. Esta propiedad indica que el verbo asociado al dominio causó el verbo asociado al rango. Esta propiedad es equivalente a la propiedad causes de WordNet.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#hasCausingVerb"/>
+    <rdfs:range rdf:resource="#VerbSynSet"/>
+    <rdfs:label xml:lang="en">Caused</rdfs:label>
+    <rdfs:label xml:lang="es">Causado</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasCausedVerb</swb:propertyCodeName>
+    <rdfs:domain rdf:resource="#VerbSynSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasPartHolonym">
+    <rdfs:comment xml:lang="es">Un holónimo parte representa una relación de composición con (tiene de parte a) el merónimo. Es decir, esta propiedad indica que el concepto asociado al dominio (merónimo parte), es parte del concepto asociado al rango (holónimo parte). Esta propiedad es equivalente a la propiedad partMeronymOf de WordNet.</rdfs:comment>
+    <rdfs:label xml:lang="en">Pertinence</rdfs:label>
+    <rdfs:label xml:lang="es">Pertenencia</rdfs:label>
+    <owl:inverseOf rdf:resource="#hasPartMeronym"/>
+    <rdfs:subPropertyOf rdf:resource="#hasHolonym"/>
+    <rdfs:range rdf:resource="#NounSynSet"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasPartHolonym</swb:propertyCodeName>
+    <rdfs:domain rdf:resource="#NounSynSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasUsageClassifier">
+    <rdfs:subPropertyOf rdf:resource="#hasClassifier"/>
+    <rdfs:range rdf:resource="#NounSynSet"/>
+    <rdfs:domain rdf:resource="#SynSet"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasUsageClassifier</swb:propertyCodeName>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="participleOf">
+    <rdfs:range rdf:resource="#WordSense"/>
+    <rdfs:domain rdf:resource="#AdjectiveWordSense"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="sense">
+    <rdfs:domain rdf:resource="#Word"/>
+    <rdfs:range rdf:resource="#WordSense"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >sense</swb:propertyCodeName>
+    <rdfs:label xml:lang="es">Sentido</rdfs:label>
+    <rdfs:label xml:lang="en">Sense</rdfs:label>
+    <swb:variantName xml:lang="es">Significado</swb:variantName>
+    <rdfs:comment xml:lang="es">El sentido o significado de una palabra es el concepto que ésta representa en cierto contexto. Por ejemplo, la palabra 'banco' en el contexto financiero significa 'establecimiento público de crédito, constituido en sociedad por acciones' mientras que en el ámbito cotidiano puede significar 'asiento, con respaldo o sin él, en que pueden sentarse varias personas'.</rdfs:comment>
+  </owl:ObjectProperty>
+  <rdf:Property rdf:ID="lemma">
+    <rdfs:domain rdf:resource="#Word"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >lemma</swb:propertyCodeName>
+    <rdfs:label xml:lang="en">Lemma</rdfs:label>
+    <rdfs:label xml:lang="es">Raíz</rdfs:label>
+    <swb:variantName xml:lang="es">Lexema</swb:variantName>
+    <rdfs:comment xml:lang="es">Lexema o raíz de la palabra. Las palabras tienen una parte invariante con significado propio a la cual se le adicionan prefijos o sufijos en los diferentes usos y conjugaciones (cambios morfológicos) de dicha palabra. Por ejemplo, 'corr' es el lexema de 'correr', 'corredor', 'corrida'.</rdfs:comment>
+  </rdf:Property>
+  <owl:DatatypeProperty rdf:ID="gloss">
+    <rdfs:domain rdf:resource="#SynSet"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >gloss</swb:propertyCodeName>
+    <rdfs:label xml:lang="es">Definición</rdfs:label>
+    <rdfs:label xml:lang="en">Gloss</rdfs:label>
+    <rdfs:comment xml:lang="es">Una definición en palabras sencillas del concepto que define el SynSet.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="lexicalForm">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Word"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >lexicalForm</swb:propertyCodeName>
+    <rdfs:label xml:lang="es">Forma léxica</rdfs:label>
+    <rdfs:label xml:lang="en">Lexical form</rdfs:label>
+    <rdfs:comment xml:lang="es">La forma léxica de la palabra es el un conjunto de caracteres que la representan.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="restrictionPattern">
+    <rdfs:domain rdf:resource="#SynSet"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="tagCount">
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >tagCount</swb:propertyCodeName>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#WordSense"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="synSetId">
+    <rdfs:domain rdf:resource="#SynSet"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >synSetId</swb:propertyCodeName>
+    <rdfs:label xml:lang="es">Identificador</rdfs:label>
+    <rdfs:label xml:lang="en">ID</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment xml:lang="es">Identificador único para el SynSet.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <swb:Class rdf:ID="Collocation">
+    <rdfs:comment xml:lang="es">Una colocación es un conjunto de palabras, es decir, un sustantivo compuesto.</rdfs:comment>
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <swb:variantName xml:lang="es">Sustantivo compuesto</swb:variantName>
+    <swb:classCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Collocation</swb:classCodeName>
+    <rdfs:label xml:lang="es">Nombre compuesto</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Word"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </swb:Class>
+  <swb:CodePackage rdf:ID="pkg">
+    <swb:prefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >wnet</swb:prefix>
+    <swb:package rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >org.semanticwb.nlp.wordnet</swb:package>
+  </swb:CodePackage>
+</rdf:RDF>
+
+<!-- Created with TopBraid Composer -->

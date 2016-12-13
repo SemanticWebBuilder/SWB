@@ -1,0 +1,34 @@
+<%-- 
+    Document   : dumpModel
+    Created on : 13-sep-2013, 17:02:24
+    Author     : javier.solis.g
+--%>
+
+<%@page import="java.io.OutputStream"%>
+<%@page import="org.semanticwb.SWBPortal"%>
+<%@page import="java.io.FileOutputStream"%>
+<%@page import="org.semanticwb.model.SWBContext"%>
+<%@page import="org.semanticwb.model.WebSite"%>
+<%@page import="org.semanticwb.model.base.SWBContextBase"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+<%
+    String name=request.getParameter("model");
+    if(name!=null)
+    {
+        WebSite site=SWBContext.getWebSite("demo");
+        FileOutputStream oups=new FileOutputStream(SWBPortal.getWorkPath()+"/"+name+".n3");
+        site.getSemanticModel().write(oups, "RDF/XML");
+        oups.flush();
+        oups.close();
+    }
+%>        
+    </body>
+</html>

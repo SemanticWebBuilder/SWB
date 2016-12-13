@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<db xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <table name="swb_commlog">
+            <column id="commuri" type="VARCHAR" size="250" acceptNulls="false"/>
+            <column id="usruri" type="VARCHAR" size="250" acceptNulls="false"/>
+            <column id="elementuri" type="VARCHAR" size="250" acceptNulls="false"/>
+            <column id="modified" type="TIMESTAMP" size="14" acceptNulls="false"/>
+    </table>
+    <index name="commlog_indexCOMM" table="swb_commlog" >
+		<colindex id="commuri"/>
+    </index>
+    <index name="commlog_indexUSR" table="swb_commlog" >
+		<colindex id="usruri"/>
+    </index>
+</db>
+

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<db xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<table name="swb_admlog">
+		<column id="log_user" type="VARCHAR" size="250" acceptNulls="false"/>
+		<column id="log_modelid" type="VARCHAR" size="50" acceptNulls="false"/>
+		<column id="log_objuri" type="VARCHAR" size="250" acceptNulls="false"/>
+		<column id="log_propid" type="VARCHAR" size="250" acceptNulls="true"/>
+		<column id="log_action" type="VARCHAR" size="15" acceptNulls="false"/>
+		<column id="log_date" type="TIMESTAMP" size="14" acceptNulls="false"/>
+	</table>
+<!--
+	<primarykey table="swb_admlog">
+		<colpk id="log_user"/>
+	        <colpk id="log_modelid"/>
+		<colpk id="log_objuri"/>
+		<colpk id="log_date"/>
+	</primarykey>
+-->
+	<table name="swb_reshits">
+		<column id="hits_date" type="TIMESTAMP" size="14" acceptNulls="false"/>
+		<column id="hits_modelid" type="VARCHAR" size="50" acceptNulls="false"/>
+		<column id="hits_objid" type="VARCHAR" size="255" acceptNulls="true"/>
+		<column id="hits_type" type="SMALLINT" size="2" acceptNulls="false"/>
+		<column id="hits" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+	</table>
+
+    <index name="hits_index" table="swb_reshits" >
+		<colindex id="hits_date"/>
+		<colindex id="hits_modelid"/>
+		<colindex id="hits_objid"/>
+		<colindex id="hits_type"/>
+    </index>
+<!--
+
+    <primarykey table="res_projectmanager">
+		<colpk id="idtp"/>
+		<colpk id="idtm"/>
+    </primarykey>
+
+    <index type="UNIQUE" name="res_projmanager_ind1" table="res_projectmanager" >
+		<colindex id="add_date" order="ASC"/>
+		<colindex id="init_date" order="ASC"/>
+		<colindex id="end_date" order="ASC"/>
+    </index>
+
+	<primarykey table="swb_reshits">
+		<colpk id="hits_date"/>
+		<colpk id="hits_modelid"/>
+		<colpk id="hits_objuri"/>
+		<colpk id="hits_classid"/>
+	</primarykey>
+
+   <foreignkey table="res_projmanagerlog">
+     <columns>
+         <colpk id="idtp"/>
+         <colpk id="idtm"/>
+      </columns>
+      <reference table="res_projectmanager">
+        <columns>
+           <colpk id="idtp"/>
+           <colpk id="idtm"/>
+        </columns>
+      </reference>
+    </foreignkey>
+-->
+</db>

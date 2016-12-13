@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<db xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <table name="swb_graph">
+        <column id="id" type="INTEGER" size="11" acceptNulls="false"/>
+        <column id="name" type="VARCHAR" size="255" acceptNulls="false"/>
+    </table>
+    <primarykey table="swb_graph">
+	<colpk id="id"/>
+    </primarykey>
+</db>
+

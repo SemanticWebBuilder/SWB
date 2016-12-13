@@ -1,0 +1,9 @@
+Patent License
+
+Subject to the terms and conditions of this License, Google hereby grants to You a perpetual,
+ worldwide, non-exclusive, no-charge, royalty-free, irrevocable (except as stated in this License)
+ patent license for patents necessarily infringed by implementation (in whole or in part) of this
+ specification. If You institute patent litigation against any entity (including a cross-claim or
+ counterclaim in a lawsuit) alleging that the implementation of the specification constitutes
+ direct or contributory patent infringement, then any patent licenses for the specification granted
+ to You under this License shall terminate as of the date such litigation is filed. 

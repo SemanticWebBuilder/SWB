@@ -1,0 +1,120 @@
+<template method="setHeaders" Content-Type="text/html; charset=UTF-8" charset="UTF-8" Cache-Control="no-cache" Pragma="no-cache"  response="{response}" />
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{user@getLanguage}" lang="{user@getLanguage}">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>SWB</title>
+<link href="images/estilo_portada.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{webpath}/swbadmin/js/dojo/dojo/dojo.js" djConfig="parseOnLoad: true, isDebug: false, locale: '{user@getLanguage}'"></script>
+<script type="text/javascript" charset="utf-8" src="{webpath}/swbadmin/js/swb.js"></script>
+<!--script type="text/javascript" charset="utf-8" src="{webpath}/swbadmin/js/swb_admin.js"></script-->
+</head>
+<body>
+<div id="general">
+  <div id="fecha"><RESOURCE TYPE="StaticText" STYPE="date"/></div>
+  <div id="bienvenido"><h3><if:user language="es">Bienvenido</if:user><if:user language="en">Welcome</if:user></h3></div>
+  <div id="nombre">
+    <h1><USER method="getFullName"/></h1>
+  </div>
+  <div id="sabias">
+    <h3><if:user language="es">Sabias que...</if:user><if:user language="en">Did you know that...</if:user></h3>
+    <p><RESOURCE TYPE="Tips">Los efectos de animación y transición de PowerPoint no se mostraran al publicarlo como contenido, ya que son funcionalidades especificas de PowerPoint, y no tienen su equivalente en HTML.</RESOURCE></p>
+  </div>
+  <div id="noticias">
+  <h3>noticias</h3>
+  <ul>
+     <RESOURCE TYPE="News">
+  	<li><a href="99"><span>22 de abril, 2009</span><br>Aqu&iacute; va el encabezado de la noticia. Al hacer clic la abre en la p&aacute;gina de la comunidad SWB.</a></li>
+    <li><a href="#"><span>22 de abril, 2009</span><br>Aqu&iacute; va el encabezado de la noticia. Al hacer clic la abre en la p&aacute;gina de la comunidad SWB.</a></li>
+    <li><a href="88"><span>22 de abril, 2009</span><br>
+      Aqu&iacute; va el encabezado de la noticia. Al hacer clic la abre en la p&aacute;gina de la comunidad SWB.</a></li>
+    <li><a href="88"><span>22 de abril, 2009</span><br>
+      Aqu&iacute; va el encabezado de la noticia. Al hacer clic la abre en la p&aacute;gina de la comunidad SWB.</a></li>
+    <li><a href="88"><span>22 de abril, 2009</span><br>
+      Aqu&iacute; va el encabezado de la noticia. Al hacer clic la abre en la p&aacute;gina de la comunidad SWB.</a></li>
+</RESOURCE>
+  </ul>
+  </div>
+  <div id="movs">
+    <RESOURCE TYPE="SiteLog">
+    <table summary="Las ultimas actividades del usuario">
+      <caption>
+      movimientos recientes
+      </caption>
+      <tbody>
+        <tr>
+          <td class="mov-plantilla"><a href="#">nombrGrupoPlantil</a></td>
+          <td class="mov-recurso"><a href="#">Nombre de la plantilla </a></td>
+          <td class="mov-editar"><a href="#">editar</a></td>
+        </tr>
+        <tr>
+          <td class="mov-plantilla"><a href="#">nombrGrupoPlantil</a></td>
+          <td class="mov-recurso"><a href="#">Nombre de la plantilla </a></td>
+          <td class="mov-editar"><a href="#">editar</a></td>
+        </tr>
+        <tr>
+          <td class="mov-plantilla"><a href="#">nombrGrupoPlantil</a></td>
+          <td class="mov-recurso"><a href="#">Nombre de la plantilla </a></td>
+          <td class="mov-editar"><a href="#">editar</a></td>
+        </tr>
+        <tr>
+          <td class="mov-plantilla"><a href="#">nombrGrupoPlantil</a></td>
+          <td class="mov-recurso"><a href="#">Nombre de la plantilla </a></td>
+          <td class="mov-editar"><a href="#">editar</a></td>
+        </tr>
+        <tr>
+          <td class="mov-plantilla"><a href="#">nombrGrupoPlantil</a></td>
+          <td class="mov-recurso"><a href="#">Nombre de la plantilla </a></td>
+          <td class="mov-editar"><a href="#">editar</a></td>
+        </tr>
+        <tr>
+          <td class="mov-plantilla"><a href="#">nombrGrupoPlantil</a></td>
+          <td class="mov-recurso"><a href="#">Nombre de la plantilla </a></td>
+          <td class="mov-editar"><a href="#">editar</a></td>
+        </tr>
+        <tr>
+          <td class="mov-plantilla"><a href="#">nombrGrupoPlantil</a></td>
+          <td class="mov-recurso"><a href="#">Nombre de la plantilla </a></td>
+          <td class="mov-editar"><a href="#">editar</a></td>
+        </tr>
+        <tr>
+          <td class="mov-plantilla"><a href="#">nombrGrupoPlantil</a></td>
+          <td class="mov-recurso"><a href="#">Nombre de la plantilla </a></td>
+          <td class="mov-editar"><a href="#">editar</a></td>
+        </tr>
+        <tr>
+          <td class="mov-plantilla"><a href="#">nombrGrupoPlantil</a></td>
+          <td class="mov-recurso"><a href="#">Nombre de la plantilla </a></td>
+          <td class="mov-editar"><a href="#">editar</a></td>
+        </tr>
+        <tr>
+          <td class="mov-plantilla"><a href="#">nombrGrupoPlantil</a></td>
+          <td class="mov-recurso"><a href="#">Nombre de la plantilla </a></td>
+          <td class="mov-editar"><a href="#">editar</a></td>
+        </tr>
+      <tbody>
+    </table>
+   </RESOURCE>
+  </div>
+
+  <RESOURCE TYPE="UserNotes">
+  <div id="notas">
+	<h2>mis notas</h2>
+		<div id="notasEstilo">
+		  <ul>
+ 		   <!--<li id="notaBold"><a href="#" title="Negrita">N</a></li>
+ 		   <li id="notaItalic"><a href="#" title="Italica">K</a></li>
+ 		   <li id="notaUnderline"><a href="#" title="Subrayar">S</a></li>
+ 		   <li id="notaMenor"><a href="#" title="Reducir tamaño de letra">T</a></li>
+  	  	   <li id="notaMayor"><a href="#" title="Aumentar tamaño de letra">T</a></li>
+  		   <li id="notaColor"><a href="#" title="Color">color</a></li>-->
+  		   <li id="notaGuardar"><a href="#" title="Guardar">Guardar</a></li>
+		  </ul>
+		</div>
+    <textarea name="textarea">Escribe aquí tus notas</textarea>
+  </div>
+  </RESOURCE>
+</div>
+</body>
+</html>

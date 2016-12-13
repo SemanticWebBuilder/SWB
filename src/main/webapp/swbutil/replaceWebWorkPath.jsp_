@@ -1,0 +1,57 @@
+<%-- 
+    Document   : replaceWebWorkPath
+    Created on : 31-ene-2012, 14:52:33
+    Author     : javier.solis.g
+--%>
+
+<%@page import="org.semanticwb.model.User"%>
+<%@page import="org.semanticwb.model.Resource"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="org.semanticwb.model.ResourceType"%>
+<%@page import="org.semanticwb.model.WebSite"%>
+<%@page import="org.semanticwb.model.SWBContext"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+<%
+    User user=SWBContext.getAdminUser();
+    if(user==null)
+    {
+        response.sendError(403);
+        return;
+    }
+        
+    String model=request.getParameter("model");
+    System.out.println(model);
+    if(model!=null)
+    {
+        WebSite site=SWBContext.getWebSite(model);
+        System.out.println(site);
+        ResourceType type=site.getResourceType("StaticText");
+        System.out.println(type);
+        Iterator<Resource> it=type.listResources();
+        while(it.hasNext())
+        {
+            Resource res=it.next();
+            String text=res.getAttribute("text");
+            if(text!=null)
+            {
+                text=text.replace("/work/models/", "{webworkpath}/models/");
+                //text=text.replace("{webworkpath}/model/", "{webworkpath}/models/");
+                res.setAttribute("text", text);
+                res.updateAttributesToDB();
+            }else
+            {
+                out.println("Res con text nulo:"+res.getId());
+            }
+        }        
+    }
+%>        
+    </body>
+</html>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<db xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<table name="sr_answer">
+		<column id="answerid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+		<column id="idtm" type="VARCHAR" size="50" default=" " acceptNulls="false"/>
+		<column id="questionid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+                <column id="responseid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+		<column id="stringxml" type="VARCHAR" size="3900" acceptNulls="true"/>
+		<column id="score" type="INTEGER" size="10" acceptNulls="false"/>
+		<column id="mark" type="SMALLINT" size="1" default="0"/>
+                <column id="secuentialid" type="INTEGER" size="3" acceptNulls="false"/>
+                <column id="created" type="TIMESTAMP" size="14" acceptNulls="false"/>
+                <column id="lastupdate" type="TIMESTAMP" size="14" acceptNulls="false"/>
+	</table>
+
+        <primarykey table="sr_answer">
+		<colpk id="answerid"/>
+		<colpk id="idtm"/>
+        </primarykey>
+
+        <index name="ind_questionid" table="sr_answer" >
+		<colindex id="questionid" order="ASC"/>
+        </index>
+
+        <index name="ind_responseid" table="sr_answer" >
+		<colindex id="responseid" order="ASC"/>
+        </index>
+
+	<table name="sr_validatecode">
+		<column id="codeid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+		<column id="idtm" type="VARCHAR" size="50" default=" " acceptNulls="false"/>
+                <column id="title" type="VARCHAR" size="50" default=" " acceptNulls="true"/>
+                <column id="description" type="VARCHAR" size="255" default=" " acceptNulls="true"/>
+                <column id="validationcode" type="VARCHAR" size="3900" acceptNulls="true"/>
+                <column id="lastupdate" type="TIMESTAMP" size="14" acceptNulls="false"/>
+	</table>
+
+        <primarykey table="sr_validatecode">
+		<colpk id="codeid"/>
+		<colpk id="idtm"/>
+        </primarykey>
+
+	<table name="sr_controlcatalog">
+		<column id="controlid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+		<column id="idtm" type="VARCHAR" size="50" default=" " acceptNulls="false"/>
+                <column id="title" type="VARCHAR" size="50" default=" " acceptNulls="true"/>
+                <column id="description" type="VARCHAR" size="255" default=" " acceptNulls="true"/>
+                <column id="lastupdate" type="TIMESTAMP" size="14" acceptNulls="false"/>
+	</table>
+        
+        <primarykey table="sr_controlcatalog">
+		<colpk id="controlid"/>
+		<colpk id="idtm"/>
+        </primarykey>
+
+<table name="sr_freqanswer">
+		<column id="freqanswerid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+		<column id="idtm" type="VARCHAR" size="50" default=" " acceptNulls="false"/>
+                <column id="title" type="VARCHAR" size="50" default=" " acceptNulls="true"/>
+                <column id="stringxml" type="VARCHAR" size="3900" acceptNulls="true"/>
+                <column id="groupaid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+                <column id="isreuse" type="SMALLINT" size="1" default="0" acceptNulls="false"/>
+                <column id="created" type="TIMESTAMP" size="14" acceptNulls="false"/>
+                <column id="lastupdate" type="TIMESTAMP" size="14" acceptNulls="false"/>
+	</table>
+
+        <primarykey table="sr_freqanswer">
+		<colpk id="freqanswerid"/>
+		<colpk id="idtm"/>
+        </primarykey>
+
+    <table name="sr_groupanswer">
+            <column id="groupaid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+            <column id="idtm" type="VARCHAR" size="50" default=" " acceptNulls="false"/>
+            <column id="title" type="VARCHAR" size="50" default=" " acceptNulls="true"/>
+            <column id="description" type="VARCHAR" size="255" default=" " acceptNulls="true"/>
+            <column id="lastupdate" type="TIMESTAMP" size="14" acceptNulls="false"/>
+    </table>
+
+    <primarykey table="sr_groupanswer">
+            <colpk id="groupaid"/>
+            <colpk id="idtm"/>
+    </primarykey>
+
+    <table name="sr_category">
+            <column id="categoryid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+            <column id="idtm" type="VARCHAR" size="50" default=" " acceptNulls="false"/>
+            <column id="title" type="VARCHAR" size="50" default=" " acceptNulls="true"/>
+            <column id="description" type="VARCHAR" size="255" default=" " acceptNulls="true"/>
+            <column id="lastupdate" type="TIMESTAMP" size="14" acceptNulls="false"/>
+    </table>
+
+    <primarykey table="sr_category">
+            <colpk id="categoryid"/>
+            <colpk id="idtm"/>
+    </primarykey>
+
+    <table name="sr_orderquestion">
+            <column id="surveyid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+            <column id="questionid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+            <column id="subjectid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+            <column id="idtm" type="VARCHAR" size="50" default=" " acceptNulls="false"/>
+            <column id="ordernum" type="INTEGER" size="4" default="0" acceptNulls="false"/>
+            <column id="isactive" type="SMALLINT" size="1" default="0" acceptNulls="false"/>
+            <column id="isdata" type="SMALLINT" size="1" default="0" acceptNulls="false"/>
+            <column id="lastupdate" type="TIMESTAMP" size="14" acceptNulls="false"/>
+    </table>
+
+    <primarykey table="sr_orderquestion">
+            <colpk id="surveyid"/>
+            <colpk id="questionid"/>
+            <colpk id="subjectid"/>
+            <colpk id="idtm"/>
+    </primarykey>
+
+<table name="sr_question">
+		<column id="questionid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+		<column id="idtm" type="VARCHAR" size="50" default=" " acceptNulls="false"/>
+		<column id="question" type="VARCHAR" size="3900" acceptNulls="true"/>
+                <column id="instruction" type="VARCHAR" size="255" default="NULL" acceptNulls="true"/>
+                <column id="codeid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+                <column id="validated" type="SMALLINT" size="1" default="0" acceptNulls="false"/>
+                <column id="required" type="SMALLINT" size="1" default="0" acceptNulls="false"/>
+                <column id="validoptions" type="BIGINT" size="10" default="0" acceptNulls="false"/>
+                <column id="controlid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+		<column id="freqanswerid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+                <column id="stringxml" type="VARCHAR" size="3900" acceptNulls="true"/>
+                <column id="categoryid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+		<column id="isreuse" type="SMALLINT" size="1" default="0" acceptNulls="false"/>
+                <column id="created" type="TIMESTAMP" size="14" acceptNulls="false"/>
+                <column id="lastupdate" type="TIMESTAMP" size="14" acceptNulls="false"/>
+	</table>
+
+        <primarykey table="sr_question">
+		<colpk id="questionid"/>
+		<colpk id="idtm"/>
+        </primarykey>
+
+        <index name="ind_textid" table="sr_question" >
+		<colindex id="codeid" order="ASC"/>
+        </index>
+
+        <index name="ind_controlid" table="sr_question" >
+		<colindex id="controlid" order="ASC"/>
+        </index>
+
+        <index name="ind_freqanswerid" table="sr_question" >
+		<colindex id="freqanswerid" order="ASC"/>
+        </index>
+
+        <table name="sr_relatedquestion">
+		<column id="parentquestion" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+                <column id="sonquestion" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+                <column id="surveyid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+		<column id="idtm" type="VARCHAR" size="50" default=" " acceptNulls="false"/>
+                <column id="lastupdate" type="TIMESTAMP" size="14" acceptNulls="false"/>
+	</table>
+
+        <primarykey table="sr_relatedquestion">
+		<colpk id="parentquestion"/>
+		<colpk id="sonquestion"/>
+                <colpk id="surveyid"/>
+                <colpk id="idtm"/>
+        </primarykey>
+
+        <table name="sr_responseuser">
+		<column id="responseid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+		<column id="idtm" type="VARCHAR" size="50" default=" " acceptNulls="false"/>
+                <column id="surveyid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+                <column id="wbuser" type="VARCHAR" size="50" default=" " acceptNulls="false"/>
+                <column id="currentquestion" type="INTEGER" size="10" default="0" acceptNulls="false"/>
+                <column id="correctanswer" type="INTEGER" size="10" default="0" acceptNulls="false"/>
+                <column id="wronganswer" type="INTEGER" size="10" default="0" acceptNulls="false"/>
+                <column id="score" type="NUMERIC" size="10" default="0" acceptNulls="false"/>
+                <column id="review" type="SMALLINT" size="1" default="0" acceptNulls="false"/>
+                <column id="statistic" type="SMALLINT" size="1" default="1" acceptNulls="false"/>
+                <column id="comments" type="VARCHAR" size="3900" acceptNulls="true"/>
+                <column id="finished" type="SMALLINT" size="1" default="0" acceptNulls="false"/>
+                <column id="created" type="TIMESTAMP" size="14" acceptNulls="false"/>
+                <column id="lastupdate" type="TIMESTAMP" size="14" acceptNulls="false"/>
+	</table>
+
+        <primarykey table="sr_responseuser">
+		<colpk id="responseid"/>
+		<colpk id="idtm"/>
+        </primarykey>
+
+        <index name="ind_surveyid" table="sr_responseuser" >
+		<colindex id="surveyid" order="ASC"/>
+        </index>
+
+        <index name="ind_email" table="sr_responseuser" >
+		<colindex id="wbuser" order="ASC"/>
+        </index>
+
+        <table name="sr_subject">
+		<column id="subjectid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+		<column id="idtm" type="VARCHAR" size="50" default=" " acceptNulls="false"/>
+                <column id="title" type="VARCHAR" size="50" default=" " acceptNulls="true"/>
+                <column id="description" type="VARCHAR" size="255" default="NULL" acceptNulls="true"/>
+                <column id="created" type="TIMESTAMP" size="14" acceptNulls="false"/>
+                <column id="lastupdate" type="TIMESTAMP" size="14" acceptNulls="false"/>
+	</table>
+
+        <primarykey table="sr_subject">
+		<colpk id="subjectid"/>
+		<colpk id="idtm"/>
+        </primarykey>
+
+        <table name="sr_survey">
+		<column id="surveyid" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+		<column id="idtm" type="VARCHAR" size="50" default=" " acceptNulls="false"/>
+                <column id="res_id" type="VARCHAR" size="50" default=" " acceptNulls="false"/>
+                <column id="typeid" type="BIGINT" size="10" default="0" acceptNulls="false"/>
+                <column id="min_score" type="DOUBLE" size="10" default="NULL" acceptNulls="true"/>
+                <column id="max_answer" type="DOUBLE" size="3" default="0" acceptNulls="false"/>
+                <column id="time_answer" type="DOUBLE" size="4" default="NULL" acceptNulls="true"/>
+                <column id="created" type="TIMESTAMP" size="14" acceptNulls="false"/>
+                <column id="lastupdate" type="TIMESTAMP" size="14" acceptNulls="false"/>
+	</table>
+
+        <primarykey table="sr_survey">
+		<colpk id="surveyid"/>
+		<colpk id="idtm"/>
+        </primarykey>
+        <index name="ind_res_id" table="sr_survey" >
+		<colindex id="res_id" order="ASC"/>
+        </index>
+
+
+</db>
+
+
+
+
+
+
+
+
+
+

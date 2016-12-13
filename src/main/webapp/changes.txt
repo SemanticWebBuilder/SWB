@@ -1,0 +1,218 @@
+  4.5.11.2 21/01/2016
+    - Validación de DNS apuntados a sitios en modo ataque (JEI)
+  4.5.11.1 18/10/15
+    - Validación en cierre de coneciones en iterador de ADMLOGS
+    - Validación de borrado de friendly URL en cache (Jei)
+    - Actualizado componente HTMLContent para usar nueva versión de CKEditor y mejorar soporte en navegadores (Ebe)
+  4.5.10.1 01/06/15
+    - Soporte de filtros de administraci-on para categorias de collecciones de recursos
+  4.5.10.0 15/05/15
+    - Soporte a subrutas en friendyUrls (Vic, Jei)
+    - Se agrego clase SWB4GenericLDAPLocalBridge para soporte a autenticacion por LDAP y Local simultaneas (Serch)
+    - Corrección de applet de templates, soporte a OSX (Jei)
+    - Actualizacion de versión de Servlets (Jei)
+    - Tag en plantillas para eliminar comentario de tiempo de procesamiento (Jei)
+    - Soporte a ids con guión medio (Jei)
+    - Se corrigio bug del file upload de formas (Ebe)
+    - Se agregó tag para plantillas (if:webpage) y el parametro (childof) (Jei)
+    - Se agregó tag para plantillas (if:website) y el parametro (id) para todos los swbtags (Jei)
+  4.5.6.0 02/07/14
+    - Firmado de Applets (Jei)
+    - Correccion de bug de Cache al crear recursos (Jei)
+    - Soporte a papelera de tipos de recursos (Jei)
+    - Corrección de doble codificacion en menus de url con caracter &amp; (Jei)
+  4.5.5.0
+    - Soporte a nuevo SWBTripleStore, (levelDB, Kyoto Cabinet, MongoDB, Memory)(Jei)
+  4.5.2.1
+    - Se agregó al captcha para formas automáticas la posibilidad de usar audio (serch)
+        al actualizar es necesario agregar los jars: cmu_time_awb.jar, cmu_us_kal.jar, 
+        cmudict04.jar, cmulex.jar, cmutimelex.jar, en_us.jar, freetts.jar
+  4.5.2.0
+    - Se actualizó la funcionalidad del SemanticElement FileUpload con la nueva versión de DOJO (serch)
+    - Se agregó Plug-in para CloudComputing en la plataforma DimensionData (yutzin)
+    - Se agregó Filtrado de secciones por usuario (jei)
+    - Se agregó reporte de seguimiento por secciones y usuarios (carlos)
+  4.5.1.0
+    - Se agrego acciones de seguridad, evaluacion de reglas and/or y heredar o no elementos (Jei) 
+  4.5.0.0
+    - Cambio de la versión de DOJO - SEMANTICWEBBUILDER-84 (Jei)
+    - Desacoplamiento de AWS, esta versión no se debe usar en AWS - SEMANTICWEBBUILDER-92(Serch)
+    - Nueva funcionalidad para manejo de usuarios registrados vs usuarios firmados - SEMANTICWEBBUILDER-88(Serch)
+    - Mejora al sistema de cache para alta concurrencia y dependencias externas (Jei, Serch)
+  4.2.6.1
+    - Mejora de sistema de cache para alta concurrencia (Jei)
+  4.2.6.0
+    - Se agregó posiblidad de pasar parametros de configuración en la administración del recursos JSPResource (Jei)
+    - Mejora en cache de instancias en de Dispositivos, lenguajes y paises al crear secion de usuarios (Jei)
+    - Corrección de bug en namespace al importar reporitorios de usuarios independientes (Jei)   
+    - Cambio en codificación de persistencia de Triplestore SWBTS y SWBTSE (Jei) 
+  4.2.5.6
+    - Se agregaron nuevas funcionalidades al AudioPodcast: configuración del  plugin de reproducción, calculo programado  de duración del audio, temas de agrupación, activo/inactivo, exclusivo para formato mp3, paginación, etc.
+    - Se agregaron nuevas funcionalidades al CommentToElement. Configuración del listado de comentarios, configuración del tamaño de bloques de comentarios, etc.
+  4.2.5.5
+    - BUG: Error en la propagación de los cambios en URLFriendly en esquema de balanceo (Jei)
+  4.2.5.2
+    - BUG 79: posibilidad de encontrar un null como login en una sessión aún no establecida (serch)
+  4.2.5.1
+    - Se agregó menú Edit al editor de plantillas XSL para los recursos que las ocupan. Esto es para plantillas personalizadas. (Carlos).
+    - Se agregó atributo title al recurso IframeContent (Carlos).
+    - Se agregó nuevo recurso para generar códigos QR. Para configurarlo usar: org.semanticwb.portal.resources.QRCodeGenerator. (Carlos)
+  4.2.5.0
+    - Se agrego propiedad de SemanticModel para poder definir si el Modelo es un Modelo de Datos (No es observado para notificar cambios y generar logs)(Jei)
+    - Se agrego la posibilidad de Indexar Documentos Aduntos en SWBIndexer (Jei)
+    - Mensajes de error en login más claros (serch)
+    - Los reportes para vista en html se manejan con dojo, anteriormente se usaba jasper (Carlos).
+    - Se corrigieron los filtros de los reporteadores (Carlos).
+    - El reporte de contenido muestra dos nuevas columnas, versión y  (Carlos).
+    - Se corrigió el editor de plantillas XSL para los recursos que las ocupan (Carlos).
+    - Se corrigió una validación para el tipo de despliegue del Poll (Carlos).
+  4.2.4.0
+    - BUG: Perdía el contexto al cambiar contraseña en la autenticación si el usuario no ponia la contraseña anterior o ponia diferentes nuevas contraseñas (serch)
+    - Se redujo la contención en la creación de semanticObjects a sólo URIs equivalentes(jei)
+    - BUG: Al autenticar contra un repositorio de usuarios que se migró desde 3.x, invariablemente no autenticaba por que ComparablePassword regresaba incorrectamente el nombre del algoritmo de digestion (serch)
+    - mejoras al manejo del par de llaves para monitoreo
+  4.2.3.0
+    - BUG: High concurrency on hash table for internal and depurl tables (serch)
+    - Se agregó interface para soporte en AWS (serch)
+  4.2.2.0
+    - BUG 67: Mejoras en el sistema de autenticación (serch)
+    - BUG: Mejoras en la carga del Memory ClassLoader y en la invocación al Compilador para clases owl virtuales (serch)
+  4.2.1.0
+    - Se agrego método get[NombreDeClase]ClassMgr() en el Generador de código para todas clases de SWB (Jei)
+    - Mejoras en la carga de Cache de Objetos Semanticos (FullSemanticObjectCache) (Jei)
+    - Soporte a IPV6 en StandAlone y Balanceo (Serch)
+    - Soporte a Derby (Serch)
+    - ReInscripción en ambientes de nube (Serch)
+    - Limpieza de algunos DeathStorage y mejoras al manejo interno del monitoreo (Serch)
+    - Ajuste del soporte a DB2 (Serch)
+  4.2.0.5
+    - Mejora: se agregó el módulo de alertas en DDOS (Serch)
+    - BUG: se corrigió la cuenta de Hits en instancias clientes (Jei)
+    - BUG: Se corrigió error en alta concurrencia al registrar la ruta seguida por una misma session (Serch)
+  4.2.0.4
+    - Mejora: Módulo de integración con GEMFIRE (Serch)
+    - BUG: Filtro de DojoFileUpload (Serch)
+    - BUG: Limpieza de XSS en mensajes de error (Serch)
+    - BUG: Limpieza de XSS en URLs mezclados (Serch)
+  4.2.0.2
+    - Se agrego cache de objetos no encontrados en base de datos (Jei)
+    - BUG: Logout en ambientes distribuidos (Serch)
+    - Preparación de wrapers de JDBC para JSE7 (Serch)
+  4.2.0.0
+    - Rediseño de la capa interna de SWBPlatform (SemanticObject) para incrementar rendimiento (Jei)
+    - Mejoras en el Soporte a Balanceo de Instancias (Jei)
+    - Soporte a FullCache de triples En ambientes de Balanceo (Jei)
+    - Mejoras de desempeño en Triple Store Nativo de SWB (Jei)
+    - Mejoras de desempeño en Triple Store Remoto de SWB (Jei)
+    - Cambios en el FCKEditor, para que el Servlet que utiliza funcione como un InternalServlet de SWB (Jose R)
+  4.1.0.0
+    - CONVERSIÓN A JAVA 1.6 (Jei)
+    - Se creó el Triple Store propio de SemanticWebBuilder, para mayor compatibilidad con las diversas BD (Jei)
+    - Se creó el Triple Store para integracion con Base de Datos Semantica nativa Bigdata (Jei)
+    - Se agregó la posibilidad de definir URL alternos para las páginas web personalizados por idioma y pais(Jei)
+    - BUG: se corrigió bug al activar contenidos en flujo (Jei)
+    - BUG: se corrigió bug al eliminar páginas web virtuales (Jei)
+    - Se agregó la posibilidad de cifrar la contraseña con una llave RSA al autenticarse a SWB (Serch)
+    - Identificar la Geolocalización por país de la IP del visitante (Serch)
+    - BUG: se corrigió el problema con el bloqueo de logins al entrar erroneamente una clave inválida (Serch)
+    - BUG: se corrigieron bugs en la autenticación (Serch)
+    - se agregó como comentario en el web.xml la compatibiliad con J2EE 5 (Serch)
+    - incorporación de wraper a hash de GNU crypto library (Serch)
+    - incorporación del Remote Proxy para SWBTS (Serch)
+    - BUG: se corrigió el paso del Principal en autenticación LDAP (Serch)
+    - incorporación del módulo para autenticación vía FaceBook (Serch)
+    - BUG: se corrigió la validación de acceso a la administración en instancias Cliente (Serch)
+    - Se modificó la forma de generar el GoogleSiteMap para Google Analytics (Serch)
+    - BUG: se corrigió el content-type de respuesta a DOJO en la carga de archivos (Serch)
+  4.0.2.4
+    - Se cambio forma de evaluar reglas, roles, grupos, calendarios de and a or (Jei)
+    - Se agrego posibilidad de tener filtros inversos de recursos (Jei)
+    - Se agrego patrones de inicio y termino multiples del RemoteWebApplication (Jei)
+    - Mejoras generales del paquete de compatibilidad con version WB3. (Jei)
+    - Se agrego posibilidad de notificar por correo electrónico el firmado del usuario (Jei)
+
+  4.0.2.2
+    - Se corrigio depliegue de contenidos por defecto con Orden = 0
+    - Se corrigio despliegue de elementos enviados a papelera (Jei)
+    - Se agregó atributo (session/restrictMultipleLogon) en security.properties para restringir acceso un solo usuarios por session. (Jei)
+    - Se agregó atributo (session/restrictToSingleIP) en security.properties para restringir acceso a usuarios por un sola ip por session. (Jei)
+    - Se agregó un atributo para forzar el cambio de contraseña de un usuario (Serch)
+    - Se agregó un archivo de configuración para especificar el nivel de seguridad en el manejo de contraseñas y sesiones (Serch)
+    - Se agregó validación de contraseña contra, igualdad al login, tamaño, complejidad y tiempo de expiración (Serch)
+    - Se agregó validación para forzar cambio de contraseña en el primer acceso del usuario (Serch)
+    - se agregó inactivación de usuarios por falta de uso de la cuenta (Serch)
+
+  4.0.2.0
+    - Se agregó al recurso de búsqueda la capacidad de buscar por más de un tipo de clase (Hasdai).
+    - Se elimino necesidad de tener un archivo index.html dentro del directorio raiz (Jei).
+    - Mejoras en performance para el manejo de conecciones a DB Oracle (Jei).
+    - Soporte a Papelera de Reciclaje para Plantillas, Contenidos y Secciones (Jei).
+    - Se corrigio problema de cache de SemanticObjects (Jei).
+    - Se corrigio Indexación de contenidos con padre desactivado.
+    - Se modificaron headers de sitemap.xml para pasar validación w3c
+    - Optimización en el proceso de parseo del archivo a cargar para modificar las rutas de los archivos asociados en HTMLContent (Jose R).
+
+  4.0.1.8
+    - Mejora cuando limpia estilos el recurso de Word (Victor L)
+    - Se cambió el modelo de programación para selección de sitios en OpenOffice y MS Office (Victor L)
+    - Se agregó búsqueda por página, al abrir un contenido (Victor L)    
+    - En word, al momento de guardar, mantenine la opción de guardar las imagenes en formato PNG(AllowPNG). (Victor L)
+    - En word, al momento de guardar, mantenine la opción de guardar sin formato VML (RelyOnVML). (Victor L)
+    - En word, al momento de guardar, mantenine la opción de guardar en formato HTML, los estilos en un CSS y no dentro de tags(RelyOnCSS) (Victor L)    
+    - En word, al momento de guardar, mantenine la opción de guardar en formato HTML, compatible con Intenret Explorer 6.0 ó superior (BrowserLevel) (Victor L)
+    - En word, al momento de guardar, mantenine la opción de guardar en formato HTML, en codificación ISO88591 Latin 1 (Encoding) (Victor L)
+    - En word, al momento de guardar, mantenine la opción de guardar en formato HTML, desabilitando caracteristicas no soportadas por el explorador (Encoding) (Victor L)
+    - En word, al momento de guardar, mantenine la opción de guardar en formato HTML, desabilitando caracteristicas no soportadas por el explorador (OptimizeForBrowser) (Victor L)
+    - En word, al momento de guardar, mantenine la opción de guardar en formato HTML, organizando todos los archivos en una carpeta (OrganizeInFolder) (Victor L)
+    - En word, al momento de guardar, mantenine la opción de guardar en formato HTML, guarde los archivos con nombres largos (UseLongFileNames) (Victor L)
+    - En word, al momento de guardar, mantenine la opción de guardar en formato HTML, desabilite las funciones no soportadas por el navegador (DisableFeatures) (Victor L)
+    - En Excel y powerpoint de MS Office, se activan caracteristicas similares a los puntos anteriores (victorl)
+    - Corrección en las presentaciones preliminares de un contenido en word, excel y ppt (victorl).
+    - Mejora en el rendimiento al procesar contenidos de Word,Excel y PPT.(victorl)
+    - En el plug-in de Open Office, se agrego soporte a nombres de archivos con caracter '_' (victorl).
+    - Ordenación alfabetica de directorios y archivos en FTP (victorl).
+    - Mejor lectura en tamaño de archivos y fechas en FTP (victorl).
+    - Ordenación dando click en los headers de archivos de FTP, ascendente y descendente de la tabla de archivos de FTP (victorl).
+
+  4.0.1.7
+    - Correccion de modos de despliegue, Cambio de modo de estrategia a sistema, validacion de envio de correo del recurso comment (CarlosR)
+    - Correccion de ligas nulas en recurso banner (CarlosR)
+    - Se implemento compatibilidad a recursos de version 2 de WB (Jei)
+    - Se mejoró la carga del applet de filtros de administración (victorl)
+    - Mejoras en el applet de edición de plantillas, para soporte a MAC OS (victorl)
+    - En el plug-in de MS Office, se agrego soporte a nombres de archivos con caracter '_' (victorl).
+    - Mejora en la apertura de documentos (victorl).
+  4.0.1.6
+    - Soporte a paginas de Error multilenguaje (Jei)
+    - Se agrego funcionalidad de Colecciones de Recursos (Jei)
+    - Se agrego funcionalidad de Colecciones de Objetos  (Jei)
+    - Se agrego soporte a descripciones en multiples idiomas (Jei)
+    - Se agrego búsqueda en la administración contenidos por sección (Juan)
+    - Se agrego paginación en la administración de contenidos por sección (Juan)
+  4.0.1.5  
+    - Soporte a SQLServer 2008 (Jei)
+    - Nuevo Blog con persitencia semantica (Victor L)
+    - Se agregó opción "solo acceso" al filtrado de ips (Jei)
+    - Se mejoró soporte a restricciones semánticas en el arbol de administración de SWB (Jei)
+    - Se validó comparación de password con diferentes digest (Soporte a versiones anteriores) (Serch)
+    - Validación de intentos fallidos de autenticación (Serch)
+    - Mostrar información de la instancia en el Monitoreo de Memoria (Serch)
+    - Wrapper fckEditor (Serch)
+    - Se corrigió la hoja de transformación admresource.xslt para la administración genérica de recursos
+    - Se corrigieron algunos controles FE de la administración genérica de recursos.
+    - Se agregó soporte para accesiblidad al recurso Banner
+    - Se corrigieron las deficiencias sobre la especificación xhtml stricto 1.0 para el recurso Banner
+    - Se mejoró la validación de campos en la administración del recurso Banner
+    - Se agregó hoja de transformación xsl al recurso Contact
+    - Se agregó soporte para accesiblidad al recurso Contact
+    - Se corrigieron las deficiencias sobre la especificación xhtml stricto 1.0 para el recurso Contact
+    - Se mejoró la validación de campos en la administración del recurso Contact
+    - Se agregó hoja de transformación xsl al recurso WBSiteMap
+    - Se corrigieron las deficiencias sobre la especificación xhtml stricto 1.0 para el recurso WBSiteMap
+    - Se corrigieron las deficiencias sobre la especificación xhtml stricto 1.0 para el recurso WBMenu
+    - Se corrigieron las deficiencias sobre la especificación xhtml stricto 1.0 para el recurso WBMenuMap
+    - Se corrigieron las deficiencias sobre la especificación xhtml stricto 1.0 para el recurso WBMenuNivel
+    - CPU Time por thread para monitoreo (Serch)
+    - Se corrigió la visualización de archivos Flash mostrados a través de recursos HTMLContent
+  4.0.1.4  31/05/2010
+    

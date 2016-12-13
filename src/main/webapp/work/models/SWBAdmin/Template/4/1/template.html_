@@ -1,0 +1,15 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>
+   <TOPIC METHOD="getDisplayName" LANGUAGE="{user@getLanguage}"/>
+</title>
+<script type="text/javascript" src="/swb/swbadmin/js/dojo/dojo/dojo.js" djConfig="parseOnLoad: true, isDebug: false"></script>
+<script type="text/javascript" src="/swb/swbadmin/js/swb.js"></script>
+ </head>
+ <body>
+   <p style="margin-top: 0">
+   <Content></Content>
+  </p>
+ </body>
+</html>

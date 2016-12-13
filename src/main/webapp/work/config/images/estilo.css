@@ -1,0 +1,75 @@
+/* CSS Document */
+
+body {
+	margin: 0;
+	padding:0;
+}
+#centrado {
+	text-align:center;
+}
+/* ------------ html-gral -------- */
+
+#html-gral {
+	margin-top: 60px;
+	margin-left:auto;
+	margin-right:auto;
+	width:770px;
+	height:455px;
+	background: #336699 url(fondoGral.jpg);
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color: #666666;
+	text-align:justify;
+}
+#html-contenido{
+	padding-left:97px;
+	padding-top: 90px;
+}
+#html-contenido h1{	
+	text-align:left;
+	padding-bottom: 10px; 
+	font-size: 30px;
+	color: #336699;
+}
+#html-contenido p, #html-contenido h2{
+	font-size:16px;
+	padding-right: 40px;
+}
+#html-contenido form{
+	font-size:16px;
+	padding: 0 40px 0 40px;
+}
+#html-contenido h2{
+	font-size:20px;
+	font-weight:bold;
+}
+#html-contenido ul{
+	padding:0;
+	margin:0;
+}
+#html-contenido li{
+	margin: 20px 40px 10px 40px
+}
+#html-contenido li a{
+	color: #336699
+}
+#html-contenido input{
+	color: #336699
+}
+#html-pie {
+	background:#060d14;
+	padding: 10px;
+	font-size:10px;
+	margin-top: 105px;
+	border-top: #FFFFFF 1px solid;
+}
+#html-pie a {
+	text-decoration:none;
+	color:#3d78b4;
+}
+#semius {
+	position: absolute;
+	top: 355px;
+	left: inherit;
+	margin-left:530px;
+	margin-right:auto;
+}

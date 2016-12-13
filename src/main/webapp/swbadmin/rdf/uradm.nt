@@ -1,0 +1,37 @@
+<http://www.semanticwb.org/uradm#uradm> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticwebbuilder.org/swb4/ontology#UserRepository> .
+<http://www.semanticwb.org/uradm#uradm> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Admin User Repository" .
+<http://www.semanticwb.org/uradm#uradm> <http://www.semanticwebbuilder.org/swb4/ontology#description> "Admin User Repository" .
+<http://www.semanticwb.org/uradm#uradm> <http://www.semanticwebbuilder.org/swb4/ontology#userRepAuthMethod> "FORM" .
+<http://www.semanticwb.org/uradm#uradm> <http://www.semanticwebbuilder.org/swb4/ontology#userRepLoginContext> "swb4TripleStoreModule" .
+<http://www.semanticwb.org/uradm#uradm> <http://www.semanticwebbuilder.org/swb4/ontology#userRepCallBackHandlerClassName> "org.semanticwb.security.auth.SWB4CallbackHandlerLoginPasswordImp" .
+<http://www.semanticwb.org/uradm#uradm> <http://www.semanticwebbuilder.org/swb4/ontology#undeleteable> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+<http://www.semanticwb.org/uradm#counter:swb_User> <http://www.semanticwb.org/uradm#counter> "1"^^<http://www.w3.org/2001/XMLSchema#long> .
+<http://www.semanticwb.org/uradm#swb_User:1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticwebbuilder.org/swb4/ontology#User> .
+<http://www.semanticwb.org/uradm#swb_User:1> <http://www.semanticwebbuilder.org/swb4/ontology#usrLogin> "admin" .
+<http://www.semanticwb.org/uradm#swb_User:1> <http://www.semanticwebbuilder.org/swb4/ontology#usrPassword> "{SHA-512}g3RtVbFTq4NluG0BdfwgZE+cViGeq4lzjP5JGupPtWfrth/akY1H5dURuNYdTP9xoA/N2d9C7JQ50y+yqRWLIg==" .
+<http://www.semanticwb.org/uradm#swb_User:1> <http://www.semanticwebbuilder.org/swb4/ontology#usrPasswordChanged> "2014-02-19T12:30:43.997" .
+<http://www.semanticwb.org/uradm#swb_User:1> <http://www.semanticwebbuilder.org/swb4/ontology#usrEmail> "admin@semanticwb.org" .
+<http://www.semanticwb.org/uradm#swb_User:1> <http://www.semanticwebbuilder.org/swb4/ontology#usrFirstName> "Admin" .
+<http://www.semanticwb.org/uradm#swb_User:1> <http://www.semanticwebbuilder.org/swb4/ontology#usrLanguage> "es" .
+<http://www.semanticwb.org/uradm#swb_User:1> <http://www.semanticwebbuilder.org/swb4/ontology#created> "2014-02-19T12:30:44.014" .
+<http://www.semanticwb.org/uradm#swb_User:1> <http://www.semanticwebbuilder.org/swb4/ontology#updated> "2014-02-19T12:30:44.014" .
+<http://www.semanticwb.org/uradm#swb_User:1> <http://www.semanticwebbuilder.org/swb4/ontology#active> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+<http://www.semanticwb.org/uradm#swb_UserGroup:admin> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticwebbuilder.org/swb4/ontology#UserGroup> .
+<http://www.semanticwb.org/uradm#swb_UserGroup:admin> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Administrator"@en .
+<http://www.semanticwb.org/uradm#swb_UserGroup:admin> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Administrador"@es .
+<http://www.semanticwb.org/uradm#swb_UserGroup:admin> <http://www.semanticwebbuilder.org/swb4/ontology#created> "2014-02-19T12:30:44.019" .
+<http://www.semanticwb.org/uradm#swb_UserGroup:admin> <http://www.semanticwebbuilder.org/swb4/ontology#updated> "2014-02-19T12:30:44.019" .
+<http://www.semanticwb.org/uradm#swb_UserGroup:admin> <http://www.semanticwebbuilder.org/swb4/ontology#creator> <http://www.semanticwb.org/uradm#swb_User:1> .
+<http://www.semanticwb.org/uradm#swb_UserGroup:admin> <http://www.semanticwebbuilder.org/swb4/ontology#modifiedBy> <http://www.semanticwb.org/uradm#swb_User:1> .
+<http://www.semanticwb.org/uradm#swb_UserGroup:admin> <http://www.semanticwebbuilder.org/swb4/ontology#undeleteable> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+<http://www.semanticwb.org/uradm#swb_UserGroup:su> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticwebbuilder.org/swb4/ontology#UserGroup> .
+<http://www.semanticwb.org/uradm#swb_UserGroup:su> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Super User"@en .
+<http://www.semanticwb.org/uradm#swb_UserGroup:su> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Super Usuario"@es .
+<http://www.semanticwb.org/uradm#swb_UserGroup:su> <http://www.semanticwebbuilder.org/swb4/ontology#created> "2014-02-19T12:30:44.023" .
+<http://www.semanticwb.org/uradm#swb_UserGroup:su> <http://www.semanticwebbuilder.org/swb4/ontology#updated> "2014-02-19T12:30:44.024" .
+<http://www.semanticwb.org/uradm#swb_UserGroup:su> <http://www.semanticwebbuilder.org/swb4/ontology#creator> <http://www.semanticwb.org/uradm#swb_User:1> .
+<http://www.semanticwb.org/uradm#swb_UserGroup:su> <http://www.semanticwebbuilder.org/swb4/ontology#modifiedBy> <http://www.semanticwb.org/uradm#swb_User:1> .
+<http://www.semanticwb.org/uradm#swb_UserGroup:su> <http://www.semanticwebbuilder.org/swb4/ontology#undeleteable> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+<http://www.semanticwb.org/uradm#swb_UserGroup:su> <http://www.semanticwebbuilder.org/swb4/ontology#usrgrpParent> <http://www.semanticwb.org/uradm#swb_UserGroup:admin> .
+<http://www.semanticwb.org/uradm#swb_User:1> <http://www.semanticwebbuilder.org/swb4/ontology#hasUserGroup> <http://www.semanticwb.org/uradm#swb_UserGroup:admin> .
+<http://www.semanticwb.org/uradm#swb_User:1> <http://www.semanticwebbuilder.org/swb4/ontology#usrLastLogin> "2014-02-19T12:31:28.490" .

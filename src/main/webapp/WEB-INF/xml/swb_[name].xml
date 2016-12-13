@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<db xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <table name="swb_graph_ts[name]">
+            <column id="subj" type="VARCHAR" size="255" acceptNulls="false"/>
+            <column id="prop" type="VARCHAR" size="255" acceptNulls="false"/>
+            <column id="obj" type="VARCHAR" size="255" acceptNulls="false"/>
+            <column id="timems" type="BIGINT" size="20" default="0" acceptNulls="false"/>
+            <column id="ext" type="CLOB" acceptNulls="true"/>
+    </table>
+    <index name="indexSUBJ[name]" table="swb_graph_ts[name]" >
+            <colindex id="subj"/>
+    </index>
+    <index name="indexPROP[name]" table="swb_graph_ts[name]" >
+            <colindex id="prop"/>
+    </index>
+    <index name="indexOBJ[name]" table="swb_graph_ts[name]" >
+            <colindex id="obj"/>
+    </index>
+    <index name="indexTIMEMS[name]" table="swb_graph_ts[name]" >
+            <colindex id="timems"/>
+    </index>
+    <index name="indexSUBJPROP[name]" table="swb_graph_ts[name]" >
+            <colindex id="subj"/>
+            <colindex id="prop"/>
+    </index>
+    <index name="indexPROPOBJ[name]" table="swb_graph_ts[name]" >
+            <colindex id="prop"/>
+            <colindex id="obj"/>
+    </index>
+    <index name="indexSUBJPROPOBJ[name]" table="swb_graph_ts[name]" >
+            <colindex id="subj"/>
+            <colindex id="prop"/>
+            <colindex id="obj"/>
+    </index>
+</db>
+

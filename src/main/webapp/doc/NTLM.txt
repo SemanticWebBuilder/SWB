@@ -1,0 +1,55 @@
+Procedimiento de instalación para el plugin NTLM-Authentication
+
+1.- Colocar los jars y dlls de Waffle en /WEB-INF/lib
+	-guava-r07.jar
+	-jna.jar
+	-platform.jar
+	-waffle-jacob.jar
+	-waffle-jna.jar
+	-Waffle.Windows.AuthProvider.dll
+	-Waffle.Windows.AuthProvider.msm
+2.- Colocar el jar del plugin SWBNTLM.jar
+3.- Agregar al archivo /WEB-INF/classes/jaas.conf el modulo de login:
+
+NTLMModule {
+	org.semanticwb.security.auth.NTLMLoginModule required;
+};
+
+4.- Generar un archivo de propiedades para la autenticación NTLM, ejemplo NTLM.properties:
+
+#ExternalRepositoryBridge Class
+class=org.semanticwb.security.auth.NTLMBridge
+#factory of connections to LDAP
+factory=com.sun.jndi.ldap.LdapCtxFactory
+#URL to LDAP Server
+url=ldap://url_to_activeDirectory
+#UID of Object to browse and seek LDAP
+principal=cn=Administrator,cn=users,dc=testdomain,dc=infotec,dc=com,dc=mx
+#Credential of Object to browse and seek LDAP
+credential=password
+#URI to the base container
+base=cn=users,dc=testdomain,dc=infotec,dc=com,dc=mx
+#name of the field considered as PK
+seekField=sAMAccountName
+#name of the objectclass to recognaize an object as a user
+userObjectClass=user
+#name of the First Name field
+fieldFirstName=givenName
+#name of the Last Name field
+fieldLastName=sn
+#name of the Second Last Name field
+fieldMiddleName=null
+#name of the eMail field
+fieldEmail=userPrincipalName
+#name of the language field or |langString for a default value
+valueLanguage=|es
+
+5.- Colocar el archivo anterior en /WEB-INF/classes
+6.- Entrar a la administración de SemanticWebBuilder
+7.- Ir a la pestaña Información del Repositorio de Usuarios del sitio a proteger
+8.- Cambiar las propiedades a que queden con los valores siguientes:
+	-Método de autenticación:OTHER
+	-CallBackHandler (JAAS):org.semanticwb.security.auth.NTLMCallbackHandler
+	-Contexto de Login (JAAS):NTLMModule
+	-Archivo de configuración externa:/nombre_archivo_creado_paso_4
+9.- Reiniciar SWB y verificar

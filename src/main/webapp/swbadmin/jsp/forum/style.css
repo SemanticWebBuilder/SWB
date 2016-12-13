@@ -1,0 +1,823 @@
+/*
+   $Id: style.css,v 1.65 2008/06/24 05:04:18 minhnn Exp $
+
+   ==================================================
+   ======   Global stylesheet for mvnForum.   =======
+   ==================================================
+
+*/
+
+
+
+/* Background color and font for the main window */
+html {
+}
+
+body {
+    color: #000000;
+    background: #ffffff;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin:0px 0px 0px 0px;
+}
+
+a:link, a:visited, a:active { color: #333333; text-decoration: underline }
+a:hover { color: orange; text-decoration:underline }
+
+/* Page description shown in some pages, below the navigation menu. */
+/* error-pagedesc ~ portlet-msg-error*/
+.pagedesc {
+    background: #E0E0E0;
+    color: #000000;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 20px;
+    text-decoration: none;
+}
+/* portlet-msg-alert */
+.warning {
+    color: #FF0000;
+}
+
+.success {
+    color: #008000;
+}
+
+.requiredfield {
+    color: #FF0000;
+}
+
+.pendingyes {
+    color: #FF0000;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.pendingno {
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Background and border styles for tables. */
+table.tborder{ 
+    border-collapse: collapse;
+} 
+table.tborder tr td{
+    border: solid 1px #999999;
+}
+table.noborder tr td{
+    border:none;
+}
+
+.command {
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+a.command:link, a.command:visited, a.command:active {
+    color: #0000FF;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+a.command:hover {
+    color: orange;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.pager {
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+.pagerCurrent {
+    color: orange;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+a.pager:link, a.pager:visited, a.pager:active {
+    text-decoration: none;
+}
+a.pager:hover {
+    color: orange;
+    text-decoration: underline;
+}
+
+.tcat {
+    font-size: 12px;
+    background: #C0C0C0;
+    line-height: 20px;
+}
+
+/* Top-level table title rows */
+/*portlet-section-header*/
+.theader {
+    color: #FFFFFF;
+    background: #666699;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+a.theader:link, a.theader:active, a.theader:visited {
+    text-decoration: underline;
+}
+a.theader:hover {
+    color: orange;
+    text-decoration: none;
+}
+
+/* First post in the thread */
+.trow0 {
+    background: #FFCC99;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+
+.memberName {
+    color: #00007F;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+a.memberName:link, a.memberName:visited, a.memberName:active {
+    color: #0000FF;
+    text-decoration: underline;
+}
+a.memberName:hover {
+    color: orange;
+    text-decoration: underline;
+}
+
+.disabledItem {
+    color: #FF0000;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+a.disabledItem:link, a.disabledItem:visited, a.disabledItem:active {
+    color: orange;
+    text-decoration: underline;
+}
+a.disabledItem:hover {
+    color: orange;
+    text-decoration: underline;
+}
+
+.messageTopic {
+    color: #00007F;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+a.messageTopic:link, a.messageTopic:visited, a.messageTopic:active {
+    color: #0000FF;
+    text-decoration: underline;
+}
+a.messageTopic:hover {
+    color: orange;
+    text-decoration: underline;
+}
+
+.messageText {
+    color: #000000;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.messageTextBold {
+    color: #000000;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.messageTextBoldBlue {
+    color: #0000FF;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.messageTextBoldRed {
+    color: #FF0000;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+/* These are not used anymore:
+
+.numberBlack {
+    color: Black;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.numberBlueLink {
+    color: Blue;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.numberRedLink {
+    color: Red;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+*/
+
+.pageTitle {
+    color: #FF9966;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 26px;
+    text-decoration: none;
+}
+
+.subTitle {
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 26px;
+    text-decoration: none;
+}
+
+.pageFooter {
+    color: #000000;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: normal;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.normal {
+    color: #000000;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.bold {
+    color: #000000;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.highlight {
+    color: #CC6600;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.welcomeHeader {
+    color: #00007E;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+a.welcomeHeader:link, a.welcomeHeader:visited, a.welcomeHeader:active {
+    color: #0000FF;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+a.welcomeHeader:hover {
+    color: orange;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: underline;
+}
+
+.topmenu {
+    color: #000000;
+    background: #F5F5F5;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+a.topmenu:link, a.topmenu:visited, a.topmenu:active { text-decoration: none }
+a.topmenu:hover { text-decoration:underline }
+
+/* .portlet-font */
+.nav1 {
+    color: #000000;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight:normal;
+    text-decoration: none;
+}
+.rowcurrent{
+    color: #ff6600;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight:normal;
+    text-decoration: none;
+}
+a.nav1:link, a.nav1:visited, a.nav1:active {
+    color: #333;
+    text-decoration: none;
+}
+a.nav1:hover {
+    color: #ff6600;
+    text-decoration: underline;
+}
+.nav {
+    color: #000000;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.zoneTitle {
+    color: #FF9900;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 26px;
+    text-decoration: none;
+}
+
+.menuItemback {
+    color: #cbcbeb;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+input, textarea, select {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background: #F5F5F5;
+    border: 1px solid Black;
+}
+
+input {
+    text-indent: 1px;
+}
+
+input.noborder {
+    border: 0px;
+    background-color: transparent;
+}
+
+input.liteoption {
+    background-color: #E5E5E5;
+    font-weight: normal;
+}
+
+/* Quote blocks */
+span.genmed { font-size: 11px; }
+td.quote {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #444444;
+    line-height: 125%;
+    background-color: #EEE;
+    border: #D1D7DC;
+    /*border-style: solid;
+    border-left-width: 1px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px; */
+    border: 2px dotted;
+    border-color:#999;
+}
+.menuitem {
+    font-weight: bold;
+    background: #999999;
+    font-size: 13px; 
+    margin-left: 5px; 
+    line-height: 15px; 
+    /*menu: #0000CC*/
+}
+.selectedmenuitem {
+    font-weight: bold; 
+    font-size: 14px; 
+    margin-left: 5px; 
+    cursor: default; 
+    color: #ff6600; 
+    text-decoration: none
+}
+.childmenuitem {
+    font-weight: bold; 
+    font-size: 14px;
+    margin-left: 15px; 
+    color: #0000cc;
+    border: 2px dotted;
+    background-color: #EEE;
+    border-color:#999;
+}
+.selectedchildmenuitem {
+    font-weight: bold; 
+    font-size: 12px; 
+    margin-left: 15px; 
+    cursor: default; 
+    color: #ff6600; 
+    text-decoration: none
+}
+/* Vote Module*/
+.headervote{
+    font-family: Arial,Helvetica,sans-serif;
+    color: #FFFFFF;
+    background: #4fa3e4;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+.bodyvote{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    font-size: 10px;
+    line-height: 20px;
+}
+.bordervote {
+    border:1px solid #4fa3e4;
+    background-color:#eaf4fe;
+}
+.textvote{
+    color:#fff;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    font-size:12px;
+}
+.footervote{
+    background: #cee1f0;
+    line-height: 20px;
+}
+.buttonvote{
+    background-color: #519dc5;
+    color:#FFFFFF;
+    border-left:1px solid #abd2e9;
+    border-top:1px solid #abd2e9;
+    border-right:1px solid #2e7292;
+    border-bottom:1px solid #2e7292;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:10px;
+}
+.body_album_left {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #FFFFFF;
+    font-size: 12px;
+    line-height: 20px;
+    text-indent:10px;
+}
+
+hr.hrfooter {
+  color: #999;
+  background: #999;
+  border: 0;
+  height: 1px;
+  width:95%;
+}
+.divcode{
+  border:1px solid #888;
+  padding:2px;
+}
+div.quote {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  color: #444444;
+  line-height: 125%;
+  background-color: #EEE;
+  border: 2px dotted #999; 
+  padding:5px;
+  margin:10px;
+}
+
+/*****************************************************************************************
+PLT.C.2 Fonts
+The font style definitions affect the font attributes only (font face, size, color, style, etc).
+******************************************************************************************/
+
+/* Font attributes for the "normal" fragment font. Used for the display of non-accentuated information. 
+Example: Normal Text */
+/*messageText*/
+.portlet-font {
+    color: #000000;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+/* Font attributes similar to the portlet-font but the color is lighter. Example: Dim Text */
+/* not used */
+.portlet-font-dim {
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 20px;
+    text-decoration: none;
+    color:#d3d3d3;
+}
+
+/*****************************************************************************************
+PLT.C.3 Messages
+Message style definitions affect the rendering of a paragraph (alignment, borders,
+background color, etc) as well as text attributes.
+******************************************************************************************/
+/* Status of the current operation. Example: Progress: 80% */
+/* not used*/
+.portlet-msg-status {
+    color: blue;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+/* Help messages, general additional information, etc. Example: Info about */
+/*temporarily, not used*/
+.portlet-msg-info {
+    font-family: Arial,Helvetica,sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size:10pt;
+    color:blue;
+}
+
+/* Error messages. 
+Example: Portlet not available
+- mvnforum: pagedesc: in error page
+*/
+.portlet-msg-error {
+    color: #FF0000;
+}
+
+/* Warning messages.
+Example: Timeout occurred, try again later 
+- mvnforum: warning
+*/
+.portlet-msg-alert {
+    font-family: Arial,Helvetica,sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size:10pt;
+    color:yellow;
+}
+
+/* Verification of the successful completion of a task. Example: Operation completed successfully */
+/*temporarily, not used*/
+.portlet-msg-success {
+    font-family: Arial,Helvetica,sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size:10pt;
+    color:green;
+}
+
+/*****************************************************************************************
+PLT.C.4 Sections
+Section style definitions affect the rendering of markup sections such as table, div and  
+span (alignment, borders, background color, etc) as well as their text attributes.
+******************************************************************************************/
+/* Table or section header 
+   - mvnforum: theader
+*/
+
+.portlet-section-header {
+    font-family: Arial,Helvetica,sans-serif;
+    color: #FFFFFF;
+    background:url(../images/bg_header.gif) #6f6f6f repeat-x;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+a.portlet-section-header:link, a.portlet-section-header:visited, a.portlet-section-header:active {
+    text-decoration: underline;
+}
+a.portlet-section-header:hover {
+    color: orange;
+    text-decoration: none;
+}
+
+
+/* Normal text in a table cell 
+   - mvnforum: trow1
+*/
+.portlet-section-body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #FFFFFF;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+
+/* Text in every other row in the cell 
+   -mvnforum: trow2
+*/
+.portlet-section-alternate {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #F5F5F5;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+/* Text in a selected cell range 
+*/
+.portlet-section-selected {
+    background: #FFCC99;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+/* Text of a subheading 
+   -mvnforum: tcat, trow0
+*/
+.portlet-section-subheader {
+    background: #C0C0C0;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 20px;
+}
+
+/* Table or section footnote 
+   -mvnforum trowfinal
+*/
+.portlet-section-footer {
+    background: silver;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+/* Text that belongs to the table but does not fall in one of
+the other categories (e.g. explanatory or help text that is
+associated with the section). */
+.portlet-section-text {
+
+}
+
+/*****************************************************************************************
+PLT.C.5 Forms
+Form styles define the look-and-feel of the elements in an HTML form.
+******************************************************************************************/
+/* Text used for the descriptive label of the whole form (not the labels for fields). - mvnforum: not used*/
+.portlet-form-label {
+    font-family: Arial,Helvetica,sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12pt;
+    color: black;
+}
+
+/* Text of the user-input in an input field. */
+.portlet-form-input-field {
+    font-family: Arial,Helvetica,sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10pt;
+    color: black;
+}
+
+/* Text on a button */
+.portlet-form-button {
+    background-color: #DDDDDD;
+    font-weight: bold;
+}
+
+/* Text that appears beside a context dependent action icon. */
+.portlet-icon-label {
+
+}
+
+/* Text that appears beside a "standard" icon (e.g. Ok, or Cancel) */
+.portlet-dlg-icon-label {
+
+}
+
+/* Text for a separator of fields (e.g. checkboxes, etc.) */
+.portlet-form-field-label {
+    font-family: Arial,Helvetica,sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10pt;
+    color: black;
+}
+
+/* Text for a field (not input field, e.g. checkboxes, etc) */
+.portlet-form-field {
+
+}
+
+/*****************************************************************************************
+PLT.C.6 Menus
+Menu styles define the look-and-feel of the text and background of a menu structure. This
+structure may be embedded in the aggregated page or may appear as a context sensitive
+popup menu.
+******************************************************************************************/
+/* General menu settings such as background color, margins, etc - mvnforum: not used*/
+.portlet-menu {
+    color: #000000;
+    background: #F5F5F5;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+/* Normal, unselected menu item. */
+.portlet-menu-item {
+
+}
+
+/* Selected menu item. */
+.portlet-menu-item-selected {
+
+}
+
+/* Normal, unselected menu item when the mouse hovers over it. */
+.portlet-menu-item-hover {
+
+}
+
+/* Selected menu item when the mouse hovers over it. */
+.portlet-menu-item-hover-selected {
+
+}
+
+/* Normal, unselected menu item that has submenus. */
+.portlet-menu-cascade-item {
+
+}
+
+/* Selected sub-menu item that has sub-menus. */
+.portlet-menu-cascade-item-selected {
+
+}
+
+/* Descriptive text for the menu (e.g. in a help context below the menu) */
+.portlet-menu-description {
+
+}
+
+/* Menu caption - mvnforum not used*/
+.portlet-menu-caption {
+
+}
+

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web:web-app xmlns:app="http://geronimo.apache.org/xml/ns/j2ee/application-2.0"
+xmlns:client="http://geronimo.apache.org/xml/ns/j2ee/application-client-2.0"
+xmlns:conn="http://geronimo.apache.org/xml/ns/j2ee/connector-1.2"
+xmlns:dep="http://geronimo.apache.org/xml/ns/deployment-1.2"
+xmlns:ejb="http://openejb.apache.org/xml/ns/openejb-jar-2.2"
+xmlns:name="http://geronimo.apache.org/xml/ns/naming-1.2"
+xmlns:pers="http://java.sun.com/xml/ns/persistence"
+xmlns:pkgen="http://openejb.apache.org/xml/ns/pkgen-2.1"
+xmlns:sec="http://geronimo.apache.org/xml/ns/security-2.0"
+xmlns:web="http://geronimo.apache.org/xml/ns/j2ee/web-2.0.1">
+    <dep:environment>
+        <dep:moduleId>
+            <dep:groupId>default</dep:groupId>
+            <dep:artifactId>swb</dep:artifactId>
+            <dep:version>4.0.1.4</dep:version>
+            <dep:type>war</dep:type>
+        </dep:moduleId>
+        <dep:dependencies>
+            <dep:dependency>
+                <dep:groupId>org.apache.geronimo.framework</dep:groupId>
+                <dep:artifactId>j2ee-security</dep:artifactId>
+                <dep:type>car</dep:type>
+            </dep:dependency>
+        </dep:dependencies>
+        <dep:hidden-classes/>
+        <dep:non-overridable-classes/>
+        <dep:inverse-classloading/>
+    </dep:environment>
+    <web:context-root>/swb</web:context-root> <!--Cambiar a "/" si el despliegue se quiere realizar en Raíz -->
+    <dep:gbean class="org.apache.geronimo.security.realm.GenericSecurityRealm" name="swb4TripleStoreModule">
+        <dep:attribute name="realmName">swb4TripleStoreModule </dep:attribute>
+        <dep:reference name="ServerInfo">
+            <dep:name>ServerInfo</dep:name>
+        </dep:reference>
+        <dep:xml-reference name="LoginModuleConfiguration">
+            <login-config:login-config xmlns:login-config="http://geronimo.apache.org/xml/ns/loginconfig-2.0">
+                <login-config:login-module control-flag="REQUIRED" wrap-principals="false">
+                    <login-config:login-domain-name>swb4TripleStoreModule</login-config:login-domain-name>
+                    <login-config:login-module-class>org.semanticwb.security.auth.TripleStoreLoginModule</login-config:login-module-class>
+                </login-config:login-module>
+            </login-config:login-config>
+        </dep:xml-reference>
+    </dep:gbean>
+    <dep:gbean class="org.apache.geronimo.security.realm.GenericSecurityRealm" name="LDAPModule">
+        <dep:attribute name="realmName">LDAPModule</dep:attribute>
+        <dep:reference name="ServerInfo">
+            <dep:name>ServerInfo</dep:name>
+        </dep:reference>
+        <dep:xml-reference name="LoginModuleConfiguration">
+            <login-config:login-config xmlns:login-config="http://geronimo.apache.org/xml/ns/loginconfig-2.0">
+                <login-config:login-module control-flag="REQUIRED" wrap-principals="false">
+                    <login-config:login-domain-name>LDAPModule</login-config:login-domain-name>
+                    <login-config:login-module-class>org.semanticwb.security.auth.LDAPLoginModule</login-config:login-module-class>
+                </login-config:login-module>
+            </login-config:login-config>
+        </dep:xml-reference>
+    </dep:gbean>
+    <dep:gbean class="org.apache.geronimo.security.realm.GenericSecurityRealm" name="GeoLoginModule">
+        <dep:attribute name="realmName">GeoLoginModule</dep:attribute>
+        <dep:reference name="ServerInfo">
+            <dep:name>ServerInfo</dep:name>
+        </dep:reference>
+        <dep:xml-reference name="LoginModuleConfiguration">
+            <login-config:login-config xmlns:login-config="http://geronimo.apache.org/xml/ns/loginconfig-2.0">
+                <login-config:login-module control-flag="REQUIRED" wrap-principals="false">
+                    <login-config:login-domain-name>GeoLoginModule</login-config:login-domain-name>
+                    <login-config:login-module-class>org.semanticwb.security.auth.GeoLoginModule</login-config:login-module-class>
+                </login-config:login-module>
+            </login-config:login-config>
+        </dep:xml-reference>
+    </dep:gbean>
+    <dep:gbean class="org.apache.geronimo.security.realm.GenericSecurityRealm" name="RemoteURLLoginModule">
+        <dep:attribute name="realmName">RemoteURLLoginModule</dep:attribute>
+        <dep:reference name="ServerInfo">
+            <dep:name>ServerInfo</dep:name>
+        </dep:reference>
+        <dep:xml-reference name="LoginModuleConfiguration">
+            <login-config:login-config xmlns:login-config="http://geronimo.apache.org/xml/ns/loginconfig-2.0">
+                <login-config:login-module control-flag="REQUIRED" wrap-principals="false">
+                    <login-config:login-domain-name>RemoteURLLoginModule</login-config:login-domain-name>
+                    <login-config:login-module-class>org.semanticwb.security.auth.RemoteURLLoginModule</login-config:login-module-class>
+                </login-config:login-module>
+            </login-config:login-config>
+        </dep:xml-reference>
+    </dep:gbean>
+</web:web-app>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app">
+    <context-root>/</context-root>
+    <session-descriptor>
+        <cookie-http-only>false</cookie-http-only>
+    </session-descriptor>
+</weblogic-web-app>

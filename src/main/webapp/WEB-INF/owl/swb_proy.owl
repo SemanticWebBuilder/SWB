@@ -1,0 +1,393 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:swbxf="http://www.semanticwebbuilder.org/swb4/xforms/ontology#"
+    xmlns:swbproy="http://www.semanticwebbuilder.org/swb4/swbproy#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:swb="http://www.semanticwebbuilder.org/swb4/ontology#"
+  xml:base="http://www.semanticwebbuilder.org/swb4/swbproy">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="ProjectSite">
+    <swb:hasClass>
+      <swb:Class rdf:ID="Project">
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#WebPage"/>
+        <swb:displayObject rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#do_WebPage"/>
+        <rdfs:label xml:lang="es">Proyecto</rdfs:label>
+        <rdfs:label xml:lang="en">Project</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Clase que representa un proyecto</rdfs:comment>
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#webPageParent"/>
+            <owl:someValuesFrom rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#WebPage"/>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </swb:hasClass>
+    <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_Languages"/>
+    <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_Countries"/>
+    <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_Devices"/>
+    <swb:hasClass>
+      <owl:Class rdf:ID="ActivityContainer"/>
+    </swb:hasClass>
+    <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_Templates"/>
+    <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_PTContents"/>
+    <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_PTSystems"/>
+    <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_PFlows"/>
+    <rdfs:label xml:lang="es">Sitio de Proyectos</rdfs:label>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Model"/>
+    <rdfs:label xml:lang="en">Project Site</rdfs:label>
+    <swb:hasClass>
+      <swb:Class rdf:ID="Activity">
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:allValuesFrom>
+              <owl:Class rdf:about="#ActivityContainer"/>
+            </owl:allValuesFrom>
+            <owl:onProperty rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#webPageParent"/>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+          <swb:Interface rdf:ID="Period">
+            <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBInterface"/>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Interface que define un periodo de fechas y tiempos</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+          </swb:Interface>
+        </rdfs:subClassOf>
+        <swb:displayObject rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#do_WebPage"/>
+        <rdfs:label xml:lang="en">Activity</rdfs:label>
+        <rdfs:label xml:lang="es">Actividad</rdfs:label>
+        <rdfs:subClassOf>
+          <owl:Class rdf:about="#ActivityContainer"/>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Clase que representa una actividad dentro de un proyecto</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </swb:hasClass>
+    <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_Rules"/>
+    <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_PTStrategies"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#WebSite"/>
+    <swb:displayObject rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#do_AdminWebSite"/>
+    <swb:hasClass>
+      <swb:Class rdf:ID="UserWebPage">
+        <rdfs:label xml:lang="es">Página Web de Usuario</rdfs:label>
+        <rdfs:subClassOf>
+          <owl:Class rdf:ID="UserWebPageContainer"/>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Clase que representa una usuario asociado a una página web</rdfs:comment>
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#UserWebPageContainer"/>
+            </owl:someValuesFrom>
+            <owl:onProperty rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#webPageParent"/>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">User Web Page</rdfs:label>
+        <swb:displayObject rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#do_WebPage"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </swb:hasClass>
+    <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_Calendars"/>
+    <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_Dnss"/>
+    <swb:hasClass>
+      <owl:Class rdf:about="#UserWebPageContainer"/>
+    </swb:hasClass>
+  </owl:Class>
+  <owl:Class rdf:about="#ActivityContainer">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Project"/>
+        <owl:onProperty rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#webPageParent"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#WebPage"/>
+    <rdfs:label xml:lang="es">Contenedor de Actividades</rdfs:label>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Activity Container{en}</rdfs:label>
+    <swb:displayObject rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#do_WebPage"/>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:about="#UserWebPageContainer">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Project"/>
+        <owl:onProperty rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#webPageParent"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#WebPage"/>
+    <swb:displayObject rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#do_WebPage"/>
+    <rdfs:label xml:lang="en">User Web Page Container</rdfs:label>
+    <rdfs:label xml:lang="es">Contenedor de Usuarios Web Page</rdfs:label>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="userWP">
+    <rdfs:label xml:lang="en">User</rdfs:label>
+    <rdfs:label xml:lang="es">Usuario</rdfs:label>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_userWP">
+        <swbxf:propGroup>
+          <swbxf:PropertyGroup rdf:ID="Proper_Driver">
+            <rdfs:label xml:lang="es">Propiedades del Proyecto</rdfs:label>
+            <rdfs:label xml:lang="en">Project properties</rdfs:label>
+          </swbxf:PropertyGroup>
+        </swbxf:propGroup>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#selectOneUserRep"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >100</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#User"/>
+    <rdfs:domain rdf:resource="#UserWebPage"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasPredecessor">
+    <rdfs:label xml:lang="en">Predeccessor</rdfs:label>
+    <rdfs:label xml:lang="es">Predecesor</rdfs:label>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="hasSuccessorInv"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#Activity"/>
+    <rdfs:domain rdf:resource="#Activity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="leader">
+    <rdfs:label xml:lang="en">Leader</rdfs:label>
+    <rdfs:label xml:lang="es">Líder</rdfs:label>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_leader">
+        <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#selectOneUserRep"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >100</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#User"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasSuccessorInv">
+    <rdfs:label xml:lang="es">Sucesores</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasSuccessor</swb:propertyCodeName>
+    <rdfs:label xml:lang="en">Sucessor</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasParticipants">
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#User"/>
+    <rdfs:domain rdf:resource="#Activity"/>
+    <rdfs:label xml:lang="en">Participants</rdfs:label>
+    <rdfs:label xml:lang="es">Participantes</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="responsible">
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_responsible">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#selectOneUserRepWithBlank"/>
+        <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >150</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="en">Responsible</rdfs:label>
+    <rdfs:label xml:lang="es">Responsable</rdfs:label>
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#User"/>
+    <rdfs:domain rdf:resource="#Activity"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="currentHour">
+    <rdfs:label xml:lang="en">Current Hours</rdfs:label>
+    <rdfs:label xml:lang="es">Horas Actuales</rdfs:label>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_currentHour">
+        <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >180</swb:index>
+        <swbxf:propDisabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swbxf:propDisabled>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Period"/>
+    <swb:externalInvocation rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:externalInvocation>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="currentPercentage">
+    <rdfs:label xml:lang="en">Current Percentage</rdfs:label>
+    <rdfs:label xml:lang="es">Porcentaje Actual</rdfs:label>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_CurrentPercentage">
+        <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >190</swb:index>
+        <swbxf:propDisabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swbxf:propDisabled>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Period"/>
+    <swb:externalInvocation rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:externalInvocation>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="speciality">
+    <rdfs:label xml:lang="en">Speciality</rdfs:label>
+    <rdfs:label xml:lang="es">Especialidad</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_speciality">
+        <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextBox"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >110</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:domain rdf:resource="#UserWebPage"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="startDatep">
+    <rdfs:label xml:lang="es">Fecha de Inicio</rdfs:label>
+    <rdfs:label xml:lang="en">Start Date</rdfs:label>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_startDatep">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#DateElement_1"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >191</swb:index>
+        <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:domain rdf:resource="#Project"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="status">
+    <rdfs:label xml:lang="en">Status</rdfs:label>
+    <rdfs:domain rdf:resource="#Activity"/>
+    <rdfs:label xml:lang="es">Estatus</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_status">
+        <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+        <swbxf:propSelectValues xml:lang="en">unassigned:UnAssigned|assigned:Assigned|develop:Development|paused:Paused|ended:Ended|canceled:Canceled</swbxf:propSelectValues>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >140</swb:index>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#LabelInst"/>
+        <swbxf:propSelectValues xml:lang="es">unassigned:Desasignada|assigned:Asignada|develop:En Desarrollo|paused:Pausada|ended:Terminada|canceled:Cancelada</swbxf:propSelectValues>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="actType">
+    <rdfs:label xml:lang="en">Type Activity</rdfs:label>
+    <rdfs:label xml:lang="es">Tipo de Actividad</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Activity"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="startDate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:label xml:lang="es">Fecha Inicio</rdfs:label>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_startDate">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >191</swb:index>
+        <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="en">Start Date</rdfs:label>
+    <rdfs:domain rdf:resource="#Period"/>
+    <swb:externalInvocation rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:externalInvocation>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="endDatep">
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_endDatep">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#DateElement_1"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >192</swb:index>
+        <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="es">Fecha Final</rdfs:label>
+    <rdfs:label xml:lang="en">End Date</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:domain rdf:resource="#Project"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="endDate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:label xml:lang="es">Fecha de Término</rdfs:label>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_endDate">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >192</swb:index>
+        <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:domain rdf:resource="#Period"/>
+    <rdfs:label xml:lang="en">End Date</rdfs:label>
+    <swb:externalInvocation rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:externalInvocation>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="plannedHour">
+    <rdfs:label xml:lang="en">Planned Hour</rdfs:label>
+    <rdfs:label xml:lang="es">Horas Planeadas</rdfs:label>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_plannedHour">
+        <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >170</swb:index>
+        <swbxf:propDisabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swbxf:propDisabled>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Period"/>
+    <swb:externalInvocation rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:externalInvocation>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="critical">
+    <rdfs:label xml:lang="en">Critical Activity</rdfs:label>
+    <rdfs:label xml:lang="es">Actividad Critica</rdfs:label>
+    <rdfs:domain rdf:resource="#Activity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <swbxf:DisplayProperty rdf:ID="do_actType">
+    <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+    <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextBox"/>
+    <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >110</swb:index>
+  </swbxf:DisplayProperty>
+  <swb:CodePackage rdf:ID="pkg">
+    <swb:prefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >swbproy</swb:prefix>
+    <swb:package rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >org.semanticwb.portal.resources.projectdriver</swb:package>
+  </swb:CodePackage>
+  <swb:SemanticResource rdf:ID="ProjectDriver">
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBSemanticResource"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </swb:SemanticResource>
+  <swbxf:DisplayProperty rdf:ID="dp_critical">
+    <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+  </swbxf:DisplayProperty>
+  <swbxf:DisplayObject rdf:about="http://www.semanticwebbuilder.org/swb4/ontology#do_AdminWebSite1"/>
+  <swbxf:DisplayProperty rdf:ID="dp_hasPredecessor">
+    <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >120</swb:index>
+    <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+    <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#SelectMultipleModelWithBlank"/>
+  </swbxf:DisplayProperty>
+  <swbxf:DisplayProperty rdf:ID="dp_hasSuccesor">
+    <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#LabelInst"/>
+    <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+    <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >130</swb:index>
+  </swbxf:DisplayProperty>
+  <swbxf:DisplayProperty rdf:ID="dp_hasResource">
+    <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >160</swb:index>
+    <swbxf:propGroup rdf:resource="#Proper_Driver"/>
+    <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#SelectMultipleUserRepWithBlank"/>
+  </swbxf:DisplayProperty>
+</rdf:RDF>
+
+<!-- Created with TopBraid Composer -->

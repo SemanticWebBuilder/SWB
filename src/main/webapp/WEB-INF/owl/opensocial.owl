@@ -1,0 +1,338 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:swbxf="http://www.semanticwebbuilder.org/swb4/xforms/ontology#"
+    xmlns:data="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#"
+    xmlns:opensocial="http://www.semanticwebbuilder.org/swb4/opensocial#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:swb="http://www.semanticwebbuilder.org/swb4/ontology#"
+  xml:base="http://www.semanticwebbuilder.org/swb4/opensocial">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#MediaItem">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SocialData"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Traceable"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="AppId"/>
+    </rdfs:subClassOf>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="formatteable">
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBInterface"/>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Interface"/>
+  </owl:Class>
+  <owl:Class rdf:about="#AppId">
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBInterface"/>
+  </owl:Class>
+  <owl:Class rdf:about="#SocialData">
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBClass"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Message">
+    <rdfs:subClassOf rdf:resource="#SocialData"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Descriptiveable"/>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person">
+    <rdfs:subClassOf rdf:resource="#SocialData"/>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Album">
+    <rdfs:subClassOf rdf:resource="#SocialData"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Descriptiveable"/>
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdfs:subClassOf rdf:resource="#AppId"/>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="_UserExtendedAttribute">
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#UserTypeDef"/>
+    <rdfs:subClassOf rdf:resource="#SocialData"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Group">
+    <rdfs:subClassOf rdf:resource="#SocialData"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Descriptiveable"/>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="user">
+    <rdfs:domain>
+      <swb:Class rdf:ID="PersonalizedGadged">
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBClass"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#User"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#hasAlbumns">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Album"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasUserPrefs">
+    <rdfs:range>
+      <swb:Class rdf:ID="UserPref">
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBClass"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#PersonalizedGadged"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#hasMediaItem">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Album"/>
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#MediaItem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#name">
+    <rdfs:range>
+      <swb:Class rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Name">
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:subClassOf rdf:resource="#SocialData"/>
+        <rdfs:subClassOf rdf:resource="#formatteable"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#hasGroup">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Group"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasPerson">
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Group"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="socialData">
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+    <rdfs:domain rdf:resource="#_UserExtendedAttribute"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#hasAddress">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+    <rdfs:range>
+      <swb:Class rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Address">
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Geolocalizable"/>
+        <rdfs:subClassOf rdf:resource="#SocialData"/>
+        <rdfs:subClassOf rdf:resource="#formatteable"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#hasAppData">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+    <rdfs:range>
+      <swb:Class rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#AppData">
+        <rdfs:subClassOf rdf:resource="#SocialData"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#location">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Album"/>
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Address"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="gadget">
+    <rdfs:range>
+      <swb:Class rdf:ID="Gadget">
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Descriptiveable"/>
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBClass"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#PersonalizedGadged"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#hasRecipient">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Message"/>
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#locality">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Address"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#region">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Address"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#hasEmail">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#middleName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Name"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#hasCar">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#type">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Address"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#mime_type">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#MediaItem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Age">
+    <swb:defaultValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >0</swb:defaultValue>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#familyName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Name"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#gender">
+    <swb:defaultValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >undisclosed</swb:defaultValue>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#profileUrl">
+    <swb:defaultValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    > </swb:defaultValue>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="url">
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_url">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >50</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <swb:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:required>
+    <rdfs:label xml:lang="en">Definition file web address</rdfs:label>
+    <rdfs:label xml:lang="es">Dirección web del archivo de definición</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Gadget"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#appId">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#AppId"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#country">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Address"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="key">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#UserPref"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#anniversary">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#hasActivity">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="value">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#UserPref"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#birthday">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#aboutMe">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#formatted">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#formatteable"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#honorificPrefix">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Name"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#key">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#AppData"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#value">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#AppData"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#body">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Message"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#thumbnailUrl">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#appid">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#AppData"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#honorificSuffix">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Name"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="bodyType">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#streetAddress">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Address"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#children">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#postalCode">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Address"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#appUrl">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Message"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#hasBook">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#givenName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Name"/>
+  </owl:DatatypeProperty>
+  <swbxf:HerarquicalNode rdf:ID="hn_Gadgets">
+    <swbxf:heClass rdf:resource="#Gadget"/>
+    <swb:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >OpenSocial Gadgets</swb:title>
+    <swb:iconClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >swbIconResources</swb:iconClass>
+    <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >78</swb:index>
+  </swbxf:HerarquicalNode>
+  <data:Name rdf:ID="name">
+    <rdfs:domain rdf:resource="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#Person"/>
+  </data:Name>
+  <swb:CodePackage rdf:ID="pkg">
+    <swb:package rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >org.semanticwb.opensocial.model</swb:package>
+    <swb:prefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >opensocial</swb:prefix>
+  </swb:CodePackage>
+  <swb:CodePackage rdf:about="http://www.semanticwebbuilder.org/swb4/opensocial/socialdata#pkg">
+    <swb:package rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >org.semanticwb.opensocial.model.data</swb:package>
+    <swb:prefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >data</swb:prefix>
+  </swb:CodePackage>
+</rdf:RDF>
+
+<!-- Created with TopBraid Composer -->

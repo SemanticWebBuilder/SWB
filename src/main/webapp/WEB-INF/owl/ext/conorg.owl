@@ -1,0 +1,1019 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:swb="http://www.semanticwebbuilder.org/swb4/ontology#"
+    xmlns:swbxf="http://www.semanticwebbuilder.org/swb4/xforms/ontology#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:conorg="http://www.infotec.com/conorg.owl#"
+  xml:base="http://www.infotec.com/conorg.owl">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+    <owl:imports rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Topicable">
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Topicable</rdfs:label>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Interface"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Tile">
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Searchable"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBClass"/>
+    <rdfs:label xml:lang="es">Azulejo</rdfs:label>
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Traceable"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Descriptiveable"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Indexable"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Tagable"/>
+    <rdfs:label xml:lang="en">Tile</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Topicable"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Calendarable"/>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Catalogable">
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBInterface"/>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Interface"/>
+  </owl:Class>
+  <owl:Class rdf:ID="File">
+    <rdfs:subClassOf>
+      <swb:Class rdf:ID="Document">
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Versionable"/>
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:subClassOf rdf:resource="#Tile"/>
+        <rdfs:label xml:lang="en">Document</rdfs:label>
+        <rdfs:label xml:lang="es">Documento</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en">File</rdfs:label>
+    <rdfs:label xml:lang="es">Archivo</rdfs:label>
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Tileable">
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Tileable</rdfs:label>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Interface"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="resource">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Resource</rdfs:label>
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Resource"/>
+    <rdfs:domain rdf:resource="#Tile"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="parentTopic">
+    <rdfs:label xml:lang="es">Tópico padre</rdfs:label>
+    <rdfs:label xml:lang="en">Parent topic</rdfs:label>
+    <rdfs:domain>
+      <swb:Class rdf:ID="Topic">
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBClass"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Topic</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Descriptiveable"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Traceable"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Tagable"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#Topic"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="toWorkSpace">
+    <rdfs:range>
+      <swb:Class rdf:ID="WorkSpace">
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Descriptiveable"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#WebPage"/>
+        <rdfs:subClassOf rdf:resource="#Tileable"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+        <rdfs:subClassOf rdf:resource="#Topicable"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Calendarable"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Traceable"/>
+        <rdfs:label xml:lang="en">Work space</rdfs:label>
+        <rdfs:label xml:lang="es">Espacio de trabajo</rdfs:label>
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+      </swb:Class>
+    </rdfs:range>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WorkSpace</rdfs:label>
+    <rdfs:domain>
+      <swb:Class rdf:ID="Aviso">
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Traceable"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Descriptiveable"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Aviso</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBClass"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasTopic">
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_tileTopics">
+        <rdfs:label xml:lang="es">Temas</rdfs:label>
+        <rdfs:label xml:lang="en">Topics</rdfs:label>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >25</swb:index>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#SelectMultipleModel"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:range rdf:resource="#Topic"/>
+    <rdfs:domain rdf:resource="#Topicable"/>
+    <rdfs:label xml:lang="en">Topics</rdfs:label>
+    <rdfs:label xml:lang="es">Temas</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasToUser">
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#User"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Para usuarios</rdfs:label>
+    <rdfs:domain rdf:resource="#Aviso"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasSubscribers">
+    <rdfs:label xml:lang="en">Subscribed</rdfs:label>
+    <rdfs:label xml:lang="es">Suscritos</rdfs:label>
+    <rdfs:domain rdf:resource="#WorkSpace"/>
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#User"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="accessLevel">
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_accessLevelSel">
+        <rdfs:label xml:lang="es">Nivel de acceso</rdfs:label>
+        <rdfs:label xml:lang="en">Access Level</rdfs:label>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#selectOneModelWithBlank"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="en">Access level</rdfs:label>
+    <rdfs:label xml:lang="es">Nivel de acceso</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="workspace">
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_workspace">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#selectOneModelWithBlank"/>
+        <rdfs:label xml:lang="es">Espacio de trabajo</rdfs:label>
+        <rdfs:label xml:lang="en">WorkSpace</rdfs:label>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <swb:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:required>
+    <rdfs:range rdf:resource="#WorkSpace"/>
+    <rdfs:label xml:lang="es">Espacio de trabajo</rdfs:label>
+    <rdfs:label xml:lang="en">WorkSpace</rdfs:label>
+    <rdfs:domain>
+      <swb:Class rdf:ID="Member">
+        <rdfs:label xml:lang="es">Miembro</rdfs:label>
+        <rdfs:label xml:lang="en">Member</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBClass"/>
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="user">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >User</rdfs:label>
+    <rdfs:domain rdf:resource="#Member"/>
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#User"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_user">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#selectOneUserRep"/>
+        <rdfs:label xml:lang="es">Usuario</rdfs:label>
+        <rdfs:label xml:lang="en">User</rdfs:label>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasColleagues">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Colegas</rdfs:label>
+    <rdfs:domain>
+      <swb:Class rdf:ID="Colleague">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Colleague</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#UserTypeDef"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#User"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="resourceWS">
+    <rdfs:domain rdf:resource="#WorkSpace"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >resource</rdfs:label>
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Resource"/>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >resource</swb:propertyCodeName>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMemberPermission">
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_member">
+        <rdfs:label xml:lang="es">Permisos miembro</rdfs:label>
+        <rdfs:label xml:lang="en">Member Permission</rdfs:label>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#ObjectElement_1"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="en">Member permissions</rdfs:label>
+    <rdfs:label xml:lang="es">Permisos del miembro</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="placeInv">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >place inv</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >place</swb:propertyCodeName>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="workSpace">
+    <rdfs:range rdf:resource="#WorkSpace"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_memberWorkSpace">
+        <rdfs:label xml:lang="es">Espacio de trabajo</rdfs:label>
+        <rdfs:label xml:lang="en">Work Space</rdfs:label>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#ObjectElement_1"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="en">Work space</rdfs:label>
+    <rdfs:label xml:lang="es">Espacio de trabajo</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMember">
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_placeMember">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >7</swb:index>
+        <swbxf:propGroup>
+          <swbxf:PropertyGroup rdf:ID="pg_dp_MemberWorkSpace">
+            <rdfs:label xml:lang="es">Propiedades</rdfs:label>
+            <rdfs:label xml:lang="en">Properties</rdfs:label>
+            <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >5</swb:index>
+          </swbxf:PropertyGroup>
+        </swbxf:propGroup>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#SelectMultipleUserRepWithBlank"/>
+        <rdfs:label xml:lang="es">Miembro</rdfs:label>
+        <rdfs:label xml:lang="en">Member</rdfs:label>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="es">Miembros</rdfs:label>
+    <rdfs:label xml:lang="en">Members</rdfs:label>
+    <rdfs:range rdf:resource="#Member"/>
+    <rdfs:domain rdf:resource="#WorkSpace"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="fromUser">
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#User"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Usuario</rdfs:label>
+    <rdfs:domain rdf:resource="#Aviso"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasWorkSpace">
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_placeWorkSpace">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >8</swb:index>
+        <swbxf:propGroup rdf:resource="#pg_dp_MemberWorkSpace"/>
+        <rdfs:label xml:lang="es">Espacio de trabajo</rdfs:label>
+        <rdfs:label xml:lang="en">Work Space</rdfs:label>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#ObjectElement_1"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <owl:inverseOf rdf:resource="#placeInv"/>
+    <rdfs:domain>
+      <swb:Model rdf:ID="Place">
+        <rdfs:label xml:lang="en">Site Place</rdfs:label>
+        <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_Countries"/>
+        <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_PTStrategies"/>
+        <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_Dnss"/>
+        <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_Languages"/>
+        <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_Templates"/>
+        <swb:displayObject>
+          <swbxf:DisplayObject rdf:ID="do_PlaceWebSite">
+            <swb:iconClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >swbIconWebSite</swb:iconClass>
+          </swbxf:DisplayObject>
+        </swb:displayObject>
+        <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_PTSystems"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#WebSite"/>
+        <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_ResourceCollections"/>
+        <swb:hasClass rdf:resource="#Topic"/>
+        <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_Rules"/>
+        <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_Collections"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+        <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_PFlows"/>
+        <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_Calendars"/>
+        <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_Devices"/>
+        <rdfs:label xml:lang="es">Sitio Plaza</rdfs:label>
+        <swb:hasHerarquicalNode rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#hn_PTContents"/>
+      </swb:Model>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#WorkSpace"/>
+    <rdfs:label xml:lang="en">Work spaces</rdfs:label>
+    <rdfs:label xml:lang="es">Espacios de trabajo</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasTile">
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_mosaicTile">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#SelectMultipleModel"/>
+        <rdfs:label xml:lang="es">Azulejos</rdfs:label>
+        <rdfs:label xml:lang="en">Tiles</rdfs:label>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="en">Tiles</rdfs:label>
+    <rdfs:label xml:lang="es">Azulejos</rdfs:label>
+    <rdfs:range rdf:resource="#Tile"/>
+    <rdfs:domain rdf:resource="#Tileable"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="owner">
+    <rdfs:range rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#User"/>
+    <rdfs:domain>
+      <swb:Class rdf:ID="Shelf">
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:label xml:lang="es">Estante</rdfs:label>
+        <rdfs:label xml:lang="en">Shelf</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Descriptiveable"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBClass"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Traceable"/>
+        <rdfs:subClassOf rdf:resource="#Tileable"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+    <rdfs:label xml:lang="en">Owner</rdfs:label>
+    <rdfs:label xml:lang="es">Propietario</rdfs:label>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_owner">
+        <rdfs:label xml:lang="es">Propietario</rdfs:label>
+        <rdfs:label xml:lang="en">Owner</rdfs:label>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#selectOneUserRep"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >110</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="manualVersion">
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_version">
+        <rdfs:label xml:lang="en">Version</rdfs:label>
+        <rdfs:label xml:lang="es">Versión</rdfs:label>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >110</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:domain>
+      <swb:Class rdf:ID="Manual">
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:subClassOf rdf:resource="#Document"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Manual</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="memberType">
+    <swb:defaultValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >No miembro</swb:defaultValue>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_memberType">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#selectOneModel"/>
+        <rdfs:label xml:lang="en">Member Type</rdfs:label>
+        <rdfs:label xml:lang="es">Tipo miembro</rdfs:label>
+        <swbxf:propSelectValues rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >No miembro|Invitado|Miembro|Coordinador|Administrador</swbxf:propSelectValues>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Member"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="contactOrganizationPosition">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain>
+      <swb:Class rdf:ID="Contact">
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:label xml:lang="es">Contacto</rdfs:label>
+        <rdfs:label xml:lang="en">Contact</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Tile"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_contactOrganizationPosition">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >90</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="en">Job position</rdfs:label>
+    <rdfs:label xml:lang="es">Puesto</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="contactFirstName">
+    <rdfs:label xml:lang="en">First Name</rdfs:label>
+    <rdfs:label xml:lang="es">Nombre</rdfs:label>
+    <rdfs:domain rdf:resource="#Contact"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_contactFirstName">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >40</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="contactOrganizationArea">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Contact"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_contactOrganizationArea">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >80</swb:index>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextArea_Description"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="es">Área de trabajo</rdfs:label>
+    <rdfs:label xml:lang="en">Organization Area</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="articleVolume">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="es">Volumen</rdfs:label>
+    <rdfs:label xml:lang="en">Volume</rdfs:label>
+    <rdfs:domain>
+      <swb:Class rdf:ID="Article">
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:label xml:lang="es">Artículo</rdfs:label>
+        <rdfs:label xml:lang="en">Article</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Document"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_articleVolume">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextBox"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >36</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="editors">
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_hasEditors">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >35</swb:index>
+        <rdfs:label xml:lang="en">Editors</rdfs:label>
+        <rdfs:label xml:lang="es">Editores</rdfs:label>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextArea_Description"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="es">Editores</rdfs:label>
+    <rdfs:label xml:lang="en">Editors</rdfs:label>
+    <rdfs:domain rdf:resource="#Document"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="permission">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_accessLevel">
+        <rdfs:label xml:lang="en">Permission</rdfs:label>
+        <rdfs:label xml:lang="es">Permisos</rdfs:label>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#SelectMultipleModelWithBlank"/>
+        <swbxf:propSelectValues rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Derechos universales|Crear/Agregar|Editar/Modificar|Remover/Borrar|Archivar|Acciones sobre Shelf</swbxf:propSelectValues>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="contactSocialNetworkId">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Twitter</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Contact"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_contactSocialNetworkId">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >140</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="author">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="es">Autor</rdfs:label>
+    <rdfs:domain rdf:resource="#Document"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_documentAuthor">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >5</swb:index>
+        <rdfs:label xml:lang="es">Autor</rdfs:label>
+        <rdfs:label xml:lang="en">Author</rdfs:label>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextArea_Description"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="en">Author</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="authorName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain>
+      <swb:Class rdf:ID="Author">
+        <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBClass"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="videoRights">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain>
+      <swb:Class rdf:ID="Video">
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:subClassOf rdf:resource="#Document"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Video</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_videoRights">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >110</swb:index>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextArea_Description"/>
+        <rdfs:label xml:lang="es">Derechos del video</rdfs:label>
+        <rdfs:label xml:lang="en">Video rights</rdfs:label>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="chaptherBookTitle">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="es">Título del capítulo</rdfs:label>
+    <rdfs:label xml:lang="en">Chapter title</rdfs:label>
+    <rdfs:domain>
+      <swb:Class rdf:ID="ChapterBook">
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:label xml:lang="en">Chapter</rdfs:label>
+        <rdfs:label xml:lang="es">Capítulo</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Catalogable"/>
+        <rdfs:subClassOf rdf:resource="#Document"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_chaptherBookTitle">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextBox"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >5</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="documentCountry">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="es">País</rdfs:label>
+    <rdfs:label xml:lang="en">Country</rdfs:label>
+    <rdfs:domain rdf:resource="#Document"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_documentCountry">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >40</swb:index>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextBox"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="contactOrganization">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Contact"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_contactOrganization">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >70</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="en">Organization</rdfs:label>
+    <rdfs:label xml:lang="es">Empresa</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="documentURL">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_documentURL">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >90</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:domain rdf:resource="#Document"/>
+    <rdfs:label xml:lang="en">Document URL</rdfs:label>
+    <rdfs:label xml:lang="es">URL del documento</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="contactAddress">
+    <rdfs:label xml:lang="es">Dirección postal</rdfs:label>
+    <rdfs:label xml:lang="en">Address</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Contact"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_contactAddress">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >170</swb:index>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextArea_Description"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="documentPages">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="es">Páginas</rdfs:label>
+    <rdfs:label xml:lang="en">Pages</rdfs:label>
+    <rdfs:domain rdf:resource="#Document"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_documentPages">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >60</swb:index>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextBox"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="contactExperienceArea">
+    <rdfs:label xml:lang="es">Área de experiencia</rdfs:label>
+    <rdfs:label xml:lang="en">Experience Area</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Contact"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_contactExpierenceArea">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >180</swb:index>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#RichTextEditor"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="authorLastName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Author"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="documentFormat">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="es">Formato</rdfs:label>
+    <rdfs:label xml:lang="en">Format</rdfs:label>
+    <rdfs:domain rdf:resource="#Document"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_documentFormat">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >100</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="presentationVersion">
+    <swb:displayProperty rdf:resource="#dp_version"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain>
+      <swb:Class rdf:ID="Presentation">
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:label xml:lang="es">Presentación</rdfs:label>
+        <rdfs:label xml:lang="en">Presentation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Document"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="contactHomePhone">
+    <rdfs:label xml:lang="en">Home phone</rdfs:label>
+    <rdfs:label xml:lang="es">Teléfono casa</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Contact"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_contactHomePhone">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >120</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="catalogIDsDOI">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DOI</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DOI</swb:propertyCodeName>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Catalogable"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_catalogIDsDOI">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextBox"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >130</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="contactLastName">
+    <rdfs:label xml:lang="es">Apellido</rdfs:label>
+    <rdfs:label xml:lang="en">Last name</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Contact"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_contactLastName">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >50</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="contactDegree">
+    <rdfs:label xml:lang="es">Grado académico</rdfs:label>
+    <rdfs:label xml:lang="en">Degree</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Contact"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_contactDegree">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >60</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="reportVersion">
+    <swb:displayProperty rdf:resource="#dp_version"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain>
+      <swb:Class rdf:ID="Report">
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:label xml:lang="es">Reporte</rdfs:label>
+        <rdfs:label xml:lang="en">Report</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Document"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="articleIssue">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="es">Edición</rdfs:label>
+    <rdfs:label xml:lang="en">Issue</rdfs:label>
+    <rdfs:domain rdf:resource="#Article"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_articleIssue">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextBox"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="url">
+    <rdfs:domain>
+      <swb:Class rdf:ID="URL">
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdfs:subClassOf rdf:resource="#Tile"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >URL</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+    <rdfs:label xml:lang="es">Dirección Electrónica</rdfs:label>
+    <rdfs:label xml:lang="en">URL</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_url">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextArea_Description"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="contactOfficePhone">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Contact"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_contactOfficePhone">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >100</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="en">Office phone</rdfs:label>
+    <rdfs:label xml:lang="es">Teléfono oficina</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="imageRights">
+    <rdfs:label xml:lang="en">Image rights</rdfs:label>
+    <rdfs:label xml:lang="es">Derechos de la imagen</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain>
+      <swb:Class rdf:ID="Image">
+        <rdfs:label xml:lang="es">Imagen</rdfs:label>
+        <rdfs:label xml:lang="en">Image</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Document"/>
+        <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</swb:autogenId>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </swb:Class>
+    </rdfs:domain>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_imageRights">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextArea_Description"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >110</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="documentPublisher">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="es">Editor</rdfs:label>
+    <rdfs:label xml:lang="en">Publisher</rdfs:label>
+    <rdfs:domain rdf:resource="#Document"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_documentPublisher">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >50</swb:index>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextBox"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="contactEmail">
+    <rdfs:label xml:lang="es">Correo Electrónico</rdfs:label>
+    <rdfs:label xml:lang="en">Email</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Contact"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_contactEmail">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >130</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="articleNumber">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="es">Número</rdfs:label>
+    <rdfs:label xml:lang="en">Number</rdfs:label>
+    <rdfs:domain rdf:resource="#Article"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_articleNumber">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextBox"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >34</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="documentAbstract">
+    <rdfs:label xml:lang="es">Resumen</rdfs:label>
+    <rdfs:label xml:lang="en">Abstract</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Document"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_documentAbstract">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >70</swb:index>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#RichTextEditor"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="documentYear">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="es">Año</rdfs:label>
+    <rdfs:label xml:lang="en">Year</rdfs:label>
+    <rdfs:domain rdf:resource="#Document"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_documentYear">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >7</swb:index>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextBox"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="articleJournal">
+    <rdfs:label xml:lang="es">Título de la revista</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="en">Journal</rdfs:label>
+    <rdfs:domain rdf:resource="#Article"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_articleJournal">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >32</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="contactURL">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Contact"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_contactURL">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >150</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="en">Web address</rdfs:label>
+    <rdfs:label xml:lang="es">Dirección web</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="documentEdition">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="es">Edición</rdfs:label>
+    <rdfs:label xml:lang="en">Edition</rdfs:label>
+    <rdfs:domain rdf:resource="#Document"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_documentEdition">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >37</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="documentCity">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="es">Ciudad</rdfs:label>
+    <rdfs:label xml:lang="en">City</rdfs:label>
+    <rdfs:domain rdf:resource="#Document"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_documentCity">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >39</swb:index>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextBox"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="catalogIDsISBN">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ISBN</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ISBN</swb:propertyCodeName>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Catalogable"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_catalogIDsISBN">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextBox"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >120</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="contactMobilePhone">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Contact"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_contactMobilePhone">
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >110</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="en">Mobile phone</rdfs:label>
+    <rdfs:label xml:lang="es">Teléfono móvil</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="articleISSN">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ISSN</rdfs:label>
+    <rdfs:domain rdf:resource="#Article"/>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_articleISSN">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextBox"/>
+        <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >110</swb:index>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+  </owl:DatatypeProperty>
+  <swb:CodePackage rdf:ID="pkg">
+    <swb:package rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >com.infotec.conorg</swb:package>
+    <swb:prefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >conorg</swb:prefix>
+  </swb:CodePackage>
+  <swb:Class rdf:ID="Book">
+    <rdfs:label xml:lang="es">Libro</rdfs:label>
+    <rdfs:label xml:lang="en">Book</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Catalogable"/>
+    <rdfs:subClassOf rdf:resource="#Document"/>
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </swb:Class>
+  <swb:Class rdf:ID="Mosaic">
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdfs:label xml:lang="es">Mosaico</rdfs:label>
+    <rdfs:label xml:lang="en">Mosaic</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Tile"/>
+    <rdfs:subClassOf rdf:resource="#Tileable"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </swb:Class>
+  <swbxf:DisplayProperty rdf:ID="dp_documentKeywords">
+    <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >80</swb:index>
+    <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#TextArea_Description"/>
+  </swbxf:DisplayProperty>
+  <swb:Class rdf:ID="Editors">
+    <rdfs:subClassOf rdf:resource="#Author"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </swb:Class>
+  <swb:Class rdf:ID="Reference">
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdfs:label xml:lang="es">Referencia</rdfs:label>
+    <rdfs:label xml:lang="en">Reference</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Document"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </swb:Class>
+  <swb:Class rdf:ID="Audio">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Audio</rdfs:label>
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdfs:subClassOf rdf:resource="#Document"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </swb:Class>
+  <swb:Class rdf:ID="Resource">
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <rdfs:label xml:lang="es">Recurso</rdfs:label>
+    <rdfs:label xml:lang="en">Resource</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Tile"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#Resourceable"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </swb:Class>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

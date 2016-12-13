@@ -1,0 +1,267 @@
+/* 
+    Document   : ciudad_digital
+    Created on : 17/08/2009, 09:57:04 PM
+    Author     : jose.jimenez
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+textarea, input[type="button"] {
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:0.8em;
+    border:silver;
+}
+#commentsList {
+    background:transparent none repeat scroll 0 0;
+    border:0 none;
+    font-size:100%;
+    margin:0;
+    outline-color:black;
+    outline-style:none;
+    outline-width:0;
+    padding:0;
+    display:inline;
+}
+.comment-entry {
+    border-top:1px solid #EFEFEF;
+    clear:both;
+    font-size:13px;
+    margin-top:6px;
+    padding:7px 2px 4px 10px;
+    float:left;
+    width:100%;
+    background-color:#FFFFEE;
+}
+html > body {
+    padding-bottom:0;
+}
+.comment-head, .comment-head-hidden {
+    background-color:#FFFFEE;
+    padding:0 4px 4px;
+}
+.comment-info {
+    float:left;
+    width:45%;
+}
+.comment-time {
+    color:#666666;
+}
+.comment-body {
+    margin-left:4px;
+    margin-top:4px;
+    overflow:hidden;
+    width:75%;
+    /*background-color:#FFFFEE*/
+}
+.clearL {
+    clear:left;
+}
+
+.comment-head-link {
+    font-size:11px;
+    margin-left:8px;
+    visibility:hidden;
+}
+.comment-auth {
+    font-weight:bold;
+    text-decoration:none;
+}
+.comment-auth:hover {
+    text-decoration:underline;
+}
+.comment-voting, .comment-voting-off {
+    float:right;
+    text-align:right;
+    width:75px;
+}
+.comment-auth-head {
+    background-color:#FFFFCC;
+    padding:4px;
+}
+.comment-marked-spam {
+    border-top:1px solid #C1C1C1;
+    margin-top:7px;
+    padding-top:10px;
+}
+.comment-spam {
+    background-color:#FFFFEE;
+    padding:4px;
+}
+.comment-retracted {
+    color:#666666;
+    font-style:italic;
+}
+.comment-action {
+    float:right;
+    font-size:11px;
+    margin-top:0;
+    padding-bottom:1px;
+    padding-top:3px;
+    text-align:right;
+}
+.comment-voting a {
+    color:#0033CC;
+    cursor:pointer;
+}
+.comment-action a, .comment-head-link {
+    border-bottom:1px dotted #0033CC;
+    color:#0033CC;
+    cursor:pointer;
+    text-decoration:none;
+}
+.comment-score {
+    font-size:11px;
+    font-weight:bold;
+}
+.comment-msg {
+    color:#666666;
+    float:right;
+    font-size:11px;
+}
+.comment-green {
+    color:green;
+}
+.comment-gray {
+    color:gray;
+}
+.comment-red {
+    color:#FF3333;
+}
+.comment-spam-bug {
+    border-bottom:1px dotted #CC0000;
+    border-top:1px dotted #CC0000;
+    color:#CC0000;
+    display:none;
+    float:right;
+    font-weight:bold;
+    margin-left:0;
+    padding:1px 3px;
+    text-align:left;
+}
+#comment-limit-box {
+    margin-bottom:30px;
+}
+#comment-limit-box .header {
+    background-color:#F8F3D6;
+    padding:5px;
+}
+#comment-limit-box .body {
+    background-color:#FBF9E8;
+    padding:5px;
+}
+#comment-captcha {
+    margin:0 auto;
+    text-align:center;
+    width:400px;
+}
+#comment-captcha .captcha-input {
+    float:left;
+    padding-top:15px;
+    width:260px;
+}
+#comment-captcha .verification-image {
+    float:left;
+    text-align:center;
+    width:120px;
+}
+.comment-pagination {
+    background-color:#DEDEDE;
+    font-size:11px;
+    font-weight:bold;
+    margin-top:20px;
+    padding:1px;
+    text-align:center;
+}
+.comment-pnum {
+    padding:0 4px;
+}
+.comment-char-count {
+    border:0 none;
+    width:50px;
+}
+.comment-reply-form-actions {
+    clear:left;
+    float:left;
+}
+.comment-reply-form-actions input {
+    margin-right:10px;
+}
+#comment-view-all {
+    font-weight:bold;
+    margin-top:10px;
+}
+#comment-post {
+    margin-top:12px;
+}
+.rec_votes {
+    float:left;
+    width:200px;
+}
+.rec_votes_num {
+    float:left;
+    width:30px;
+    padding:2px;
+    text-align:right;
+}
+.rec_votes_label {
+    float:left;
+    width:90px;
+    padding:2px;
+    }
+.rank_label {
+    float:left;
+    padding:4px;
+}
+.rank_stars {
+    padding:4px;
+}
+.common_funcs {
+    
+}
+.abused {
+    float:left
+}
+.comments_head {
+
+}
+.comments_title {
+    float:left;
+    width:300px;
+}
+.comments_title_link {
+    float:left;
+    padding-right:4px;
+    padding-left:4px;}
+.comments_write {
+    float:left;
+    width:300px;
+    text-align:right;
+}
+#addComment {
+    display:none;
+}
+#commentsIndex {
+    float:left;
+    text-align:center;
+    width:90%
+}
+.commentsIndexContainer{
+    margin-left:auto;
+    margin-right:auto;
+}
+.commentsIndexContainer span {
+    padding:2px 4px;
+}
+.commentPageLink {
+    background-color:#FFFFFF;
+    font-size:11px;
+    font-weight:bold;
+    color:#2080DD;
+}
+.currentPage {
+    background-color:#DEDEDE;
+    color:#888888;
+    font-size:11px;
+    font-weight:normal;
+}

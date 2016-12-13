@@ -1,0 +1,215 @@
+<%-- 
+    Document   : externalInit.jsp
+    Created on : 17-dic-2012, 19:30:44
+    Author     : javier.solis.g
+--%>
+<%@page import="java.util.StringTokenizer"%>
+<%@page import="java.io.DataInputStream"%>
+<%@page import="java.io.FileInputStream"%>
+<%@page import="java.io.File"%>
+<%@page import="org.semanticwb.servlet.internal.P3PFile"%>
+<%@page import="org.semanticwb.servlet.internal.RobotFile"%>
+<%@page import="org.semanticwb.servlet.internal.MultipleFileUploader"%>
+<%@page import="org.semanticwb.servlet.internal.GoogleSiteMap"%>
+<%@page import="org.semanticwb.servlet.internal.Admin"%>
+<%@page import="org.semanticwb.servlet.internal.FrmProcess"%>
+<%@page import="net.fckeditor.connector.SWBConnectorServlet"%>
+<%@page import="org.semanticwb.servlet.internal.Work"%>
+<%@page import="org.semanticwb.servlet.internal.ShowFile"%>
+<%@page import="org.semanticwb.servlet.internal.EditFile"%>
+<%@page import="org.semanticwb.servlet.internal.Monitor"%>
+<%@page import="org.semanticwb.servlet.internal.TreeSelectFormElement"%>
+<%@page import="org.semanticwb.servlet.internal.Distributor"%>
+<%@page import="org.semanticwb.servlet.internal.Login"%>
+<%@page import="org.semanticwb.servlet.internal.InternalServlet"%>
+<%@page import="java.util.concurrent.ConcurrentHashMap"%>
+<%@page import="org.semanticwb.SWBPlatform"%>
+<%@page import="org.semanticwb.Logger"%>
+<%@page import="org.semanticwb.SWBPortal"%>
+<%@page import="org.semanticwb.servlet.SWBVirtualHostFilter"%>
+<%@page import="org.semanticwb.SWBUtils"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%!
+    static Logger log = SWBUtils.getLogger(SWBVirtualHostFilter.class);
+    
+    static SWBVirtualHostFilter instance=null;
+    
+    /** The swb portal. */
+    private SWBPortal swbPortal = null;
+
+    private SWBPlatform swbPlatform = null;
+    
+    /** The int servlets. */
+    private ConcurrentHashMap<String, InternalServlet> intServlets = new ConcurrentHashMap<String, InternalServlet>();
+    
+    /** The dist. */
+    private InternalServlet dist=null;
+    
+    /** The login internal servlet. */
+    private Login loginInternalServlet = new Login();
+    // The filter configuration object we are associated with.  If
+    // this value is null, this filter instance is not currently
+    // configured.
+    /** The filter config. */
+    //private FilterConfig filterConfig = null;
+    
+    /** The fist call. */
+    private boolean fistCall = true;
+    
+    private ConcurrentHashMap<String,String> depurls = null;
+
+%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>External Init</title>
+    </head>
+    <body>
+        <h1>External Init!</h1>
+<%
+    
+            log.event("************************************");
+            log.event("Initializing SemanticWebBuilder...");
+            //this.filterConfig = filterConfig;
+            //if (filterConfig != null)
+            {
+                log.event("Initializing VirtualHostFilter...");
+                String prefix = getServletConfig().getServletContext().getRealPath("/");
+                SWBUtils.createInstance(prefix);
+                swbPortal = SWBPortal.createInstance(getServletConfig().getServletContext());
+                swbPlatform = SWBPlatform.createInstance();
+            }
+
+            InternalServlet serv = new Distributor();
+            intServlets.put("swb", serv);
+            intServlets.put("wb", serv);
+            intServlets.put("wb2", serv);
+            serv.init(getServletConfig().getServletContext());
+            dist=serv;
+
+            InternalServlet login = new Login();
+            intServlets.put("login", login);
+            login.init(getServletConfig().getServletContext());
+            loginInternalServlet.init(getServletConfig().getServletContext());
+            loginInternalServlet.setHandleError(true);
+
+            try
+            {
+                Class gtwOfficeClass = Class.forName("org.semanticwb.servlet.internal.GateWayOffice");
+                InternalServlet gtwOffice = (InternalServlet) gtwOfficeClass.newInstance();
+                intServlets.put("gtw", gtwOffice);
+                gtwOffice.init(getServletConfig().getServletContext());
+            }
+            catch (Exception cnfe)
+            {
+                log.error(cnfe);
+            }
+            InternalServlet treeSelectFormElement = new TreeSelectFormElement();
+            intServlets.put("treeSelect", treeSelectFormElement);
+            treeSelectFormElement.init(getServletConfig().getServletContext());
+
+            try
+            {
+                InternalServlet monitor = new Monitor();
+                intServlets.put("swbmonitor.ssl", monitor);
+                intServlets.put("ping", monitor);
+                monitor.init(getServletConfig().getServletContext());
+            }catch(Exception e){log.error(e);}            
+            
+            
+            //InternalServlet upload = new Upload();
+            //intServlets.put("wbupload", upload);
+            //upload.init(filterConfig.getServletContext());
+
+            InternalServlet editFile = new EditFile();
+            intServlets.put("editfile", editFile);
+            editFile.init(getServletConfig().getServletContext());
+            
+            InternalServlet showFile = new ShowFile();
+            intServlets.put("showfile", showFile);
+            showFile.init(getServletConfig().getServletContext());            
+
+//            InternalServlet UploadFormElement = new UploadFormElement();
+//            intServlets.put("Upload", UploadFormElement);
+//            UploadFormElement.init(filterConfig.getServletContext());
+
+            if(SWBPortal.getWorkPathType().equals(SWBPortal.WORKPATH_ABSOLUTE))
+            {
+                InternalServlet work = new Work();
+                intServlets.put("work", work);
+                work.init(getServletConfig().getServletContext());
+            }
+            
+            InternalServlet FCKEditorConnector = new SWBConnectorServlet();
+            intServlets.put("FCKEditorConnector", FCKEditorConnector);
+            FCKEditorConnector.init(getServletConfig().getServletContext());
+
+            InternalServlet frmprocess = new FrmProcess();
+            intServlets.put("frmprocess", frmprocess);
+            frmprocess.init(getServletConfig().getServletContext());
+
+            //TODO:Admin servlet
+            InternalServlet admin = new Admin();
+            intServlets.put("wbadmin", admin);
+            intServlets.put("swbadmin", admin);
+            admin.init(getServletConfig().getServletContext());
+
+            InternalServlet googleMap = new GoogleSiteMap();
+            intServlets.put("sitemap.txt", googleMap);
+            intServlets.put("sitemap.xml", googleMap);
+            googleMap.init(getServletConfig().getServletContext());
+
+            InternalServlet fileUploader = new MultipleFileUploader();
+            intServlets.put("multiuploader", fileUploader);
+            fileUploader.init(getServletConfig().getServletContext());
+
+            InternalServlet robot = new RobotFile();
+            intServlets.put("robots.txt", robot);
+            robot.init(getServletConfig().getServletContext());
+
+            InternalServlet p3p = new P3PFile();
+            intServlets.put("w3c", p3p);
+            p3p.init(getServletConfig().getServletContext());
+
+            File file = new File(SWBUtils.getApplicationPath() + "/WEB-INF/depurls.txt");
+            if (file.exists())
+            {
+                depurls = new ConcurrentHashMap<String, String>();
+                log.event("Loading Deprecated Urls...");
+                try
+                {
+                    FileInputStream in = new FileInputStream(file);
+                    DataInputStream din = new DataInputStream(in);
+                    String line = null;
+                    while ((line = din.readLine()) != null)
+                    {
+                        line=line.trim();
+                        if(line.length()>0)
+                        {
+                            StringTokenizer st = new StringTokenizer(line, "|,\t");
+                            while (st.hasMoreTokens())
+                            {
+                                String tk1 = st.nextToken().trim();
+                                String tk2 = st.nextToken().trim();
+                                if(!tk1.equals(tk2))
+                                {
+                                    depurls.put(tk1, tk2);
+                                }
+                            }
+                        }
+                    }
+                    din.close();
+                    in.close();
+                } catch (Exception e)
+                {
+                    depurls = null;
+                    log.error("Error loading Deprecated Urls...", e);
+                }
+            }
+
+            log.event("SemanticWebBuilder started...");
+            log.event("************************************");
+%>        
+    </body>
+</html>

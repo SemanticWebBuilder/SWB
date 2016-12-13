@@ -1,0 +1,199 @@
+LICENCIA ABIERTA AL PÚBLICO QUE OTORGA EL FIDEICOMISO PÚBLICO 
+FONDO DE INFORMACIÓN Y DOCUMENTACIÓN PARA LA INDUSTRIA 
+INFOTEC, PARA LA UTILIZACIÓN DEL SOFTWARE SEMANTICWEBBUILDER 
+VERSIÓN 4.0
+I. ANTECEDENTES
+1.- El Fondo de Información y Documentación para la Industria, en lo sucesivo 
+INFOTEC, con domicilio en Av. San Fernando 37, Col. Toriello Guerra, Del. Tlalpan, 
+C. P. 14050, en la Ciudad de México, Distrito Federal, es un Fideicomiso Público del 
+gobierno federal, considerado entidad paraestatal en términos de la ley orgánica de 
+la administración pública federal y considerado Centro Publico de Investigación, de 
+conformidad por lo dispuesto por la ley de ciencia y tecnología, que tiene entre otros 
+fines el promover la competitividad y el desarrollo tecnológico del país, así como el 
+planear, organizar y proporcionar soluciones integrales para el desarrollo de 
+proyectos y tecnologías de vanguardia que conduzcan a la evolución y mejora 
+continua  de instituciones del sector público, académico, social y privado.
+2.- Ha desarrollado el Software denominado SemanticWebBuilder Versión 4.0, que 
+es una plataforma para el desarrollo de portales y aplicaciones de integración, 
+colaboración y conocimiento, que gracias al uso de tecnología semántica puede 
+generar contextos de información alrededor de algún tema de interés o bien integrar 
+información y aplicaciones de diferentes fuentes, donde a la información se le 
+asigna un significado,  de forma que pueda ser interpretada y procesada por 
+personas y/o sistemas.
+3.- Es titular de los Derechos de Autor del Software referido en el antecedente 
+anterior y cuyo registro se encuentra actualmente en trámite.
+4.- Por acuerdo del Comité Técnico de INFOTEC de fecha 23 de noviembre del 
+2006, se acordó poner a disposición de cualquier usuario el Software INFOTEC 
+WebBuilder a partir de su versión 3.2, a través del licenciamiento abierto al público 
+(‘Open Source’) con la finalidad de brindar al público en general la oportunidad de 
+contar con una herramienta robusta, eficaz y lo suficientemente sólida para permitir 
+el desarrollo de oportunidades de negocio en distintos ámbitos, así como la de 
+brindar a nuestros clientes la oportunidad de reducir el costo de sus proyectos.
+5.- Con base en lo anterior, INFOTEC pone a disposición de cualquier interesado 
+(en lo sucesivo EL USUARIO) el Software SemanticWebBuilder (en lo sucesivo EL 
+SOFTWARE), de conformidad con lo siguiente:
+II. DEFINICIONES
+Para efectos de la presente Licencia se entiende por:
+1.- SOFTWARE.- Es el conjunto de programas y procedimientos necesarios para 
+hacer posible la realización de una tarea específica en un equipo de cómputo, en 
+contraposición a los componentes físicos del sistema (hardware).
+2.- CÓDIGO FUENTE.- Es un conjunto de líneas que conforman un texto simple, 
+elaborado según las reglas sintácticas de algún lenguaje de programación 
+destinado a ser legible por humanos y cuyo conocimiento es indispensable para 
+modificar el programa.
+3.- USUARIO.- Persona física o moral que utiliza, modifica y/o distribuye cualquier 
+tipo de SOFTWARE, y que se encuentra obligado en los términos de la licencia 
+respectiva.
+4.- TERCERO USUARIO.- Persona física o moral que utiliza, modifica y/o distribuye 
+cualquier tipo de software, cuando éste fue proporcionado por un usuario.
+5.- LICENCIA.- Es la autorización o permiso concedido por el titular del derecho de 
+autor, en cualquier forma, al usuario de un software, en la cual se especifican los 
+derechos de uso, modificación o distribución, así como sus límites.
+
+
+III. TÉRMINOS Y CONDICIONES
+1.- A través de la presente Licencia, INFOTEC pone a disposición de EL USUARIO, 
+EL SOFTWARE, lo cual, comprende:
+A.     Su uso en las mismas condiciones con que INFOTEC lo ha diseñado y puesto 
+a disposición del público.
+B.    Su conocimiento, a través del estudio del código fuente que facilite el 
+aprendizaje de EL SOFTWARE.
+C.    Su distribución sin modificaciones, a terceros, sea ésta onerosa o gratuita.
+D.    Su acceso al código fuente y posibilidad de modificación.
+E.     Su combinación o enlace con otro software abierto al público o con un software 
+no abierto al público, siempre y cuando EL USUARIO cuente con la 
+autorización del titular de los derechos de autor de éste último. 
+F.     Su distribución a terceros, sea ésta onerosa o gratuita, una vez modificado o 
+combinado, con la sugerencia de compartir dicha modificación a INFOTEC por 
+medio de la siguiente dirección electrónica: http://www.webbuilder.org.mx, con 
+la finalidad de que dicha modificación sea evaluada para su posible 
+incorporación en futuras versiones del SOFTWARE.
+2.- EL USUARIO reconocerá en todo momento los derechos que INFOTEC tiene 
+sobre EL SOFTWARE, en términos de la Ley Federal del Derecho de Autor, por lo 
+que se compromete a publicar de manera clara en cada copia de EL SOFTWARE 
+que distribuya la correspondiente titularidad.
+Asimismo, expresa su compromiso de abstenerse de realizar cualquier acción, 
+modificación o alteración que impida identificar EL SOFTWARE como creación 
+original de INFOTEC.
+3.- La utilización de EL SOFTWARE estará a lo siguiente:
+A.     EL USUARIO podrá utilizar EL SOFTWARE para cualquier fin o actividad 
+siempre y cuando sea lícito, siendo INFOTEC ajeno a la elección del mismo. 
+B.    INFOTEC no otorga garantía por la utilización de EL SOFTWARE, de ninguna 
+especie y naturaleza, ni implícita ni explícita.
+C.    EL USUARIO es total y exclusivamente responsable de la utilización que haga 
+de EL SOFTWARE, quedando INFOTEC libre de responsabilidad alguna que 
+derive de dicha utilización.
+D.    EL USUARIO asume completamente los riesgos que puedan derivarse de la 
+utilización de EL SOFTWARE, ya sea por él o por terceros usuarios. En caso 
+de que EL SOFTWARE presente algún error o falla que genere pérdidas de 
+datos o al interactuar con otros programas informáticos, EL USUARIO asume 
+todos los costos de los servicios necesarios para repararlo o corregirlo. No 
+obstante, para fines informativos, dará aviso del error a INFOTEC, a través de la 
+siguiente dirección electrónica:   http://www.webbuilder.org.mx.
+E.    INFOTEC es totalmente ajeno a las relaciones que, con motivo de la     
+utilización de EL SOFTWARE, EL USUARIO contraiga con terceros.
+F.     INFOTEC de ninguna manera tendrá responsabilidad alguna de los daños o 
+perjuicios que, con motivo de la utilización de EL SOFTWARE, EL USUARIO 
+llegara a causar a terceros. 
+4.- Para la modificación de EL SOFTWARE, EL USUARIO deberá indicar 
+claramente la parte o partes de EL SOFTWARE que considera modificar, en qué 
+consistirán las modificaciones, así como la fecha de su realización, asimismo, EL 
+USUARIO deberá señalar las diferencias respecto a la versión original, 
+circunstancias que deberá hacer del conocimiento de terceros usuarios y al mismo 
+tiempo se recomienda informar a INFOTEC de dichos cambios con el fin de que 
+puedan ser evaluados e integrados en futuras versiones del SOFTWARE.
+El INFOTEC no será responsable de las modificaciones que haga EL USUARIO a 
+EL SOFTWARE, en los términos del punto 3 de esta Licencia.
+5. La distribución de EL SOFTWARE se realizará de la siguiente forma:
+
+
+A.     Independientemente de que EL SOFTWARE haya sido o no modificado, EL 
+USUARIO, cuando lo distribuya, se obliga a dar el acceso al código fuente, a 
+los terceros usuarios, de manera que éste sea legible.
+B.    Independientemente de la forma en que EL USUARIO distribuya EL 
+SOFTWARE, deberá permitir su modificación para uso particular por parte de 
+los nuevos usuarios, permitiéndoles el uso de ingeniería inversa para que 
+puedan aprender de EL SOFTWARE y corroborar sus modificaciones. 
+C.    Indicar claramente que INFOTEC no es responsable de manera alguna por las 
+modificaciones que EL USUARIO haya realizado a EL SOFTWARE. 
+D.    Si EL USUARIO distribuye EL SOFTWARE sin modificaciones y a título     
+gratuito, deberá entregar al nuevo usuario una copia de esta Licencia, la cual, 
+se entenderá como si hubiese sido entregada directamente por     INFOTEC.
+E.     Si EL USUARIO distribuye EL SOFTWARE sin modificaciones y a título 
+oneroso o lo distribuye modificado, será única y exclusivamente responsable 
+de las Licencias que entregue.
+F.     En ningún caso, INFOTEC será responsable de la distribución que haga EL 
+USUARIO de EL SOFTWARE en los términos del punto 3 de esta Licencia. 
+6. En todo momento, EL USUARIO procurará conservar e incrementar el prestigio 
+de EL SOFTWARE, absteniéndose de realizar cualquier tipo de conducta  o acto 
+contrario a los términos y condiciones establecido en la presente licencia, para el 
+uso, aprovechamiento, modificación y distribución del mismo. Por otra parte, EL 
+USUARIO se abstendrá de utilizar el nombre de INFOTEC y/o el nombre del 
+SOFTWARE para publicitar productos derivados de éste o servicios que se 
+encuentren relacionados con su utilización o distribución, sin el consentimiento 
+expreso y por escrito del representante legal de INFOTEC.
+Asimismo EL USUARIO, se compromete a que no podrá utilizar, modificar y/o 
+distribuir el software de manera distinta a la forma, términos y condiciones 
+establecidos en la presente Licencia, por lo que cualquier acción en tales términos 
+será considerada como nula.
+7. La presente Licencia tendrá una vigencia indefinida.
+8. En caso de que INFOTEC por si o terceras personas tenga conocimiento  de que 
+algún usuario y/o tercero usuario ha utilizado, modificado y distribuido EL 
+SOFTWARE que ampara la presente licencia, de manera distinta o en 
+contravención a los términos  y condiciones establecidas en la misma, como titular 
+de los derechos de autor protegidos en términos de la Ley Federal del Derecho de 
+Autor, llevará a cabo todas las acciones necesarias para abatir, restringir, minimizar 
+y nulificar dicha práctica, reservándose en todo momento el derecho de ejercer las 
+acciones legales en contra de dichas personas.
+Asimismo, cuando EL USUARIO incumpla con lo estipulado en la presente 
+Licencia, tan luego como dicha circunstancia sea del conocimiento de INFOTEC, 
+éste le retirará el licenciamiento, sin perjuicio de las acciones legales que ejercite 
+en su contra.
+9. Para todo lo no previsto en la presente Licencia, EL INFOTEC y EL USUARIO se 
+someterán a lo establecido en la Ley Federal del Derecho de Autor y su 
+Reglamento, al Código Civil Federal y al Código Penal Federal vigentes en los 
+Estados Unidos Mexicanos.
+10. Para la interpretación en caso de duda o controversia derivada del 
+incumplimiento a los términos y condiciones establecidos en la presente Licencia, 
+El INFOTEC y EL USUARIO se someterán a las leyes y jurisdicción de los 
+Tribunales Civiles del Fuero Federal radicados en la Ciudad de México, Distrito 
+Federal, renunciando expresamente al fuero que pudiera corresponderles en virtud 
+de su domicilio presente o futuro.
+
+**************************************************************************************
+********
+/*
+ * SemanticWebBuilder es una plataforma para el desarrollo de portales y aplicaciones 
+de integración, 
+ * colaboración y conocimiento, que gracias al uso de tecnología semántica puede 
+generar contextos de 
+ * información alrededor de algún tema de interés o bien integrar información y 
+aplicaciones de diferentes 
+ * fuentes, donde a la información se le asigna un significado, de forma que pueda ser 
+interpretada y 
+ * procesada por personas y/o sistemas, es una creación original del Fondo de 
+Información y Documentación 
+ * para la Industria INFOTEC, cuyo registro se encuentra actualmente en trámite.
+ * 
+ * INFOTEC pone a su disposición la herramienta SemanticWebBuilder a través de su 
+licenciamiento abierto al público (‘open source’),
+ * en virtud del cual, usted podrá usarlo en las mismas condiciones con que INFOTEC lo 
+ha diseñado y puesto a su disposición;
+ * aprender de él; distribuirlo a terceros; acceder a su código fuente y modificarlo, 
+y combinarlo o enlazarlo con otro software,
+ * todo ello de conformidad con los términos y condiciones de la LICENCIA ABIERTA AL 
+PÚBLICO que otorga INFOTEC para la utilización
+ * del SemanticWebBuilder 4.0.
+ *
+ * INFOTEC no otorga garantía sobre SemanticWebBuilder, de ninguna especie y 
+naturaleza, ni implícita ni explícita,
+ * siendo usted completamente responsable de la utilización que le dé y asumiendo la 
+totalidad de los riesgos que puedan derivar
+ * de la misma.
+ *
+ * Si usted tiene cualquier duda o comentario sobre SemanticWebBuilder, INFOTEC pone a 
+su disposición la siguiente
+ * dirección electrónica:
+ *
+ *                                          http://www.webbuilder.org.mx
+ */

@@ -1,0 +1,179 @@
+<template method="setHeaders" Content-Type="text/html"  Cache-Control="no-cache" Pragma="no-cache"  response="{response}" />
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{user@getLanguage}" lang="{user@getLanguage}">
+    <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    <head>
+        <title>Semantic WebBuilder 4</title>
+
+        <style type="text/css">
+            @import "<webpath/>/swbadmin/js/dojo/dojo/resources/dojo.css";
+            /*@import "<webpath/>/swbadmin/js/dojo/dojo/resources/dnd.css";*/
+            @import "<webpath/>/swbadmin/js/dojo/dijit/themes/soria/soria.css";
+            @import "<webpath/>/swbadmin/css/swb.css";
+
+            /* pre-loader specific stuff to prevent unsightly flash of unstyled content */
+            #loader {
+                padding:0;
+                margin:0;
+                position:absolute;
+                top:0; left:0;
+                width:100%; height:100%;
+                background:#fff url('<webpath/>/swbadmin/images/loading.gif') no-repeat center center;
+                z-index:999;
+            }
+            #loaderInner {
+                padding:5px;
+                position:relative;
+                left:0;
+                top:0;
+                width:230px;
+                _background:#e1ebfb;
+                background:#94b9ef;
+                color:#000;
+            }
+            #status {
+                padding:5px;
+                position:absolute;
+                left:0px;
+                bottom:-30px;
+                background:#3c3;
+                text-align:center;
+                font-weight:bold;
+                color:#fff;
+                z-index:999;
+                width:100%;
+                opacity:.85; filter: alpha(opacity='85'); -moz-opacity: 0.85;
+                border:1px double black;
+            }
+        </style>
+
+        <script type="text/javascript" src="{webpath}/swbadmin/js/dojo/dojo/dojo.js" djConfig="parseOnLoad: true, isDebug: false, locale: '{user@getLanguage}'"></script>
+        <script type="text/javascript" charset="utf-8" src="{webpath}/swbadmin/js/swb.js"></script>
+        <script type="text/javascript" charset="utf-8" src="{webpath}/swbadmin/js/swb_admin.js"></script>
+        <script type="text/javascript">
+            dojo.addOnLoad
+            (
+                function()
+                {
+                    //alert("OnLoad");
+                    var start = new Date().getTime();
+                    //dojo.parser.parse(dojo.byId('main'));
+                    console.info("Total parse time: " + (new Date().getTime() - start) + "ms");
+
+                    //dojo.byId('loaderInner').innerHTML += " done.";
+                    setTimeout(function hideLoader()
+                    {
+                        var loader = dojo.byId('loader');
+                        dojo.fadeOut({ node: loader, duration:500,
+                            onEnd: function(){
+                                loader.style.display = "none";
+                            }
+                        }).play();
+                    }, 0);
+                }
+            );
+        </script>
+
+    </head>
+    <body class="soria">
+        <!-- basic preloader: -->
+        <div id="loader"><div id="loaderInner">Loading Semantic WebBuilder Ontology Editor... </div></div>
+
+<!--
+        <div dojoType="dojo.data.ItemFileWriteStore" jsId="sitesStore" url="{webpath}/swbadmin/jsp/Sites.jsp"></div>
+-->
+        <!-- "main" BorderContainer just contains page title and another BorderContainer -->
+        <div id="main" dojoType="dijit.layout.BorderContainer">
+
+            <!-- toolbar with new mail button, etc. -->
+            <div dojoType="dijit.Toolbar" region="top" style="height:25px">
+                <include src="/swbadmin/jsp/toolBar.jsp?model=SWBOntEdit&id=Menus"/>
+            </div>
+            <!-- end toolbar -->
+
+            <!-- "mainSplit" BorderContainer has all the real content -->
+            <div dojoType="dijit.layout.BorderContainer" liveSplitters="false" design="sidebar" region="center" id="mainSplit">
+
+                <!-- "leftSplit" BorderContainer has all the real content -->
+                <div dojoType="dijit.layout.BorderContainer" duration="200" minSize="20" style="width: 250px;" splitter="true" region="leading" id="leftSplit">
+<!--
+                    <input dojoType="dijit.form.ComboBox"
+                           value="Global"
+                           class="medium"
+                           store="sitesStore"
+                           searchAttr="name"
+                           style="width: 250px;"
+                           name="state2"
+                           id="sitesComboBox"
+                           region="top"
+                           />
+-->
+                    <div dojoType="dijit.layout.AccordionContainer"  id="leftAccordion" region="center" splitter="true">
+
+                        <div dojoType="dijit.layout.AccordionPane" title="Classes" selected="true">
+                            <include src="/swbadmin/jsp/treeWidget.jsp?id=mclass"/>
+                        </div>
+
+                        <div dojoType="dijit.layout.AccordionPane" title="Propiedades">
+                            <include src="/swbadmin/jsp/treeWidget.jsp?id=mprop"/>
+                        </div>
+
+                    </div><!-- end AccordionContainer -->
+
+                    <div id="vprop" dojoType="dijit.TitlePane" title="View Properties" class="admViewProperties" open="false" duration="150" minSize_="20" splitter_="true" region="bottom">
+                        View Properties ...
+                        <script type="dojo/method" event="postCreate" args="" >
+                            if(!this.open){
+                                this.hideNode.style.display=this.wipeNode.style.display="none";
+                            }
+                            this._setCss();
+                            dojo.setSelectable(this.titleNode,false);
+                            dijit.setWaiState(this.containerNode,"labelledby",this.titleNode.id);
+                            dijit.setWaiState(this.focusNode,"haspopup","true");
+                            var _1=this.hideNode,_2=this.wipeNode;
+                            this._wipeIn=dojo.fx.wipeIn({
+                                node:this.wipeNode,
+                                duration:this.duration,
+                                beforeBegin:function(){
+                                    _1.style.display="";
+                                },
+                                onEnd:function(){
+                                    //alert("open");
+                                    dijit.byId("leftSplit").layout();
+                                }
+                                });
+                            this._wipeOut=dojo.fx.wipeOut({
+                                node:this.wipeNode,
+                                duration:this.duration,
+                                onEnd:function(){
+                                    _1.style.display="none";
+                                    //alert("close");
+                                    dijit.byId("leftSplit").layout();
+                                }
+                                });
+                            //this.inherited(arguments);
+                        </script>
+                    </div>
+                </div><!-- leftsplit -->
+
+                        <!-- top tabs (marked as "center" to take up the main part of the BorderContainer) -->
+                <div dojoType="dijit.layout.TabContainer" region="center" id="tabs" jsId="tabs">
+                    <!-- sixth upper tab -->
+                    <div id="swbPreviewTab" dojoType="dijit.layout.ContentPane" title="Preview" style="display:none; padding:10px; " closable="false" href_="{webpath}/swb">
+                       <!-- <iframe id="swbPreviewFrame" dojoType_="dijit.layout.ContentPane" src="{webpath}/swb/SWBAdmin/Work_Admin" width="100%" height="100%" frameborder="0" ></iframe>-->
+                    </div>
+                </div><!-- end of region="center" TabContainer -->
+            </div> <!-- end of "mainSplit" BorderContainer -->
+        </div><!-- end of "main" BorderContainer -->
+        <!-- dialog -->
+        <div dojoType="dijit.Dialog" style="display:none;" id="swbDialog" title="Agregar" onFocus="hideApplet(true);" onBlur="if(!this.open)hideApplet(false);" >
+            <div dojoType="dojox.layout.ContentPane" id="swbDialogImp" executeScripts="true">
+                Cargando...
+            </div>
+        </div>
+        <div id="status" dojoType="dojox.layout.ContentPane" executeScripts="true">status...</div>
+
+    </body>
+</html>

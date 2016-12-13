@@ -1,0 +1,49 @@
+/*
+	Copyright (c) 2004-2009, The Dojo Foundation All Rights Reserved.
+	Available via Academic Free License >= 2.1 OR the modified BSD license.
+	see: http://dojotoolkit.org/license for details
+*/
+
+
+
+License
+
+Read the license terms here
+
+You may:
+
+    * Freely use Dojo to build applications and services
+    * Distribute Dojo as a part of commercial products
+    * Modify Dojo, make extensions to the toolkit, and produce your own add-on components with no requirement that you give your code away or contribute it back to the project
+
+Just to re-iterate, you can build commercial software with Dojo without obtaining a separate license or incurring any other obligations.
+
+Dojo is availble under either the terms of the modified BSD license or the Academic Free License version 2.1. Both licenses grant you broad rights to use and build on and with Dojo in both Open Source and commercial settings.
+Licensing Goals
+
+The licensing goals of the Dojo Foundation are to:
+
+    * Encourage adoption
+    * Discourage political contention
+    * Encourage collaboration and integration with other projects and products
+    * Be transparent and responsive to the community
+
+Dojo's licensing is designed to be simple understand and accept. The toolkit is not encumbered by opaque intellectual property statements, questionable code lineages, or IP compatibility concerns. The AFL and BSD licenses we use gives you the right to build both Open Source and commercial products without owning anyone anything or potentially running afoul of "viral" licensing clauses.
+
+Dojo's "dual licensing" is different than that of many Open Source projects in that the terms of both licenses are Open Source and extremely permissive. There are no royalties or commercial use clauses to complicate things. In almost every case, you will not need to choose anything other than the AFL and in the common case you need not do anything to denote this choice of license. Many people and organizations are more familiar with the BSD license, and we encourage those people to use Dojo under those terms if it suits them better. If you have questions regarding Dojo licensing, please do not hesitate to contact Alex Russell, current President of the Dojo Foundation.
+
+Software licensing, and Open Source licensing in particular, is nothing short of a political and legal mine-field. Dojo's explicit licensing goal is to reduce barriers to adoption, therefore politically charged licenses are unacceptable and contributions offered under such terms aren't accepted. The Academic Free License was originally selected as it is close to "public domain" terms, does not require contributing changes back to the project, and has passed muster with corporate lawyers when used in previous projects. The BSD license was later added to avoid the problem of artificial ambiguity the FSF has created regarding the compatibility of the AFL and the (L)GPL.
+Foundation Policies That Protect Your Rights
+
+To ensure that the licenses used for Foundation projects (including Dojo) fully protect users of our projects from legal risk:
+
+    * All contributors much sign an Contributors License Agreement
+    * Commit privileges are only extended when CLAs have been submitted and committers are responsible for vetting the CLA status of all contributions they may commit, as per the Contributor IP Policies.
+    * All Dojo Foundation projects must release their code under the terms of the Academic Free License v2.1
+    * Foundation projects may release their code under other (parallel) terms with the agreement of the community and so long as they are compatible with the Foundation's licensing goals (as stated above) and with the OSI's Open Source Definition . Such dual-licensing agreements must be approved by the Foundation's Board of Directors.
+
+The Role of the Foundation
+
+Dojo is Open Source software, distributed by the non-profit Dojo Foundation which has been set up for the purpose of providing a vendor-neutral owner of Dojo intellectual property. In order to ensure to users of Foundation projects that there is no ambiguity or hidden liability regarding the use of Foundation code, all contributors are required to provide signed CLAs which ensure that the Dojo Foundation has airtight rights to all of the contributions which comprise Foundation projects. The result is that users of projects hosted at the Dojo Foundation can rest easier knowing that there aren't intellectual property time-bombs lurking below the surface.
+
+All committers on Dojo Foundation projects have a vote in Foundation matters, including those regarding licensing decisions. There is no chance for "surprise" license changes or for a single entity to "take Dojo commercial" by unilaterally changing the licensing terms. The Foundation is run by contributors, operates in a transparent way, and is funded exclusively by donations. See the Foundation page for more information.

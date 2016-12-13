@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<db xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <table name="swb_longs">
+        <column id="id" type="INTEGER" size="11" acceptNulls="false"/>
+        <column id="data" type="CLOB" acceptNulls="true"/>
+        <column id="graphid" type="INTEGER" size="11" acceptNulls="false"/>
+    </table>
+    <primarykey table="swb_longs">
+	<colpk id="id"/>
+    </primarykey>
+    <index name="longs_indexGRAPHID" table="swb_longs" >
+	<colindex id="graphid"/>
+    </index>
+</db>
+

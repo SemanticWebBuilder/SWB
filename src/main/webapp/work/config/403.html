@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Login</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <link href="images/estilo.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body onload="document.login.wb_username.focus();">
+
+        <div id="centrado">
+            <div id="html-gral">
+                <div id="html-contenido">
+                    <h1>Acceso restringido</h1>
+                    <h2>La p&aacute;gina solicitada esta restringida para su nivel de acceso.</h2>
+                    <ul>
+                        <li>Si usted no se ha firmado o quiere cambiar de usuario.        </li>
+                    </ul>
+                    <form name="login" action="" method="post">
+                        Usuario:
+                        <input type="text" name="wb_username" size="10" autocomplete="off" />
+                        Contrase&ntilde;a:
+                        <input type="password" name="wb_password" size="10" autocomplete="off" />
+                        <input type="submit" name="Submit" value="&gt;&gt;" />
+                        <SWBREMEMBER>
+                    </form>
+                    <ul>
+                        <li>
+                            Contactar al administrador del sitio <a href="mailto:webbuilder@infotec.com.mx">aqui</a>.
+                        </li>
+                        <li>
+                            Haga clic en el bot&oacute;n <a href="javascript:history.go(-1)">Atr&aacute;s</a> para intentar otro v&iacute;nculo.
+                        </li>
+                    </ul>
+
+                    <div id="semius">
+                        <img src="images/semius-restringe.gif" width="215" height="190"></div>
+                </div>
+            </div>
+        </div>
+        <SWBSECURITY>
+    </body>
+</html>

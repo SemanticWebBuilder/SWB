@@ -1,0 +1,429 @@
+/* CSS Document */
+
+body {
+	background: url(fondoBody.jpg) repeat-x;
+	font-family: Arial, Helvetica, sans-serif;
+	margin:0px;
+	padding:0px;
+}
+h1, h3 {
+	padding:0px;
+	margin:0px;
+}
+#general{
+	height:700px;
+	background: url(fondoGeneral.jpg) no-repeat;
+}
+/* ------------------------------- C A B E Z A -------*/
+#fecha{
+	font-size:12px;
+	color: #99FFFF;
+	text-align:right;
+	width:99%;
+	padding-top:10px;
+}
+#bienvenido,
+#nombre{
+	margin: 0px 0px 0px 300px;
+	font-weight:bold;
+	width:400px;
+	text-transform:capitalize;
+}
+#bienvenido {
+	line-height:18px;
+	font-size:22px;
+	color: #cce1f4;
+}
+#nombre h1{
+	line-height:35px;
+	font-size:30px;
+	color: #FFFFFF;
+}
+/* ------- SABIAS QUE ------*/
+#sabias{
+	color: #666;
+	width:300px;
+	height:100px;
+	margin: 45px 0px 0px 300px;
+}
+#sabias h2{
+	font-size:15px;
+	font-weight:bold;
+	padding:0px;
+	margin:0px;
+}
+#sabias p{
+	font-size:12px;
+	padding:0px;
+	margin:3px 0px 0px 0px;
+}
+/* ------- NOTICIAS --------*/
+#noticias {
+	left: 645px;
+	width: 250px;
+	top: 128px;
+	position:absolute;
+}
+#noticias h3{
+	font-size:15px;
+	font-weight:bold;
+	color:#336699;
+	text-transform: capitalize;
+}
+#noticias ul{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+#noticias li{
+	font-size:12px;
+	margin:7px 0px 0px 0px;
+}
+#noticias li a:link{
+	text-decoration:none;
+	color:#336699;
+	padding-left:8px;
+}
+#noticias li a:visited{
+	text-decoration:none;
+	color:#6699CC;
+	padding-left:8px;
+}
+#noticias li a:hover{
+	text-decoration:underline;
+	color:blue;
+	padding-left:8px;
+}
+#noticias li a:active{
+	text-decoration:underline;
+}
+#noticias li a span {
+	font-weight:bold;
+}
+/* ------------------------------- C A B E Z A -------*/
+/* ------------------------------- N O T A S ---------*/
+#notas{
+	left: 360px;
+	width: 240px;
+	top: 285px;
+	position:absolute;
+}
+#notas h2{
+	background:url(notas_tit.gif) no-repeat;
+	font-size:0px;
+	width:77px;
+	height:16px;
+	float:left;
+	color:#FFF;
+	margin-right:10px;
+}
+#notas textarea {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	margin-top:15px;
+	margin-left:15px;
+	width:223px;
+	height:158px;
+	border:none;
+	background:none;
+}
+/* ------------------- NOTAS BIUTT ------- */
+
+#notasEstilo ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+#notasEstilo ul li {
+	display:block;
+	border: #d9d9d9 solid 0px; /* antes 1px */
+	float:right; /* left */
+	font-size:12px;
+	text-align:center;
+	width:75px; /* antes 16 */
+	height:16px;
+	margin-right:25px; /*margin-left:3px;*/
+
+}
+#notasEstilo a {
+	color:#999;
+	width:16px;
+	/*font-family:"Times New Roman", Times, serif;*/
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Hover para Firefox */
+
+#notaBold:hover,
+#notaItalic:hover,
+#notaUnderline:hover,
+#notaMenor:hover,
+#notaMayor:hover
+{  
+	color:#666;
+	border:#999999 solid 1px;
+	background:#f5f5f7;
+}
+#notaColor:hover{
+	color:#666;
+	border:#CCCCCC solid 1px;
+	background: url(notas_color2.gif) no-repeat center;
+}
+
+/*Hover para Explorer */
+
+#notaBold a:hover,
+#notaItalic a:hover,
+#notaUnderline a:hover,
+#notaMenor a:hover,
+#notaMayor a:hover
+{  
+	color:#666;
+	background:#f5f5f7;
+}
+#notaColor a:hover{
+	color:#666;
+	background: url(notas_color2.gif) no-repeat center;
+}
+
+#notaBold a{
+	font-size: 12px;
+	font-weight:bold;
+	text-decoration:none;
+}
+#notaItalic a{
+	font-size: 12px;
+	font-style:italic;
+	text-decoration:none;
+}
+#notaUnderline a{
+	font-size: 12px;
+	text-decoration: underline;
+}
+#notaMenor a{
+	font-size: 10px;
+	text-decoration:none;
+	line-height:15px;
+}
+#notaMayor a{
+	font-size: 12px;
+	text-decoration:none;
+}
+#notaColor a{
+	font-size: 0px;
+	text-decoration:none;
+	line-height:15px;
+}
+#notaColor {
+	background:url(notas_color1.gif) no-repeat center;
+}
+/* guardar old 
+#notaGuardar:hover{ 
+	color:#666;
+	border:#CCCCCC solid 1px;
+	background: url(notas_save2.gif) no-repeat center;
+}
+#notaGuardar a:hover{
+	color:#666;
+	background: url(notas_save2.gif) no-repeat center;
+}
+#notaGuardar a{
+	font-size: 0px;
+	text-decoration:none;
+	line-height:15px;
+}
+#notaGuardar {
+	background:url(notas_save1.gif) no-repeat center;
+}
+guardar old */
+/* guardar SOLITO */
+#notaGuardar:hover{ 
+	border:#CCCCCC solid 0px; /* antes 1px */
+	background: url(notas_save2.gif) no-repeat right;
+}
+#notaGuardar a {
+	font-size: 12px;
+	text-decoration:none;
+	line-height:15px;
+}
+#notaGuardar a:hover {
+	color:#357e98
+}
+#notaGuardar {
+	background:url(notas_save1.gif) no-repeat right;
+}
+/* ------------------------------- N O T A S ---------*/
+/* ------------------------------- M O V S   ---------*/
+
+#movs{
+	border:#666666 solid 0px;
+	padding: 70px 0px 0px 0px;
+	width: 380px;
+}
+
+.mov-fecha{
+    width: 60px;
+}
+
+#movs table{
+	color:#336699;
+	font-size:11px;
+	border-collapse: collapse;
+	border-spacing:0px;
+	margin: 0px 0px 0px 15px;
+	padding:0px;
+}
+
+#movs caption{
+	font-size:15px;
+	font-weight:bold;
+	text-align:left;
+	padding-bottom:10px;
+	text-transform:capitalize;
+}
+
+#movs td {
+	height:19px;
+}
+
+#movs td a{
+	border-bottom:#FFF solid 1px;
+	display:block; 
+	text-decoration:none;
+}
+#movs td a:hover{
+	border-bottom:#FFF solid 1px;
+	display:block; 
+	text-decoration:underline;
+	color:blue;
+}
+
+.mov-recurso a{
+	width:170px;
+	padding-left:10px;
+	color:#336699;
+}
+.mov-editar a{
+	background:url(ico_edit.gif) center no-repeat;
+	width:15px;
+ 	color:#666; 
+	font-size:0px;
+	text-align:center;
+	line-height:14px; 
+}
+.mov-editar a:hover{
+	background:url(ico_edit2.gif) center no-repeat;
+	width:15px;
+ 	color:#666; 
+	font-size:0px;
+	text-align:center;
+	line-height:14px; 
+}
+.mov-plantilla a{
+	color:#6699CC;
+	padding-left:15px;
+	background: url(ico_plantilla.jpg) bottom left no-repeat;
+}
+/* ------------------------------- M O V S   ---------*/
+/* ------------------------------- A C C E S O S   ---*/
+#acceso{
+	width:380px;
+	margin-left:15px;
+	float:left;
+}
+#acceso h2{
+	color:#567e94;
+	font-size:15px;
+	font-weight:bold;
+	margin: 48px 0px 15px 0px;
+	padding:0px;
+	text-transform:capitalize;
+}
+#acceso h4{
+	padding:0px 0px 2px 18px;
+	margin:0px;
+}
+#acceso1, #acceso2, #acceso3, #acceso4{
+	width:25%;
+	float:left;
+}
+#acceso ul{
+	list-style:none;
+	margin: 0px 0px 0px 18px;
+	padding:0px;
+}
+#acceso li a, 
+#acceso h4{
+	color:#567e94;
+	text-decoration:none;
+	font-size:11px;
+}
+#acceso li a:link{
+}
+#acceso li a:hover{
+	color:#336699;
+	text-decoration:underline;
+	font-size:11px;
+}
+#acceso li a:visited{
+}
+#acceso li a:active{
+	color:#99ccff;
+}
+#acceso1 h4{
+	background: url(ico_acceso_server.gif) no-repeat left top;
+}
+#acceso2 h4{
+	background: url(ico_acceso_plantilla.gif) no-repeat left top;
+}
+#acceso3 h4{
+	background: url(ico_acceso_recurso.gif) no-repeat left top;
+}
+#acceso4 h4{
+	background: url(ico_acceso_contenido.gif) no-repeat left top;
+}
+
+/* ------------------------------- A C C E S O S   ---*/
+/* ----------------------- C O M P A R T I D O S   ---*/
+#compartidos{
+	width:200px;
+	margin-left:15px;
+	float:left;
+}
+#compartidos h2{
+	color:#567e94;
+	font-size:15px;
+	font-weight:bold;
+	margin: 48px 0px 10px 0px;
+	padding:0px;
+	text-transform:capitalize;
+}
+#compartidos ul{
+	list-style:none;
+	margin:0px;
+	padding:0px;
+}
+#compartidos li{
+	background: url(bullet_compartidos.gif) no-repeat left;
+	margin:0px 0px 0px 5px;
+	padding:0px 0px 0px 8px;
+}
+#compartidos li a{
+	color:#567e94;
+	text-decoration:none;
+	font-size:11px;
+}
+#compartidos li a:link{
+}
+#compartidos li a:hover{
+	color:#336699;
+	text-decoration:underline;
+	font-size:11px;
+}
+#compartidos li a:visited{
+}
+#compartidos li a:active{
+	color:#99ccff;
+}
+
+/* ----------------------- C O M P A R T I D O S   ---*/

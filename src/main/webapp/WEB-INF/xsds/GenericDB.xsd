@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="column">
+		<xs:complexType>
+			<xs:attribute name="id" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"/>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="CHAR"/>
+						<xs:enumeration value="VARCHAR"/>
+						<xs:enumeration value="NUMERIC"/>
+						<xs:enumeration value="BIT"/>
+						<xs:enumeration value="BLOB"/>
+						<xs:enumeration value="SMALLINT"/>
+                                                <xs:enumeration value="BIGINT"/>
+						<xs:enumeration value="INTEGER"/>
+						<xs:enumeration value="FLOAT"/>
+						<xs:enumeration value="DOUBLE"/>
+						<xs:enumeration value="DATE"/>
+						<xs:enumeration value="TIME"/>
+						<xs:enumeration value="TIMESTAMP"/>
+						<xs:enumeration value="CLOB"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="size" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:short"/>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="signed" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:boolean"/>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="acceptNulls" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:boolean"/>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="default" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"/>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="order" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="ASC"/>
+						<xs:enumeration value="DESC"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="colpk">
+		<xs:complexType>
+			<xs:attribute name="id" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"/>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="colindex">
+		<xs:complexType>
+			<xs:attribute name="id" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"/>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="order" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="ASC"/>
+						<xs:enumeration value="DESC"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="columns">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="colpk" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="db">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="table"/>
+				<xs:element ref="primarykey"/>
+				<xs:element ref="index"/>
+				<xs:element ref="foreignkey"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="foreignkey">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="columns"/>
+				<xs:element ref="reference"/>
+			</xs:sequence>
+			<xs:attribute name="table" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"/>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="index">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="colindex" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="type" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="UNIQUE"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="name" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"/>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="table" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"/>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="primarykey">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="colpk" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="table" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"/>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="reference">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="columns"/>
+			</xs:sequence>
+			<xs:attribute name="table" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"/>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="table">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="column" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"/>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
