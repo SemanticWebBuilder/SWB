@@ -24,3 +24,5 @@ buildNumber.properties
 .mvn/timing.properties
 .idea/
 *.iml
+
+!src/main/webapp
