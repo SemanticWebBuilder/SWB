@@ -1,10 +1,8 @@
-*.class
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
 
@@ -24,5 +22,3 @@ buildNumber.properties
 .mvn/timing.properties
 .idea/
 *.iml
-
-!src/main/webapp
