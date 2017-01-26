@@ -3,6 +3,7 @@
 <%@page import="org.semanticwb.portal.api.SWBResourceURL"%>
 <%@page import="org.semanticwb.SWBPlatform"%>
 <%@page import="org.semanticwb.model.PFlow"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <jsp:useBean id="paramRequest" scope="request" type="org.semanticwb.portal.api.SWBParamRequest"/>
 <%
 PFlow af = (PFlow) SWBPlatform.getSemanticMgr().getOntology().getGenericObject(request.getParameter("suri"));
@@ -34,7 +35,7 @@ save.setParameter("id", resID);
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Descripción *:</label>
+                                    <label>DescripciÃ³n *:</label>
                                 </td>
                                 <td>
                                     <textarea name="description" id="activityDescription<%= resID %>" data-dojo-type="dijit.form.Textarea"></textarea>
@@ -42,11 +43,11 @@ save.setParameter("id", resID);
                             </tr>
                         </table>
                     </fieldset>
-                    <fieldset><legend>Duración</legend>
+                    <fieldset><legend>DuraciÃ³n</legend>
                         <table>
                             <tr>
                                 <td>
-                                    <label>Días:</label>
+                                    <label>DÃ­as:</label>
                                 </td>
                                 <td>
                                     <input name="days" id="activityDays<%= resID %>" data-dojo-type="dijit.form.TextBox" style="width:3em;"/>

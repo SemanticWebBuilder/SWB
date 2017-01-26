@@ -3,6 +3,7 @@
 <%@page import="org.semanticwb.portal.api.SWBResourceURL"%>
 <%@page import="org.semanticwb.SWBPlatform"%>
 <%@page import="org.semanticwb.model.PFlow"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <jsp:useBean id="paramRequest" scope="request" type="org.semanticwb.portal.api.SWBParamRequest"/>
 <%
 PFlow af = (PFlow) SWBPlatform.getSemanticMgr().getOntology().getGenericObject(request.getParameter("suri"));
@@ -19,7 +20,7 @@ save.setParameter("id", resID);
 <div id="addTransitionDialog_<%= resID %>" data-dojo-type="dijit.Dialog" title="Agregar secuencia">
     <div class="swbform">
         <div id="addTransitionTabContainer_<%= resID %>" data-dojo-type="dijit.layout.TabContainer" style="width: 400px; height: 300px;">
-            <div data-dojo-type="dijit.layout.ContentPane" title="TransiciÛn" id="infoPane_<%= resID %>">
+            <div data-dojo-type="dijit.layout.ContentPane" title="Transici√≥n" id="infoPane_<%= resID %>">
                 <form data-dojo-type="dijit.form.Form" id="addTransition_form<%= resID %>">
                     <input type="hidden" name="uuid" id="uuidFlow_<%= resID %>" />
                     <input type="hidden" name="action" id="flowAction_<%= resID %>" />
@@ -39,7 +40,7 @@ save.setParameter("id", resID);
                                 </td>
                                 <td>
                                     <select name="linkType" id="linkAct_<%= resID %>" data-dojo-type="dijit/form/Select" required="true">
-                                        <option value="authorized">AprobaciÛn</option>
+                                        <option value="authorized">Aprobaci√≥n</option>
                                         <option value="unauthorized">Rechazo</option>
                                     </select>
                                 </td>
@@ -55,7 +56,7 @@ save.setParameter("id", resID);
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="checkbox" id="autoPublish_<%= resID %>" data-dojo-type="dijit.form.CheckBox"/><label>Publicar autom·ticamente</label>
+                                    <input type="checkbox" id="autoPublish_<%= resID %>" data-dojo-type="dijit.form.CheckBox"/><label>Publicar autom√°ticamente</label>
                                 </td>
                             </tr>
                             <tr>

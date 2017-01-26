@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : view
     Created on : 04-ago-2016, 16:25:14
     Author     : hasdai
@@ -14,6 +14,7 @@
 <%@page import="org.semanticwb.model.PFlow"%>
 <%@page import="org.semanticwb.model.User"%>
 <%@page import="org.semanticwb.portal.api.SWBResourceURL"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <jsp:useBean id="paramRequest" scope="request" type="org.semanticwb.portal.api.SWBParamRequest"/>
 <%
 PFlow af = (PFlow) SWBPlatform.getSemanticMgr().getOntology().getGenericObject(request.getParameter("suri"));
@@ -41,43 +42,43 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
             background-color: none !important;
             color: black !important;
         }
-        
+
         .activityTable {
             width: 100%;
         }
-        
+
         .activityTable th {
             width:20%;
             padding: 5px;
         }
-        
+
         .activityTable th.actions {
             width:10% !important;
         }
-        
+
         .activityTable th.steps {
             width:5% !important;
         }
-        
+
         .activityTable tbody tr:nth-child(even) {
            background-color: #E1EBFB;
         }
-        
+
         rect.docActivity {
             -webkit-user-select: none; /* webkit (safari, chrome) browsers */
             -moz-user-select: none; /* mozilla browsers */
             -khtml-user-select: none; /* webkit (konqueror) browsers */
             -ms-user-select: none; /* IE10+ */
         }
-        
+
         div.svgContainer {
             width: 100%;
         }
-        
+
         div.svgContainer svg {
             width: 1280px;
         }
-        
+
         svg text {
             -webkit-user-select: none;
                -moz-user-select: none;
@@ -116,7 +117,7 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                                         <th class="steps">Paso</th>
                                         <th class="actions"></th>
                                         <th>Actividad</th>
-                                        <th>Descripción</th>
+                                        <th>DescripciÃ³n</th>
                                         <th>Usuarios</th>
                                         <th>Roles</th>
                                     </tr>
@@ -139,19 +140,19 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                                 location: "<%= SWBPlatform.getContextPath() %>/swbadmin/jsp/SWBAWorkflow/",
                                 main: "workflow"
                             }
-                            ]}, 
+                            ]},
                         ['d3','workflow',
-                        'dojo/domReady!', 'dojo/dom', 'dojo/request/xhr', 
+                        'dojo/domReady!', 'dojo/dom', 'dojo/request/xhr',
                         'dojox/widget/Standby', 'dijit/registry',
                         'dijit/form/CheckBox', 'dojo/dom-construct',
                         'dojox/grid/enhanced/plugins/IndirectSelection'],
                     function(d3, workflowApp, ready, dom, xhr, StandBy, registry, CheckBox, domConstruct) {
                         var standby = new StandBy({target: "container_<%= resID %>"});
-                    
+
                         document.body.appendChild(standby.domNode);
                         standby.startup();
                         standby.show();
-                        
+
                         //Create users and roles data for grids
                         <%
                         String usrdata = "[]";
@@ -184,7 +185,7 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                         %>
                         var usrData_<%= resID %> = <%= usrdata %>;
                         var roleData_<%= resID %> = <%= roledata %>;
-                        
+
                         xhr("<%= data %>", {
                             handleAs: "json"
                         }).then(function(_data) {

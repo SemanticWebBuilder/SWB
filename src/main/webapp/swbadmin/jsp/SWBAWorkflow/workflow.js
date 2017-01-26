@@ -468,14 +468,14 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
         return "#bookOk";
       }
     });
-    
+
     test.append("svg:title")
     .text(function(d) { return d.name; });
-    
+
     //Fix to get event working on chrome
     var cc = clickcancel();
     g.call(cc);
-    
+
     cc.on("dblclick", function(d, i) {
         if (d.type==="Activity") {
             setActivityFormData(d);
@@ -535,7 +535,7 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
     renderGraph(activitiesModel, "svgContainer_"+_appID);
     dom.byId("filterVersion_"+_appID).innerHTML = _flowVersion;
   };
-  
+
   function clickcancel() {
     // we want to a distinguish single/double click
     // details http://bl.ocks.org/couchand/6394506
@@ -572,7 +572,7 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
     };
     return d3.rebind(cc, event, 'on');
   };
-  
+
   function toggleEndFlowOptions(enable) {
     if (enable) {
       domAttr.set("endflowRadio_"+_appID, "checked", true);
@@ -700,6 +700,9 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
       valid = false;
       msg = "Verifique que ha introducido los campos requeridos";
     }
+
+    //Check form restrictions
+    //Reject flow type must select send to content creator by default
 
     if (valid) {
       var payload = registry.byId('addTransition_form'+_appID).getValues();
@@ -1020,6 +1023,15 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
               registry.byId("redirectflowRadio_"+_appID).on("change", function(isChecked) {
                 if (isChecked) {
                   toggleSendToOtherOptions(true);
+                }
+              });
+
+              registry.byId("linkAct_"+_appID).on("change", function(val) {
+                if ("unauthorized" === val) {
+                    toggleSendToOtherOptions(true);
+                    registry.byId("endflowRadio_"+_appID).set("disabled",true);
+                } else {
+                  registry.byId("endflowRadio_"+_appID).set("disabled",false);
                 }
               });
 
