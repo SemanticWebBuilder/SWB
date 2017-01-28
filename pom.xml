@@ -6,34 +6,40 @@
     <artifactId>SWB</artifactId>
     <version>5.0-SNAPSHOT</version>
     <packaging>war</packaging>
-
     <name>SWB</name>
+
+    <repositories>
+      <repository>
+          <id>jitpack.io</id>
+          <url>https://jitpack.io</url>
+      </repository>
+    </repositories>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    
+
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>com.github.SemanticWebBuilder</groupId>
             <artifactId>SWBNLP</artifactId>
-            <version>${project.version}</version>
+            <version>jitpack-dependencies-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>com.github.SemanticWebBuilder</groupId>
             <artifactId>SWBAdmin</artifactId>
-            <version>${project.version}</version>
+            <version>5.0.0-alpha</version>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>com.github.SemanticWebBuilder</groupId>
             <artifactId>SWBTripleStoreLevelDB</artifactId>
-            <version>${project.version}</version>
+            <version>jitpack-dependencies-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>com.github.SemanticWebBuilder</groupId>
             <artifactId>SWBTripleStoreMongoDB</artifactId>
-            <version>${project.version}</version>
+            <version>jitpack-dependencies-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>hsqldb</groupId>
@@ -41,14 +47,14 @@
             <version>1.8.0.10</version>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>com.github.SemanticWebBuilder</groupId>
             <artifactId>SWBOffice</artifactId>
-            <version>${project.version}</version>
+            <version>jitpack-dependencies-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>com.github.SemanticWebBuilder</groupId>
             <artifactId>SWB3Resources</artifactId>
-            <version>${project.version}</version>
+            <version>jitpack-dependencies-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
