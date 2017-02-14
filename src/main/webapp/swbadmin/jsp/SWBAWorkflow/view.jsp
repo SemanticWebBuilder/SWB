@@ -28,15 +28,15 @@ save.setParameter("suri", request.getParameter("suri"));
 save.setParameter("id", resID);
 
 User user = SWBContext.getAdminUser();
-String pathAct = SWBPlatform.getContextPath()+"/swbadmin/jsp/SWBAWorkflow/activity.jsp";
-String pathTrans = SWBPlatform.getContextPath()+"/swbadmin/jsp/SWBAWorkflow/transition.jsp";
+String pathAct = "/swbadmin/jsp/SWBAWorkflow/activity.jsp";
+String pathTrans = "/swbadmin/jsp/SWBAWorkflow/transition.jsp";
 
 if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) && null != user) {
     %>
     <script>require(['dijit/Dialog', 'dijit/registry', 'dijit/form/Select']);</script>
-    <link href="<%= SWBPortal.getContextPath() %>/swbadmin/js/dojo/dojox/grid/enhanced/resources/EnhancedGrid.css" rel="stylesheet" />
-    <link href="<%= SWBPortal.getContextPath() %>/swbadmin/js/dojo/dojox/grid/resources/soriaGrid.css" rel="stylesheet" />
-    <link href="<%= SWBPortal.getContextPath() %>/swbadmin/css/fontawesome/font-awesome.css" rel="stylesheet" />
+    <link href="/swbadmin/js/dojo/dojox/grid/enhanced/resources/EnhancedGrid.css" rel="stylesheet" />
+    <link href="/swbadmin/js/dojo/dojox/grid/resources/soriaGrid.css" rel="stylesheet" />
+    <link href="/swbadmin/css/fontawesome/font-awesome.css" rel="stylesheet" />
     <style>
         .soria .dojoxGridRowOver .dojoxGridCell {
             background-color: none !important;
