@@ -264,9 +264,9 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
       },
       updateItem: function(nitem) {
         if (nitem !== undefined) {
-          var idx = _items.findIndex(function(item) { return item.uuid === nitem.uuid; });
+          let idx = _items.findIndex(item => { return item.uuid === nitem.uuid; });
           if (idx > -1) {
-            var oldname = _items[idx].name;
+            let oldname = _items[idx].name;
             _items.splice(idx, 1, nitem);
             updateLinkNodeEnds(oldname, nitem.name);
             setupLinks();
@@ -328,21 +328,23 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
         setCoordinates();
       },
       getItems4Select: function(itemToSkip) {
-        let temp = _items.filter((item) => { return item.type==="Activity"; }), ret = temp;
+        let temp = _items.filter(item => { return item.type==="Activity"; }),
+            ret = temp;
 
         if (itemToSkip && itemToSkip.length) {
-          ret = temp.filter((item) => {
+          ret = temp.filter(item => {
             return item.uuid !== itemToSkip;
           });
         }
 
-        temp =  ret.map(function(item) {
+        temp =  ret.map(item => {
           return {
             label: item.name,
             value: item.uuid,
             selected: false
           };
         });
+
         return temp;
       },
       addLink: function(item) {
@@ -357,26 +359,26 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
       getLinks: function(linkType, start, end) {
         var ret = _links;
 
-        if (linkType) {
-          ret = ret.filter(function(item){return item.type===linkType;});
+        if (linkType && linkType.length) {
+          ret = ret.filter(item => { return item.type===linkType; });
         }
 
-        if (start) {
-          ret = ret.filter(function(item) {
-            return item.from !== "Terminar flujo" && item.from !== "Generador de contenido" && item.from == start;
+        if (start && start.length) {
+          ret = ret.filter(item => {
+            return item.type != "startLink" && item.from !== "Terminar flujo" && item.from !== "Generador de contenido" && item.from == start;
           });
         }
 
-        if (end) {
-          ret = ret.filter(function(item) {
-            return item.to !== "Terminar flujo" && item.to !== "Generador de contenido" && item.to == end;
+        if (end && end.length) {
+          ret = ret.filter(item => {
+            return item.type != "startLink" && item.to !== "Terminar flujo" && item.to !== "Generador de contenido" && item.to == end;
           });
         }
 
         return ret;
       },
       getLink: function(uid) {
-        return _links.find(function(item) { return item.uuid === uid; });
+        return _links.find(item => { return item.uuid === uid; });
       },
       updateLink: function(nitem) {
         if (nitem !== undefined) {
@@ -697,60 +699,61 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
     gd1 = registry.byId("sequenceNotificationUsers_"+_appID),
     gd2 = registry.byId("sequenceNotificationRoles_"+_appID);
 
-
-    //Form validation passed, check users and roles
-    if(res.isSuccessful()) {
-      //Get users or roles selected
-      valid = true;
-      itemUsers = gd1.selection.getSelected();
-      itemRoles = gd2.selection.getSelected();
-    } else if (res.hasMissing()) {
-      valid = false;
-      msg = "Verifique que ha introducido los campos requeridos";
+    if (!res.isSuccessful()) {
+      if (res.hasMissing()) {
+        alert("Verifique que ha introducido los campos requeridos");
+      } else {
+        alert("Verifique que la información proporcionada sea correcta");
+      }
+      return;
     }
 
-    //Check form restrictions
-    //Reject flow type must select send to content creator by default
+    //Get users or roles selected
+    itemUsers = gd1.selection.getSelected();
+    itemRoles = gd2.selection.getSelected();
 
-    if (valid) {
-      var payload = registry.byId('addTransition_form'+_appID).getValues();
-      payload.users = itemUsers.map(function(i) { return i.login; });
-      payload.roles = itemRoles.map(function(i) { return i.id; });
-      payload.type = payload.linkType;
+    var payload = registry.byId('addTransition_form'+_appID).getValues();
+    payload.users = itemUsers.map(function(i) { return i.login; });
+    payload.roles = itemRoles.map(function(i) { return i.id; });
+    payload.type = payload.linkType;
 
-      //Update flow target
-      if (domAttr.get("startflowRadio_"+_appID,"checked")) {
-        payload.to = activitiesModel.getItemByName("Generador de contenido").uuid;
-      }
-      if (domAttr.get("endflowRadio_"+_appID,"checked")) {
-        payload.to = activitiesModel.getItemByName("Terminar flujo").uuid;
-      }
-
-      if (action === "update") {
-        var uid = domAttr.get("uuidFlow_"+_appID, "value");
-        payload.uuid = uid;
-        activitiesModel.updateLink(payload);
-      } else if (action === "insert") {
-        payload.from = activitiesModel.getItem(payload.from).name;
-        payload.to = activitiesModel.getItem(payload.to).name;
-        //TODO: revisar que no se inserten dos secuencias iguales
-        activitiesModel.addLink(payload);
-      }
-
-      gd1.selection.clear();
-      gd2.selection.clear();
-      domAttr.set("uuidFlow_"+_appID, "value", "");
-      domAttr.set("flowAction_"+_appID, "value", "");
-
-      //Close dialog and update activity select in sequence dialog
-      registry.byId('addTransitionDialog_'+_appID).reset();
-      registry.byId('addTransitionTabContainer_'+_appID).selectChild(registry.byId('infoPane_'+_appID));
-      hideDialog('addTransitionDialog_'+_appID);
-
-      updateUI();
-    } else {
-      alert(msg);
+    //Update flow target
+    if (domAttr.get("startflowRadio_"+_appID,"checked")) {
+      payload.to = activitiesModel.getItemByName("Generador de contenido").uuid;
     }
+    if (domAttr.get("endflowRadio_"+_appID,"checked")) {
+      payload.to = activitiesModel.getItemByName("Terminar flujo").uuid;
+    }
+
+    //Update from and to values
+    payload.from = activitiesModel.getItem(payload.from).name;
+    payload.to = activitiesModel.getItem(payload.to).name;
+
+    let links = activitiesModel.getLinks(payload.type, payload.from, payload.to).concat(activitiesModel.getLinks(payload.type, payload.to, payload.from));
+    if (links.length) {
+      alert("Ya existe una secuencia entre "+payload.from+" y "+payload.to);
+      return;
+    }
+
+    if (action === "update") {
+      var uid = domAttr.get("uuidFlow_"+_appID, "value");
+      payload.uuid = uid;
+      activitiesModel.updateLink(payload);
+    } else if (action === "insert") {
+      activitiesModel.addLink(payload);
+    }
+
+    gd1.selection.clear();
+    gd2.selection.clear();
+    domAttr.set("uuidFlow_"+_appID, "value", "");
+    domAttr.set("flowAction_"+_appID, "value", "");
+
+    //Close dialog and update activity select in sequence dialog
+    registry.byId('addTransitionDialog_'+_appID).reset();
+    registry.byId('addTransitionTabContainer_'+_appID).selectChild(registry.byId('infoPane_'+_appID));
+    hideDialog('addTransitionDialog_'+_appID);
+
+    updateUI();
   };
 
   function saveActivity() {
@@ -1059,8 +1062,6 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
 
               registry.byId("fromAct_"+_appID).on("change", function(val) {
                 registry.byId("toAct_"+_appID).set("options", activitiesModel.getItems4Select(val)).reset();
-                //console.log("Must change target activities removing selected value");
-                //console.log(activitiesModel.getItems4Select(val));
               });
 
               updateUI();
