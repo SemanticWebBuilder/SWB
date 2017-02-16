@@ -26,23 +26,23 @@ save.setParameter("id", resID);
                     <input type="hidden" name="action" id="flowAction_<%= resID %>" />
                     <fieldset>
                         <table>
+                          <tr>
+                              <td>
+                                  Tipo:
+                              </td>
+                              <td>
+                                  <select name="linkType" id="linkAct_<%= resID %>" data-dojo-type="dijit/form/Select" required="true">
+                                      <option value="authorized">Aprobación</option>
+                                      <option value="unauthorized">Rechazo</option>
+                                  </select>
+                              </td>
+                          </tr>
                             <tr>
                                 <td>
                                     Origen *:
                                 </td>
                                 <td>
                                     <select name="from" id="fromAct_<%= resID %>" data-dojo-type="dijit/form/Select" required="true"></select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Tipo:
-                                </td>
-                                <td>
-                                    <select name="linkType" id="linkAct_<%= resID %>" data-dojo-type="dijit/form/Select" required="true">
-                                        <option value="authorized">Aprobación</option>
-                                        <option value="unauthorized">Rechazo</option>
-                                    </select>
                                 </td>
                             </tr>
                         </table>

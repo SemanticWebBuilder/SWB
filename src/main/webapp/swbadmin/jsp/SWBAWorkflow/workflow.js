@@ -144,7 +144,7 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
       },
       getItems4Select: function() {
         if (store.objectStore.data.length) {
-          return store.objectStore.data.map(function(item) {
+          return store.objectStore.data.map((item) => {
             return {
               label: item.name,
               value: item.uuid,
@@ -327,15 +327,23 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
         setupLinks();
         setCoordinates();
       },
-      getItems4Select: function() {
-        var t =  _items.filter(function(item){return item.type==="Activity";}).map(function(item) {
+      getItems4Select: function(itemToSkip) {
+        let temp = _items.filter((item) => { return item.type==="Activity"; }), ret = temp;
+
+        if (itemToSkip && itemToSkip.length) {
+          ret = temp.filter((item) => {
+            return item.uuid !== itemToSkip;
+          });
+        }
+
+        temp =  ret.map(function(item) {
           return {
             label: item.name,
             value: item.uuid,
             selected: false
           };
         });
-        return t;
+        return temp;
       },
       addLink: function(item) {
         if (item !== undefined) {
@@ -841,6 +849,20 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
         label: "Agregar secuencia",
         iconClass:'fa fa-plus',
         onClick: function(evt) {
+          if (activitiesModel.getItems().length === 2) {
+            alert("El flujo no tiene actividades definidas");
+            return;
+          }
+
+          //Toggle select options only if enough activities to create flow
+          if (activitiesModel.getItems().length > 3) {
+            registry.byId("redirectflowRadio_"+_appID).set("disabled", false);
+            registry.byId("fromAct_"+_appID).set("disabled", false);
+          } else {
+            registry.byId("redirectflowRadio_"+_appID).set("disabled", true);
+            registry.byId("fromAct_"+_appID).set("disabled", true);
+          }
+
           domAttr.set("flowAction_"+_appID, "value", "insert");
           toggleEndFlowOptions(true);
           showDialog && showDialog("addTransitionDialog_"+_appID);
@@ -1033,6 +1055,12 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
                 } else {
                   registry.byId("endflowRadio_"+_appID).set("disabled",false);
                 }
+              });
+
+              registry.byId("fromAct_"+_appID).on("change", function(val) {
+                registry.byId("toAct_"+_appID).set("options", activitiesModel.getItems4Select(val)).reset();
+                //console.log("Must change target activities removing selected value");
+                //console.log(activitiesModel.getItems4Select(val));
               });
 
               updateUI();
