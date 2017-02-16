@@ -329,7 +329,7 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
       },
       getItems4Select: function(itemToSkip) {
         let temp = _items.filter(item => { return item.type==="Activity"; }),
-            ret = temp;
+        ret = temp;
 
         if (itemToSkip && itemToSkip.length) {
           ret = temp.filter(item => {
@@ -487,9 +487,9 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
     g.call(cc);
 
     cc.on("dblclick", function(d, i) {
-        if (d.type==="Activity") {
-            setActivityFormData(d);
-        }
+      if (d.type==="Activity") {
+        setActivityFormData(d);
+      }
     });
 
     var labels = g.append("text")
@@ -551,34 +551,34 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
     // details http://bl.ocks.org/couchand/6394506
     var event = d3.dispatch('click', 'dblclick');
     function cc(selection) {
-        var down, tolerance = 5, last, wait = null, args;
-        // euclidean distance
-        function dist(a, b) {
-            return Math.sqrt(Math.pow(a[0] - b[0], 2), Math.pow(a[1] - b[1], 2));
+      var down, tolerance = 5, last, wait = null, args;
+      // euclidean distance
+      function dist(a, b) {
+        return Math.sqrt(Math.pow(a[0] - b[0], 2), Math.pow(a[1] - b[1], 2));
+      }
+      selection.on('mousedown', function() {
+        down = d3.mouse(document.body);
+        last = +new Date();
+        args = arguments;
+      });
+      selection.on('mouseup', function() {
+        if (dist(down, d3.mouse(document.body)) > tolerance) {
+          return;
+        } else {
+          if (wait) {
+            window.clearTimeout(wait);
+            wait = null;
+            event.dblclick.apply(this, args);
+          } else {
+            wait = window.setTimeout((function() {
+              return function() {
+                event.click.apply(this, args);
+                wait = null;
+              };
+            })(), 300);
+          }
         }
-        selection.on('mousedown', function() {
-            down = d3.mouse(document.body);
-            last = +new Date();
-            args = arguments;
-        });
-        selection.on('mouseup', function() {
-            if (dist(down, d3.mouse(document.body)) > tolerance) {
-                return;
-            } else {
-                if (wait) {
-                    window.clearTimeout(wait);
-                    wait = null;
-                    event.dblclick.apply(this, args);
-                } else {
-                    wait = window.setTimeout((function() {
-                        return function() {
-                            event.click.apply(this, args);
-                            wait = null;
-                        };
-                    })(), 300);
-                }
-            }
-        });
+      });
     };
     return d3.rebind(cc, event, 'on');
   };
@@ -623,11 +623,12 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
   };
 
   function setSequenceFormData(config) {
+    let fromObj, toObj;
     //Clear selections
     flowUserGrid.clearSelection();
     flowRoleGrid.clearSelection();
+
     //Set form values
-    var fromObj, toObj;
     fromObj = activitiesModel.getItemByName(config.from);
     toObj = activitiesModel.getItemByName(config.to);
 
@@ -652,6 +653,14 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
     } else {
       domAttr.remove("autoPublish_"+_appID, "checked");
       registry.getEnclosingWidget(dom.byId("autoPublish_"+_appID)).set("checked", false);
+    }
+
+    if (config.authorize) {
+      domAttr.set("authorized_"+_appID, "checked", true);
+      registry.getEnclosingWidget(dom.byId("authorized_"+_appID)).set("checked", true);
+    } else {
+      domAttr.remove("authorized_"+_appID, "checked");
+      registry.getEnclosingWidget(dom.byId("authorized_"+_appID)).set("checked", false);
     }
 
     domAttr.set("uuidFlow_"+_appID, "value", config.uuid);
@@ -712,10 +721,12 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
     itemUsers = gd1.selection.getSelected();
     itemRoles = gd2.selection.getSelected();
 
-    var payload = registry.byId('addTransition_form'+_appID).getValues();
-    payload.users = itemUsers.map(function(i) { return i.login; });
-    payload.roles = itemRoles.map(function(i) { return i.id; });
+    let payload = registry.byId('addTransition_form'+_appID).getValues();
+    payload.users = itemUsers.map(i => { return i.login; });
+    payload.roles = itemRoles.map(i => { return i.id; });
     payload.type = payload.linkType;
+    payload.publish = domAttr.get("autoPublish_"+_appID,"checked");
+    payload.authorize = domAttr.get("authorized_"+_appID,"checked");
 
     //Update flow target
     if (domAttr.get("startflowRadio_"+_appID,"checked")) {
@@ -736,7 +747,7 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
     }
 
     if (action === "update") {
-      var uid = domAttr.get("uuidFlow_"+_appID, "value");
+      let uid = domAttr.get("uuidFlow_"+_appID, "value");
       payload.uuid = uid;
       activitiesModel.updateLink(payload);
     } else if (action === "insert") {
@@ -1053,8 +1064,8 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
 
               registry.byId("linkAct_"+_appID).on("change", function(val) {
                 if ("unauthorized" === val) {
-                    toggleSendToOtherOptions(true);
-                    registry.byId("endflowRadio_"+_appID).set("disabled",true);
+                  toggleSendToOtherOptions(true);
+                  registry.byId("endflowRadio_"+_appID).set("disabled",true);
                 } else {
                   registry.byId("endflowRadio_"+_appID).set("disabled",false);
                 }
