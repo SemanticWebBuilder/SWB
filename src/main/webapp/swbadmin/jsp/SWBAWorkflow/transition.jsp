@@ -56,12 +56,12 @@ save.setParameter("id", resID);
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="checkbox" id="autoPublish_<%= resID %>" data-dojo-type="dijit.form.CheckBox"/><label>Publicar automáticamente</label>
+                                    <input name="publish" type="checkbox" id="autoPublish_<%= resID %>" data-dojo-type="dijit.form.CheckBox"/><label>Publicar automáticamente</label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="checkbox" id="authorized_<%= resID %>" data-dojo-type="dijit.form.CheckBox"/><label>Autorizado</label>
+                                    <input name="authorized" type="checkbox" id="authorized_<%= resID %>" data-dojo-type="dijit.form.CheckBox"/><label>Autorizado</label>
                                 </td>
                             </tr>
                         </table>
