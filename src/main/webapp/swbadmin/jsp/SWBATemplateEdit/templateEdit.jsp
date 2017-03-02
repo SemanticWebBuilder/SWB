@@ -13,25 +13,14 @@
 	WebSite site = SWBContext.getWebSite(websiteId);
 	User user = paramRequest.getUser();
 	
-	Iterator<ResourceType> rtypes = site.listResourceTypes();
-	while(rtypes.hasNext()) {
-		ResourceType rtype = rtypes.next();
-		if (user.haveAccess(rtype) && rtype.getResourceMode() == ResourceType.MODE_STRATEGY || rtype.getResourceMode() == ResourceType.MODE_SYSTEM) {
-			System.out.println(rtype.getTitle());
-			Iterator<ResourceSubType> rsubtypes = rtype.listSubTypes();
-			while (rsubtypes.hasNext()) {
-				ResourceSubType rsubtype = rsubtypes.next();
-				if (user.haveAccess(rtype)) {
-					System.out.println("  "+rsubtype.getTitle());
-				}
-			}
-		}
-	}
-	
 	Template template = site.getTemplate(templateId);
 	String templatePath = SWBPortal.getWebWorkPath() + template.getWorkPath() + "/" + verNum + "/" + URLEncoder.encode(template.getFileName(verNum));
 	VersionInfo vio = null;
-    
+	
+	SWBResourceURL resourceListUrl =  paramRequest.getRenderUrl().setMode("addResource");
+	resourceListUrl.setParameter("templateId", templateId);
+	resourceListUrl.setParameter("webSiteId", websiteId);
+	resourceListUrl.setParameter("verNum", String.valueOf(verNum));
 %>
 <link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/codemirror/lib/codemirror.css">
 <link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/codemirror/addon/scroll/simplescrollbars.css">
@@ -48,7 +37,7 @@
 			<button type="button" data-dojo-type="dijit.form.Button" data-dojo-props="iconClass:'dijitEditorIcon dijitEditorIconSave', showLabel:false">Guardar</button>
 			<button type="button" data-dojo-type="dijit.form.Button" data-dojo-props="iconClass:'dijitFolderOpened', showLabel:false">Agregar archivos</button>
 			<span data-dojo-type="dijit/ToolbarSeparator"></span>
-			<button type="button" data-dojo-type="dijit.form.Button" data-dojo-props="iconClass:'dijitIconConfigure', showLabel:false">Agregar recurso</button>
+			<button id="addResourceButton_<%= websiteId %>_<%= templateId %>" type="button"></button>
 			<!--span data-dojo-type="dijit/ToolbarSeparator"></span>
 			<button id="previewButton_<%= websiteId %>_<%= templateId %>" >&lt;</button-->
 		</div>
@@ -56,7 +45,7 @@
 	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center', splitter:false">
 		<span data-dojo-type="dijit/layout/StackController" data-dojo-props="containerId:'stackContainer'"></span>
 		<div data-dojo-type="dijit/layout/StackContainer" data-dojo-id="myStackContainer" style="height:100%">
-			<div dojoType="dojox.layout.ContentPane" executeScripts="true">
+			<div data-dojo-type="dojox.layout.ContentPane" executeScripts="true">
 				<div><textarea id="templateEditor_<%= websiteId %>_<%= templateId %>" name="templateContent"></textarea></div>
 				<script type="dojo/method">
 					//data-dojo-props="iconClass:'dijitEditorIcon dijitEditorIconSelectAll', showLabel:false, onClick:function(){myStackContainer.back()}"
@@ -92,6 +81,15 @@
 								}
 							},"newButton_<%= websiteId %>_<%= templateId %>").startup();
 
+							new Button({
+								label: "Agregar recurso",
+								iconClass: "dijitIconConfigure",
+								showLabel: false,
+								onClick: function(evt) {
+									showDialog("<%= resourceListUrl %>", "Agregar recurso");
+								}
+							},"addResourceButton_<%= websiteId %>_<%= templateId %>").startup();
+
 							xhr("<%= templatePath %>", {}).then(function(data) {
 								document.getElementById("templateEditor_<%= websiteId %>_<%= templateId %>").value = data;
 								editor_<%= websiteId %>_<%= templateId %> = CodeMirror.fromTextArea(document.getElementById('templateEditor_<%= websiteId %>_<%= templateId %>'),
@@ -113,7 +111,7 @@
 						});
 				</script>
 			</div>
-			<div dojoType="dojox.layout.ContentPane">
+			<div data-dojo-type="dojox.layout.ContentPane">
 				<iframe id="preview_<%= websiteId %>_<%= templateId %>" style="width:100%; height:100%"></iframe>
 			</div>
 		</div>
