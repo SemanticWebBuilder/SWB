@@ -1,11 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.Iterator, org.semanticwb.portal.SWBUtilTag, org.semanticwb.portal.util.SWBIFMethod, java.util.HashMap, java.net.URLEncoder, org.semanticwb.SWBPortal, org.semanticwb.portal.api.*, org.semanticwb.model.*, org.semanticwb.SWBPlatform" %>
 <%
-//topicmapId - website
-//template id
-//session
-//int version
-
 	SWBParamRequest paramRequest = (SWBParamRequest) request.getAttribute("paramRequest");
 	String templateId = (String) request.getAttribute("templateId");
 	String websiteId = (String) request.getAttribute("webSiteId");
@@ -21,6 +16,11 @@
 	resourceListUrl.setParameter("templateId", templateId);
 	resourceListUrl.setParameter("webSiteId", websiteId);
 	resourceListUrl.setParameter("verNum", String.valueOf(verNum));
+	
+	SWBResourceURL data =  paramRequest.getRenderUrl().setCallMethod(SWBResourceURL.Call_DIRECT).setMode("getResourceList");
+	data.setParameter("templateId", templateId);
+	data.setParameter("webSiteId", websiteId);
+	data.setParameter("verNum", String.valueOf(verNum));
 %>
 <link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/codemirror/lib/codemirror.css">
 <link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/codemirror/addon/scroll/simplescrollbars.css">
@@ -56,22 +56,103 @@
 							main: "lib/codemirror"
 						}]
 					}, ["codemirror",
+						"dojo/store/Memory",
+						"dijit/tree/ObjectStoreModel",
+						"dijit/Tree",
 						"dojo/request/xhr",
 						"dijit/form/Button",
 						"dijit/form/ToggleButton",
+						"dijit/registry",
 						"codemirror/mode/xml/xml",
 						"codemirror/mode/javascript/javascript",
 						"codemirror/mode/css/css",
 						"codemirror/mode/htmlmixed/htmlmixed",
 						"codemirror/addon/scroll/simplescrollbars",
 						"codemirror/addon/edit/closetag"],
-						function(CodeMirror, xhr, Button, ToggleButton) {
-							let editor_<%= websiteId %>_<%= templateId %>;
+						function(CodeMirror, Memory, ObjectStoreModel, Tree, xhr, Button, ToggleButton, registry) {
+							let editor_<%= websiteId %>_<%= templateId %>; //CodeMirror editor
+							let resources_<%= websiteId %>_<%= templateId %>; //Dojo tree
 
+							//Inserts content into editor
+							insertResourceTag = function() {
+								let tpl,
+										item = resources_<%= websiteId %>_<%= templateId %>.selectedItem,
+										doc = editor_<%= websiteId %>_<%= templateId %>.getDoc();
+							
+								if (item) {
+									if (item.parenttype && item.parenttype.length) {
+										tpl = `<RESOURCE TYPE="${item.parenttype}" STYPE="${item.id}" />`;
+									} else {
+										tpl = `<RESOURCE TYPE="${item.id}" />`;
+									}
+      						doc.replaceSelection(tpl);
+								}
+							};
+
+							//TODO: Mover la función de creación de árboles a una biblioteca para que el navegador no almacene la definición varias veces
+							function TreeWidget (treeData, placeHolder, rootId) {
+								let store, model;
+
+								if (treeData && treeData.length) {
+									store = new Memory({
+										data: treeData,
+										idProperty: "uuid",
+										getChildren: function(object) { return this.query({parent: object.uuid}); }
+									});
+
+									model = new ObjectStoreModel({
+										store: store,
+										query: {uuid: "rootNode"},
+										labelAttr: "name",
+										mayHaveChildren: function(item) { return model.store.getChildren(item).total > 0; }
+									});
+
+									var ret = new Tree({
+										model: model,
+										getIconClass: function(item, opened) {
+											if (item.parenttype && item.parenttype.length) {
+												return "swbIconResourceSubType";
+											} else {
+												return "swbIconResourceType";
+											}
+										},
+										getRowClass: function(item,opened) {}
+									});
+
+									ret.dndController.singular = true;
+									ret._destroyOnRemove = true;
+									ret.placeAt(placeHolder);
+									ret.startup();
+									return ret;
+								}
+
+								return {};
+							};							
+
+							//Clears template content
 							acceptNewTemplate = function() {
 								editor_<%= websiteId %>_<%= templateId %>.setValue("");
 								newTemplateDialog_<%= websiteId %>_<%= templateId %>.hide();
 							}
+
+							//Loads add resource dialog contents
+							loadAddResourceDialog = function() {
+								//Destroy previous tree
+								resources_<%= websiteId %>_<%= templateId %> && resources_<%= websiteId %>_<%= templateId %>.destroy();
+
+								//load tree data, create tree
+								xhr("<%= data %>", {
+									handleAs: "json"
+								}).then(function(_data) {
+									addResourceDialog_<%= websiteId %>_<%= templateId %>.show();
+									//Create resources tree
+									if (_data && _data.length) {
+										resources_<%= websiteId %>_<%= templateId %> = new TreeWidget(_data, 'resourceTree_<%= websiteId %>_<%= templateId %>', null);
+									}
+								}, function(err) {
+									console.log(err);
+								});
+							};
 
 							new Button({
 								iconClass: "dijitEditorIcon dijitEditorIconNewPage",
@@ -86,7 +167,7 @@
 								iconClass: "dijitIconConfigure",
 								showLabel: false,
 								onClick: function(evt) {
-									showDialog("<%= resourceListUrl %>", "Agregar recurso");
+									loadAddResourceDialog();
 								}
 							},"addResourceButton_<%= websiteId %>_<%= templateId %>").startup();
 
@@ -124,5 +205,18 @@
 	       	<button data-dojo-type="dijit/form/Button" type="button" data-dojo-props="onClick:function(){acceptNewTemplate();}"><%= paramRequest.getLocaleString("lblOk") %></button>
 	       	<button data-dojo-type="dijit/form/Button" type="button" data-dojo-props="onClick:function(){newTemplateDialog_<%= websiteId %>_<%= templateId %>.hide();}"><%= paramRequest.getLocaleString("lblCancel") %></button>
 	   	</div>
+	</div>
+	<div data-dojo-type="dijit/Dialog" data-dojo-id="addResourceDialog_<%= websiteId %>_<%= templateId %>" title="<%= paramRequest.getLocaleString("lblAddResource") %>">
+		<div data-dojo-type="dijit/layout/BorderContainer" style="width:400px; height:300px;">
+			<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
+				<div data-dojo-type="dijit/layout/ContentPane">
+					<div id="resourceTree_<%= websiteId %>_<%= templateId %>"></div>
+				</div>
+			</div>
+			<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom'">
+				<button type="button" id="addResourceDialogBtn_<%= websiteId %>_<%= templateId %>" data-dojo-type="dijit/form/Button" data-dojo-props="onClick:function(){insertResourceTag();addResourceDialog_<%= websiteId %>_<%= templateId %>.hide();}">Agregar</button>
+				<button type="button" data-dojo-type="dijit/form/Button" data-dojo-props="onClick:function(){addResourceDialog_<%= websiteId %>_<%= templateId %>.hide();}">Cancelar</button>
+			</div>
+		</div>
 	</div>
 </div>
