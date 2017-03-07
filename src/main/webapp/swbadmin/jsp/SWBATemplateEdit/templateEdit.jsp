@@ -115,7 +115,31 @@
 									}
 								}, false);
 
-							//Inserts content into CodeMirror Editor
+							/********** Editor wrapper functions ************/
+
+							//Creates editor instance
+							editorSetup = function () {
+								editor_<%= websiteId %>_<%= templateId %> = CodeMirror.fromTextArea(document.getElementById('templateEditor_<%= websiteId %>_<%= templateId %>'),
+ 								{
+									mode: "text/html",
+									autoCloseTags: true,
+									matchTags: {bothTags: true},
+									extraKeys: {"Alt-F": "findPersistent"},
+									styleActiveLine: true,
+									//lineNumbers: true,
+        							//smartIndent: true,
+        							//matchBrackets: true,
+        							//autoCloseBrackets: true,
+        							//styleActiveLine: true,
+        							//continueComments: true,
+        							//gutters: ["CodeMirror-lint-markers"],
+									scrollbarStyle: "simple",
+									fixedGutter: true
+        							//lint: true,
+								});
+							};
+
+							//Inserts content into Editor
 							insertContent = function(content, reset=false) {
 								if (reset) {
 									editor_<%= websiteId %>_<%= templateId %>.setValue(content);
@@ -123,6 +147,16 @@
 									let doc = editor_<%= websiteId %>_<%= templateId %>.getDoc();
 									doc && content && content.length && doc.replaceSelection(content);
 								}
+							};
+
+							//Gets editor content
+							getContent = function() {
+								return editor_<%= websiteId %>_<%= templateId %>.getValue() || "";
+							};
+
+							//Executes editor command
+							execCommand = function (command) {
+								editor_<%= websiteId %>_<%= templateId %>.execCommand(command);
 							};
 
 							//Inserts resource tag into editor at current position
@@ -180,7 +214,7 @@
 
 							//Clears template content
 							acceptNewTemplate = function() {
-								editor_<%= websiteId %>_<%= templateId %>.setValue("");
+								insertContent("", true);
 								newTemplateDialog_<%= websiteId %>_<%= templateId %>.hide();
 							}
 
@@ -211,7 +245,7 @@
 								onClick: function(evt) {
 									xhr("<%= saveUrl %>", {
 										method: "POST",
-										data: editor_<%= websiteId %>_<%= templateId %>.getValue(),
+										data: getContent(),
 										headers: {
 											'PATHFILEWB' : '<%= templateName %>',
 											'DOCUMENT' : 'RELOAD',
@@ -265,7 +299,7 @@
 								label: "<%= paramRequest.getLocaleString("lblFindButton") %>",
 								showLabel: false,
 								onClick: function(evt) {
-									editor_<%= websiteId %>_<%= templateId %>.execCommand("find");
+									execCommand("find");
 								}
 							},"searchButton_<%= websiteId %>_<%= templateId %>").startup();
 
@@ -274,7 +308,7 @@
 								label: "<%= paramRequest.getLocaleString("lblUndoButton") %>",
 								showLabel: false,
 								onClick: function(evt) {
-									editor_<%= websiteId %>_<%= templateId %>.execCommand("undo");
+									execCommand("undo");
 								}
 							},"undoButton_<%= websiteId %>_<%= templateId %>").startup();
 
@@ -283,7 +317,7 @@
 								label: "<%= paramRequest.getLocaleString("lblRedoButton") %>",
 								showLabel: false,
 								onClick: function(evt) {
-									editor_<%= websiteId %>_<%= templateId %>.execCommand("redo");
+									execCommand("redo");
 								}
 							},"redoButton_<%= websiteId %>_<%= templateId %>").startup();
 
@@ -297,25 +331,8 @@
 							},"addResourceButton_<%= websiteId %>_<%= templateId %>").startup();
 
 							xhr("<%= templateContentUrl %>", {}).then(function(data) {
-								document.getElementById("templateEditor_<%= websiteId %>_<%= templateId %>").value = data;
-								editor_<%= websiteId %>_<%= templateId %> = CodeMirror.fromTextArea(document.getElementById('templateEditor_<%= websiteId %>_<%= templateId %>'),
- 								{
-									mode: "text/html",
-									autoCloseTags: true,
-									matchTags: {bothTags: true},
-									extraKeys: {"Alt-F": "findPersistent"},
-									styleActiveLine: true,
-									//lineNumbers: true,
-        							//smartIndent: true,
-        							//matchBrackets: true,
-        							//autoCloseBrackets: true,
-        							//styleActiveLine: true,
-        							//continueComments: true,
-        							//gutters: ["CodeMirror-lint-markers"],
-									scrollbarStyle: "simple",
-									fixedGutter: true
-        							//lint: true,
-								});
+								editorSetup();
+								insertContent(data, true);
 							});
 						});
 				</script>
