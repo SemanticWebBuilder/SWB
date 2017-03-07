@@ -69,26 +69,22 @@
 							name: "codemirror",
 							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/codemirror",
 							main: "lib/codemirror"
+						},
+						{
+							name: "TemplateEditor",
+							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/jsp/SWBATemplateEdit/",
+							main: "codeMirrorTemplateEdit"
 						}]
 					}, ["codemirror",
+						"TemplateEditor",
 						"dojo/store/Memory",
 						"dijit/tree/ObjectStoreModel",
 						"dijit/Tree",
 						"dojo/request/xhr",
 						"dijit/form/Button",
 						"dijit/form/ToggleButton",
-						"dijit/registry",
-						"codemirror/mode/xml/xml",
-						"codemirror/mode/javascript/javascript",
-						"codemirror/mode/css/css",
-						"codemirror/mode/htmlmixed/htmlmixed",
-						"codemirror/addon/scroll/simplescrollbars",
-						"codemirror/addon/selection/active-line",
-						"codemirror/addon/edit/closetag",
-						"codemirror/addon/edit/matchtags",
-						"codemirror/addon/search/searchcursor",
-						"codemirror/addon/search/search"],
-						function(CodeMirror, Memory, ObjectStoreModel, Tree, xhr, Button, ToggleButton, registry) {
+						"dijit/registry"],
+						function(CodeMirror, TemplateEditor, Memory, ObjectStoreModel, Tree, xhr, Button, ToggleButton, registry) {
 							let editor_<%= websiteId %>_<%= templateId %>; //CodeMirror editor
 							let resources_<%= websiteId %>_<%= templateId %>; //Dojo tree
 
@@ -119,39 +115,17 @@
 
 							//Creates editor instance
 							editorSetup = function () {
-								editor_<%= websiteId %>_<%= templateId %> = CodeMirror.fromTextArea(document.getElementById('templateEditor_<%= websiteId %>_<%= templateId %>'),
- 								{
-									mode: "text/html",
-									autoCloseTags: true,
-									matchTags: {bothTags: true},
-									extraKeys: {"Alt-F": "findPersistent"},
-									styleActiveLine: true,
-									//lineNumbers: true,
-        							//smartIndent: true,
-        							//matchBrackets: true,
-        							//autoCloseBrackets: true,
-        							//styleActiveLine: true,
-        							//continueComments: true,
-        							//gutters: ["CodeMirror-lint-markers"],
-									scrollbarStyle: "simple",
-									fixedGutter: true
-        							//lint: true,
-								});
+								editor_<%= websiteId %>_<%= templateId %> = TemplateEditor.createInstance('templateEditor_<%= websiteId %>_<%= templateId %>');
 							};
 
 							//Inserts content into Editor
 							insertContent = function(content, reset=false) {
-								if (reset) {
-									editor_<%= websiteId %>_<%= templateId %>.setValue(content);
-								} else {
-									let doc = editor_<%= websiteId %>_<%= templateId %>.getDoc();
-									doc && content && content.length && doc.replaceSelection(content);
-								}
+								editor_<%= websiteId %>_<%= templateId %>.insertContent(content, reset);
 							};
 
 							//Gets editor content
 							getContent = function() {
-								return editor_<%= websiteId %>_<%= templateId %>.getValue() || "";
+								return editor_<%= websiteId %>_<%= templateId %>.getContent();
 							};
 
 							//Executes editor command
