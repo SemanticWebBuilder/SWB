@@ -64,18 +64,18 @@
 				<div><textarea id="templateEditor_<%= websiteId %>_<%= templateId %>" name="templateContent"></textarea></div>
 				<script type="dojo/method">
 					//data-dojo-props="iconClass:'dijitEditorIcon dijitEditorIconSelectAll', showLabel:false, onClick:function(){myStackContainer.back()}"
-					require({
+					require({ //Change accordingly to use different editors
 						packages: [{
 							name: "codemirror",
 							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/codemirror",
 							main: "lib/codemirror"
 						},
-						{
+						{ //Change accordingly to use different editors
 							name: "TemplateEditor",
-							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/jsp/SWBATemplateEdit/",
-							main: "codeMirrorTemplateEdit"
+							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/jsp/SWBATemplateEdit/editors/codemirror",
+							main: "editor"
 						}]
-					}, ["codemirror",
+					}, [
 						"TemplateEditor",
 						"dojo/store/Memory",
 						"dijit/tree/ObjectStoreModel",
@@ -84,7 +84,7 @@
 						"dijit/form/Button",
 						"dijit/form/ToggleButton",
 						"dijit/registry"],
-						function(CodeMirror, TemplateEditor, Memory, ObjectStoreModel, Tree, xhr, Button, ToggleButton, registry) {
+						function(TemplateEditor, Memory, ObjectStoreModel, Tree, xhr, Button, ToggleButton, registry) {
 							let editor_<%= websiteId %>_<%= templateId %>; //CodeMirror editor
 							let resources_<%= websiteId %>_<%= templateId %>; //Dojo tree
 
