@@ -37,6 +37,15 @@
 	.CodeMirror {
 		height: 90%;
 	}
+	
+	.AceEditor {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	}
 </style>
 <div id="container_<%= websiteId %>_<%= templateId %>" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:true, liveSplitters:false">
 	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top', splitter:false">
@@ -61,18 +70,19 @@
 		<div data-dojo-type="dijit/layout/StackContainer" data-dojo-id="myStackContainer" style="height:100%">
 			<div data-dojo-type="dojox.layout.ContentPane" executeScripts="true">
 				<input type="file" id="fileLoadInput_<%= websiteId %>_<%= templateId %>" accept="text/html" style="display:none"/>
-				<div><textarea id="templateEditor_<%= websiteId %>_<%= templateId %>" name="templateContent"></textarea></div>
+				<div class="AceEditor" id="templateEditor_<%= websiteId %>_<%= templateId %>"></div>
+				<!-- div><textarea id="templateEditor_<%= websiteId %>_<%= templateId %>" name="templateContent"></textarea></div-->
 				<script type="dojo/method">
 					//data-dojo-props="iconClass:'dijitEditorIcon dijitEditorIconSelectAll', showLabel:false, onClick:function(){myStackContainer.back()}"
 					require({ //Change accordingly to use different editors
 						packages: [{
-							name: "codemirror",
-							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/codemirror",
-							main: "lib/codemirror"
+							name: "ace",
+							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/aceeditor",
+							main: "ace"
 						},
 						{ //Change accordingly to use different editors
 							name: "TemplateEditor",
-							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/jsp/SWBATemplateEdit/editors/codemirror",
+							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/jsp/SWBATemplateEdit/editors/ace",
 							main: "editor"
 						}]
 					}, [
@@ -87,6 +97,10 @@
 						function(TemplateEditor, Memory, ObjectStoreModel, Tree, xhr, Button, ToggleButton, registry) {
 							let editor_<%= websiteId %>_<%= templateId %>; //CodeMirror editor
 							let resources_<%= websiteId %>_<%= templateId %>; //Dojo tree
+
+							TemplateEditor.setOptions({
+								basePath: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/aceeditor"
+							});
 
 							//Set fileChooser listener
 							document.getElementById('fileLoadInput_<%= websiteId %>_<%= templateId %>').addEventListener("change", 
