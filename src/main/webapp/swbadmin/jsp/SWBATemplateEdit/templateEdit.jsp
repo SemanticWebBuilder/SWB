@@ -70,8 +70,7 @@
 		<div data-dojo-type="dijit/layout/StackContainer" data-dojo-id="myStackContainer" style="height:100%">
 			<div data-dojo-type="dojox.layout.ContentPane" executeScripts="true">
 				<input type="file" id="fileLoadInput_<%= websiteId %>_<%= templateId %>" accept="text/html" style="display:none"/>
-				<div class="AceEditor" id="templateEditor_<%= websiteId %>_<%= templateId %>"></div>
-				<!-- div><textarea id="templateEditor_<%= websiteId %>_<%= templateId %>" name="templateContent"></textarea></div-->
+				<div id="templateEditor_<%= websiteId %>_<%= templateId %>"></div>
 				<script type="dojo/method">
 					//data-dojo-props="iconClass:'dijitEditorIcon dijitEditorIconSelectAll', showLabel:false, onClick:function(){myStackContainer.back()}"
 					require({ //Change accordingly to use different editors

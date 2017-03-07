@@ -30,8 +30,10 @@ function (CodeMirror) {
   /**
   * Creates an instance of TemplateEditor
   */
-  TemplateEditor.createInstance = function(placeHolderId) {
-    let editor = CodeMirror.fromTextArea(document.getElementById(placeHolderId), defaults);
+  TemplateEditor.createInstance = function(placeHolderId="") {
+    if (!placeHolderId.length) return;
+
+    let editor = CodeMirror(document.getElementById(placeHolderId), defaults);
     let HTMLEditor = {
       getEditor: function() {
         return editor;
