@@ -9,6 +9,7 @@
 	User user = paramRequest.getUser();
 	
 	Template template = site.getTemplate(templateId);
+	String templateName = URLEncoder.encode(template.getFileName(verNum));
 	VersionInfo vio = null;
 	
 	SWBResourceURL resourceListUrl =  paramRequest.getRenderUrl().setMode("addResource");
@@ -25,6 +26,9 @@
 	data.setParameter("templateId", templateId);
 	data.setParameter("webSiteId", websiteId);
 	data.setParameter("verNum", String.valueOf(verNum));
+	
+	String saveUrl = SWBPortal.getDistributorPath() + "/SWBAdmin/WBAd_utl_HTMLEditor/_rid/1/_mto/3/_mod/upload";
+	//String fileName = tpl.getFileName(version);
 %>
 <link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/codemirror/lib/codemirror.css">
 <link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/codemirror/addon/dialog/dialog.css">
@@ -39,7 +43,7 @@
 		<div data-dojo-type="dijit/Toolbar" style="padding:0px;">
 			<button id="newButton_<%= websiteId %>_<%= templateId %>" type="button"></button>
 			<button id="openFromFileButton_<%= websiteId %>_<%= templateId %>" type="button"></button>
-			<button type="button" data-dojo-type="dijit.form.Button" data-dojo-props="iconClass:'dijitEditorIcon dijitEditorIconSave', showLabel:false">Guardar</button>
+			<button id="saveButton_<%= websiteId %>_<%= templateId %>" type="button"></button>
 			<!--button type="button" data-dojo-type="dijit.form.Button" data-dojo-props="iconClass:'dijitFolderOpened', showLabel:false">Agregar archivos</button-->
 			<span data-dojo-type="dijit/ToolbarSeparator"></span>
 			<button type="button" id="undoButton_<%= websiteId %>_<%= templateId %>"></button>
@@ -198,6 +202,35 @@
 									console.log(err);
 								});
 							};
+
+							//Save template button
+							new Button({
+								iconClass: "dijitEditorIcon dijitEditorIconSave",
+								label: "<%= paramRequest.getLocaleString("lblSaveButton") %>",
+								showLabel: false,
+								onClick: function(evt) {
+									xhr("<%= saveUrl %>", {
+										method: "POST",
+										data: editor_<%= websiteId %>_<%= templateId %>.getValue(),
+										headers: {
+											'PATHFILEWB' : '<%= templateName %>',
+											'DOCUMENT' : 'RELOAD',
+											'TM' : '<%= websiteId %>',
+											'ID' : '<%= templateId %>',
+											'VER' : '<%= verNum %>',
+											'TYPE' : 'Template'
+										}
+									}).then(function(ret) {
+										if (ret.includes("ok")) {
+											alert("<%= paramRequest.getLocaleString("msgTemplateSaved") %>");
+										} else {
+											alert("<%= paramRequest.getLocaleString("msgErrorSave") %>");
+										}
+									}, function(err) {
+										console.log(err);
+									});
+								}
+							},"saveButton_<%= websiteId %>_<%= templateId %>").startup();
 
 							//Open from file button
 							new Button({
