@@ -25,9 +25,9 @@ function (AceEditor) {
   /**
   * Creates an instance of TemplateEditor
   */
-  TemplateEditor.createInstance = function(placeHolderId="") {
-    if (!placeHolderId.length) return;
-    
+  TemplateEditor.createInstance = function(placeHolderId) {
+    if (!placeHolderId || placeHolderId === undefined || !placeHolderId.length) return;
+
     document.getElementById(placeHolderId).className = "AceEditor";
 
     let editor = ace.edit(placeHolderId);

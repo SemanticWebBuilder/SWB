@@ -7,26 +7,26 @@
 	int verNum = (Integer) request.getAttribute("verNum");
 	WebSite site = SWBContext.getWebSite(websiteId);
 	User user = paramRequest.getUser();
-	
+
 	Template template = site.getTemplate(templateId);
 	String templateName = URLEncoder.encode(template.getFileName(verNum));
 	VersionInfo vio = null;
-	
+
 	SWBResourceURL resourceListUrl =  paramRequest.getRenderUrl().setMode("addResource");
 	resourceListUrl.setParameter("templateId", templateId);
 	resourceListUrl.setParameter("webSiteId", websiteId);
 	resourceListUrl.setParameter("verNum", String.valueOf(verNum));
-	
+
 	SWBResourceURL templateContentUrl =  paramRequest.getRenderUrl().setCallMethod(SWBResourceURL.Call_DIRECT).setMode("getTemplateContent");
 	templateContentUrl.setParameter("templateId", templateId);
 	templateContentUrl.setParameter("webSiteId", websiteId);
 	templateContentUrl.setParameter("verNum", String.valueOf(verNum));
-	
+
 	SWBResourceURL data =  paramRequest.getRenderUrl().setCallMethod(SWBResourceURL.Call_DIRECT).setMode("getResourceList");
 	data.setParameter("templateId", templateId);
 	data.setParameter("webSiteId", websiteId);
 	data.setParameter("verNum", String.valueOf(verNum));
-	
+
 	String saveUrl = SWBPortal.getDistributorPath() + "/SWBAdmin/WBAd_utl_HTMLEditor/_rid/1/_mto/3/_mod/upload";
 	//String fileName = tpl.getFileName(version);
 %>
@@ -37,7 +37,7 @@
 	.CodeMirror {
 		height: 90%;
 	}
-	
+
 	.AceEditor {
     margin: 0;
     position: absolute;
@@ -61,6 +61,7 @@
 			<span data-dojo-type="dijit/ToolbarSeparator"></span>
 			<button id="addResourceButton_<%= websiteId %>_<%= templateId %>" type="button"></button>
 			<button id="addContentButton_<%= websiteId %>_<%= templateId %>" type="button"></button>
+			<!--button id="fileBrowserButton_<%= websiteId %>_<%= templateId %>" type="button"></button-->
 			<!--span data-dojo-type="dijit/ToolbarSeparator"></span>
 			<button id="previewButton_<%= websiteId %>_<%= templateId %>" >&lt;</button-->
 		</div>
@@ -68,12 +69,11 @@
 	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center', splitter:false">
 		<span data-dojo-type="dijit/layout/StackController" data-dojo-props="containerId:'stackContainer'"></span>
 		<div data-dojo-type="dijit/layout/StackContainer" data-dojo-id="myStackContainer" style="height:100%">
-			<div data-dojo-type="dojox.layout.ContentPane" executeScripts="true">
+			<div data-dojo-type="dojox/layout/ContentPane" executeScripts="true">
 				<input type="file" id="fileLoadInput_<%= websiteId %>_<%= templateId %>" accept="text/html" style="display:none"/>
 				<div id="templateEditor_<%= websiteId %>_<%= templateId %>"></div>
 				<script type="dojo/method">
-					//data-dojo-props="iconClass:'dijitEditorIcon dijitEditorIconSelectAll', showLabel:false, onClick:function(){myStackContainer.back()}"
-					require({ //Change accordingly to use different editors
+					require({
 						packages: [{
 							name: "ace",
 							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/aceeditor",
@@ -102,7 +102,7 @@
 							});
 
 							//Set fileChooser listener
-							document.getElementById('fileLoadInput_<%= websiteId %>_<%= templateId %>').addEventListener("change", 
+							document.getElementById('fileLoadInput_<%= websiteId %>_<%= templateId %>').addEventListener("change",
 								function(evt) {
 									let fileObj = evt.target.files && evt.target.files.length && evt.target.files[0];
 
@@ -111,7 +111,7 @@
 											alert("<%= paramRequest.getLocaleString("msgErrorBadFileType") %>");
 										} else {
 											let reader = new FileReader();
-										
+
 											reader.onload = function(e) {
 												let text = reader.result;
 												insertContent(text, true);
@@ -132,7 +132,8 @@
 							};
 
 							//Inserts content into Editor
-							insertContent = function(content, reset=false) {
+							insertContent = function(content, reset) {
+								if (!reset || reset == undefined) reset = false;
 								editor_<%= websiteId %>_<%= templateId %>.insertContent(content, reset);
 							};
 
@@ -151,9 +152,9 @@
 								let tpl, item = resources_<%= websiteId %>_<%= templateId %>.selectedItem;
 								if (item && item.uuid !== "rootNode") {
 									if (item.parenttype && item.parenttype.length) {
-										tpl = `<RESOURCE TYPE="${item.parenttype}" STYPE="${item.id}" />`;
+										tpl = '<RESOURCE TYPE="' + item.parenttype + '" STYPE="' + item.id + '" />';
 									} else {
-										tpl = `<RESOURCE TYPE="${item.id}" />`;
+										tpl = '<RESOURCE TYPE="' + item.id +'" />';
 									}
       						insertContent(tpl);
 								}
@@ -197,7 +198,7 @@
 								}
 
 								return {};
-							};							
+							};
 
 							//Clears template content
 							acceptNewTemplate = function() {
@@ -317,6 +318,16 @@
 								}
 							},"addResourceButton_<%= websiteId %>_<%= templateId %>").startup();
 
+
+							new Button({
+								label: "Explorador de archivos",
+								iconClass: "dijitIconPackage",
+								showLabel: false,
+								onClick: function(evt) {
+									dFloatingPane_<%= websiteId %>_<%= templateId %>.show();
+								}
+							},"fileBrowserButton_<%= websiteId %>_<%= templateId %>").startup();
+
 							xhr("<%= templateContentUrl %>", {}).then(function(data) {
 								editorSetup();
 								insertContent(data, true);
@@ -350,5 +361,8 @@
 				<button type="button" data-dojo-type="dijit/form/Button" data-dojo-props="onClick:function(){addResourceDialog_<%= websiteId %>_<%= templateId %>.hide();}"><%= paramRequest.getLocaleString("lblCancel") %></button>
 			</div>
 		</div>
+	</div>
+	<div data-dojo-type="dijit/Dialog" data-dojo-id="dFloatingPane_<%= websiteId %>_<%= templateId %>">
+	   	hola
 	</div>
 </div>
