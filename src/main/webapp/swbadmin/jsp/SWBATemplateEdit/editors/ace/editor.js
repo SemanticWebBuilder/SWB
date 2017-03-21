@@ -42,6 +42,8 @@ function (AceEditor) {
         return editor;
       },
       insertContent: function(content, reset) {
+        if (!reset || reset == undefined) reset = false;
+        
         if (reset) {
 					editor.getSession().setValue(content, -1);
 				} else {

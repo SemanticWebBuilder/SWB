@@ -30,8 +30,13 @@
 	String saveUrl = SWBPortal.getDistributorPath() + "/SWBAdmin/WBAd_utl_HTMLEditor/_rid/1/_mto/3/_mod/upload";
 	//String fileName = tpl.getFileName(version);
 %>
-<link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/codemirror/lib/codemirror.css">
-<link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/codemirror/addon/dialog/dialog.css">
+<!-- Uncomment this lines if you need CodeMirror instead of ACE -->
+<!-- link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/codemirror/lib/codemirror.css"-->
+<!-- link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/codemirror/addon/dialog/dialog.css"-->
+
+<link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/elfinder/css/jquery-ui.css">
+<link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/elfinder/css/elfinder.min.css">
+<link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/elfinder/css/theme.css">
 
 <style type="text/css">
 	.CodeMirror {
@@ -61,7 +66,7 @@
 			<span data-dojo-type="dijit/ToolbarSeparator"></span>
 			<button id="addResourceButton_<%= websiteId %>_<%= templateId %>" type="button"></button>
 			<button id="addContentButton_<%= websiteId %>_<%= templateId %>" type="button"></button>
-			<!--button id="fileBrowserButton_<%= websiteId %>_<%= templateId %>" type="button"></button-->
+			<button id="fileBrowserButton_<%= websiteId %>_<%= templateId %>" type="button"></button>
 			<!--span data-dojo-type="dijit/ToolbarSeparator"></span>
 			<button id="previewButton_<%= websiteId %>_<%= templateId %>" >&lt;</button-->
 		</div>
@@ -75,6 +80,21 @@
 				<script type="dojo/method">
 					require({
 						packages: [{
+							name: "jqueryUI",
+							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/elfinder/js",
+							main: "jquery-ui.min"
+						},
+						{
+							name: "jquery",
+							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/elfinder/js",
+							main: "jquery.min"
+						},
+						{
+							name: "elfinder",
+							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/elfinder/js",
+							main: "elfinder.min"
+						},
+						{
 							name: "ace",
 							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/aceeditor",
 							main: "ace"
@@ -85,6 +105,8 @@
 							main: "editor"
 						}]
 					}, [
+						"jquery",
+						"elfinder",
 						"TemplateEditor",
 						"dojo/store/Memory",
 						"dijit/tree/ObjectStoreModel",
@@ -93,9 +115,13 @@
 						"dijit/form/Button",
 						"dijit/form/ToggleButton",
 						"dijit/registry"],
-						function(TemplateEditor, Memory, ObjectStoreModel, Tree, xhr, Button, ToggleButton, registry) {
+						function(jQuery, elfinder, TemplateEditor, Memory, ObjectStoreModel, Tree, xhr, Button, ToggleButton, registry) {
 							let editor_<%= websiteId %>_<%= templateId %>; //CodeMirror editor
 							let resources_<%= websiteId %>_<%= templateId %>; //Dojo tree
+
+							/*jQuery("#elFinderTest").elfinder({
+								url: '/elFinderConnector'
+							});*/
 
 							TemplateEditor.setOptions({
 								basePath: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/aceeditor"
@@ -114,7 +140,7 @@
 
 											reader.onload = function(e) {
 												let text = reader.result;
-												insertContent(text, true);
+												editor_<%= websiteId %>_<%= templateId %>.insertContent(text, true);
 
 												evt.target.value = null;
 											};
@@ -122,30 +148,7 @@
 											reader.readAsText(fileObj, "UTF-8");
 										}
 									}
-								}, false);
-
-							/********** Editor wrapper functions ************/
-
-							//Creates editor instance
-							editorSetup = function () {
-								editor_<%= websiteId %>_<%= templateId %> = TemplateEditor.createInstance('templateEditor_<%= websiteId %>_<%= templateId %>');
-							};
-
-							//Inserts content into Editor
-							insertContent = function(content, reset) {
-								if (!reset || reset == undefined) reset = false;
-								editor_<%= websiteId %>_<%= templateId %>.insertContent(content, reset);
-							};
-
-							//Gets editor content
-							getContent = function() {
-								return editor_<%= websiteId %>_<%= templateId %>.getContent();
-							};
-
-							//Executes editor command
-							execCommand = function (command) {
-								editor_<%= websiteId %>_<%= templateId %>.execCommand(command);
-							};
+								}, false);								
 
 							//Inserts resource tag into editor at current position
 							insertResourceTag = function() {
@@ -156,7 +159,7 @@
 									} else {
 										tpl = '<RESOURCE TYPE="' + item.id +'" />';
 									}
-      						insertContent(tpl);
+      						editor_<%= websiteId %>_<%= templateId %>.insertContent(tpl);
 								}
 							};
 
@@ -202,7 +205,7 @@
 
 							//Clears template content
 							acceptNewTemplate = function() {
-								insertContent("", true);
+								editor_<%= websiteId %>_<%= templateId %>.insertContent("", true);
 								newTemplateDialog_<%= websiteId %>_<%= templateId %>.hide();
 							}
 
@@ -233,7 +236,7 @@
 								onClick: function(evt) {
 									xhr("<%= saveUrl %>", {
 										method: "POST",
-										data: getContent(),
+										data: editor_<%= websiteId %>_<%= templateId %>.getContent(),
 										headers: {
 											'PATHFILEWB' : '<%= templateName %>',
 											'DOCUMENT' : 'RELOAD',
@@ -278,7 +281,7 @@
 								label: "<%= paramRequest.getLocaleString("lblAddContentButton") %>",
 								showLabel: false,
 								onClick: function(evt) {
-									insertContent("<CONTENT/>");
+									editor_<%= websiteId %>_<%= templateId %>.insertContent("<CONTENT/>");
 								}
 							},"addContentButton_<%= websiteId %>_<%= templateId %>").startup();
 
@@ -287,7 +290,7 @@
 								label: "<%= paramRequest.getLocaleString("lblFindButton") %>",
 								showLabel: false,
 								onClick: function(evt) {
-									execCommand("find");
+									editor_<%= websiteId %>_<%= templateId %>.execCommand("find");
 								}
 							},"searchButton_<%= websiteId %>_<%= templateId %>").startup();
 
@@ -296,7 +299,7 @@
 								label: "<%= paramRequest.getLocaleString("lblUndoButton") %>",
 								showLabel: false,
 								onClick: function(evt) {
-									execCommand("undo");
+									editor_<%= websiteId %>_<%= templateId %>.execCommand("undo");
 								}
 							},"undoButton_<%= websiteId %>_<%= templateId %>").startup();
 
@@ -305,7 +308,7 @@
 								label: "<%= paramRequest.getLocaleString("lblRedoButton") %>",
 								showLabel: false,
 								onClick: function(evt) {
-									execCommand("redo");
+									editor_<%= websiteId %>_<%= templateId %>.execCommand("redo");
 								}
 							},"redoButton_<%= websiteId %>_<%= templateId %>").startup();
 
@@ -321,7 +324,7 @@
 
 							new Button({
 								label: "Explorador de archivos",
-								iconClass: "dijitIconPackage",
+								iconClass: "dijitIconApplication",
 								showLabel: false,
 								onClick: function(evt) {
 									dFloatingPane_<%= websiteId %>_<%= templateId %>.show();
@@ -329,14 +332,11 @@
 							},"fileBrowserButton_<%= websiteId %>_<%= templateId %>").startup();
 
 							xhr("<%= templateContentUrl %>", {}).then(function(data) {
-								editorSetup();
-								insertContent(data, true);
+								editor_<%= websiteId %>_<%= templateId %> = TemplateEditor.createInstance('templateEditor_<%= websiteId %>_<%= templateId %>');
+								editor_<%= websiteId %>_<%= templateId %>.insertContent(data, true);
 							});
 						});
 				</script>
-			</div>
-			<div data-dojo-type="dojox.layout.ContentPane">
-				<iframe id="preview_<%= websiteId %>_<%= templateId %>" style="width:100%; height:100%"></iframe>
 			</div>
 		</div>
 	</div>
@@ -363,6 +363,6 @@
 		</div>
 	</div>
 	<div data-dojo-type="dijit/Dialog" data-dojo-id="dFloatingPane_<%= websiteId %>_<%= templateId %>">
-	   	hola
+	   	<div style="width:600px; height:600px;" id="elFinderTest"></div>
 	</div>
 </div>
