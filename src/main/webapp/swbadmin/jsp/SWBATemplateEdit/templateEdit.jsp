@@ -323,11 +323,11 @@
 
 
 							new Button({
-								label: "Explorador de archivos",
+								label: "<%= paramRequest.getLocaleString("lblFileExplorerButton") %>",
 								iconClass: "dijitIconApplication",
 								showLabel: false,
 								onClick: function(evt) {
-									dFloatingPane_<%= websiteId %>_<%= templateId %>.show();
+									window.open("<%= paramRequest.getRenderUrl().setCallMethod(SWBResourceURL.Call_DIRECT).setMode("fileManager").setParameter("suri", template.getURI()).setParameter("vnum", String.valueOf(verNum)) %>", "_blank", "width=600,height=400,location=0,menubar=0,status=0,toolbar=0,titlebar=0");
 								}
 							},"fileBrowserButton_<%= websiteId %>_<%= templateId %>").startup();
 
