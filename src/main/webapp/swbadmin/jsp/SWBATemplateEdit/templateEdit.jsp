@@ -140,7 +140,13 @@
 
 											reader.onload = function(e) {
 												let text = reader.result;
-												editor_<%= websiteId %>_<%= templateId %>.insertContent(text, true);
+												//Parse content
+												xhr("<%= paramRequest.getRenderUrl().setCallMethod(SWBResourceURL.Call_DIRECT).setMode("parseHTML") %>", {
+													method: "POST",
+        									data: text,
+												}).then(function(res) {
+													editor_<%= websiteId %>_<%= templateId %>.insertContent(res, true);
+												});
 
 												evt.target.value = null;
 											};
