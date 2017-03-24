@@ -127,6 +127,11 @@
 								basePath: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/aceeditor"
 							});
 
+							//TODO: Remove this bad practice code
+							window.toggleBrowserButton_<%= websiteId %>_<%= templateId %> = function(enable) {
+								enable ? registry.byId('fileBrowserButton_<%= websiteId %>_<%= templateId %>').setDisabled(false) : registry.byId('fileBrowserButton_<%= websiteId %>_<%= templateId %>').setDisabled(true); 
+							};
+
 							//Set fileChooser listener
 							document.getElementById('fileLoadInput_<%= websiteId %>_<%= templateId %>').addEventListener("change",
 								function(evt) {
@@ -332,6 +337,7 @@
 								iconClass: "dijitIconApplication",
 								showLabel: false,
 								onClick: function(evt) {
+									window.toggleBrowserButton_<%= websiteId %>_<%= templateId %>(false);
 									window.open("<%= paramRequest.getRenderUrl().setCallMethod(SWBResourceURL.Call_DIRECT).setMode("fileManager").setParameter("suri", template.getURI()).setParameter("vnum", String.valueOf(verNum)) %>", "_blank", "width=600,height=400,location=0,menubar=0,status=0,toolbar=0,titlebar=0");
 								}
 							},"fileBrowserButton_<%= websiteId %>_<%= templateId %>").startup();

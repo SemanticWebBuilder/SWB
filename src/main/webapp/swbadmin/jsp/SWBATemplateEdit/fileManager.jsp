@@ -44,6 +44,13 @@
            $fileExplorer_<%= websiteId %>_<%= templateId %> && $fileExplorer_<%= websiteId %>_<%= templateId %>.resize('auto',win_height);
      		}
  			});
+ 			
+ 			window.addEventListener("unload", function() {
+ 				let win = window.opener;
+ 				if (win && !win.closed) {
+ 					win.toggleBrowserButton_<%= websiteId %>_<%= templateId %>(true);
+ 				}
+ 			});
     </script>
     <style type="text/css">
     	body {
@@ -57,6 +64,10 @@
     	}
     	
     	.ui-resizable-handle { display:none !important; }
+    	
+    	.elfinder-navbar-dir, .elfinder-button-search input {
+    		outline: 0;
+    	}
     </style>
   </head>
   <body>
