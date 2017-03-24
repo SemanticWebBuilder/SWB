@@ -141,12 +141,12 @@
 											reader.onload = function(e) {
 												let text = reader.result;
 												//Parse content
-												xhr("<%= paramRequest.getRenderUrl().setCallMethod(SWBResourceURL.Call_DIRECT).setMode("parseHTML") %>", {
-													method: "POST",
-        									data: text,
-												}).then(function(res) {
-													editor_<%= websiteId %>_<%= templateId %>.insertContent(res, true);
-												});
+												//xhr("<%= paramRequest.getRenderUrl().setCallMethod(SWBResourceURL.Call_DIRECT).setMode("parseHTML") %>", {
+												//	method: "POST",
+        								//	data: text,
+												//}).then(function(res) {
+													editor_<%= websiteId %>_<%= templateId %>.insertContent(text, true);
+												//});
 
 												evt.target.value = null;
 											};
@@ -209,12 +209,6 @@
 								return {};
 							};
 
-							//Clears template content
-							acceptNewTemplate = function() {
-								editor_<%= websiteId %>_<%= templateId %>.insertContent("", true);
-								newTemplateDialog_<%= websiteId %>_<%= templateId %>.hide();
-							}
-
 							//Loads add resource dialog contents
 							loadAddResourceDialog = function() {
 								//Destroy previous tree
@@ -269,7 +263,9 @@
 								label: "<%= paramRequest.getLocaleString("lblOpenFromFile") %>",
 								showLabel: false,
 								onClick: function(evt) {
-									document.getElementById('fileLoadInput_<%= websiteId %>_<%= templateId %>').click();
+									if (confirm('<%= paramRequest.getLocaleString("msgConfirmNew") %>')) {
+										document.getElementById('fileLoadInput_<%= websiteId %>_<%= templateId %>').click();
+									}
 								}
 							},"openFromFileButton_<%= websiteId %>_<%= templateId %>").startup();
 
@@ -278,6 +274,9 @@
 								label: "<%= paramRequest.getLocaleString("lblNewTemplate") %>",
 								showLabel: false,
 								onClick: function(evt) {
+									if (confirm('<%= paramRequest.getLocaleString("msgConfirmNew") %>')) {
+										editor_<%= websiteId %>_<%= templateId %>.insertContent("", true);
+									}
 									newTemplateDialog_<%= websiteId %>_<%= templateId %>.show();
 								}
 							},"newButton_<%= websiteId %>_<%= templateId %>").startup();
@@ -346,7 +345,7 @@
 			</div>
 		</div>
 	</div>
-	<div data-dojo-type="dijit/Dialog" data-dojo-id="newTemplateDialog_<%= websiteId %>_<%= templateId %>" title="<%= paramRequest.getLocaleString("lblNewTemplate") %>">
+	<!--div data-dojo-type="dijit/Dialog" data-dojo-id="newTemplateDialog_<%= websiteId %>_<%= templateId %>" title="<%= paramRequest.getLocaleString("lblNewTemplate") %>">
 	   	<div class="dijitDialogPaneContentArea">
 	       	<p><%= paramRequest.getLocaleString("msgConfirmNew") %></p>
 	   	</div>
@@ -354,7 +353,7 @@
 	       	<button data-dojo-type="dijit/form/Button" type="button" data-dojo-props="onClick:function(){acceptNewTemplate();}"><%= paramRequest.getLocaleString("lblOk") %></button>
 	       	<button data-dojo-type="dijit/form/Button" type="button" data-dojo-props="onClick:function(){newTemplateDialog_<%= websiteId %>_<%= templateId %>.hide();}"><%= paramRequest.getLocaleString("lblCancel") %></button>
 	   	</div>
-	</div>
+	</div-->
 	<div data-dojo-type="dijit/Dialog" data-dojo-id="addResourceDialog_<%= websiteId %>_<%= templateId %>" title="<%= paramRequest.getLocaleString("lblAddResourceButton") %>">
 		<div data-dojo-type="dijit/layout/BorderContainer" style="width:400px; height:300px;">
 			<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
