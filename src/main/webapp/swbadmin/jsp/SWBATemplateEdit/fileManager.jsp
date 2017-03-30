@@ -9,7 +9,7 @@
 	int verNum = (Integer) request.getAttribute("verNum");
 	WebSite site = SWBContext.getWebSite(websiteId);
 	User user = paramRequest.getUser();
-	
+
 	Template template = site.getTemplate(templateId);
 %>
 <html>
@@ -26,7 +26,7 @@
     <script type="text/javascript" charset="utf-8">
     	let $fileExplorer_<%= websiteId %>_<%= templateId %>;
     	let  $window = $(window);
-    	
+
       $(document).ready(function() {
         $fileExplorer_<%= websiteId %>_<%= templateId %> = $('#elfinder_<%= websiteId %>_<%= templateId %>').elfinder({
           url : '/elFinderConnector',  // connector URL (REQUIRED)
@@ -34,17 +34,17 @@
           height: $window.height(),
           resourceId : '<%= paramRequest.getResourceBase().getId() %>',
           resourcePath : '<%= paramRequest.getResourceBase().getSemanticObject().getWorkPath() %>',
-          customData : {startPath : 'web<%= SWBPortal.getWebWorkPath() + template.getWorkPath() + "/" + verNum %>'}
+          customData : {site : '<%= site.getId() %>', template:'<%= templateId %>', version: '<%= verNum %>'}
         });
       });
-      
+
 			$window.resize(function() {
      		var win_height = $window.height();
      		if( $("#elfinder_<%= websiteId %>_<%= templateId %>").height() != win_height ){
            $fileExplorer_<%= websiteId %>_<%= templateId %> && $fileExplorer_<%= websiteId %>_<%= templateId %>.resize('auto',win_height);
      		}
  			});
- 			
+
  			window.addEventListener("unload", function() {
  				let win = window.opener;
  				if (win && !win.closed) {
@@ -56,15 +56,15 @@
     	body {
     		margin: 0px;
     	}
-    	
+
     	#elfinder_<%= websiteId %>_<%= templateId %> {
     		width: 100%;
     		min-width: 100%;
     		height: 100% !important;
     	}
-    	
+
     	.ui-resizable-handle { display:none !important; }
-    	
+
     	.elfinder-navbar-dir, .elfinder-button-search input {
     		outline: 0;
     	}
