@@ -62,12 +62,6 @@
 				  var result = $('#ruleEditor_<%= ruleModel %>_<%= ruleId %>').queryBuilder('getRules');
 				  
 				  if (!$.isEmptyObject(result)) {
-				  
-				  	if (result.rules.length === 1) {
-				  		console.log("Must strip first rule");
-				  	}
-				  	console.log(JSON.stringify(result));
-				  
 				  	$.ajax({
 		   				url: "<%= paramRequest.getRenderUrl().setCallMethod(SWBResourceURL.Call_DIRECT).setMode("updateRuleDefinition").setParameter("tm", ruleModel).setParameter("id", ruleId) %>", 
 		   				method:"POST",
@@ -75,7 +69,9 @@
 		   				dataType: "json",
 		   				contentType: "application/json; charset=utf-8"
 		   			}).done(function(data) {
-		   				console.log(data);
+		   				if (data.status && data.status === "ok") {
+		   					alert("Se ha actualizado la regla correctamente");
+		   				}
 	   				});
 				  }
 				});
@@ -159,141 +155,82 @@
    			}).done(function(data) {
    				filterData = data && data.attributes && getFilters(data.attributes);
    				
-   				$("#ruleEditor_<%= ruleModel %>_<%= ruleId %>").queryBuilder({
-		   			plugins: {
-				      'not-group': null
-				    },
-		   			operators: [
-		   				{ type: 'equal'},
-	  					{ type: 'not_equal'},
-	  					{ type: 'less'},
-	  					{ type: 'less_or_equal'},
-	  					{ type: 'greater'},
-	  					{ type: 'greater_or_equal'},
-							{ type: 'history', nb_inputs: 1, multiple: true, apply_to: ['string'] }
-		   			],
-						filters: filterData,
-						lang:{
-							__locale: "Spanish (es)",
-		  				add_rule: "Agregar regla",
-		  				add_group: "Agregar grupo",
-		  				delete_rule: "Eliminar",
-		  				delete_group: "Eliminar",
-		  				
-		 					conditions: {
-		    				AND: "Y",
-		    				OR: "O",
-								NOT: "NO"
-		  				},
-		
-		  				operators: {
-		    				equal: "igual",
-		    				not_equal: "distinto de",
-		    				in: "en",
-		    				not_in: "no en",
-		    				less: "menor",
-		    				less_or_equal: "menor o igual",
-		    				greater: "mayor",
-		    				greater_or_equal: "mayor o igual",
-		    				between: "entre",
-		    				begins_with: "empieza por",
-		    				not_begins_with: "no empieza por",
-		    				contains: "contiene",
-		    				not_contains: "no contiene",
-		    				ends_with: "acaba con",
-		    				not_ends_with: "no acaba con",
-		    				is_empty: "está vacío",
-		    				is_not_empty: "no está vacío",
-		    				is_null: "es nulo",
-		    				is_not_null: "no es nulo",
-		    				history: "es"
-		  				},
-		  			
-		  				errors: {
-		    				no_filter: "No se ha seleccionado ningún filtro",
-		    				empty_group: "El grupo está vacío",
-		    				radio_empty: "Ningún valor seleccionado",
-		    				checkbox_empty: "Ningún valor seleccionado",
-		    				select_empty: "Ningún valor seleccionado",
-		    				string_empty: "Cadena vacía",
-		    				string_exceed_min_length: "Debe contener al menos {0} caracteres",
-		    				string_exceed_max_length: "No debe contener más de {0} caracteres",
-		    				string_invalid_format: "Formato inválido ({0})",
-		    				number_nan: "No es un número",
-		    				number_not_integer: "No es un número entero",
-		    				number_not_double: "No es un número real",
-		    				number_exceed_min: "Debe ser mayor que {0}",
-		    				number_exceed_max: "Debe ser menor que {0}",
-		    				number_wrong_step: "Debe ser múltiplo de {0}",
-		    				datetime_invalid: "Formato de fecha inválido ({0})",
-		    				datetime_exceed_min: "Debe ser posterior a {0}",
-		    				datetime_exceed_max: "Debe ser anterior a {0}"
-		  				}
-						},
-						rules: [{
-  "condition": "AND",
-  "rules": [
-    {
-      "id": "active",
-      "field": "active",
-      "type": "string",
-      "input": "select",
-      "operator": "not_equal",
-      "value": "true"
-    },
-    {
-      "condition": "AND",
-      "rules": [
-        {
-          "condition": "OR",
-          "rules": [
-            {
-              "condition": "AND",
-              "rules": [
-                {
-                  "id": "usrLogin",
-                  "field": "usrLogin",
-                  "type": "string",
-                  "input": "text",
-                  "operator": "not_equal",
-                  "value": "5"
-                }
-              ],
-              "not": true
-            },
-            {
-              "condition": "AND",
-              "rules": [
-                {
-                  "id": "userSex",
-                  "field": "userSex",
-                  "type": "string",
-                  "input": "select",
-                  "operator": "not_equal",
-                  "value": "male"
-                },
-                {
-                  "id": "userStatus",
-                  "field": "userStatus",
-                  "type": "string",
-                  "input": "select",
-                  "operator": "not_equal",
-                  "value": "separated"
-                }
-              ],
-              "not": false
-            }
-          ],
-          "not": false
-        }
-      ],
-      "not": true
-    }
-  ],
-  "not": false,
-  "valid": true
-}]
-					});
+   				$.ajax({
+	   				url: "<%= paramRequest.getRenderUrl().setCallMethod(SWBResourceURL.Call_DIRECT).setMode("getRuleDefinition").setParameter("suri", r.getURI()) %>", 
+	   				method:"GET",
+	   				dataType: "json"
+	   			}).done(function(data2) {
+	   				var rules = data2;
+	   				if (data2 && !data2.condition) {
+	   					rules = {
+	   						condition: "AND",
+	   						not: false,
+	   						rules: [data2]
+	   					};
+	   				}
+	   			
+	   				$("#ruleEditor_<%= ruleModel %>_<%= ruleId %>").queryBuilder({
+	   					rules:rules,
+			   			plugins: {
+					      'not-group': null
+					    },
+			   			operators: [
+			   				{ type: 'equal'},
+		  					{ type: 'not_equal'},
+		  					{ type: 'less'},
+		  					{ type: 'less_or_equal'},
+		  					{ type: 'greater'},
+		  					{ type: 'greater_or_equal'},
+								{ type: 'history', nb_inputs: 1, multiple: true, apply_to: ['string'] }
+			   			],
+							filters: filterData,
+							lang:{
+								__locale: "Spanish (es)",
+			  				add_rule: "Agregar regla",
+			  				add_group: "Agregar grupo",
+			  				delete_rule: "Eliminar",
+			  				delete_group: "Eliminar",
+			  				
+			 					conditions: {
+			    				AND: "Y",
+			    				OR: "O",
+									NOT: "NO"
+			  				},
+			
+			  				operators: {
+			    				equal: "igual",
+			    				not_equal: "distinto de",
+			    				less: "menor",
+			    				less_or_equal: "menor o igual",
+			    				greater: "mayor",
+			    				greater_or_equal: "mayor o igual",
+			    				history: "es"
+			  				},
+			  			
+			  				errors: {
+			    				no_filter: "No se ha seleccionado ningún filtro",
+			    				empty_group: "El grupo está vacío",
+			    				radio_empty: "Ningún valor seleccionado",
+			    				checkbox_empty: "Ningún valor seleccionado",
+			    				select_empty: "Ningún valor seleccionado",
+			    				string_empty: "Cadena vacía",
+			    				string_exceed_min_length: "Debe contener al menos {0} caracteres",
+			    				string_exceed_max_length: "No debe contener más de {0} caracteres",
+			    				string_invalid_format: "Formato inválido ({0})",
+			    				number_nan: "No es un número",
+			    				number_not_integer: "No es un número entero",
+			    				number_not_double: "No es un número real",
+			    				number_exceed_min: "Debe ser mayor que {0}",
+			    				number_exceed_max: "Debe ser menor que {0}",
+			    				number_wrong_step: "Debe ser múltiplo de {0}",
+			    				datetime_invalid: "Formato de fecha inválido ({0})",
+			    				datetime_exceed_min: "Debe ser posterior a {0}",
+			    				datetime_exceed_max: "Debe ser anterior a {0}"
+			  				}
+							}
+						});
+	   				
+	   			});
    				
    			});
    		
