@@ -161,16 +161,17 @@
 	   				dataType: "json"
 	   			}).done(function(data2) {
 	   				var rules = data2;
-	   				if (data2 && !data2.condition) {
-	   					rules = {
-	   						condition: "AND",
-	   						not: false,
-	   						rules: [data2]
-	   					};
-	   				}
-	   			
-	   				$("#ruleEditor_<%= ruleModel %>_<%= ruleId %>").queryBuilder({
-	   					rules:rules,
+	   				if(!$.isEmptyObject(rules)) {
+   						if (!rules.condition) {
+		   					rules = {
+		   						condition: "AND",
+		   						not: false,
+		   						rules: [data2]
+		   					}
+		   				}
+   					}
+   					
+   					var opts = {
 			   			plugins: {
 					      'not-group': null
 					    },
@@ -228,9 +229,16 @@
 			    				datetime_exceed_max: "Debe ser anterior a {0}"
 			  				}
 							}
-						});
+   					};
+   					
+   					if(!$.isEmptyObject(rules)) {
+   						opts.rules = rules;
+   					}
+	   			
+	   				$("#ruleEditor_<%= ruleModel %>_<%= ruleId %>").queryBuilder(opts);
 	   				
-	   			});
+	   			})
+	   			.error(function(err){console.log(err)});
    				
    			});
    		
