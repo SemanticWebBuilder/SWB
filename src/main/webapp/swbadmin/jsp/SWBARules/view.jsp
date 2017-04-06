@@ -187,24 +187,24 @@
 							filters: filterData,
 							lang:{
 								__locale: "Spanish (es)",
-			  				add_rule: "Agregar regla",
-			  				add_group: "Agregar grupo",
-			  				delete_rule: "Eliminar",
-			  				delete_group: "Eliminar",
+			  				add_rule: "<%= paramRequest.getLocaleString("btnAddRule") %>",
+			  				add_group: "<%= paramRequest.getLocaleString("btnAddGroup") %>",
+			  				delete_rule: "<%= paramRequest.getLocaleString("btnDeleteRule") %>",
+			  				delete_group: "<%= paramRequest.getLocaleString("btnDeleteGroup") %>",
 			  				
 			 					conditions: {
-			    				AND: "Y",
-			    				OR: "O",
-									NOT: "NO"
+			    				AND: "<%= paramRequest.getLocaleString("msgAnd") %>",
+			    				OR: "<%= paramRequest.getLocaleString("msgOr") %>",
+									NOT: "<%= paramRequest.getLocaleString("msgNot") %>"
 			  				},
 			
 			  				operators: {
-			    				equal: "igual",
-			    				not_equal: "distinto de",
-			    				less: "menor",
-			    				less_or_equal: "menor o igual",
-			    				greater: "mayor",
-			    				greater_or_equal: "mayor o igual",
+			    				equal: "<%= paramRequest.getLocaleString("msgSameAs") %>",
+			    				not_equal: "<%= paramRequest.getLocaleString("msgNotEqual") %>",
+			    				less: "<%= paramRequest.getLocaleString("msgLessThan") %>",
+			    				less_or_equal: "<%= paramRequest.getLocaleString("msgLessThanOrEquals") %>",
+			    				greater: "<%= paramRequest.getLocaleString("msgGreaterThan") %>",
+			    				greater_or_equal: "<%= paramRequest.getLocaleString("msgGreaterThanOrEquals") %>",
 			    				history: "es"
 			  				},
 			  			
@@ -238,7 +238,10 @@
 	   				$("#ruleEditor_<%= ruleModel %>_<%= ruleId %>").queryBuilder(opts);
 	   				
 	   			})
-	   			.error(function(err){console.log(err)});
+	   			.error(function(err) {
+	   			alert("<%= paramRequest.getLocaleString("msgErrorDrawTree") %>");
+	   				console.log(err)
+	   			});
    				
    			});
    		
