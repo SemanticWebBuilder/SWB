@@ -29,7 +29,7 @@
 
       $(document).ready(function() {
         $fileExplorer_<%= websiteId %>_<%= templateId %> = $('#elfinder_<%= websiteId %>_<%= templateId %>').elfinder({
-          url : '/elFinderConnector',  // connector URL (REQUIRED)
+          url : '<%= SWBPlatform.getContextPath() %>/elFinderConnector',  // connector URL (REQUIRED)
           resizable: true,
           height: $window.height(),
           resourceId : '<%= paramRequest.getResourceBase().getId() %>',

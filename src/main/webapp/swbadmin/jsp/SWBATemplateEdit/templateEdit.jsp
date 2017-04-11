@@ -34,10 +34,6 @@
 <!-- link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/codemirror/lib/codemirror.css"-->
 <!-- link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/codemirror/addon/dialog/dialog.css"-->
 
-<link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/elfinder/css/jquery-ui.css">
-<link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/elfinder/css/elfinder.min.css">
-<link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/elfinder/css/theme.css">
-
 <style type="text/css">
 	.CodeMirror {
 		height: 90%;
@@ -80,21 +76,6 @@
 				<script type="dojo/method">
 					require({
 						packages: [{
-							name: "jqueryUI",
-							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/elfinder/js",
-							main: "jquery-ui.min"
-						},
-						{
-							name: "jquery",
-							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/elfinder/js",
-							main: "jquery.min"
-						},
-						{
-							name: "elfinder",
-							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/elfinder/js",
-							main: "elfinder.min"
-						},
-						{
 							name: "ace",
 							location: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/aceeditor",
 							main: "ace"
@@ -105,8 +86,6 @@
 							main: "editor"
 						}]
 					}, [
-						"jquery",
-						"elfinder",
 						"TemplateEditor",
 						"dojo/store/Memory",
 						"dijit/tree/ObjectStoreModel",
@@ -115,13 +94,9 @@
 						"dijit/form/Button",
 						"dijit/form/ToggleButton",
 						"dijit/registry"],
-						function(jQuery, elfinder, TemplateEditor, Memory, ObjectStoreModel, Tree, xhr, Button, ToggleButton, registry) {
+						function(TemplateEditor, Memory, ObjectStoreModel, Tree, xhr, Button, ToggleButton, registry) {
 							let editor_<%= websiteId %>_<%= templateId %>; //CodeMirror editor
 							let resources_<%= websiteId %>_<%= templateId %>; //Dojo tree
-
-							/*jQuery("#elFinderTest").elfinder({
-								url: '/elFinderConnector'
-							});*/
 
 							TemplateEditor.setOptions({
 								basePath: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/aceeditor"
@@ -372,8 +347,5 @@
 				<button type="button" data-dojo-type="dijit/form/Button" data-dojo-props="onClick:function(){addResourceDialog_<%= websiteId %>_<%= templateId %>.hide();}"><%= paramRequest.getLocaleString("lblCancel") %></button>
 			</div>
 		</div>
-	</div>
-	<div data-dojo-type="dijit/Dialog" data-dojo-id="dFloatingPane_<%= websiteId %>_<%= templateId %>">
-	   	<div style="width:600px; height:600px;" id="elFinderTest"></div>
 	</div>
 </div>
