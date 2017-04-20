@@ -84,13 +84,18 @@
 						if (a.title.toLowerCase() > b.title.toLowerCase()) return 1;
 					});   				
 
+					//Ignore SWBWebPageHistory rules
+					attributes = attributes.filter(function(item) {
+						return item.name !== "SWBWebPageHistory";
+					});
+					
    				return attributes.map(function(item) {
    					var filterDef = {};
    					filterDef.id = item.name;
    					filterDef.label = item.title;
    					
    					//Process SWBPageHistory different
-   					if (item.name === "SWBWebPageHistory") {
+   					/*if (item.name === "SWBWebPageHistory") {
    						filterDef.operators = ["equal", "not_equal", "history"];
    						
    						filterDef.input = function(rule, name) {
@@ -113,9 +118,9 @@
 								});
 								
 								return '<input type="text" name="' + name + '" class="form-control" />';
-							};
+							};*/
    						
-   					} else {
+   					//} else {
    						if (item.operators && item.operators.length) {
 		   					filterDef.operators = item.operators.map(function(operator) {
 		   						if (operator.value === "=") {
@@ -142,7 +147,7 @@
 		   						});
 		   					}
 	   					}
-   					}
+   					//}
    					
    					return filterDef;
    				});
