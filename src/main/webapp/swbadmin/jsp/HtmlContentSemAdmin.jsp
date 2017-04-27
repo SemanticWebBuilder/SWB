@@ -22,7 +22,7 @@
     urlNewVersion.setMode("selectFileInterface");
     urlNewVersion.setParameter("numversion", Integer.toString(version));
     urlNewVersion.setParameter("type", "image");
-    
+
     SWBResourceURL uploadURL = paramRequest.getRenderUrl().setCallMethod(SWBResourceURL.Call_DIRECT);
     uploadURL.setMode(HTMLContent.MOD_UPLOADFILE);
     uploadURL.setAction(HTMLContent.ACT_UPLOADFILE);
@@ -53,7 +53,8 @@
         }
         %>
         <script>
-            var editor = CKEDITOR.replace( 'EditorDefault', {
+        (function() {
+          var editor = CKEDITOR.replace( 'EditorDefault', {
                 language:'<%= lang %>',
                 //allowedContent: true,
                 extraAllowedContent: 'article[*];aside[*];details[*];figcaption[*];figure[*];footer[*];header[*];main[*];mark[*];nav[*];section[*];summary[*];time',
@@ -74,7 +75,8 @@
                 filebrowserLinkBrowseUrl: '<%= urlNewVersion %>',
                 filebrowserLinkUploadUrl: '<%= uploadURL %>'
             });
-            
+            CKEDITOR.dtd.$removeEmpty.span = 0; //Prevent removing empty span tags
+            CKEDITOR.dtd.$removeEmpty.i = 0; //Prevent removing empty i tags
             //Increase dialog width
             CKEDITOR.on( 'dialogDefinition', function( ev ) {
                 if ( ev.data.name === 'link' || ev.data.name === 'image')
@@ -82,6 +84,7 @@
             });
             //Override to allow all properties and all tags
             CKEDITOR.config.allowedContent = true;
+        })();
         </script>
     </body>
 </html>
