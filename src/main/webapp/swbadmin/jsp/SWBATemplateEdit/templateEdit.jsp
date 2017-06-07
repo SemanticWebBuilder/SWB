@@ -74,6 +74,13 @@
 				<input type="file" id="fileLoadInput_<%= websiteId %>_<%= templateId %>" accept="text/html" style="display:none"/>
 				<div id="templateEditor_<%= websiteId %>_<%= templateId %>"></div>
 				<script type="dojo/method">
+					require(["dojo/ready"], function(ready) {
+						ready(function() {
+							require(["dijit/tree/ObjectStoreModel"], function(ObjectStoreModel) {
+							});
+						});
+					});
+					
 					require({
 						packages: [{
 							name: "ace",
