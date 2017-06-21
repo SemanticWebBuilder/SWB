@@ -94,8 +94,15 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
         <div class="resourceFilterTree claro" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center', splitter:false">
             <div id="serverTree_<%= resID %>"></div>
             <script type="dojo/method">
-                require(['dojo/store/Memory','dijit/tree/ObjectStoreModel', 
-                    'dijit/Tree', 'dojo/domReady!', 'dojo/dom', 'dojo/request/xhr', 
+                require(["dojo/ready"], function(ready) {
+                  ready(function() {
+                    require(["dijit/tree/ObjectStoreModel"], function(ObjectStoreModel) {
+                    });
+                  });
+                });
+                
+                require(['dojo/store/Memory','dijit/tree/ObjectStoreModel',
+                    'dijit/Tree', 'dojo/domReady!', 'dojo/dom', 'dojo/request/xhr',
                     'dojox/widget/Standby', 'dojo/topic', 'dijit/form/Button', 'dijit/registry', 'dojox/form/TriStateCheckBox'],
                 function(Memory, ObjectStoreModel, Tree, ready, dom, xhr, StandBy, topic, Button, registry, TriStateCheckBox) {
                     var server_<%= resID %>;
@@ -150,7 +157,7 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                         }
                     }, "saveButton_<%= resID %>").startup();
 
-                    //TODO: Mover la función de creación de árboles a una biblioteca para que el navegador no almacene la definición varias veces
+                    //TODO: Mover la funciï¿½n de creaciï¿½n de ï¿½rboles a una biblioteca para que el navegador no almacene la definiciï¿½n varias veces
                     function TreeWidget (treeData, siteId, placeHolder, rootId) {
                         var store, model;
 
@@ -225,7 +232,7 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                                 } else {
                                     tnode.item.selected = false;
                                 }
-                                
+
                                 "mixed" === obj ? tnode.disableChilds() : tnode.enableChilds();
                                 tnode.item.childs = ("mixed" === obj);
                                 store.put(tnode.item);
@@ -277,7 +284,7 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                                 getRowClass: function(item,opened) {},
                                 _createTreeNode: createTreeNode,
                                 onOpen: function(_item, _node) {
-                                    //Si el nodo está seleccionado o el nodo está deshabilitado, deshabilitar los hijos
+                                    //Si el nodo estï¿½ seleccionado o el nodo estï¿½ deshabilitado, deshabilitar los hijos
                                     if ("mixed" === _node.getCheckboxState() || _item.enabled === false) {
                                         _node.disableChilds();
                                     }
@@ -295,7 +302,7 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
 
                         return { };
                     };
-                    
+
                     xhr("<%= data %>", {
                         handleAs: "json"
                     }).then(function(_data) {
