@@ -1,0 +1,88 @@
+/*GENERALES*/
+.x { height:1px; background:#000 !important}
+* { margin:0; padding:0; font-family:Arial, Verdana, sans-serif; color:#FFF; font-weight:normal;}
+html { height:100%; background:#369}
+body { height:100%; text-align:center;
+    background: #369;
+    background: -webkit-linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0)); /*Safari*/
+    background: -o-linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0));   /*Opera*/
+    background: -moz-linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0)); /*Firefox*/
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0)); /* Standard*/}
+form                 { width:60%; margin:40px auto 0}
+form div             { margin-bottom:35px; text-align:left}
+input, label, button { font-size:20px}
+label                { display:block; margin-bottom:5px; text-transform:uppercase; opacity:0.9}
+input[type="text"],
+input[type="password"],
+button,
+input[type="submit"]    { color:#666; padding:7px 10px; width:97%; border-radius:5px; border:none; box-shadow:0px 0px 10px rgba(0,0,0,0.5)} 
+
+button,
+input[type="submit"]    { padding:10px 20px; text-transform:uppercase; margin-top:10px; width:100%; color:#FFF; text-shadow:1px 2px 1px rgba(0,0,0,0.5);
+    background: #369;
+    background: -webkit-linear-gradient(#69c,#369, #264c72); /*Safari*/
+    background: -o-linear-gradient(#69c,#369, #264c72);   /*Opera*/
+    background: -moz-linear-gradient(#69c,#369, #264c72); /*Firefox*/
+    background: linear-gradient(#69c,#369, #264c72); /* Standard*/} 
+
+button:hover,
+input[type="submit"]:hover { cursor:pointer; box-shadow:0px 0px 20px rgba(0,0,0,0.5);
+    background: #369;
+    background: -webkit-linear-gradient(#69c 20%,#369, #264c72); /*Safari*/
+    background: -o-linear-gradient(#69c 20%,#369, #264c72);   /*Opera*/
+    background: -moz-linear-gradient(#69c 20%,#369, #264c72); /*Firefox*/
+    background: linear-gradient(#69c 20%,#369, #264c72); /* Standard*/}
+
+input[type="checkbox"]         { height:25px; width:25px; position:relative; top:3px}
+input[type="checkbox"] + label { display:inline-block}
+hr          { height:1px; border:none; border-top:1px solid rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,255,255,0.2); box-shadow:0px -2px 2px rgba(0,0,0,0.15)}
+.rec        { margin-bottom:20px}
+.olvido     { font-size:18px; text-align:center; margin-top:30px; display:block; text-transform:uppercase; opacity:0.7}
+
+.contenedor          { margin:auto; margin-top:7%; padding:10px}
+.contenedor > img    { filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.4))}
+.contenedor.login h1,
+.contenedor.pass h1  { display:none}
+.pie                 { margin-top:50px; text-align:center}
+.pie *               { font-size:14px; color:#acc3d9;}
+.pie p               { margin-bottom:10px}
+.pie img             { filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.5)); margin-bottom:10px}
+
+.pass h2    { margin-top:40px; text-transform:uppercase; color:#acc3d9 }
+.pass label { text-transform:none}
+.error h1       { margin-bottom:40px; line-height:50px}
+.error h1 span  { display: block}
+.error h2       { display:none}
+.error button   { width: auto}
+
+@media (min-width: 1200px){ 
+    .contenedor { width:900px;}
+    .x {background:red}
+}
+
+@media (min-width:992px) and (max-width:1199px){ 
+    .x {background:green}
+    .contenedor { width:900px;} 
+}
+
+@media (min-width:768px) and (max-width:991px){
+    .x {background:cyan}
+    .contenedor { width:800px;}
+    form    { width:65%}
+}
+
+@media (max-width:767px){
+    .x {background:yellow}
+    .contenedor img { width:100%}
+    form    { width:100%}
+    label   { text-align:center}
+    .rec    { text-align:center}
+    
+}
+
+@media (max-width:500px){
+    .x {background:orange}
+    .contenedor { width:75%; margin:auto; margin-top:30px}
+    input[type="text"],
+    input[type="password"]  { width:93%}
+}

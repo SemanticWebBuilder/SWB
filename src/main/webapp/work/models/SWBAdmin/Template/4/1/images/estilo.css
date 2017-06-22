@@ -292,7 +292,7 @@ h3 {
 #acceso li a:visited{
 }
 #acceso li a:active{
-	color:#99ccff;
+	#color:#99ccff;
 }
 
 
@@ -349,7 +349,7 @@ h3 {
 #compartidos li a:visited{
 }
 #compartidos li a:active{
-	color:#99ccff;
+	#color:#99ccff;
 }
 
 /* ----------------------- C O M P A R T I D O S   ---*/

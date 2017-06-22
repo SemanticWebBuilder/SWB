@@ -1,44 +1,43 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
     <head>
-        <title>Login</title>
+        <title>SWB Portal</title>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-        <link href="images/estilo.css" rel="stylesheet" type="text/css">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link href="/work/config/config.css" rel="stylesheet" type="text/css">
+        <link href="config.css" rel="stylesheet" type="text/css">
     </head>
-
     <body onload="document.login.wb_username.focus();">
-
-        <div id="centrado">
-            <div id="html-gral">
-                <div id="html-contenido">
-                    <h1>Acceso restringido</h1>
-                    <h2>La p&aacute;gina solicitada esta restringida para su nivel de acceso.</h2>
-                    <ul>
-                        <li>Si usted no se ha firmado o quiere cambiar de usuario.        </li>
-                    </ul>
-                    <form name="login" action="" method="post">
-                        Usuario:
-                        <input type="text" name="wb_username" size="10" autocomplete="off" />
-                        Contrase&ntilde;a:
-                        <input type="password" name="wb_password" size="10" autocomplete="off" />
-                        <input type="submit" name="Submit" value="&gt;&gt;" />
-                        <SWBREMEMBER>
-                    </form>
-                    <ul>
-                        <li>
-                            Contactar al administrador del sitio <a href="mailto:webbuilder@infotec.com.mx">aqui</a>.
-                        </li>
-                        <li>
-                            Haga clic en el bot&oacute;n <a href="javascript:history.go(-1)">Atr&aacute;s</a> para intentar otro v&iacute;nculo.
-                        </li>
-                    </ul>
-
-                    <div id="semius">
-                        <img src="images/semius-restringe.gif" width="215" height="190"></div>
+        <div class="x"></div>
+        <div class="contenedor login">
+            <img src="swb-portal.png">
+            <h1>SWB Portal</h1>
+            <form name="login" action="" method="post">
+                <div>
+                    <label for="usr">Usuario</label>
+                    <input id="usr" type="text" name="wb_username" autocomplete="off">
                 </div>
+                <div>
+                    <label for="pass">Contrase&ntilde;a</label>
+                    <input id="pass" type="password" name="wb_password" autocomplete="off">
+                </div>
+                <div class="rec">
+                    <input id="rec" type="checkbox" name="wb_password" autocomplete="off">
+                    <label for="rec">Recu&eacute;rdame</label>
+                </div>
+                <div>
+                    <input name="Submit2" type="submit" value="Entrar">
+                </div>
+                <hr>
+                <div>
+                    <a href="#" class="olvido">Olvid&eacute; mi contrase&ntilde;a</a>
+                </div>
+            </form>
+            <div class="pie">
+                <img src="images/SemanticWebBuilder.png" width="400">
+                <p><a href="http://www.semanticwebbuilder.org.mx/swb-portal">SWB Portal</a> y <a href="http://www.semanticwebbuilder.org.mx">SemanticWebBuilder</a> son marcas registradas</p> 
+                <p>Todos los derechos reservados 2009-20016</p>
             </div>
         </div>
-        <SWBSECURITY>
     </body>
 </html>
