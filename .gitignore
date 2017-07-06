@@ -24,3 +24,9 @@ buildNumber.properties
 *.iml
 
 .DS_Store
+
+#EclipseIDE
+
+.project
+.classpath
+.settings/
