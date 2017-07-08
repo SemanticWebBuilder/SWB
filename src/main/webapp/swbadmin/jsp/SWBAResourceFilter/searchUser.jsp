@@ -17,25 +17,27 @@
 String resID = UUID.randomUUID().toString().replace("-","_");
 UserRepository urep = (UserRepository)SWBPlatform.getSemanticMgr().getOntology().getGenericObject(request.getParameter("suri"));
 User user = SWBContext.getAdminUser();
+
 if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) && null != user) {
     String usrdata = "[]";
     if (null != urep) {
         Iterator<User> users = urep.listUsers();
-        if (users.hasNext()){
+        if (users.hasNext()) {
             usrdata = "[";
-            
+
             while(users.hasNext()) {
                 User usr = users.next();
                 usrdata+="{\"id\":\""+usr.getId()+"\",";
-                usrdata+="\"login\":\""+usr.getLogin()+"\",";
-                usrdata+="\"firstName\":\""+null!=usr.getLastName()?usr.getLastName():""+"\",";
-                if (null != usr.getSecondLastName() && !usr.getSecondLastName().isEmpty()) {
-                    usrdata+="\"lastName\":\""+usr.getSecondLastName()+"\",";
+                usrdata+="\"login\":\""+usr.getLogin()+"\"";
+                if (null != usr.getLastName() && !usr.getLastName().isEmpty()) {
+                  usrdata+=", \"firstName\":\""+null!=usr.getLastName()?usr.getLastName():""+"\"";
                 }
-                usrdata+="\"name\":\""+usr.getFirstName()+"\"}";
+                if (null != usr.getSecondLastName() && !usr.getSecondLastName().isEmpty()) {
+                    usrdata+=",\"lastName\":\""+usr.getSecondLastName()+"\"";
+                }
+                usrdata+=",\"name\":\""+usr.getFirstName()+"\"}";
                 if (users.hasNext()) usrdata+=",";
             }
-            
             usrdata+="]";
         }
     }
@@ -69,9 +71,16 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
             %>
             <div id="users_<%= resID %>"></div>
             <script type="dojo/method">
-                require(['dojo/store/Memory','dojo/data/ObjectStore', 
-                    'dojo/domReady!', 'dojo/dom', 'dojo/request/xhr', 
-                    'dojox/grid/EnhancedGrid', 'dijit/form/Button', 
+                require(["dojo/ready"], function(ready) {
+                  ready(function() {
+                    require(["dijit/tree/ObjectStoreModel"], function(ObjectStoreModel) {
+                    });
+                  });
+                });
+
+                require(['dojo/store/Memory','dojo/data/ObjectStore',
+                    'dojo/domReady!', 'dojo/dom', 'dojo/request/xhr',
+                    'dojox/grid/EnhancedGrid', 'dijit/form/Button',
                     'dijit/registry', 'dojox/grid/enhanced/plugins/Filter',
                     'dojo/on', 'dojox/grid/enhanced/plugins/IndirectSelection'],
                 function(Memory, ObjectStore, ready, dom, xhr, EnhancedGrid, Button, registry, Filter, on) {
@@ -91,7 +100,7 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                         if (useFilter) {
                             cfg.plugins.filter = {ruleCount: 1};
                         }
-                        
+
                         grid = new EnhancedGrid(cfg, container);
                         grid.startup();
 
@@ -130,19 +139,19 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                                 alert("<%= paramRequest.getLocaleString("msgNoUserSelected") %>");
                             }
                         }
-                        evt.preventDefault(); 
+                        evt.preventDefault();
                     });
 
                     var data = <%= usrdata %>;
                     if (data.length) {
-                        var users_<%= resID %> = new GridWidget(data, 
+                        var users_<%= resID %> = new GridWidget(data,
                         [
                             { name: "<%= paramRequest.getLocaleString("lblColLogin") %>", field: "login", width: "20%", datatype:"string" },
                             { name: "<%= paramRequest.getLocaleString("lblColLastName") %>", field: "firstName", width: "20%", datatype:"string" },
                             { name: "<%= paramRequest.getLocaleString("lblColSecondLastName") %>", field: "lastName", width: "20%", datatype:"string" },
                             { name: "<%= paramRequest.getLocaleString("lblColName") %>", field: "name", width: "20%", datatype:"string" }
                         ], "users_<%= resID %>", true);
-                        
+
                         <%
                         String users = request.getParameter("ids");
                         if (null != users && !users.isEmpty()) {
