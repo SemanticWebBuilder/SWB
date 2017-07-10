@@ -1,10 +1,11 @@
-define(["ace", "ace/mode-html", "ace/theme-chrome"],
+define(["ace", "ace/mode-html", "ace/mode-sql", "ace/theme-chrome"],
 function (AceEditor) {
   let TemplateEditor = { provider: "Ace" };
-  let HTMLModeDef = ace.require("ace/mode/html").Mode;
+  let HTMLModeDef;
   let defaults = {
     showGutters: false,
-    theme: "ace/theme/sqlserver"
+    theme: "ace/theme/sqlserver",
+    mode: "ace/mode/html"
   };
 
   /**
@@ -19,6 +20,10 @@ function (AceEditor) {
 
     if (defaults.basePath) {
       ace.config.set("basePath", defaults.basePath);
+    }
+
+    if (defaults.mode) {
+       HTMLModeDef = ace.require(defaults.mode).Mode;
     }
   };
 
@@ -43,7 +48,7 @@ function (AceEditor) {
       },
       insertContent: function(content, reset) {
         if (!reset || reset == undefined) reset = false;
-        
+
         if (reset) {
 					editor.getSession().setValue(content, -1);
 				} else {
