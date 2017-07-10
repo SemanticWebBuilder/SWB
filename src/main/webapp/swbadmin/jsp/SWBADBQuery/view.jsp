@@ -59,8 +59,8 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
       <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'sidebar', gutters:true, liveSplitters:true" id="borderContainer2">
         <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="splitter:false, region:'top'">
           <div id="toolbar1" data-dojo-type="dijit/Toolbar" style="margin:-5px;">
-            <button id="executeBtn_<%= resID %>" type="button">Execute</button>
-            <div style="float:right;">Pool: <select data-dojo-type="dijit/form/FilteringSelect" id="pool_<%= resID %>" name="pool_<%= resID %>" style="width:150px;">
+            <button id="executeBtn_<%= resID %>" type="button"><%= paramRequest.getLocaleString('lblExecute') %></button>
+            <div style="float:right;"><%= paramRequest.getLocaleString('lblPool') %>: <select data-dojo-type="dijit/form/FilteringSelect" id="pool_<%= resID %>" name="pool_<%= resID %>" style="width:150px;">
               <%
               Enumeration<DBConnectionPool> en = SWBUtils.DB.getPools();
               while(en.hasMoreElements()) {
@@ -115,11 +115,11 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                       selectedPool = "swb";
 
                   new Button({
-                      label: "Execute",
+                      label: "<%= paramRequest.getLocaleString('lblExecute') %>",
                       iconClass:'fa fa-play-circle-o',
                       onClick: function(evt) {
                         var btn = this, payload = {};
-                        payload.query = sqlEditor_<%= resID %>.getContent();//"select * from SWB_ADMLOG";
+                        payload.query = sqlEditor_<%= resID %>.getContent();
                         selectedPool = registry.byId('pool_<%= resID %>').get('value');
                         selectedPool = selectedPool || "swb;"
                         payload.pool =  selectedPool;
@@ -167,7 +167,7 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                                     });
                                     content += "</tbody></table>";
                                   } else if (item.affectedRows) {
-                                    content +="<p>"+item.affectedRows+" registros afectados.</p>";
+                                    content +="<p>"+item.affectedRows+" <%= paramRequest.getLocaleString('lblAffectedRows') %>.</p>";
                                   }
 
                                   var cp = new ContentPane({
@@ -181,7 +181,7 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                                 btn.busy(false);
                               } else {
                                 btn.busy(false);
-                                alert("Ha ocurrido un error al procesar la petición. Intente más tarde.")
+                                alert("<%= paramRequest.getLocaleString('errNetwork') %>")
                               }
                               btn.busy(false);
                           }
@@ -243,7 +243,7 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
   										poolTree_<%= resID %> = new TreeWidget(_data, 'poolTree_<%= resID %>');
   									}
   								}, function(err) {
-                    alert("Ha ocurrido un error al obtener los datos del pool de conexiones. Intente más tarde.");
+                    alert("<%= paramRequest.getLocaleString('errNetwork') %>");
   									console.log(err);
   								});
 
