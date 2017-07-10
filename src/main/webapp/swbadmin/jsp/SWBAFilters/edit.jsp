@@ -46,8 +46,15 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                     <div class="adminFilterTree" id="filesTree_<%= resID %>"></div>
                 </div>
                 <script type="dojo/method">
-                    require(['dojo/store/Memory','dijit/tree/ObjectStoreModel', 
-                        'dijit/Tree', 'dojo/domReady!', 'dojo/dom', 'dojo/request/xhr', 
+                    require(["dojo/ready"], function(ready) {
+                      ready(function() {
+                        require(["dijit/tree/ObjectStoreModel"], function(ObjectStoreModel) {
+                        });
+                      });
+                    });
+
+                    require(['dojo/store/Memory','dijit/tree/ObjectStoreModel',
+                        'dijit/Tree', 'dojo/domReady!', 'dojo/dom', 'dojo/request/xhr',
                         'dojox/widget/Standby', 'dojo/topic', 'dijit/form/Button', 'dijit/registry'],
                     function(Memory, ObjectStoreModel, Tree, ready, dom, xhr, StandBy, topic, Button, registry) {
                         var server_<%= resID %>, menus_<%= resID %>, dirs_<%= resID %>, behave_<%= resID %>;
@@ -56,7 +63,7 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                         document.body.appendChild(standby.domNode);
                         standby.startup();
                         standby.show();
-                        
+
                         saveButton_<%= resID %> = new Button({
                             label: "<%= paramRequest.getLocaleString("lblSave") %>",
                             iconClass:'dijitEditorIcon dijitEditorIconSave',
@@ -78,7 +85,7 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                                 if (dirs_<%= resID %>.getSelectedItems().total > 0) {
                                     payload.dirs = dirs_<%= resID %>.getSelectedItems();
                                 }
-                                
+
                                 xhrhttp.send(JSON.stringify(payload));
                                 xhrhttp.onreadystatechange = function() {
                                     if (xhrhttp.readyState == 4) {
@@ -90,20 +97,20 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                                         btn.busy(false);
                                     }
                                 };
-                            }, 
+                            },
                             busy: function(val) {
                                 this.set("iconClass", val ? "dijitIconLoading" : "dijitEditorIcon dijitEditorIconSave");
                                 this.set("disabled", val);
                             }
                         }, "saveButton_<%= resID %>").startup();
 
-                        //TODO: Mover la función de creación de árboles a una biblioteca para que el navegador no almacene la definición varias veces
+                        //TODO: Mover la funciï¿½n de creaciï¿½n de ï¿½rboles a una biblioteca para que el navegador no almacene la definiciï¿½n varias veces
                         function TreeWidget (treeData, placeHolder, rootId) {
                             var store, model;
 
                             function createTreeNode(args) {
                                 var tnode = new dijit._TreeNode(args), cb = new dijit.form.CheckBox();
-                                
+
                                 tnode.labelNode.innerHTML = args.label;
                                 cb.placeAt(tnode.labelNode, "first");
 
@@ -216,7 +223,7 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                                     getRowClass: function(item,opened) {},
                                     _createTreeNode: createTreeNode,
                                     onOpen: function(_item, _node) {
-                                        //Si el nodo está seleccionado o el nodo está deshabilitado, deshabilitar los hijos
+                                        //Si el nodo estï¿½ seleccionado o el nodo estï¿½ deshabilitado, deshabilitar los hijos
                                         if (_node.isCheckboxActive() || _item.enabled === false) {
                                             _node.disableChilds();
                                         }
