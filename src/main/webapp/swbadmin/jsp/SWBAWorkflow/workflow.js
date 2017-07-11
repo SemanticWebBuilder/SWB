@@ -837,6 +837,12 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
     _flowName = data.name;
     _flowVersion = data.version;
 
+    registry.byId("addActivityDialog_"+_appID).on("hide", function(evtº) {
+      dojo.byId('addActivity_form'+_appID).reset();
+      actUserGrid.clearSelection();
+      actRoleGrid.clearSelection();
+    });
+
     activitiesModel = new PFlowDataModel("activities", data.activities, data.links);
     activitiesGrid = new DataTable('activities_'+_appID).init();
     rtypesGrid = new GridWidget(data.resourceTypes,
