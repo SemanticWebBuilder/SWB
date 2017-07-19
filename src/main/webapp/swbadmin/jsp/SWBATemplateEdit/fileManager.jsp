@@ -17,12 +17,12 @@
     <meta charset="utf-8">
     <title>Explorador de archivos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
-    <link rel="stylesheet" type="text/css" href="/swbadmin/js/elfinder/css/jquery-ui.css">
-    <script src="/swbadmin/js/elfinder/js/jquery.min.js"></script>
-    <script src="/swbadmin/js/elfinder/js/jquery-ui.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/swbadmin/js/elfinder/css/elfinder.min.css">
-    <link rel="stylesheet" type="text/css" href="/swbadmin/js/elfinder/css/theme.css">
-    <script src="/swbadmin/js/elfinder/js/elfinder.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="<%= SWBPortal.getContextPath() %>/swbadmin/js/elfinder/css/jquery-ui.css">
+    <script src="<%= SWBPortal.getContextPath() %>/swbadmin/js/elfinder/js/jquery.min.js"></script>
+    <script src="<%= SWBPortal.getContextPath() %>/swbadmin/js/elfinder/js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="<%= SWBPortal.getContextPath() %>/swbadmin/js/elfinder/css/elfinder.min.css">
+    <link rel="stylesheet" type="text/css" href="<%= SWBPortal.getContextPath() %>/swbadmin/js/elfinder/css/theme.css">
+    <script src="<%= SWBPortal.getContextPath() %>/swbadmin/js/elfinder/js/elfinder.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     	let $fileExplorer_<%= websiteId %>_<%= templateId %>;
     	let  $window = $(window);
