@@ -30,12 +30,15 @@ if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) 
                 usrdata+="{\"id\":\""+usr.getId()+"\",";
                 usrdata+="\"login\":\""+usr.getLogin()+"\"";
                 if (null != usr.getLastName() && !usr.getLastName().isEmpty()) {
-                  usrdata+=", \"firstName\":\""+null!=usr.getLastName()?usr.getLastName():""+"\"";
+                  usrdata+=", \"firstName\":\""+usr.getLastName()+"\"";
                 }
                 if (null != usr.getSecondLastName() && !usr.getSecondLastName().isEmpty()) {
                     usrdata+=",\"lastName\":\""+usr.getSecondLastName()+"\"";
                 }
-                usrdata+=",\"name\":\""+usr.getFirstName()+"\"}";
+                if (null != usr.getFirstName() && !usr.getFirstName().isEmpty()) {
+                    usrdata+=",\"nameame\":\""+usr.getFirstName()+"\"";
+                }
+                usrdata+="}";
                 if (users.hasNext()) usrdata+=",";
             }
             usrdata+="]";
