@@ -31,7 +31,7 @@ function (CodeMirror) {
   * Creates an instance of TemplateEditor
   */
   TemplateEditor.createInstance = function(placeHolderId) {
-    !placeHolderId || placeHolderId === undefined || !placeHolderId.length) return;
+    if (!placeHolderId || placeHolderId === undefined || !placeHolderId.length) return;
 
     let editor = CodeMirror(document.getElementById(placeHolderId), defaults);
     let HTMLEditor = {
