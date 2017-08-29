@@ -1547,9 +1547,9 @@
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_About> <http://www.semanticwebbuilder.org/swb4/ontology#hidden> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_About> <http://www.semanticwebbuilder.org/swb4/ontology#mnuItemShowIFrame> "IFRAME" .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_About> <http://www.semanticwebbuilder.org/swb4/ontology#modifiedBy> <http://www.semanticwb.org/uradm#swb_User:1> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_About> <http://www.semanticwebbuilder.org/swb4/ontology#title> "About INFOTEC WebBuilder"@en .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_About> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Acerca de INFOTEC WebBuilder" .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_About> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Sobre INFOTEC WebBuilder"@pt .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_About> <http://www.semanticwebbuilder.org/swb4/ontology#title> "About SemanticWebBuilder"@en .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_About> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Acerca de SemanticWebBuilder" .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_About> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Sobre SemanticWebBuilder"@pt .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_About> <http://www.semanticwebbuilder.org/swb4/ontology#updated> "2009-07-23T14:38:38.701" .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_About> <http://www.semanticwebbuilder.org/swb4/ontology#views> "1"^^<http://www.w3.org/2001/XMLSchema#long> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_About> <http://www.semanticwebbuilder.org/swb4/ontology#webPageParent> <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_Help> .
@@ -1906,12 +1906,12 @@
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_InfotecPage> <http://www.semanticwebbuilder.org/swb4/ontology#hidden> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_InfotecPage> <http://www.semanticwebbuilder.org/swb4/ontology#mnuItemShowIFrame> "IFRAME" .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_InfotecPage> <http://www.semanticwebbuilder.org/swb4/ontology#modifiedBy> <http://www.semanticwb.org/uradm#swb_User:1> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_InfotecPage> <http://www.semanticwebbuilder.org/swb4/ontology#title> "INFOTEC's website"@en .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_InfotecPage> <http://www.semanticwebbuilder.org/swb4/ontology#title> "INFOTEC website"@en .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_InfotecPage> <http://www.semanticwebbuilder.org/swb4/ontology#title> "P\u00E1gina da INFOTEC"@pt .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_InfotecPage> <http://www.semanticwebbuilder.org/swb4/ontology#title> "P\u00E1gina de INFOTEC"@es .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_InfotecPage> <http://www.semanticwebbuilder.org/swb4/ontology#updated> "2009-06-27T02:19:47.546" .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_InfotecPage> <http://www.semanticwebbuilder.org/swb4/ontology#webPageParent> <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_InfotecPage> <http://www.semanticwebbuilder.org/swb4/ontology#webPageURL> "http://www.infotec.com.mx" .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_InfotecPage> <http://www.semanticwebbuilder.org/swb4/ontology#webPageURL> "http://www.infotec.mx" .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_InfotecPage> <http://www.semanticwebbuilder.org/swb4/ontology#webPageURLType> "1"^^<http://www.w3.org/2001/XMLSchema#int> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_LanguageChange> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticwebbuilder.org/swb4/xforms/ontology#MenuItem> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_LanguageChange> <http://www.semanticwebbuilder.org/swb4/ontology#active> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> .
@@ -2542,21 +2542,21 @@
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBCommunity> <http://www.semanticwebbuilder.org/swb4/ontology#hidden> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBCommunity> <http://www.semanticwebbuilder.org/swb4/ontology#mnuItemShowIFrame> "IFRAME" .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBCommunity> <http://www.semanticwebbuilder.org/swb4/ontology#modifiedBy> <http://www.semanticwb.org/uradm#swb_User:1> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBCommunity> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Espacio WebBuilder"@en .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBCommunity> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Espacio WebBuilder"@es .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBCommunity> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Espacio WebBuilder"@pt .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBCommunity> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Espacio SemanticWebBuilder"@en .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBCommunity> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Espacio SemanticWebBuilder"@es .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBCommunity> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Espacio SemanticWebBuilder"@pt .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBCommunity> <http://www.semanticwebbuilder.org/swb4/ontology#updated> "2009-06-27T02:17:52.484" .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBCommunity> <http://www.semanticwebbuilder.org/swb4/ontology#webPageParent> <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBCommunity> <http://www.semanticwebbuilder.org/swb4/ontology#webPageURL> "http://espacio.webbuilder.com.mx" .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBCommunity> <http://www.semanticwebbuilder.org/swb4/ontology#webPageURL> "http://espacio.webbuilder.com.mx/es_mx/swb/Preguntas_frecuentes" .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBCommunity> <http://www.semanticwebbuilder.org/swb4/ontology#webPageURLType> "1"^^<http://www.w3.org/2001/XMLSchema#int> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticwebbuilder.org/swb4/xforms/ontology#MenuItem> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> <http://www.semanticwebbuilder.org/swb4/ontology#active> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> <http://www.semanticwebbuilder.org/swb4/ontology#created> "2006-12-31T14:37:35.000" .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> <http://www.semanticwebbuilder.org/swb4/ontology#deleted> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> <http://www.semanticwebbuilder.org/swb4/ontology#hidden> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> <http://www.semanticwebbuilder.org/swb4/ontology#title> "INFOTEC WebBuilder en el Web"@es .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> <http://www.semanticwebbuilder.org/swb4/ontology#title> "INFOTEC WebBuilder na Web"@pt .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> <http://www.semanticwebbuilder.org/swb4/ontology#title> "INFOTEC WebBuilder on the Web"@en .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> <http://www.semanticwebbuilder.org/swb4/ontology#title> "SemanticWebBuilder en la Web"@es .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> <http://www.semanticwebbuilder.org/swb4/ontology#title> "SemanticWebBuilder na Web"@pt .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> <http://www.semanticwebbuilder.org/swb4/ontology#title> "SemanticWebBuilder on the Web"@en .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> <http://www.semanticwebbuilder.org/swb4/ontology#updated> "2009-02-02T17:15:45.953" .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> <http://www.semanticwebbuilder.org/swb4/ontology#webPageParent> <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_Help> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> <http://www.semanticwebbuilder.org/swb4/ontology#webPageSortName> "20" .
@@ -2568,12 +2568,12 @@
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WebBuilderPage> <http://www.semanticwebbuilder.org/swb4/ontology#hidden> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WebBuilderPage> <http://www.semanticwebbuilder.org/swb4/ontology#mnuItemShowIFrame> "IFRAME" .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WebBuilderPage> <http://www.semanticwebbuilder.org/swb4/ontology#modifiedBy> <http://www.semanticwb.org/uradm#swb_User:1> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WebBuilderPage> <http://www.semanticwebbuilder.org/swb4/ontology#title> "INFOTEC WebBuilder site"@en .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WebBuilderPage> <http://www.semanticwebbuilder.org/swb4/ontology#title> "P\u00E1gina de INFOTEC WebBuilder"@es .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WebBuilderPage> <http://www.semanticwebbuilder.org/swb4/ontology#title> "P\u00E1gina do INFOTEC WebBuilder"@pt .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WebBuilderPage> <http://www.semanticwebbuilder.org/swb4/ontology#title> "SemanticWebBuilder site"@en .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WebBuilderPage> <http://www.semanticwebbuilder.org/swb4/ontology#title> "P\u00E1gina de SemanticWebBuilder"@es .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WebBuilderPage> <http://www.semanticwebbuilder.org/swb4/ontology#title> "P\u00E1gina do SemanticWebBuilder"@pt .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WebBuilderPage> <http://www.semanticwebbuilder.org/swb4/ontology#updated> "2009-06-27T02:19:01.156" .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WebBuilderPage> <http://www.semanticwebbuilder.org/swb4/ontology#webPageParent> <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WBWeb> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WebBuilderPage> <http://www.semanticwebbuilder.org/swb4/ontology#webPageURL> "http://www.webbuilder.org.mx" .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WebBuilderPage> <http://www.semanticwebbuilder.org/swb4/ontology#webPageURL> "http://semanticwebbuilder.org.mx" .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_WebBuilderPage> <http://www.semanticwebbuilder.org/swb4/ontology#webPageURLType> "1"^^<http://www.w3.org/2001/XMLSchema#int> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_db_properties> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticwebbuilder.org/swb4/xforms/ontology#MenuItem> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_db_properties> <http://www.semanticwebbuilder.org/swb4/ontology#active> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> .
@@ -2628,23 +2628,23 @@
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_user_properties> <http://www.semanticwebbuilder.org/swb4/ontology#title> "user.properties" .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_user_properties> <http://www.semanticwebbuilder.org/swb4/ontology#updated> "2009-07-13T19:05:31.304" .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_user_properties> <http://www.semanticwebbuilder.org/swb4/ontology#webPageParent> <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_ConfigFiles> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticwebbuilder.org/swb4/xforms/ontology#MenuItem> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#active> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#created> "2006-12-31T14:37:35.000" .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#creator> <http://www.semanticwb.org/uradm#swb_User:1> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#deleted> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#hidden> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#mnuItemShowIFrame> "IFRAME" .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#modifiedBy> <http://www.semanticwb.org/uradm#swb_User:1> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Ajuda de WebBuilder"@pt .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Ayuda de WebBuilder"@es .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#title> "WebBuilder Help"@en .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#updated> "2009-06-27T02:17:12.187" .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#views> "1"^^<http://www.w3.org/2001/XMLSchema#long> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#webPageParent> <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_Help> .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#webPageSortName> "10" .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#webPageURL> "http://espacio.webbuilder.com.mx/wb/WB3H" .
-<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_wb3Help> <http://www.semanticwebbuilder.org/swb4/ontology#webPageURLType> "1"^^<http://www.w3.org/2001/XMLSchema#int> .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticwebbuilder.org/swb4/xforms/ontology#MenuItem> .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#active> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#created> "2006-12-31T14:37:35.000" .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#creator> <http://www.semanticwb.org/uradm#swb_User:1> .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#deleted> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#hidden> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#mnuItemShowIFrame> "IFRAME" .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#modifiedBy> <http://www.semanticwb.org/uradm#swb_User:1> .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Ajuda de SemanticWebBuilder"@pt .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#title> "Ayuda de SemanticWebBuilder"@es .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#title> "SemanticWebBuilder Help"@en .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#updated> "2009-06-27T02:17:12.187" .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#views> "1"^^<http://www.w3.org/2001/XMLSchema#long> .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#webPageParent> <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_Help> .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#webPageSortName> "10" .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#webPageURL> "http://espacio.webbuilder.com.mx" .
+<http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_swbHelp> <http://www.semanticwebbuilder.org/swb4/ontology#webPageURLType> "1"^^<http://www.w3.org/2001/XMLSchema#int> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_web_properties> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticwebbuilder.org/swb4/xforms/ontology#MenuItem> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_web_properties> <http://www.semanticwebbuilder.org/swb4/ontology#active> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> .
 <http://www.semanticwb.org/SWBAdmin#WebPage:WBAd_mnui_web_properties> <http://www.semanticwebbuilder.org/swb4/ontology#created> "2006-12-31T14:37:35.000" .
