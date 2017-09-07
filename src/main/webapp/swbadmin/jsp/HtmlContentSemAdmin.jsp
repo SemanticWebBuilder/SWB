@@ -1,6 +1,7 @@
 <%@page import="org.semanticwb.portal.api.SWBResourceURLImp"%>
 <%@page import="org.semanticwb.portal.api.SWBResourceURL"%>
 <%@page import="org.semanticwb.portal.resources.sem.HTMLContent"%>
+<%@page import="org.semanticwb.SWBPlatform"%>
 <jsp:useBean id="paramRequest" scope="request" type="org.semanticwb.portal.api.SWBParamRequest"/>
 
 <%
@@ -34,7 +35,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
         <title>HTML Content Editor</title>
-        <script src="/swbadmin/js/ckeditor/ckeditor.js"></script>
+        <script src="<%= SWBPlatform.getContextPath() %>/swbadmin/js/ckeditor/ckeditor.js"></script>
     </head>
     <body>
         <form action="<%=url.toString()%>" method="post">
