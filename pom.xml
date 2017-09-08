@@ -156,6 +156,11 @@
           <version>${project.version}</version>
         </dependency>
         <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>5.1.28</version>
+        </dependency>
+        <dependency>
           <groupId>hsqldb</groupId>
           <artifactId>hsqldb</artifactId>
           <version>1.8.0.10</version>
@@ -258,6 +263,11 @@
           <groupId>${project.groupId}</groupId>
           <artifactId>SWBTripleStoreMongoDB</artifactId>
           <version>${project.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>5.1.28</version>
         </dependency>
         <dependency>
           <groupId>hsqldb</groupId>
