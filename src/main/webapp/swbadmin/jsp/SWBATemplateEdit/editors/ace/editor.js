@@ -1,4 +1,4 @@
-define(["ace", "ace/mode-html", "ace/mode-sql", "ace/theme-chrome"],
+define(["ace", "ace/mode-html", "ace/mode-sql", "ace/mode-groovy", "ace/mode-php", "ace/mode-python", "ace/mode-jsp", "ace/theme-chrome"],
 function (AceEditor) {
   let TemplateEditor = { provider: "Ace" };
   let HTMLModeDef;
