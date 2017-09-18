@@ -36,20 +36,48 @@
                 background:#94b9ef;
                 color:#000;
             }
+            
             #status {
-                padding:5px;
-                position:absolute;
-                left:0px;
-                bottom:-30px;
-                background:#3c3;
-                text-align:center;
-                font-weight:bold;
-                color:#fff;
-                z-index:999;
-                width:100%;
-                opacity: .85; filter: alpha(opacity=85); -moz-opacity: 0.85;
-                border:1px double black;
-            }
+					    visibility: hidden;
+					    min-width: 250px;
+					    
+					    background-color: #333;
+					    color: #fff;
+					    text-align: center;
+					    border-radius: 5px;
+					    padding: 16px;
+					    position: fixed;
+					    z-index: 1;
+					    left: 50%;
+					    bottom: 30px;
+					    font-size: 17px;
+					}
+
+					#status.show {
+					    visibility: visible;
+					    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+					    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+					}
+					
+					@-webkit-keyframes fadein {
+					    from {bottom: 0; opacity: 0;} 
+					    to {bottom: 30px; opacity: 1;}
+					}
+					
+					@keyframes fadein {
+					    from {bottom: 0; opacity: 0;}
+					    to {bottom: 30px; opacity: 1;}
+					}
+					
+					@-webkit-keyframes fadeout {
+					    from {bottom: 30px; opacity: 1;} 
+					    to {bottom: 0; opacity: 0;}
+					}
+					
+					@keyframes fadeout {
+					    from {bottom: 30px; opacity: 1;}
+					    to {bottom: 0; opacity: 0;}
+					}
         </style>
 
         <script type="text/javascript" src="{webpath}/swbadmin/js/dojo/dojo/dojo.js" djConfig="parseOnLoad: true, isDebug: false, locale: '{user@getLanguage}'"></script>
