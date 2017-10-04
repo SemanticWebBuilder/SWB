@@ -34,9 +34,9 @@ String pathTrans = "/swbadmin/jsp/SWBAWorkflow/transition.jsp";
 if (SWBContext.getAdminWebSite().equals(paramRequest.getWebPage().getWebSite()) && null != user) {
     %>
     <script>require(['dijit/Dialog', 'dijit/registry', 'dijit/form/Select']);</script>
-    <link href="/swbadmin/js/dojo/dojox/grid/enhanced/resources/EnhancedGrid.css" rel="stylesheet" />
-    <link href="/swbadmin/js/dojo/dojox/grid/resources/soriaGrid.css" rel="stylesheet" />
-    <link href="/swbadmin/css/fontawesome/font-awesome.css" rel="stylesheet" />
+    <link href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/dojo/dojox/grid/enhanced/resources/EnhancedGrid.css" rel="stylesheet" />
+    <link href="<%= SWBPlatform.getContextPath() %>/swbadmin/js/dojo/dojox/grid/resources/soriaGrid.css" rel="stylesheet" />
+    <link href="<%= SWBPlatform.getContextPath() %>/swbadmin/css/fontawesome/font-awesome.css" rel="stylesheet" />
     <style>
         .soria .dojoxGridRowOver .dojoxGridCell {
             background-color: none !important;
