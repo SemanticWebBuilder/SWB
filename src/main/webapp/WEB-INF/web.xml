@@ -16,7 +16,7 @@
         <!-- Requerido para WebLogic 11 -->
         <!--dispatcher>REQUEST</dispatcher-->
     </filter-mapping>
-
+<!--
     <servlet>
         <servlet-name>dwr-invoker</servlet-name>
         <servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class>
@@ -30,7 +30,7 @@
         </init-param>
         <load-on-startup>2</load-on-startup>
     </servlet>
-
+-->
 <!--
     <servlet>
         <servlet-name>QuercusServlet</servlet-name>
@@ -118,11 +118,12 @@
         <url-pattern>/mediawiki/index.php/*</url-pattern>
     </servlet-mapping>
 -->
+<!--
     <servlet-mapping>
         <servlet-name>dwr-invoker</servlet-name>
         <url-pattern>/dwr/*</url-pattern>
     </servlet-mapping>
-
+-->
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
@@ -137,7 +138,7 @@
 
     <error-page>
         <error-code>404</error-code>
-        <location>/work/config/Base404.html</location>
+        <location>/work/config/404.html</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>

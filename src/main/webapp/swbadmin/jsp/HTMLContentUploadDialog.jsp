@@ -6,6 +6,7 @@
 <%@page import="org.semanticwb.portal.api.SWBResourceURL"%>
 <%@page import="java.util.Map"%>
 <%@page import="org.semanticwb.SWBPortal"%>
+<%@page import="org.semanticwb.SWBPlatform"%>
 <%@page import="org.semanticwb.model.Resource"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="org.semanticwb.portal.resources.sem.HTMLContent"%>
@@ -128,8 +129,8 @@
             <head>
                 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
                 <title>HTMLContent upload image</title>
-                <link rel="stylesheet" href="/swbadmin/css/bootstrap/bootstrap.css"></link>
-                <link rel="stylesheet" href="/swbadmin/css/fontawesome/font-awesome.css"></link>
+                <link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/css/bootstrap/bootstrap.css"></link>
+                <link rel="stylesheet" href="<%= SWBPlatform.getContextPath() %>/swbadmin/css/fontawesome/font-awesome.css"></link>
                 <style type="text/css">
                     .btn-file {position: relative;overflow: hidden;}
                     .btn-file input[type=file] {position: absolute;top: 0;right: 0;min-width: 100%;min-height: 100%;font-size: 100px;text-align: right;filter: alpha(opacity=0);opacity: 0;outline: none;background: white;cursor: inherit;display: block;}
@@ -148,8 +149,8 @@
                 <div class="container">
                     <div id="container" class="row text-center" style="margin-top:60px;"><span class="fa fa-cog fa-spin"></span></div>
                 </div>
-                <script src="/swbadmin/js/jquery/jquery.js"></script>
-                <script src="/swbadmin/js/bootstrap/bootstrap.js"></script>
+                <script src="<%= SWBPlatform.getContextPath() %>/swbadmin/js/jquery/jquery.js"></script>
+                <script src="<%= SWBPlatform.getContextPath() %>/swbadmin/js/bootstrap/bootstrap.js"></script>
                 <script>
                     (function() {
                         var theOkAlert = '<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><%= paramRequest.getLocaleString("msgFileUploaded") %></div>';
