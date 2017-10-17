@@ -101,6 +101,21 @@
             <version>2.6</version>
             <executions>
               <execution>
+                <id>webapprunner</id>
+                <phase>package</phase>
+                <goals><goal>copy</goal></goals>
+                <configuration>
+                  <artifactItems>
+                    <artifactItem>
+                      <groupId>com.github.jsimone</groupId>
+                      <artifactId>webapp-runner</artifactId>
+                      <version>8.5.20.1</version>
+                      <destFileName>webapp-runner.jar</destFileName>
+                    </artifactItem>
+                  </artifactItems>
+                </configuration>
+              </execution>
+              <execution>
                 <phase>validate</phase>
                 <goals>
                   <goal>copy</goal>
@@ -206,6 +221,21 @@
             <artifactId>maven-dependency-plugin</artifactId>
             <version>2.6</version>
             <executions>
+              <execution>
+                <id>webapprunner</id>
+                <phase>package</phase>
+                <goals><goal>copy</goal></goals>
+                <configuration>
+                  <artifactItems>
+                    <artifactItem>
+                      <groupId>com.github.jsimone</groupId>
+                      <artifactId>webapp-runner</artifactId>
+                      <version>8.5.20.1</version>
+                      <destFileName>webapp-runner.jar</destFileName>
+                    </artifactItem>
+                  </artifactItems>
+                </configuration>
+              </execution>
               <execution>
                 <phase>validate</phase>
                 <goals>
@@ -320,6 +350,21 @@
             <artifactId>maven-dependency-plugin</artifactId>
             <version>2.6</version>
             <executions>
+              <execution>
+                <id>webapprunner</id>
+                <phase>package</phase>
+                <goals><goal>copy</goal></goals>
+                <configuration>
+                  <artifactItems>
+                    <artifactItem>
+                      <groupId>com.github.jsimone</groupId>
+                      <artifactId>webapp-runner</artifactId>
+                      <version>8.5.20.1</version>
+                      <destFileName>webapp-runner.jar</destFileName>
+                    </artifactItem>
+                  </artifactItems>
+                </configuration>
+              </execution>
               <execution>
                 <phase>validate</phase>
                 <goals>
@@ -436,6 +481,21 @@
             <version>2.6</version>
             <executions>
               <execution>
+                <id>webapprunner</id>
+                <phase>package</phase>
+                <goals><goal>copy</goal></goals>
+                <configuration>
+                  <artifactItems>
+                    <artifactItem>
+                      <groupId>com.github.jsimone</groupId>
+                      <artifactId>webapp-runner</artifactId>
+                      <version>8.5.20.1</version>
+                      <destFileName>webapp-runner.jar</destFileName>
+                    </artifactItem>
+                  </artifactItems>
+                </configuration>
+              </execution>
+              <execution>
                 <phase>validate</phase>
                 <goals>
                   <goal>copy</goal>
@@ -549,6 +609,21 @@
             <artifactId>maven-dependency-plugin</artifactId>
             <version>2.6</version>
             <executions>
+              <execution>
+                <id>webapprunner</id>
+                <phase>package</phase>
+                <goals><goal>copy</goal></goals>
+                <configuration>
+                  <artifactItems>
+                    <artifactItem>
+                      <groupId>com.github.jsimone</groupId>
+                      <artifactId>webapp-runner</artifactId>
+                      <version>8.5.20.1</version>
+                      <destFileName>webapp-runner.jar</destFileName>
+                    </artifactItem>
+                  </artifactItems>
+                </configuration>
+              </execution>
               <execution>
                 <phase>validate</phase>
                 <goals>
