@@ -12,7 +12,7 @@ function (AceEditor) {
   * Sets global options
   */
   TemplateEditor.setOptions = function(options) {
-    for (key in options) {
+    for (var key in options) {
       if (options.hasOwnProperty(key)) {
         defaults[key] = options[key];
       }
@@ -31,7 +31,7 @@ function (AceEditor) {
   * Creates an instance of TemplateEditor
   */
   TemplateEditor.createInstance = function(placeHolderId) {
-    if (!placeHolderId || placeHolderId === undefined || !placeHolderId.length) return;
+    if (!placeHolderId || placeHolderId == undefined || !placeHolderId.length) return;
 
     document.getElementById(placeHolderId).className = "AceEditor";
 
@@ -42,12 +42,12 @@ function (AceEditor) {
 
     editor.renderer.setShowGutter(defaults.showGutters);
 
-    let HTMLEditor = {
+    return {
       getEditor: function() {
         return editor;
       },
       insertContent: function(content, reset) {
-        if (!reset || reset == undefined) reset = false;
+        if (!reset || reset === undefined) reset = false;
 
         if (reset) {
 					editor.getSession().setValue(content, -1);
@@ -64,8 +64,6 @@ function (AceEditor) {
         editor.focus();
       }
     };
-
-    return HTMLEditor;
   };
 
   return TemplateEditor;
