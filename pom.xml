@@ -6,8 +6,19 @@
   <artifactId>SWB</artifactId>
   <version>5.0-SNAPSHOT</version>
   <packaging>war</packaging>
+  
   <name>SWB</name>
+  <description>Web project for SemanticWebBuilder Portal</description>
+  <url>http://www.semanticwebbuilder.org.mx/SWBPortal</url>
+  <organization>
+    <name>INFOTEC - Centro de Investigacion e Innovacion en Tecnologias de la Informacion y Comunicacion</name>
+    <url>https://www.infotec.mx/</url>
+  </organization>
 
+  <scm>
+    <url>scm:git:https://github.com/SemanticWebBuilder/SWB</url>
+  </scm>
+  
   <profiles>
     <profile>
       <id>Jitpack</id>
