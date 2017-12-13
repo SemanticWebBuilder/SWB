@@ -48,31 +48,31 @@
     right: 0;
 	}
 </style>
-<div id="container_<%= websiteId %>_<%= templateId %>" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:true, liveSplitters:false">
+<div id="container_<%= websiteId.replace("-", "_") %>_<%= templateId %>" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:true, liveSplitters:false">
 	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top', splitter:false">
 		<div data-dojo-type="dijit/Toolbar" style="padding:0px;">
-			<button id="newButton_<%= websiteId %>_<%= templateId %>" type="button"></button>
-			<button id="openFromFileButton_<%= websiteId %>_<%= templateId %>" type="button"></button>
-			<button id="saveButton_<%= websiteId %>_<%= templateId %>" type="button"></button>
+			<button id="newButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>" type="button"></button>
+			<button id="openFromFileButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>" type="button"></button>
+			<button id="saveButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>" type="button"></button>
 			<!--button type="button" data-dojo-type="dijit.form.Button" data-dojo-props="iconClass:'dijitFolderOpened', showLabel:false">Agregar archivos</button-->
 			<span data-dojo-type="dijit/ToolbarSeparator"></span>
-			<button type="button" id="undoButton_<%= websiteId %>_<%= templateId %>"></button>
-			<button type="button" id="redoButton_<%= websiteId %>_<%= templateId %>"></button>
-			<button type="button" id="searchButton_<%= websiteId %>_<%= templateId %>"></button>
+			<button type="button" id="undoButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>"></button>
+			<button type="button" id="redoButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>"></button>
+			<button type="button" id="searchButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>"></button>
 			<span data-dojo-type="dijit/ToolbarSeparator"></span>
-			<button id="addResourceButton_<%= websiteId %>_<%= templateId %>" type="button"></button>
-			<button id="addContentButton_<%= websiteId %>_<%= templateId %>" type="button"></button>
-			<button id="fileBrowserButton_<%= websiteId %>_<%= templateId %>" type="button"></button>
+			<button id="addResourceButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>" type="button"></button>
+			<button id="addContentButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>" type="button"></button>
+			<button id="fileBrowserButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>" type="button"></button>
 			<!--span data-dojo-type="dijit/ToolbarSeparator"></span>
-			<button id="previewButton_<%= websiteId %>_<%= templateId %>" >&lt;</button-->
+			<button id="previewButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>" >&lt;</button-->
 		</div>
 	</div>
 	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center', splitter:false">
 		<span data-dojo-type="dijit/layout/StackController" data-dojo-props="containerId:'stackContainer'"></span>
 		<div data-dojo-type="dijit/layout/StackContainer" data-dojo-id="myStackContainer" style="height:100%">
 			<div data-dojo-type="dojox/layout/ContentPane" executeScripts="true">
-				<input type="file" id="fileLoadInput_<%= websiteId %>_<%= templateId %>" accept="text/html" style="display:none"/>
-				<div id="templateEditor_<%= websiteId %>_<%= templateId %>"></div>
+				<input type="file" id="fileLoadInput_<%= websiteId.replace("-", "_") %>_<%= templateId %>" accept="text/html" style="display:none"/>
+				<div id="templateEditor_<%= websiteId.replace("-", "_") %>_<%= templateId %>"></div>
 				<script type="dojo/method">
 					require(["dojo/ready"], function(ready) {
 						ready(function() {
@@ -102,20 +102,20 @@
 						"dijit/form/ToggleButton",
 						"dijit/registry"],
 						function(TemplateEditor, Memory, ObjectStoreModel, Tree, xhr, Button, ToggleButton, registry) {
-							let editor_<%= websiteId %>_<%= templateId %>; //CodeMirror editor
-							let resources_<%= websiteId %>_<%= templateId %>; //Dojo tree
+							let editor_<%= websiteId.replace("-", "_") %>_<%= templateId %>; //CodeMirror editor
+							let resources_<%= websiteId.replace("-", "_") %>_<%= templateId %>; //Dojo tree
 
 							TemplateEditor.setOptions({
 								basePath: "<%= SWBPlatform.getContextPath() %>/swbadmin/js/aceeditor"
 							});
 
 							//TODO: Remove this bad practice code
-							window.toggleBrowserButton_<%= websiteId %>_<%= templateId %> = function(enable) {
-								enable ? registry.byId('fileBrowserButton_<%= websiteId %>_<%= templateId %>').setDisabled(false) : registry.byId('fileBrowserButton_<%= websiteId %>_<%= templateId %>').setDisabled(true); 
+							window.toggleBrowserButton_<%= websiteId.replace("-", "_") %>_<%= templateId %> = function(enable) {
+								enable ? registry.byId('fileBrowserButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>').setDisabled(false) : registry.byId('fileBrowserButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>').setDisabled(true);
 							};
 
 							//Set fileChooser listener
-							document.getElementById('fileLoadInput_<%= websiteId %>_<%= templateId %>').addEventListener("change",
+							document.getElementById('fileLoadInput_<%= websiteId.replace("-", "_") %>_<%= templateId %>').addEventListener("change",
 								function(evt) {
 									let fileObj = evt.target.files && evt.target.files.length && evt.target.files[0];
 
@@ -132,7 +132,7 @@
 												//	method: "POST",
         								//	data: text,
 												//}).then(function(res) {
-													editor_<%= websiteId %>_<%= templateId %>.insertContent(text, true);
+													editor_<%= websiteId.replace("-", "_") %>_<%= templateId %>.insertContent(text, true);
 												//});
 
 												evt.target.value = null;
@@ -145,14 +145,14 @@
 
 							//Inserts resource tag into editor at current position
 							insertResourceTag = function() {
-								let tpl, item = resources_<%= websiteId %>_<%= templateId %>.selectedItem;
+								let tpl, item = resources_<%= websiteId.replace("-", "_") %>_<%= templateId %>.selectedItem;
 								if (item && item.uuid !== "rootNode") {
 									if (item.parenttype && item.parenttype.length) {
 										tpl = '<RESOURCE TYPE="' + item.parenttype + '" STYPE="' + item.id + '" />';
 									} else {
 										tpl = '<RESOURCE TYPE="' + item.id +'" />';
 									}
-      						editor_<%= websiteId %>_<%= templateId %>.insertContent(tpl);
+      						editor_<%= websiteId.replace("-", "_") %>_<%= templateId %>.insertContent(tpl);
 								}
 							};
 
@@ -199,16 +199,16 @@
 							//Loads add resource dialog contents
 							loadAddResourceDialog = function() {
 								//Destroy previous tree
-								resources_<%= websiteId %>_<%= templateId %> && resources_<%= websiteId %>_<%= templateId %>.destroy();
+								resources_<%= websiteId.replace("-", "_") %>_<%= templateId %> && resources_<%= websiteId.replace("-", "_") %>_<%= templateId %>.destroy();
 
 								//load tree data, create tree
 								xhr("<%= data %>", {
 									handleAs: "json"
 								}).then(function(_data) {
-									addResourceDialog_<%= websiteId %>_<%= templateId %>.show();
+									addResourceDialog_<%= websiteId.replace("-", "_") %>_<%= templateId %>.show();
 									//Create resources tree
 									if (_data && _data.length) {
-										resources_<%= websiteId %>_<%= templateId %> = new TreeWidget(_data, 'resourceTree_<%= websiteId %>_<%= templateId %>', null);
+										resources_<%= websiteId.replace("-", "_") %>_<%= templateId %> = new TreeWidget(_data, 'resourceTree_<%= websiteId.replace("-", "_") %>_<%= templateId %>', null);
 									}
 								}, function(err) {
 									console.log(err);
@@ -223,7 +223,7 @@
 								onClick: function(evt) {
 									xhr("<%= saveUrl %>", {
 										method: "POST",
-										data: editor_<%= websiteId %>_<%= templateId %>.getContent(),
+										data: editor_<%= websiteId.replace("-", "_") %>_<%= templateId %>.getContent(),
 										headers: {
 											'PATHFILEWB' : '<%= templateName %>',
 											'DOCUMENT' : 'RELOAD',
@@ -242,7 +242,7 @@
 										console.log(err);
 									});
 								}
-							},"saveButton_<%= websiteId %>_<%= templateId %>").startup();
+							},"saveButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>").startup();
 
 							//Open from file button
 							new Button({
@@ -251,10 +251,10 @@
 								showLabel: false,
 								onClick: function(evt) {
 									if (confirm('<%= paramRequest.getLocaleString("msgConfirmNew") %>')) {
-										document.getElementById('fileLoadInput_<%= websiteId %>_<%= templateId %>').click();
+										document.getElementById('fileLoadInput_<%= websiteId.replace("-", "_") %>_<%= templateId %>').click();
 									}
 								}
-							},"openFromFileButton_<%= websiteId %>_<%= templateId %>").startup();
+							},"openFromFileButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>").startup();
 
 							new Button({
 								iconClass: "dijitEditorIcon dijitEditorIconNewPage",
@@ -262,47 +262,47 @@
 								showLabel: false,
 								onClick: function(evt) {
 									if (confirm('<%= paramRequest.getLocaleString("msgConfirmNew") %>')) {
-										editor_<%= websiteId %>_<%= templateId %>.insertContent("", true);
+										editor_<%= websiteId.replace("-", "_") %>_<%= templateId %>.insertContent("", true);
 									}
-									newTemplateDialog_<%= websiteId %>_<%= templateId %>.show();
+									newTemplateDialog_<%= websiteId.replace("-", "_") %>_<%= templateId %>.show();
 								}
-							},"newButton_<%= websiteId %>_<%= templateId %>").startup();
+							},"newButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>").startup();
 
 							new Button({
 								iconClass: "dijitEditorIcon dijitEditorIconSelectAll",
 								label: "<%= paramRequest.getLocaleString("lblAddContentButton") %>",
 								showLabel: false,
 								onClick: function(evt) {
-									editor_<%= websiteId %>_<%= templateId %>.insertContent("<CONTENT/>");
+									editor_<%= websiteId.replace("-", "_") %>_<%= templateId %>.insertContent("<CONTENT/>");
 								}
-							},"addContentButton_<%= websiteId %>_<%= templateId %>").startup();
+							},"addContentButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>").startup();
 
 							new Button({
 								iconClass: "dijitIconSearch",
 								label: "<%= paramRequest.getLocaleString("lblFindButton") %>",
 								showLabel: false,
 								onClick: function(evt) {
-									editor_<%= websiteId %>_<%= templateId %>.execCommand("find");
+									editor_<%= websiteId.replace("-", "_") %>_<%= templateId %>.execCommand("find");
 								}
-							},"searchButton_<%= websiteId %>_<%= templateId %>").startup();
+							},"searchButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>").startup();
 
 							new Button({
 								iconClass: "dijitEditorIcon dijitEditorIconUndo",
 								label: "<%= paramRequest.getLocaleString("lblUndoButton") %>",
 								showLabel: false,
 								onClick: function(evt) {
-									editor_<%= websiteId %>_<%= templateId %>.execCommand("undo");
+									editor_<%= websiteId.replace("-", "_") %>_<%= templateId %>.execCommand("undo");
 								}
-							},"undoButton_<%= websiteId %>_<%= templateId %>").startup();
+							},"undoButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>").startup();
 
 							new Button({
 								iconClass: "dijitEditorIcon dijitEditorIconRedo",
 								label: "<%= paramRequest.getLocaleString("lblRedoButton") %>",
 								showLabel: false,
 								onClick: function(evt) {
-									editor_<%= websiteId %>_<%= templateId %>.execCommand("redo");
+									editor_<%= websiteId.replace("-", "_") %>_<%= templateId %>.execCommand("redo");
 								}
-							},"redoButton_<%= websiteId %>_<%= templateId %>").startup();
+							},"redoButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>").startup();
 
 							new Button({
 								label: "<%= paramRequest.getLocaleString("lblAddResourceButton") %>",
@@ -311,7 +311,7 @@
 								onClick: function(evt) {
 									loadAddResourceDialog();
 								}
-							},"addResourceButton_<%= websiteId %>_<%= templateId %>").startup();
+							},"addResourceButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>").startup();
 
 
 							new Button({
@@ -319,39 +319,39 @@
 								iconClass: "dijitIconApplication",
 								showLabel: false,
 								onClick: function(evt) {
-									window.toggleBrowserButton_<%= websiteId %>_<%= templateId %>(false);
+									window.toggleBrowserButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>(false);
 									window.open("<%= paramRequest.getRenderUrl().setCallMethod(SWBResourceURL.Call_DIRECT).setMode("fileManager").setParameter("suri", template.getURI()).setParameter("vnum", String.valueOf(verNum)) %>", "_blank", "width=600,height=400,location=0,menubar=0,status=0,toolbar=0,titlebar=0");
 								}
-							},"fileBrowserButton_<%= websiteId %>_<%= templateId %>").startup();
+							},"fileBrowserButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>").startup();
 
 							xhr("<%= templateContentUrl %>", {}).then(function(data) {
-								editor_<%= websiteId %>_<%= templateId %> = TemplateEditor.createInstance('templateEditor_<%= websiteId %>_<%= templateId %>');
-								editor_<%= websiteId %>_<%= templateId %>.insertContent(data, true);
+								editor_<%= websiteId.replace("-", "_") %>_<%= templateId %> = TemplateEditor.createInstance('templateEditor_<%= websiteId.replace("-", "_") %>_<%= templateId %>');
+								editor_<%= websiteId.replace("-", "_") %>_<%= templateId %>.insertContent(data, true);
 							});
 						});
 				</script>
 			</div>
 		</div>
 	</div>
-	<!--div data-dojo-type="dijit/Dialog" data-dojo-id="newTemplateDialog_<%= websiteId %>_<%= templateId %>" title="<%= paramRequest.getLocaleString("lblNewTemplate") %>">
+	<!--div data-dojo-type="dijit/Dialog" data-dojo-id="newTemplateDialog_<%= websiteId.replace("-", "_") %>_<%= templateId %>" title="<%= paramRequest.getLocaleString("lblNewTemplate") %>">
 	   	<div class="dijitDialogPaneContentArea">
 	       	<p><%= paramRequest.getLocaleString("msgConfirmNew") %></p>
 	   	</div>
 	   	<div class="dijitDialogPaneActionBar">
 	       	<button data-dojo-type="dijit/form/Button" type="button" data-dojo-props="onClick:function(){acceptNewTemplate();}"><%= paramRequest.getLocaleString("lblOk") %></button>
-	       	<button data-dojo-type="dijit/form/Button" type="button" data-dojo-props="onClick:function(){newTemplateDialog_<%= websiteId %>_<%= templateId %>.hide();}"><%= paramRequest.getLocaleString("lblCancel") %></button>
+	       	<button data-dojo-type="dijit/form/Button" type="button" data-dojo-props="onClick:function(){newTemplateDialog_<%= websiteId.replace("-", "_") %>_<%= templateId %>.hide();}"><%= paramRequest.getLocaleString("lblCancel") %></button>
 	   	</div>
 	</div-->
-	<div data-dojo-type="dijit/Dialog" data-dojo-id="addResourceDialog_<%= websiteId %>_<%= templateId %>" title="<%= paramRequest.getLocaleString("lblAddResourceButton") %>">
+	<div data-dojo-type="dijit/Dialog" data-dojo-id="addResourceDialog_<%= websiteId.replace("-", "_") %>_<%= templateId %>" title="<%= paramRequest.getLocaleString("lblAddResourceButton") %>">
 		<div data-dojo-type="dijit/layout/BorderContainer" style="width:400px; height:300px;">
 			<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
 				<div data-dojo-type="dijit/layout/ContentPane">
-					<div id="resourceTree_<%= websiteId %>_<%= templateId %>"></div>
+					<div id="resourceTree_<%= websiteId.replace("-", "_") %>_<%= templateId %>"></div>
 				</div>
 			</div>
 			<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom'">
-				<button type="button" id="addResourceDialogBtn_<%= websiteId %>_<%= templateId %>" data-dojo-type="dijit/form/Button" data-dojo-props="onClick:function(){insertResourceTag();addResourceDialog_<%= websiteId %>_<%= templateId %>.hide();}"><%= paramRequest.getLocaleString("lblAddButton") %></button>
-				<button type="button" data-dojo-type="dijit/form/Button" data-dojo-props="onClick:function(){addResourceDialog_<%= websiteId %>_<%= templateId %>.hide();}"><%= paramRequest.getLocaleString("lblCancel") %></button>
+				<button type="button" id="addResourceDialogBtn_<%= websiteId.replace("-", "_") %>_<%= templateId %>" data-dojo-type="dijit/form/Button" data-dojo-props="onClick:function(){insertResourceTag();addResourceDialog_<%= websiteId.replace("-", "_") %>_<%= templateId %>.hide();}"><%= paramRequest.getLocaleString("lblAddButton") %></button>
+				<button type="button" data-dojo-type="dijit/form/Button" data-dojo-props="onClick:function(){addResourceDialog_<%= websiteId.replace("-", "_") %>_<%= templateId %>.hide();}"><%= paramRequest.getLocaleString("lblCancel") %></button>
 			</div>
 		</div>
 	</div>
