@@ -3996,14 +3996,14 @@
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:ID="webPageSortName">
     <rdfs:label xml:lang="en">Sort name</rdfs:label>
-    <rdfs:label xml:lang="es">Nombre de Ordenamiento</rdfs:label>
+    <rdfs:label xml:lang="es">Cadena de ordenamiento</rdfs:label>
     <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >sortName</swb:propertyCodeName>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:domain rdf:resource="#WebPage"/>
     <swb:displayProperty>
       <swbxf:DisplayProperty rdf:about="http://www.semanticwebbuilder.org/swb4/xforms/ontology#dp_WebPageSortName">
-        <rdfs:label xml:lang="es">Nombre de Ordenamiento</rdfs:label>
+        <rdfs:label xml:lang="es">Cadena de ordenamiento</rdfs:label>
         <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
         >25</swb:index>
         <rdfs:label xml:lang="en">Sort Name</rdfs:label>
