@@ -6,28 +6,22 @@
    ==================================================
 
 */
-
-
-
 /* Background color and font for the main window */
-html {
-}
-
 body {
     color: #000000;
     background: #ffffff;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: 12px;
-    margin:0px 0px 0px 0px;
+    margin:0px;
 }
 
-a:link, a:visited, a:active { color: #333333; text-decoration: underline }
-a:hover { color: orange; text-decoration:underline }
+a:link, a:visited, a:active { color: #333333; text-decoration: underline; }
+a:hover { color: orange; text-decoration:underline; }
 
 /* Page description shown in some pages, below the navigation menu. */
 /* error-pagedesc ~ portlet-msg-error*/
 .pagedesc {
-    background: #E0E0E0;
+    background: #e0e0e0;
     color: #000000;
     font-family: Tahoma, Arial, Helvetica, sans-serif;
     font-size: 12px;
@@ -37,7 +31,7 @@ a:hover { color: orange; text-decoration:underline }
 }
 /* portlet-msg-alert */
 .warning {
-    color: #FF0000;
+    color: #ff0000;
 }
 
 .success {
@@ -45,11 +39,11 @@ a:hover { color: orange; text-decoration:underline }
 }
 
 .requiredfield {
-    color: #FF0000;
+    color: #ff0000;
 }
 
 .pendingyes {
-    color: #FF0000;
+    color: #ff0000;
     font-size: 14px;
     font-weight: bold;
 }
@@ -61,14 +55,14 @@ a:hover { color: orange; text-decoration:underline }
 }
 
 /* Background and border styles for tables. */
-table.tborder{ 
+table.tborder{
     border-collapse: collapse;
-} 
+}
 table.tborder tr td{
     border: solid 1px #999999;
 }
 table.noborder tr td{
-    border:none;
+    border: none;
 }
 
 .command {
@@ -79,7 +73,7 @@ table.noborder tr td{
     text-decoration: none;
 }
 a.command:link, a.command:visited, a.command:active {
-    color: #0000FF;
+    color: #0000ff;
     font-size: 12px;
     font-weight: bold;
     line-height: 20px;
@@ -117,14 +111,14 @@ a.pager:hover {
 
 .tcat {
     font-size: 12px;
-    background: #C0C0C0;
+    background: #c0c0c0;
     line-height: 20px;
 }
 
 /* Top-level table title rows */
 /*portlet-section-header*/
 .theader {
-    color: #FFFFFF;
+    color: #ffffff;
     background: #666699;
     font-size: 12px;
     font-weight: bold;
@@ -142,14 +136,14 @@ a.theader:hover {
 
 /* First post in the thread */
 .trow0 {
-    background: #FFCC99;
+    background: #ffcc99;
     font-size: 12px;
     line-height: 20px;
 }
 
 
 .memberName {
-    color: #00007F;
+    color: #00007f;
     font-family: Tahoma, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: bold;
@@ -157,7 +151,7 @@ a.theader:hover {
     text-decoration: none;
 }
 a.memberName:link, a.memberName:visited, a.memberName:active {
-    color: #0000FF;
+    color: #0000ff;
     text-decoration: underline;
 }
 a.memberName:hover {
@@ -166,7 +160,7 @@ a.memberName:hover {
 }
 
 .disabledItem {
-    color: #FF0000;
+    color: #ff0000;
     font-family: Tahoma, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: bold;
@@ -183,7 +177,7 @@ a.disabledItem:hover {
 }
 
 .messageTopic {
-    color: #00007F;
+    color: #00007f;
     font-family: Tahoma, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: bold;
@@ -191,7 +185,7 @@ a.disabledItem:hover {
     text-decoration: none;
 }
 a.messageTopic:link, a.messageTopic:visited, a.messageTopic:active {
-    color: #0000FF;
+    color: #0000ff;
     text-decoration: underline;
 }
 a.messageTopic:hover {
@@ -218,7 +212,7 @@ a.messageTopic:hover {
 }
 
 .messageTextBoldBlue {
-    color: #0000FF;
+    color: #0000ff;
     font-family: Tahoma, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: bold;
@@ -227,7 +221,7 @@ a.messageTopic:hover {
 }
 
 .messageTextBoldRed {
-    color: #FF0000;
+    color: #ff0000;
     font-family: Tahoma, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: bold;
@@ -235,38 +229,8 @@ a.messageTopic:hover {
     text-decoration: none;
 }
 
-/* These are not used anymore:
-
-.numberBlack {
-    color: Black;
-    font-family: Tahoma, Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 20px;
-    text-decoration: none;
-}
-
-.numberBlueLink {
-    color: Blue;
-    font-family: Tahoma, Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 20px;
-    text-decoration: none;
-}
-
-.numberRedLink {
-    color: Red;
-    font-family: Tahoma, Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 20px;
-    text-decoration: none;
-}
-*/
-
 .pageTitle {
-    color: #FF9966;
+    color: #ff9966;
     font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
     font-size: 24px;
     font-weight: bold;
@@ -311,7 +275,7 @@ a.messageTopic:hover {
 }
 
 .highlight {
-    color: #CC6600;
+    color: #cc6600;
     font-family: Tahoma, Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -320,14 +284,14 @@ a.messageTopic:hover {
 }
 
 .welcomeHeader {
-    color: #00007E;
+    color: #00007e;
     font-size: 12px;
     font-weight: bold;
     line-height: 20px;
     text-decoration: none;
 }
 a.welcomeHeader:link, a.welcomeHeader:visited, a.welcomeHeader:active {
-    color: #0000FF;
+    color: #0000ff;
     font-size: 12px;
     font-weight: bold;
     line-height: 20px;
@@ -343,7 +307,7 @@ a.welcomeHeader:hover {
 
 .topmenu {
     color: #000000;
-    background: #F5F5F5;
+    background: #f5f5f5;
     font-family: Tahoma, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: bold;
@@ -386,7 +350,7 @@ a.nav1:hover {
 }
 
 .zoneTitle {
-    color: #FF9900;
+    color: #ff9900;
     font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
     font-size: 24px;
     font-weight: bold;
@@ -406,7 +370,7 @@ a.nav1:hover {
 input, textarea, select {
     font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
     font-size: 12px;
-    background: #F5F5F5;
+    background: #f5f5f5;
     border: 1px solid Black;
 }
 
@@ -420,7 +384,7 @@ input.noborder {
 }
 
 input.liteoption {
-    background-color: #E5E5E5;
+    background-color: #e5e5e5;
     font-weight: normal;
 }
 
@@ -431,53 +395,47 @@ td.quote {
     font-size: 11px;
     color: #444444;
     line-height: 125%;
-    background-color: #EEE;
-    border: #D1D7DC;
-    /*border-style: solid;
-    border-left-width: 1px;
-    border-top-width: 1px;
-    border-right-width: 1px;
-    border-bottom-width: 1px; */
+    background-color: #eee;
+    border: #d1d7dC;
     border: 2px dotted;
     border-color:#999;
 }
 .menuitem {
     font-weight: bold;
     background: #999999;
-    font-size: 13px; 
-    margin-left: 5px; 
-    line-height: 15px; 
-    /*menu: #0000CC*/
+    font-size: 13px;
+    margin-left: 5px;
+    line-height: 15px;
 }
 .selectedmenuitem {
-    font-weight: bold; 
-    font-size: 14px; 
-    margin-left: 5px; 
-    cursor: default; 
-    color: #ff6600; 
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: 5px;
+    cursor: default;
+    color: #ff6600;
     text-decoration: none
 }
 .childmenuitem {
-    font-weight: bold; 
+    font-weight: bold;
     font-size: 14px;
-    margin-left: 15px; 
+    margin-left: 15px;
     color: #0000cc;
     border: 2px dotted;
-    background-color: #EEE;
+    background-color: #eee;
     border-color:#999;
 }
 .selectedchildmenuitem {
-    font-weight: bold; 
-    font-size: 12px; 
-    margin-left: 15px; 
-    cursor: default; 
-    color: #ff6600; 
+    font-weight: bold;
+    font-size: 12px;
+    margin-left: 15px;
+    cursor: default;
+    color: #ff6600;
     text-decoration: none
 }
 /* Vote Module*/
 .headervote{
     font-family: Arial,Helvetica,sans-serif;
-    color: #FFFFFF;
+    color: #ffffff;
     background: #4fa3e4;
     font-size: 12px;
     font-weight: bold;
@@ -506,7 +464,7 @@ td.quote {
 }
 .buttonvote{
     background-color: #519dc5;
-    color:#FFFFFF;
+    color: #ffffff;
     border-left:1px solid #abd2e9;
     border-top:1px solid #abd2e9;
     border-right:1px solid #2e7292;
@@ -516,7 +474,7 @@ td.quote {
 }
 .body_album_left {
     font-family: Arial, Helvetica, sans-serif;
-    background: #FFFFFF;
+    background: #ffffff;
     font-size: 12px;
     line-height: 20px;
     text-indent:10px;
@@ -538,8 +496,8 @@ div.quote {
   font-size: 11px;
   color: #444444;
   line-height: 125%;
-  background-color: #EEE;
-  border: 2px dotted #999; 
+  background-color: #eee;
+  border: 2px dotted #999;
   padding:5px;
   margin:10px;
 }
@@ -549,7 +507,7 @@ PLT.C.2 Fonts
 The font style definitions affect the font attributes only (font face, size, color, style, etc).
 ******************************************************************************************/
 
-/* Font attributes for the "normal" fragment font. Used for the display of non-accentuated information. 
+/* Font attributes for the "normal" fragment font. Used for the display of non-accentuated information.
 Example: Normal Text */
 /*messageText*/
 .portlet-font {
@@ -599,16 +557,16 @@ background color, etc) as well as text attributes.
     color:blue;
 }
 
-/* Error messages. 
+/* Error messages.
 Example: Portlet not available
 - mvnforum: pagedesc: in error page
 */
 .portlet-msg-error {
-    color: #FF0000;
+    color: #ff0000;
 }
 
 /* Warning messages.
-Example: Timeout occurred, try again later 
+Example: Timeout occurred, try again later
 - mvnforum: warning
 */
 .portlet-msg-alert {
@@ -631,16 +589,16 @@ Example: Timeout occurred, try again later
 
 /*****************************************************************************************
 PLT.C.4 Sections
-Section style definitions affect the rendering of markup sections such as table, div and  
+Section style definitions affect the rendering of markup sections such as table, div and
 span (alignment, borders, background color, etc) as well as their text attributes.
 ******************************************************************************************/
-/* Table or section header 
+/* Table or section header
    - mvnforum: theader
 */
 
 .portlet-section-header {
     font-family: Arial,Helvetica,sans-serif;
-    color: #FFFFFF;
+    color: #ffffff;
     background:url(../images/bg_header.gif) #6f6f6f repeat-x;
     font-size: 12px;
     font-weight: bold;
@@ -657,46 +615,46 @@ a.portlet-section-header:hover {
 }
 
 
-/* Normal text in a table cell 
+/* Normal text in a table cell
    - mvnforum: trow1
 */
 .portlet-section-body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #FFFFFF;
+    background: #ffffff;
     font-size: 12px;
     line-height: 20px;
 }
 
 
-/* Text in every other row in the cell 
+/* Text in every other row in the cell
    -mvnforum: trow2
 */
 .portlet-section-alternate {
     font-family: Arial, Helvetica, sans-serif;
-    background: #F5F5F5;
+    background: #f5f5f5;
     font-size: 12px;
     line-height: 20px;
 }
 
-/* Text in a selected cell range 
+/* Text in a selected cell range
 */
 .portlet-section-selected {
-    background: #FFCC99;
+    background: #ffcc99;
     font-size: 12px;
     line-height: 20px;
 }
 
-/* Text of a subheading 
+/* Text of a subheading
    -mvnforum: tcat, trow0
 */
 .portlet-section-subheader {
-    background: #C0C0C0;
+    background: #c0c0c0;
     font-size: 12px;
     font-weight: normal;
     line-height: 20px;
 }
 
-/* Table or section footnote 
+/* Table or section footnote
    -mvnforum trowfinal
 */
 .portlet-section-footer {
@@ -736,7 +694,7 @@ Form styles define the look-and-feel of the elements in an HTML form.
 
 /* Text on a button */
 .portlet-form-button {
-    background-color: #DDDDDD;
+    background-color: #dddddd;
     font-weight: bold;
 }
 
@@ -773,7 +731,7 @@ popup menu.
 /* General menu settings such as background color, margins, etc - mvnforum: not used*/
 .portlet-menu {
     color: #000000;
-    background: #F5F5F5;
+    background: #f5f5f5;
     font-family: Tahoma, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: bold;
@@ -820,4 +778,3 @@ popup menu.
 .portlet-menu-caption {
 
 }
-

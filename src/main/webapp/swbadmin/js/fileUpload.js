@@ -4,7 +4,7 @@ dojo.require("dijit.form.MultiSelect");
 
 var fileUpload_Callback = function(data,ioArgs,widgetRef){
     if(data){
-        if(data.status && data.status == "success"){
+        if(data.status && data.status === "success"){
             widgetRef.overlay.innerHTML = "OK";
         }else{
             widgetRef.overlay.innerHTML = "error?";
@@ -29,13 +29,12 @@ function fileUpload_addNewUpload(pname,filters,url)
             fileMask: ""+filters
     },node);
     widget.startup();
-    
     node = document.createElement('br');
     dojo.byId(pname+'_dynamic').appendChild(node);
 }
 
 var fileUpload_Callback2 = function(data,ioArgs,widgetRef,eleName){
-    if(data && data.status && data.status == "success")
+    if(data && data.status && data.status === "success")
     {
         var ele=document.getElementById(eleName);
         var form = dijit.byId(ele.form.id);
@@ -44,4 +43,3 @@ var fileUpload_Callback2 = function(data,ioArgs,widgetRef,eleName){
     }
     fileUpload_Callback(data,ioArgs,widgetRef);
 }
-

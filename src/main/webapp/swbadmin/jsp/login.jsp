@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="org.semanticwb.*,org.semanticwb.platform.*,org.semanticwb.portal.*,org.semanticwb.model.*,java.util.*,org.semanticwb.base.util.*"%>
+<%@page
+	import="org.semanticwb.*,org.semanticwb.platform.*,org.semanticwb.portal.*,org.semanticwb.model.*,java.util.*,org.semanticwb.base.util.*"%>
 <%!
     public String getLocaleString(String key, String lang)
     {
@@ -29,33 +30,74 @@
         }
     }
 %>
-    <form id="login_form" dojoType="dijit.form.Form" class="swbform" action="<%=org.semanticwb.SWBPlatform.getContextPath()%>/swbadmin/jsp/login.jsp"  onsubmit="submitForm('login_form');return false;" method="post">
+<form name="login" id="login_form" dojoType="dijit.form.Form" class="swbform" action="<%=org.semanticwb.SWBPlatform.getContextPath()%>/swbadmin/jsp/login.jsp" method="post">
+	<script type="dojo/method" event="onSubmit">
+		<%
+		if (SWBPlatform.getSecValues().isEncrypt()) {
+			%>
+			var pw = dojo.byId("wb_password").value;
+			var epw = encrypt(pw);
+			if (epw && epw.length) dojo.byId("wb_password").value = epw;
+			<%
+		}
+		%>
+
+		submitForm('login_form');
+		return false;
+	</script> 
 	<fieldset>
-      <table >
-        <tr >
-          <td align="right">
-            <label for="lang"><%=getLocaleString("user",lang)%> &nbsp;</label>
-          </td>
-          <td ><input type="text" name="wb_username" dojoType="dijit.form.ValidationTextBox" required="true" promptMessage="<%=getLocaleString("enter",lang)%> <%=getLocaleString("user",lang)%>." invalidMessage="<%=getLocaleString("user",lang)%> <%=getLocaleString("invalid",lang)%>." trim="true"/></td>
-        </tr>
-        <tr >
-          <td align="right">
-            <label for="lang"><%=getLocaleString("password",lang)%> &nbsp;</label>
-          </td>
-          <td ><input type="password" name="wb_password" dojoType="dijit.form.ValidationTextBox" promptMessage="<%=getLocaleString("enter",lang)%> <%=getLocaleString("password",lang)%>." invalidMessage="<%=getLocaleString("password",lang)%> <%=getLocaleString("invalid",lang)%>." trim="true"/></td>
-        </tr>
-        <tr>
-          <td align="center" colspan="2">
-             <button dojoType='dijit.form.Button' type="submit"><%=getLocaleString("accept",lang)%></button>
-             <button dojoType='dijit.form.Button' onclick="dijit.byId('swbDialog').hide();"><%=getLocaleString("cancel",lang)%></button>
-          </td>
-        </tr>
-      </table>
+		<table>
+			<tr>
+				<td align="right"><label for="lang"><%=getLocaleString("user",lang)%>
+						&nbsp;</label></td>
+				<td><input id="wb_username" type="text" name="wb_username"
+					dojoType="dijit.form.ValidationTextBox" required="true"
+					promptMessage="<%=getLocaleString("enter",lang)%> <%=getLocaleString("user",lang)%>."
+					invalidMessage="<%=getLocaleString("user",lang)%> <%=getLocaleString("invalid",lang)%>."
+					trim="true" /></td>
+			</tr>
+			<tr>
+				<td align="right"><label for="lang"><%=getLocaleString("password",lang)%>
+						&nbsp;</label></td>
+				<td><input id="wb_password" type="password" name="wb_password"
+					dojoType="dijit.form.ValidationTextBox"
+					promptMessage="<%=getLocaleString("enter",lang)%> <%=getLocaleString("password",lang)%>."
+					invalidMessage="<%=getLocaleString("password",lang)%> <%=getLocaleString("invalid",lang)%>."
+					trim="true" /></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2">
+					<button dojoType='dijit.form.Button' type="submit"><%=getLocaleString("accept",lang)%></button>
+					<button dojoType='dijit.form.Button'
+						onclick="dijit.byId('swbDialog').hide();"><%=getLocaleString("cancel",lang)%></button>
+				</td>
+			</tr>
+		</table>
 	</fieldset>
-    </form>
-    <div class="swbError"><%
+</form>
+<%
+    if (SWBPlatform.getSecValues().isEncrypt()) {
+			java.security.KeyPair key = SWBPortal.getUserMgr().getSessionKey(request);
+			%>
+			<script src="<%= SWBPlatform.getContextPath() %>/swbadmin/js/crypto/jsbn.js"></script>
+			<script src="<%= SWBPlatform.getContextPath() %>/swbadmin/js/crypto/prng4.js"></script>
+			<script src="<%= SWBPlatform.getContextPath() %>/swbadmin/js/crypto/rng.js"></script>
+			<script src="<%= SWBPlatform.getContextPath() %>/swbadmin/js/crypto/rsa.js"></script>
+			<script>
+				var rsa = new RSAKey();
+				rsa.setPublic("<%= ((java.security.interfaces.RSAPublicKey)key.getPublic()).getModulus().toString(16) %>", "<%= ((java.security.interfaces.RSAPublicKey)key.getPublic()).getPublicExponent().toString(16) %>");
+				
+				function encrypt(val) { return rsa.encrypt(val); }
+			</script>
+			<%
+    }
+    %>
+
+<div class="swbError">
+	<%
     if(error)
     {
         out.println(getLocaleString("loginerror",lang));
     }
-%></div>
+%>
+</div>
