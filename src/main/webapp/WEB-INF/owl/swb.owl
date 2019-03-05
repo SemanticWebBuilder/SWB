@@ -121,7 +121,7 @@
     <rdfs:subClassOf>
       <owl:Class rdf:about="#Traceable"/>
     </rdfs:subClassOf>
-    <rdfs:label xml:lang="es">Lenguaje</rdfs:label>
+    <rdfs:label xml:lang="es">Idioma</rdfs:label>
     <rdf:type rdf:resource="#Class"/>
     <rdfs:subClassOf>
       <owl:Class rdf:ID="FilterableClass"/>
@@ -568,8 +568,8 @@
         >40</swb:index>
         <swb:iconClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
         >swbIconLanguages</swb:iconClass>
-        <swb:title xml:lang="es">Lenguajes</swb:title>
-        <swb:title xml:lang="en">Lenguages</swb:title>
+        <swb:title xml:lang="es">Idiomas</swb:title>
+        <swb:title xml:lang="en">Languages</swb:title>
         <swbxf:heClass rdf:resource="#Language"/>
       </swbxf:HerarquicalNode>
     </swb:hasHerarquicalNode>
@@ -2666,7 +2666,7 @@
         <swb:index rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
         >55</swb:index>
         <rdfs:label xml:lang="en">Language</rdfs:label>
-        <rdfs:label xml:lang="es">Lenguaje</rdfs:label>
+        <rdfs:label xml:lang="es">Idioma</rdfs:label>
         <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#selectOneModelWithBlank"/>
       </swbxf:DisplayProperty>
     </swb:displayProperty>
