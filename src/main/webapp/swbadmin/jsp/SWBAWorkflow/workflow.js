@@ -880,7 +880,7 @@ function (d3, ObjectStore, Form, Button, dom, domAttr, registry, Memory, xhr, En
             registry.byId("fromAct_"+_appID).set("disabled", false);
           } else {
             registry.byId("redirectflowRadio_"+_appID).set("disabled", true);
-            registry.byId("fromAct_"+_appID).set("disabled", true);
+            //registry.byId("fromAct_"+_appID).set("disabled", true);
           }
 
           domAttr.set("flowAction_"+_appID, "value", "insert");

@@ -34,7 +34,7 @@ function (CodeMirror) {
     if (!placeHolderId || placeHolderId === undefined || !placeHolderId.length) return;
 
     let editor = CodeMirror(document.getElementById(placeHolderId), defaults);
-    let HTMLEditor = {
+    return {
       getEditor: function() {
         return editor;
       },
@@ -54,7 +54,6 @@ function (CodeMirror) {
       }
     };
 
-    return HTMLEditor;
   };
 
   return TemplateEditor;
