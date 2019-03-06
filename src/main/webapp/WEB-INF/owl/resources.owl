@@ -3,6 +3,7 @@
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:swb="http://www.semanticwebbuilder.org/swb4/ontology#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:swbxf="http://www.semanticwebbuilder.org/swb4/xforms/ontology#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:swbres="http://org.semanticwebbuilder/portal/resources#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
@@ -12,18 +13,113 @@
     <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Created with TopBraid Composer</owl:versionInfo>
   </owl:Ontology>
-  <swb:Class rdf:ID="Banner">
+  <owl:Class rdf:ID="Banner">
+    <rdfs:comment xml:lang="en">Component to show an image banner</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBSemanticResource"/>
+    <rdfs:label xml:lang="en">Banner</rdfs:label>
+    <swb:classCodePackage rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >org.semanticwb.portal.resources</swb:classCodePackage>
+    <rdfs:label xml:lang="es">Banner</rdfs:label>
+    <rdf:type rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SemanticResource"/>
+    <rdfs:comment xml:lang="es">Componente que despliega una imagen con un enlace asociado</rdfs:comment>
     <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
     >true</swb:autogenId>
-    <swb:classCodePackage rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >com.hasdaipacheco.swb.resources</swb:classCodePackage>
-    <rdfs:comment xml:lang="en">Component to show an image link</rdfs:comment>
-    <rdfs:comment xml:lang="es">Componente que despliega una imagen con un enlace asociado</rdfs:comment>
-    <rdfs:label xml:lang="en">Banner</rdfs:label>
-    <rdfs:label xml:lang="es">Banner</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBSemanticResource"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </swb:Class>
+  </owl:Class>
+  <owl:DatatypeProperty rdf:ID="bannerCSSClass">
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_BannerCSSClass">
+        <swbxf:propGroup rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#pg_General"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >cssClass</swb:propertyCodeName>
+    <rdfs:label xml:lang="en">Banner CSS class</rdfs:label>
+    <rdfs:label xml:lang="es">Clase CSS del banner</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Banner"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="bannerScriptCode">
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_BannerJSCode">
+        <swbxf:propGroup>
+          <swbxf:PropertyGroup rdf:ID="pg_BannerInteraction">
+            <rdfs:label xml:lang="en">Interaction</rdfs:label>
+            <rdfs:label xml:lang="es">Interacción</rdfs:label>
+          </swbxf:PropertyGroup>
+        </swbxf:propGroup>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="en">Banner JavaScript code</rdfs:label>
+    <rdfs:label xml:lang="es">Código JavaScript asociado al banner</rdfs:label>
+    <rdfs:domain rdf:resource="#Banner"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="bannerAltText">
+    <rdfs:label xml:lang="es">Texto alternativo</rdfs:label>
+    <rdfs:domain rdf:resource="#Banner"/>
+    <rdfs:comment xml:lang="es">Texto alternativo de la imagen del banner</rdfs:comment>
+    <rdfs:label xml:lang="en">Alternate text</rdfs:label>
+    <rdfs:comment xml:lang="en">Alternate text for banner image</rdfs:comment>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >altText</swb:propertyCodeName>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_bannerAltText">
+        <swbxf:propGroup rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#pg_General"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <swb:localeable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:localeable>
+    <swb:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:required>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasBannerImage">
+    <swb:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:required>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_BannerImage">
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#FileUploadImage"/>
+        <swbxf:propGroup rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#pg_General"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="en">Banner picture</rdfs:label>
+    <rdfs:label xml:lang="es">Imagen del banner</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >image</swb:propertyCodeName>
+    <rdfs:domain rdf:resource="#Banner"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="bannerLinkTarget">
+    <rdfs:label xml:lang="es">Abrir enlace en</rdfs:label>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >URLTarget</swb:propertyCodeName>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_BannerLinkTarget">
+        <swbxf:propSelectValues xml:lang="es">_blank:New page|_self:Actual page</swbxf:propSelectValues>
+        <swbxf:propSelectValues xml:lang="es">_blank:Nueva página|_self:Página actual</swbxf:propSelectValues>
+        <swbxf:formElement rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SelectOne_1"/>
+        <swbxf:propGroup rdf:resource="#pg_BannerInteraction"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <rdfs:label xml:lang="en">URL target</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Banner"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="bannerURL">
+    <swb:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:required>
+    <swb:displayProperty>
+      <swbxf:DisplayProperty rdf:ID="dp_BannerURL">
+        <swbxf:propGroup rdf:resource="http://www.semanticwebbuilder.org/swb4/xforms/ontology#pg_General"/>
+      </swbxf:DisplayProperty>
+    </swb:displayProperty>
+    <swb:propertyCodeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >URL</swb:propertyCodeName>
+    <rdfs:label xml:lang="en">Banner URL</rdfs:label>
+    <rdfs:label xml:lang="es">URL del banner</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Banner"/>
+  </owl:DatatypeProperty>
 </rdf:RDF>
 
 <!-- Created with TopBraid -->
