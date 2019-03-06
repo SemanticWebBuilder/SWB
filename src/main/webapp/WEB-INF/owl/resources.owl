@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:swb="http://www.semanticwebbuilder.org/swb4/ontology#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:swbres="http://org.semanticwebbuilder/portal/resources#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xml:base="http://org.semanticwebbuilder/portal/resources">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+  </owl:Ontology>
+  <swb:Class rdf:ID="Banner">
+    <swb:autogenId rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swb:autogenId>
+    <swb:classCodePackage rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >com.hasdaipacheco.swb.resources</swb:classCodePackage>
+    <rdfs:comment xml:lang="en">Component to show an image link</rdfs:comment>
+    <rdfs:comment xml:lang="es">Componente que despliega una imagen con un enlace asociado</rdfs:comment>
+    <rdfs:label xml:lang="en">Banner</rdfs:label>
+    <rdfs:label xml:lang="es">Banner</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticwebbuilder.org/swb4/ontology#SWBSemanticResource"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </swb:Class>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->
