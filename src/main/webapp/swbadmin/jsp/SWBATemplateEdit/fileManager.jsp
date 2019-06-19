@@ -24,11 +24,11 @@
     <link rel="stylesheet" type="text/css" href="<%= SWBPortal.getContextPath() %>/swbadmin/js/elfinder/css/theme.css">
     <script src="<%= SWBPortal.getContextPath() %>/swbadmin/js/elfinder/js/elfinder.min.js"></script>
     <script type="text/javascript" charset="utf-8">
-    	let $fileExplorer_<%= websiteId %>_<%= templateId %>;
+    	let $fileExplorer_<%= websiteId.replace("-", "_") %>_<%= templateId %>;
     	let  $window = $(window);
 
       $(document).ready(function() {
-        $fileExplorer_<%= websiteId %>_<%= templateId %> = $('#elfinder_<%= websiteId %>_<%= templateId %>').elfinder({
+        $fileExplorer_<%= websiteId.replace("-", "_") %>_<%= templateId %> = $('#elfinder_<%= websiteId.replace("-", "_") %>_<%= templateId %>').elfinder({
           url : '<%= SWBPlatform.getContextPath() %>/elFinderConnector',  // connector URL (REQUIRED)
           resizable: true,
           height: $window.height(),
@@ -40,15 +40,15 @@
 
 			$window.resize(function() {
      		var win_height = $window.height();
-     		if( $("#elfinder_<%= websiteId %>_<%= templateId %>").height() != win_height ){
-           $fileExplorer_<%= websiteId %>_<%= templateId %> && $fileExplorer_<%= websiteId %>_<%= templateId %>.resize('auto',win_height);
+     		if( $("#elfinder_<%= websiteId.replace("-", "_") %>_<%= templateId %>").height() != win_height ){
+           $fileExplorer_<%= websiteId.replace("-", "_") %>_<%= templateId %> && $fileExplorer_<%= websiteId.replace("-", "_") %>_<%= templateId %>.resize('auto',win_height);
      		}
  			});
 
  			window.addEventListener("unload", function() {
  				let win = window.opener;
  				if (win && !win.closed) {
- 					win.toggleBrowserButton_<%= websiteId %>_<%= templateId %>(true);
+ 					win.toggleBrowserButton_<%= websiteId.replace("-", "_") %>_<%= templateId %>(true);
  				}
  			});
     </script>
@@ -57,7 +57,7 @@
     		margin: 0px;
     	}
 
-    	#elfinder_<%= websiteId %>_<%= templateId %> {
+    	#elfinder_<%= websiteId.replace("-", "_") %>_<%= templateId %> {
     		width: 100%;
     		min-width: 100%;
     		height: 100% !important;
@@ -71,6 +71,6 @@
     </style>
   </head>
   <body>
-    <div id="elfinder_<%= websiteId %>_<%= templateId %>"></div>
+    <div id="elfinder_<%= websiteId.replace("-", "_") %>_<%= templateId %>"></div>
   </body>
 </html>
