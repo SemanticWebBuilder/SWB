@@ -154,6 +154,7 @@
                         </p>
                     </div>
                     <%
+                        String tags = null != thread.getTags() ? thread.getTags() : "";
                         String text = thread.getBody() != null ? thread.getBody() : "";
                         text = SWBUtils.TEXT.replaceAll(text, "\n", "<br>");
                         text = SWBUtils.TEXT.parseHTML(text);
@@ -163,6 +164,7 @@
 			<p class="card-entry-cont"><%=text%></p>                
                     </div>
                     <div class="card-footer">
+                        <p class="card-entry-cont"><%=tags%></p>
 			<p class="card-entry-comments"><span><%=paramRequest.getLocaleString("responses")%></span><%=thread.getReplyCount()%></p>
                         <p class="card-entry-views"><span><%=paramRequest.getLocaleString("visites")%></span> <%=thread.getViewCount()%> </p>
                     </div>
@@ -475,11 +477,13 @@
                             String text = "";
                             Thread thread = itThreads2.next();
                             url.setParameter("threadUri", thread.getURI());
+                            String tags = null != thread.getTags() ? "<p class=\"card-entry-cont\">" +thread.getTags() + "</p>" : "";
                             if (null != thread.getCreator()) autor = thread.getCreator().getFullName();
                     %>
                             <div class="card card-entry">  
                                 <div class="card-header">
                                     <p class="card-entry-title"><%=thread.getTitle()%></p>
+                                    <%=tags%>
                                     <p class="card-entry-dateuser">
                                         <span><%=autor%></span>
                                         <span><%=SWBUtils.TEXT.getStrDate(thread.getCreated(), user.getLanguage())%></span>
@@ -499,22 +503,21 @@
                                             <p class="card-entry-last-txt">
                                                 <%
                                                     String date = "";
-                                                    Post post = null;
+                                                    String creator = "";
                                                     Iterator<Post> itPost = SWBComparator.sortByCreated(thread.listPosts(), false);
                                                     if (itPost.hasNext()) {
-                                                        post = itPost.next();
+                                                        Post post = itPost.next();
                                                         out.print(SWBUtils.TEXT.parseHTML(post.getBody()));
-                                                        if (thread.getLastPostDate() != null) {
-                                                            date = SWBUtils.TEXT.getTimeAgo(thread.getLastPostDate(), user.getLanguage());
-                                                        }
+                                                        if (null != thread.getLastPostDate()) date = SWBUtils.TEXT.getTimeAgo(thread.getLastPostDate(), user.getLanguage());
+							if (null != post.getCreator()) creator = post.getCreator().getFullName();
                                                     } else {
                                                         out.print(paramRequest.getLocaleString("nocomments"));
                                                     }
                                                 %>
                                             </p>
                                             <p class="card-entry-last-dateuser">
-                                                <span><%=date%></span>
-                                                <span><% out.print(null != post.getCreator() ? post.getCreator().getFullName() : "");%></span>
+						<span><%=date%></span>
+						<span><%=creator%></span>
                                             </p>
                                         </div>
                                     </div>
@@ -590,3 +593,9 @@
         return attchCount;
     }
 %>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="<%= SWBPortal.getContextPath() %>/swbadmin/js/forum/jquery-3.3.1.slim.min.js"></script>
+<script src="<%= SWBPortal.getContextPath() %>/swbadmin/js/forum/popper.min.js"></script>
+<script src="<%= SWBPortal.getContextPath() %>/swbadmin/js/forum/bootstrap.min.js"></script>

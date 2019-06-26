@@ -54,39 +54,38 @@
     });
 </script>
 <div class="container">
-	<div id="swbBlog">
-		<div class="swbBlog-head">
+    <div id="swbBlog">
+        <div class="swbBlog-head">
             <span><%=lblAction%></span>
         </div>
-		<div class="card">
-			<form class="form-horizontal" id="formSavePost" method="post" action="<%=urlAction%>">
-				<div class="card-body">
-					<% if (!flag.equals("")) { %>
-						<div class="alert alert-warning alert-dismissable">
-							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-							<strong>Aviso!</strong> <%=paramRequest.getLocaleString(flag)%>.
-						</div>
-                    <% 
-						}
+        <div class="card">
+            <form class="form-horizontal" id="formSavePost" method="post" action="<%=urlAction%>">
+                <div class="card-body">
+                    <% if (!flag.equals("")) { %>
+                        <div class="alert alert-warning alert-dismissable"> 
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <strong>Aviso!</strong> <%=paramRequest.getLocaleString(flag)%>.
+			</div>
+                    <% 						}
                         out.print(forMgr.getFormHiddens());
                         if (!action.equals("")) { 
-					%>
-							<div class="card-answer-txt">
-								<%=SWBUtils.TEXT.parseHTML(post.getBody())%>
-							</div>
-							<div class="card-answer-dateuser">
-								<span><%=post.getCreator().getFullName()%></span>
-							</div>
-					<%	
-						}
-					%>
-					<p class="card-answer-title"><%=SWBUtils.TEXT.parseHTML(forMgr.renderLabel(request, org.semanticwb.portal.resources.sem.forum.Post.frm_pstBody, mode))%></p>
-					<%
-						String inputTitle = forMgr.renderElement(request, org.semanticwb.portal.resources.sem.forum.Post.frm_pstBody, mode);
-						String valueparse = SWBUtils.TEXT.parseHTML(inputTitle.substring(inputTitle.indexOf(">")+1, inputTitle.indexOf("<", 1)));
-						out.println("<textarea name='pstBody' id='pstBody'>"+valueparse+"</textarea>");
-					%>
-				</div>
+                    %>
+                            <div class="card-answer-txt">
+				<%=SWBUtils.TEXT.parseHTML(post.getBody())%>
+                            </div>
+                            <div class="card-answer-dateuser">
+                                <span><%=post.getCreator().getFullName()%></span>
+                            </div>
+                    <%	
+                        }
+                    %>
+                        <p class="card-answer-title"><%=SWBUtils.TEXT.parseHTML(forMgr.renderLabel(request, org.semanticwb.portal.resources.sem.forum.Post.frm_pstBody, mode))%></p>
+                    <%
+                        String inputTitle = forMgr.renderElement(request, org.semanticwb.portal.resources.sem.forum.Post.frm_pstBody, mode);
+			String valueparse = SWBUtils.TEXT.parseHTML(inputTitle.substring(inputTitle.indexOf(">")+1, inputTitle.indexOf("<", 1)));
+			out.println("<textarea name='pstBody' id='pstBody'>"+valueparse+"</textarea>");
+                    %>
+                </div>
 				<% if (isCaptcha) { %>
 					   <div class="form-group" id="divcmnt_seccode">
 						   <label for="" class="col-lg-3 control-label"><%="Captcha *:"%></label>

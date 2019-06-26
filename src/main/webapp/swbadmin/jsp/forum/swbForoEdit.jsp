@@ -80,12 +80,19 @@
                             out.println(inputTitle);
                          %>
                     </div>
+                    <div class="card-new-title">
+                        <label for="tags">Tags</label>
+			<%
+                            String inputTags = forMgr.renderElement(request, org.semanticwb.portal.resources.sem.forum.Thread.swb_tags, mode);
+                            inputTags = inputTags.replaceFirst("size=\"30\"", "type=\"text\" class=\"form-control\" id=\"" + org.semanticwb.portal.resources.sem.forum.Thread.swb_tags.getName() + "\"");
+                            inputTags = inputTags.replace(inputTags.substring(inputTags.indexOf("style"), (inputTags.indexOf("px;\"") + 4)), "");
+                            out.println(inputTags);
+			%>
+                    </div>
                     <%
 			String inputMessage = forMgr.renderElement(request, org.semanticwb.portal.resources.sem.forum.Thread.frm_thBody, mode);
-                        inputMessage = inputMessage.replaceFirst(">", " required class=\"form-control\" rows=\"6\">");
-                        inputMessage = inputMessage.replace(inputMessage.substring(inputMessage.indexOf("style"), (inputMessage.indexOf("px;\"") + 4)), "");
-                        //out.println(inputMessage);
-			out.println("<textarea name='thBody' id='thBody'></textarea>");
+                        String valueparse = SWBUtils.TEXT.parseHTML(inputMessage.substring(inputMessage.indexOf(">")+1, inputMessage.indexOf("<", 1)));
+			out.println("<textarea name='thBody' id='thBody'>"+valueparse+"</textarea>");
                     %>
                 </div>
 		<% if (isCaptcha) { %>
