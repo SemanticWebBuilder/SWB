@@ -64,7 +64,7 @@
     
     Iterator<ObjectBehavior> obit=SWBComparator.sortSermanticObjects(ObjectBehavior.ClassMgr.listObjectBehaviors(adm));
     //Iterator<ObjectBehavior> obit=SWBComparator.sortSermanticObjects(new GenericIterator(ObjectBehavior.swbxf_ObjectBehavior, obj.getModel().listInstancesOfClass(ObjectBehavior.swbxf_ObjectBehavior)));
-
+System.out.println("\n\n ============================================ \n");
     while(obit.hasNext())
     {
         ObjectBehavior ob=obit.next();
@@ -87,7 +87,7 @@
         boolean refresh=ob.isRefreshOnShow();
         //String url=ob.getParsedURL();
         String url=ob.getUrl();
-        //System.out.println("ob:"+ob.getTitle(lang)+" "+ob.getDisplayObject()+" "+ob.getInterface()+" "+ob.getURL());
+        System.out.println("ob: "+ob.getDisplayName()+" "+ob.getUrl());
 
 //        Iterator<ResourceParameter> prmit=ob.listParams();
 //        while(prmit.hasNext())
@@ -105,9 +105,11 @@
         {
             if(interf==null)
             {
+                System.out.println("Interface NULL...");
                 addDiv=true;
             }else
             {
+                System.out.println("Class...");
                 SemanticClass scls=SWBPlatform.getSemanticMgr().getVocabulary().getSemanticClass(interf.getURI());
                 if(scls!=null)
                 {
@@ -133,16 +135,23 @@
         }
         if(addDiv)
         {
-            //System.out.println(SWBPortal.getAdminFilterMgr().haveAccessToSemanticObject(user, obj));
+//            System.out.println("Agregar ...");
+//            System.out.println("haveAccessToSemanticObject === "+SWBPortal.getAdminFilterMgr().haveAccessToSemanticObject(user, obj));
+//            System.out.println("haveAccessToWebPage === "+SWBPortal.getAdminFilterMgr().haveAccessToWebPage(user, ob));
             if(!SWBPortal.getAdminFilterMgr().haveAccessToSemanticObject(user, obj))
             {
                 if(!ob.getId().equals("bh_Information"))
                 {
                     addDiv=false;
                 }
+                
             } else if(!SWBPortal.getAdminFilterMgr().haveAccessToWebPage(user, ob))
             {
                 addDiv=false;
+            } 
+            
+            if(!addDiv&&cls.equals(WebSite.sclass) && (SWBPortal.getAdminFilterMgr().haveAccessToSemanticObject(user, obj) || SWBPortal.getAdminFilterMgr().haveAccessToWebPage(user, ob))){
+                addDiv=true;
             }
         }
         if(addDiv)
