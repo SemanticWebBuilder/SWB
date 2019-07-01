@@ -87,7 +87,7 @@ System.out.println("\n\n ============================================ \n");
         boolean refresh=ob.isRefreshOnShow();
         //String url=ob.getParsedURL();
         String url=ob.getUrl();
-        System.out.println("ob: "+ob.getDisplayName()+" "+ob.getUrl());
+//        System.out.println("ob: "+ob.getDisplayName()+" "+ob.getUrl());
 
 //        Iterator<ResourceParameter> prmit=ob.listParams();
 //        while(prmit.hasNext())
@@ -105,11 +105,11 @@ System.out.println("\n\n ============================================ \n");
         {
             if(interf==null)
             {
-                System.out.println("Interface NULL...");
+//                System.out.println("Interface NULL...");
                 addDiv=true;
             }else
             {
-                System.out.println("Class...");
+//                System.out.println("Class...");
                 SemanticClass scls=SWBPlatform.getSemanticMgr().getVocabulary().getSemanticClass(interf.getURI());
                 if(scls!=null)
                 {
