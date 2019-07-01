@@ -1,0 +1,71 @@
+/*CSS*/
+
+#swbBlog {}
+#swbBlog .btn       { background:#06F; color:#FFF}
+#swbBlog .btn:hover { background:#06C}
+#swbBlog .btn.btn-cancel       { background:#999; color:#FFF;}
+#swbBlog .btn.btn-cancel:hover { background:#777}
+#swbBlog .swbBlog-head .btn { margin-left:15px}
+#swbBlog .card { margin-bottom:20px}
+#swbBlog .card-footer { background:none; border-top:none}
+#swbBlog .card-footer .btn { margin-right:15px}
+#swbBlog .comment-piece .btn       { background:rgba(0,0,0,0.03); color:#333; border:solid 1px #CCC }
+#swbBlog .comment-piece .btn:hover { background:rgba(0,0,0,0.08);}
+
+#swbBlog .swbBlog-head      { margin:20px 0; background:#efefef; display:flex; border:1px solid #ccc; justify-content:center; align-items:center; padding:10px 20px; border-radius:4px}
+#swbBlog .swbBlog-head span { font-weight:bold; font-size:20px; flex-grow:1}
+#swbBlog .card-body img { max-width:100% }
+
+
+/*CARD ENTRY*/
+.card-entry-title     { margin-bottom:0; font-size:28px; font-weight:bold;  width:100%;}
+.card-entry-dateuser  { margin-bottom:0; font-size:14px; }
+.card-entry-dateuser span:nth-child(2):before { content:" - "}
+.card-entry-last-comment   { background:rgba(0,0,0,.03); border-radius:4px; padding:10px}
+.card-entry-last-comment p { margin-bottom:0px}
+.card-entry-last-title     { font-weight:bold;}
+.card-entry-last-txt       { }
+.card-entry-last-dateuser  { font-size:14px; }
+.card-entry-last-dateuser span:nth-child(2):before { content:" - "}
+.card-entry-views span,
+.card-entry-comments span { display:none}
+
+/*NUEVA ENTRADA*/
+.card-new-title { display:flex; align-items:center; margin-bottom:20px }
+.card-new-title label { margin:0 10px 0 0}
+.card-new-title input::placeholder { visibility:hidden}
+
+/*COMENTARIOS*/
+.card-add-comment .card-header p,
+.card-all-comments .card-header p{ margin-bottom:0; font-weight:bold}
+.comment-piece {   list-style-type:none; padding:0 }
+.comment-piece .card-entry-txt { margin-bottom:0 }
+.comment-piece .btn { margin-right:15px; margin-top:10px}
+.comment-piece li    { margin-bottom:20px; background:rgba(0,0,0,0.04); padding:20px; border-radius:4px;}
+.comment-piece li li { margin:20px 0px 20px 0px; padding:20px 0 0px 20px; background:none; border-top:1px solid #CCC; border-radius:0px;}
+
+/*RESPONDER*/
+.card-answer-dateuser { font-size:14px; }
+.card-answer-title    { font-weight:bold; margin:30px 0 10px}
+
+/*IONICONS*/
+.card-entry-views:before,
+.card-entry-comments:before {
+    display:inline-block;
+    font-family:"Ionicons";
+    speak:none;
+    font-size:20px;
+    font-style:normal;
+    font-weight:normal;
+    font-variant:normal;
+    text-transform:none;
+    text-rendering:auto;
+    line-height:1;
+    -webkit-font-smoothing: antialiased;
+    margin-right:10px;}
+
+.card-entry-views:before { content:"\f133";}
+.card-entry-comments:before { content:"\f11a";}
+
+
+
