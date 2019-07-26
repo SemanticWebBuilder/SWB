@@ -3,10 +3,11 @@
     Created on : 8/07/2019, 06:09:04 PM
     Author     : sergio.tellez
 --%>
+<%@page import="org.semanticwb.portal.admin.resources.SWBAComposer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="org.semanticwb.portal.api.SWBParamRequest, org.semanticwb.SWBUtils,
         org.semanticwb.SWBPlatform, org.semanticwb.model.SWBContext, org.semanticwb.model.User,
-        java.util.Locale"%>
+        java.util.Locale, org.semanticwb.model.WebPage, org.json.JSONObject, org.json.JSONArray"%>
 <%
     User user = SWBContext.getAdminUser();
 	SWBParamRequest paramRequest = (SWBParamRequest) request.getAttribute("paramRequest");
@@ -17,6 +18,29 @@
         return;
     }
     String lang = user.getLanguage();
+    String suri = request.getParameter("suri");
+    if (null == suri && null != request.getAttribute("suri")) {
+        suri = (String) request.getAttribute("suri");
+    }
+    String actionUri = paramRequest.getActionUrl().setAction(SWBAComposer.ACTION_ADD_GRID).toString();
+    String savedData = null;
+    boolean renderSavedData = false;
+    
+    if (request.getAttribute("_elements") != null && !"".equals(request.getAttribute("_elements"))) {
+        
+        JSONObject savedObj = new JSONObject((String) request.getAttribute("_elements"));
+        if (savedObj.has("elements")) {
+            savedData = savedObj.getJSONArray("elements").toString();
+            renderSavedData = true;
+            
+            
+            
+            
+            System.out.println("JSON saved: " + savedData);
+        } else {
+            System.out.println("No se encontro -elements en: \n" + savedObj.toString());
+        }
+    }
 %>
 <%!
     public String getLocaleString(String key, String lang) {
@@ -32,10 +56,12 @@
       <div class="row templetebuilder">
         <div class="col-xs-2 col-md-2 tools">
           <div class="guardar">
-            <form>
+            <form action="<%=actionUri%>" name="saveConf" method="POST">
               <button class="" id="save-grid" type="button" name="save" value="Save">
                 Guardar
               </button>
+              <input type="hidden" name="suri" value="<%=suri%>">
+              <input type="hidden" name="jsongrid" value="">
             </form>
           </div>
           <div class="sidebar">
@@ -75,114 +101,90 @@
               acceptWidgets: '.grid-stack-item'
           };
           var workGrid = $('#workGrid')
-              .gridstack(options)
-              .addWidget = function(el, x, y, width, height, autoPosition, minWidth, maxWidth,
+              .gridstack(options);
+          new function () {
+            this.serializedData = [];
+            this.grid = $('.grid-stack').data('gridstack');
+            this.grid.addWidget = function(el, x, y, width, height, autoPosition, minWidth, maxWidth,
                   minHeight, maxHeight, id, resType, resId) {
+                      
                   el = $(el);
-                  if (typeof x != 'undefined') { el.attr('data-gs-x', x); }
-                  if (typeof y != 'undefined') { el.attr('data-gs-y', y); }
-                  if (typeof width != 'undefined') { el.attr('data-gs-width', width); }
-                  if (typeof height != 'undefined') { el.attr('data-gs-height', height); }
-                  if (typeof autoPosition != 'undefined') { el.attr('data-gs-auto-position', autoPosition ? 'yes' : null); }
-                  if (typeof minWidth != 'undefined') { el.attr('data-gs-min-width', minWidth); }
-                  if (typeof maxWidth != 'undefined') { el.attr('data-gs-max-width', maxWidth); }
-                  if (typeof minHeight != 'undefined') { el.attr('data-gs-min-height', minHeight); }
-                  if (typeof maxHeight != 'undefined') { el.attr('data-gs-max-height', maxHeight); }
-                  if (typeof id != 'undefined') { el.attr('data-gs-id', id); }
-                  if (typeof resType != 'undefined') { el.attr('data-gs-resourceType', resType); }
-                  if (typeof resId != 'undefined') { el.attr('data-gs-resourceId', resId); }
+                  if (typeof x !== 'undefined') { el.attr('data-gs-x', x); }
+                  if (typeof y !== 'undefined') { el.attr('data-gs-y', y); }
+                  if (typeof width !== 'undefined') { el.attr('data-gs-width', width); }
+                  if (typeof height !== 'undefined') { el.attr('data-gs-height', height); }
+                  if (typeof autoPosition !== 'undefined') { el.attr('data-gs-auto-position', autoPosition ? 'yes' : null); }
+                  if (typeof minWidth !== 'undefined') { el.attr('data-gs-min-width', minWidth); }
+                  if (typeof maxWidth !== 'undefined') { el.attr('data-gs-max-width', maxWidth); }
+                  if (typeof minHeight !== 'undefined') { el.attr('data-gs-min-height', minHeight); }
+                  if (typeof maxHeight !== 'undefined') { el.attr('data-gs-max-height', maxHeight); }
+                  if (typeof id !== 'undefined') { el.attr('data-gs-id', id); }
+                  if (typeof resId !== 'undefined') { el.attr('data-gs-resource-id', resId); }
                   this.container.append(el);
                   this._prepareElement(el, true);
+                  if (typeof resType !== 'undefined') {
+                      el.addClass("grid-stack-item-" + resType);
+                      el[0].children[0].setAttribute("data-gs-resource-type", resType);
+                  }
+                  
+                  let textNode = document.createTextNode(resType);
+                  let elementNode = document.createElement("span");
+                  el[0].childNodes[0].appendChild(elementNode);
+                  el[0].childNodes[0].appendChild(textNode);
+                  el[0].removeChild(el[0].childNodes[1]);
+                  
                   this._triggerAddEvent();
                   this._updateContainerHeight();
                   this._triggerChangeEvent(true);
-
-                  console.log("Widget added: " + resId);
                   return el;
-              };
-          new function () {
-            this.serializedData = [];
+            };
+              
+            this.loadGrid = function () {
+                this.grid.removeAll();
+                this.serializedData = <%=(null != savedData ? savedData : "[]")%>;
+                var items = GridStackUI.Utils.sort(this.serializedData);
+                _.each(items, function (node) {
+                        let element = this.grid.addWidget($('<div><div class="grid-stack-item-content" /><div/>'),
+                            node.x, node.y, node.width, node.height, undefined, undefined,
+                            undefined, undefined, undefined, undefined, node.resourceType,
+                            node.resourceId);
+                    }, this);
+                    return false;
+                }.bind(this);
+
             this.saveGrid = function() {
               this.serializedData = _.map($('.grid-stack > .grid-stack-item:visible'), function (el) {
                 el = $(el);
+                
                 var node = el.data('_gridstack_node');
                 return {
                   x: node.x,
                   y: node.y,
                   width: node.width,
                   height: node.height,
-                  resourceType: el[0].firstElementChild.innerText,
-                  resourceId: el[0].id
+                  resourceType: el[0].firstElementChild.getAttribute("data-gs-resource-type"),
+                  resourceId: null !== el[0].getAttribute("data-gs-resource-id")
+                              ? el[0].getAttribute("data-gs-resource-id") : ""
                 };
               }, this);
-              alert(JSON.stringify(this.serializedData));
-              console.log(JSON.stringify(this.serializedData, null, 4));
+              document.forms["saveConf"].jsongrid.value = JSON.stringify(GridStackUI.Utils.sort(this.serializedData));
+              if (document.forms["saveConf"].jsongrid.value !== "" &&
+                      document.forms["saveConf"].suri.value !== "") {
+                document.forms["saveConf"].submit();
+              }
               return false;
             }.bind(this);
 
-            this.loadGrid = function () {
-                this.grid.removeAll();
-                this.serializedData = [
-                  {
-                      "x": 0,
-                      "y": 0,
-                      "width": 2,
-                      "height": 4,
-                      "resourceType": "Menu",
-                      "resourceId": "01menu_01"
-                  },
-                  {
-                      "x": 2,
-                      "y": 0,
-                      "width": 5,
-                      "height": 1,
-                      "resourceType": "HtmlContent",
-                      "resourceId": "02htmlcontent_01"
-                  },
-                  {
-                      "x": 2,
-                      "y": 1,
-                      "width": 8,
-                      "height": 1,
-                      "resourceType": "HtmlContent",
-                      "resourceId": "03htmlcontent_02"
-                  },
-                  {
-                      "x": 2,
-                      "y": 2,
-                      "width": 2,
-                      "height": 1,
-                      "resourceType": "StaticText",
-                      "resourceId": "04statictext_01"
-                  },
-                  {
-                      "x": 5,
-                      "y": 2,
-                      "width": 2,
-                      "height": 1,
-                      "resourceType": "StaticText",
-                      "resourceId": "05statictext_02"
-                  },
-                  {
-                      "x": 8,
-                      "y": 2,
-                      "width": 2,
-                      "height": 1,
-                      "resourceType": "StaticText",
-                      "resourceId": ""
-                  }
-                ];
-                var items = GridStackUI.Utils.sort(this.serializedData);
-                _.each(items, function (node) {
-                        this.grid.addWidget($('<div><div class="grid-stack-item-content" /><div/>'),
-                            node.x, node.y, node.width, node.height, undefined, undefined, undefined, undefined, undefined, undefined, node.resourceType, node.resourceId);
-                    }, this);
-                    return false;
-                }.bind(this);
-
             $('#save-grid').click(this.saveGrid);
             $('#load-grid').click(this.loadGrid);
-          }
+<%          
+            if (renderSavedData) {
+%>
+            this.loadGrid();
+<%          
+            }
+%>
+          };
 
           $('.sidebar .grid-stack-item').draggable({
               revert: 'invalid',
