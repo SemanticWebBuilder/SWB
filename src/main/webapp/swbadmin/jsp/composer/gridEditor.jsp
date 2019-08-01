@@ -10,9 +10,9 @@
         java.util.Locale, org.semanticwb.model.WebPage, org.json.JSONObject, org.json.JSONArray"%>
 <%
     User user = SWBContext.getAdminUser();
-	SWBParamRequest paramRequest = (SWBParamRequest) request.getAttribute("paramRequest");
-	System.out.println("PAGE: " + request.getParameter("suri"));
+    SWBParamRequest paramRequest = (SWBParamRequest) request.getAttribute("paramRequest");
     String webPath = SWBPlatform.getContextPath();
+    
     if (null == user) {
         response.sendError(403);
         return;
@@ -22,25 +22,26 @@
     if (null == suri && null != request.getAttribute("suri")) {
         suri = (String) request.getAttribute("suri");
     }
-    String actionUri = paramRequest.getActionUrl().setAction(SWBAComposer.ACTION_ADD_GRID).toString();
+    String actionUri = paramRequest.getActionUrl()
+                        .setAction(SWBAComposer.ACTION_ADD_GRID)
+                        .toString();
     String savedData = null;
     boolean renderSavedData = false;
+    String webSiteId = null;
     
     if (request.getAttribute("_elements") != null && !"".equals(request.getAttribute("_elements"))) {
-        
         JSONObject savedObj = new JSONObject((String) request.getAttribute("_elements"));
         if (savedObj.has("elements")) {
             savedData = savedObj.getJSONArray("elements").toString();
             renderSavedData = true;
-            
-            
-            
-            
-            System.out.println("JSON saved: " + savedData);
-        } else {
-            System.out.println("No se encontro -elements en: \n" + savedObj.toString());
         }
+        webSiteId = (String) request.getAttribute("webSiteId");
     }
+    String resAdminRenderedUrl = paramRequest.getRenderUrl()
+                                .setMode(SWBAComposer.MODE_RES_ADM_CALL)
+                                .setParameter("resId", "resIdValue")
+                                .setParameter("webSiteId", webSiteId)
+                                .toString();
 %>
 <%!
     public String getLocaleString(String key, String lang) {
@@ -90,8 +91,28 @@
           </div>
         </div>
       </div>
-
+      
+      <ul class="ctxtmenu">
+        <li class="ctxtmenu-item" id="resAdm">Administrar recurso</li><!-- data-toggle="modal" data-target="#admModal" -->
+        <li class="ctxtmenu-item" id="opt-two">Option two</li>
+        <li class="ctxtmenu-item" id="opt-three">Option three</li>
+      </ul>
+      <div class="modalW">
+        <div class="modalW-dialog">
+          <div class="modalW-header">
+            <span class="close-btn">&times;</span>
+            <h4>Administraci&oacute;n del recurso</h4>
+          </div>
+          <div class="modalW-content" id="admModalBody">
+	  </div>
+        </div>
+      </div>
+      
   <script type="text/javascript">
+      let modal = document.querySelector(".modalW");
+      let ctxtmenu = document.querySelector('.ctxtmenu');
+      let closeBtn = document.querySelector(".close-btn");
+
       $(function () {
           var options = {
               width: 12,
@@ -184,6 +205,65 @@
 <%          
             }
 %>
+            let lastClicked = null;
+            
+            closeBtn.onclick = function() {
+              modal.style.display = "none";
+            }
+            
+            this.hidemenu = function(ev) {
+              ctxtmenu.classList.add('off');
+              ctxtmenu.style.top = '-200%';
+              ctxtmenu.style.left = '-200%';
+              lastClicked = null;
+            }.bind(this);
+            
+            this.showmenu = function(ev) {
+              //stop real right click menu
+              ev.preventDefault();
+              //show custom menu, instead
+              ctxtmenu.style.top = (ev.clientY - 20) + 'px';
+              ctxtmenu.style.left = (ev.clientX - 20) + 'px';
+              ctxtmenu.classList.remove('off');
+              lastClicked = ev.target.parentElement;
+              console.log(ev);
+            }.bind(this);
+            
+            this.openAdmin = function(ev) {
+                
+                //console.log(lastClicked);
+                
+                let urlToOpen = '<%=resAdminRenderedUrl%>';
+                urlToOpen = urlToOpen.replace("resIdValue",
+                        lastClicked.getAttribute("data-gs-resource-id"));
+//                alert(urlToOpen.replace("resIdValue",
+//                        lastClicked.getAttribute("data-gs-resource-id")));
+                //let container = document.getElementById("admModalBody");
+                console.log("URL llamada: " + urlToOpen.substring(0, urlToOpen.indexOf("?")));
+                console.log("Parametros: " + urlToOpen.substring(urlToOpen.indexOf("?") + 1, urlToOpen.length));
+                $("#admModalBody").load(urlToOpen.substring(0, urlToOpen.indexOf("?")),
+                            urlToOpen.substring(urlToOpen.indexOf("?") + 1, urlToOpen.length));
+                modal.style.display = "block";
+//                location.assign(urlToOpen.replace("resIdValue",
+//                        lastClicked.getAttribute("data-gs-resource-id")));
+                //mostrar un div cuyo contenido sea el de la ruta de arriba
+                
+                
+                
+            }.bind(this);
+            
+            this.addMenuListeners = function() {
+              $('#resAdm').click(this.openAdmin);
+            }.bind(this);
+            
+            this.hidemenu();
+            
+            //adding right click to the menu
+            $('#workGrid > .grid-stack-item:visible').contextmenu(this.showmenu);
+            //add listener for leaving the menu
+            $('.ctxtmenu').mouseleave(this.hidemenu);
+            this.addMenuListeners();
+            
           };
 
           $('.sidebar .grid-stack-item').draggable({
@@ -196,4 +276,9 @@
           });
 
       });
+      window.onclick = function(e){
+        if (e.target == modal) {
+          modal.style.display = "none"
+        }
+      }
   </script>
