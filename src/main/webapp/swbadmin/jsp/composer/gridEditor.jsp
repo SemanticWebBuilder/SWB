@@ -4,7 +4,7 @@
     Author     : sergio.tellez
 --%>
 <%@page import="org.semanticwb.portal.admin.resources.SWBAComposer"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <%@page import="org.semanticwb.portal.api.SWBParamRequest, org.semanticwb.SWBUtils,
         org.semanticwb.SWBPlatform, org.semanticwb.model.SWBContext, org.semanticwb.model.User,
         java.util.Locale, org.semanticwb.model.WebPage, org.json.JSONObject, org.json.JSONArray"%>
@@ -82,7 +82,7 @@
                   </div>
               </div>
           </div>
-          <div class="trash dropx">
+          <div class="trash">
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
           </div>
         </div>
@@ -93,25 +93,69 @@
       </div>
       
       <ul class="ctxtmenu">
-        <li class="ctxtmenu-item" id="resAdm">Administrar recurso</li><!-- data-toggle="modal" data-target="#admModal" -->
-        <li class="ctxtmenu-item" id="opt-two">Option two</li>
-        <li class="ctxtmenu-item" id="opt-three">Option three</li>
+        <li class="ctxtmenu-item" id="resAdm">Administrar recurso</li>
+        <li class="ctxtmenu-item" id="dispOptns">Opciones de despliegue</li>
       </ul>
-      <div class="modalW">
+      <div class="modalW" id="modalAdm">
         <div class="modalW-dialog">
           <div class="modalW-header">
-            <span class="close-btn">&times;</span>
+            <span class="close-btn" id="closeW">&times;</span>
             <h4>Administraci&oacute;n del recurso</h4>
           </div>
           <div class="modalW-content" id="admModalBody">
 	  </div>
         </div>
       </div>
+      <div class="modalW" id="modalDisplay">
+        <div class="modalDisp-dialog">
+          <div class="modalW-header">
+            <span class="close-btn" id="closeDisp">&times;</span>
+            <h4>Opciones de despliegue para la celda</h4>
+          </div>
+          <div class="modalDisp-content" id="dispModalBody">
+            <form name="cellData" id="cellData">
+              <div>
+                  <label>T&iacute;tulo del recurso</label>
+                  <input type="text" name="title" value="" placeholder="" maxlength="25" required>
+              </div>
+              <div>
+                  <label>Nombre de clase de estilos</label>
+                  <input type="text" name="className2Use" value="">
+              </div>
+              <div class="modal-text">
+                <span>Columnas utilizadas por la celda en las diferentes resoluciones</span>
+              </div>
+              <div>
+                  <label>Extra chica</label>
+                  <input type="number" name="col-xs" value="" min="1" max="12" placeholder="col-">
+              </div>
+              <div>
+                  <label>Chica</label>
+                  <input type="number" name="col-sm" value="" min="1" max="12" placeholder="col-sm-">
+              </div>
+              <div>
+                  <label>Grande</label>
+                  <input type="number" name="col-lg" value="" min="1" max="12" placeholder="col-lg-">
+              </div>
+              <div>
+                  <label>Extra grande</label>
+                  <input type="number" name="col-xl" value="" min="1" max="12" placeholder="col-xl-">
+              </div>
+              <div>
+                  <button type="button" onclick="persistCols(this.form);">Guardar</button>
+              </div>
+            </form>
+	  </div>
+        </div>
+      </div>
       
   <script type="text/javascript">
-      let modal = document.querySelector(".modalW");
+      let modal = document.querySelector("#modalAdm");
+      let modalDisp = document.querySelector("#modalDisplay");
       let ctxtmenu = document.querySelector('.ctxtmenu');
-      let closeBtn = document.querySelector(".close-btn");
+      let closeBtn = document.querySelector("#closeW");
+      let closeDisp = document.querySelector("#closeDisp");
+      let lastClicked = null;
 
       $(function () {
           var options = {
@@ -126,29 +170,35 @@
           new function () {
             this.serializedData = [];
             this.grid = $('.grid-stack').data('gridstack');
-            this.grid.addWidget = function(el, x, y, width, height, autoPosition, minWidth, maxWidth,
-                  minHeight, maxHeight, id, resType, resId) {
-                      
+//            this.grid.addWidget = function(el, x, y, width, height, autoPosition, minWidth, maxWidth,
+//                  minHeight, maxHeight, id, resType, resId) {
+
+            this.grid.addWidget = function(el, nodeObj) {
                   el = $(el);
-                  if (typeof x !== 'undefined') { el.attr('data-gs-x', x); }
-                  if (typeof y !== 'undefined') { el.attr('data-gs-y', y); }
-                  if (typeof width !== 'undefined') { el.attr('data-gs-width', width); }
-                  if (typeof height !== 'undefined') { el.attr('data-gs-height', height); }
-                  if (typeof autoPosition !== 'undefined') { el.attr('data-gs-auto-position', autoPosition ? 'yes' : null); }
-                  if (typeof minWidth !== 'undefined') { el.attr('data-gs-min-width', minWidth); }
-                  if (typeof maxWidth !== 'undefined') { el.attr('data-gs-max-width', maxWidth); }
-                  if (typeof minHeight !== 'undefined') { el.attr('data-gs-min-height', minHeight); }
-                  if (typeof maxHeight !== 'undefined') { el.attr('data-gs-max-height', maxHeight); }
-                  if (typeof id !== 'undefined') { el.attr('data-gs-id', id); }
-                  if (typeof resId !== 'undefined') { el.attr('data-gs-resource-id', resId); }
+                  if (typeof nodeObj.x !== 'undefined') { el.attr('data-gs-x', nodeObj.x); }
+                  if (typeof nodeObj.y !== 'undefined') { el.attr('data-gs-y', nodeObj.y); }
+                  if (typeof nodeObj.width !== 'undefined') { el.attr('data-gs-width', nodeObj.width); }
+                  if (typeof nodeObj.height !== 'undefined') { el.attr('data-gs-height', nodeObj.height); }
+                  if (typeof nodeObj.autoPosition !== 'undefined') { el.attr('data-gs-auto-position', nodeObj.autoPosition ? 'yes' : null); }
+                  if (typeof nodeObj.minWidth !== 'undefined') { el.attr('data-gs-min-width', nodeObj.minWidth); }
+                  if (typeof nodeObj.maxWidth !== 'undefined') { el.attr('data-gs-max-width', nodeObj.maxWidth); }
+                  if (typeof nodeObj.minHeight !== 'undefined') { el.attr('data-gs-min-height', nodeObj.minHeight); }
+                  if (typeof nodeObj.maxHeight !== 'undefined') { el.attr('data-gs-max-height', nodeObj.maxHeight); }
+                  if (typeof nodeObj.id !== 'undefined') { el.attr('data-gs-id', nodeObj.id); }
+                  if (typeof nodeObj.resourceId !== 'undefined') { el.attr('data-gs-resource-id', nodeObj.resourceId); }
+                  if (typeof nodeObj.classname !== 'undefined') { el.attr('data-gs-class-name', nodeObj.classname); }
+                  if (typeof nodeObj.colXs !== 'undefined') { el.attr('data-gs-col-xs', nodeObj.colXs); }
+                  if (typeof nodeObj.colSm !== 'undefined') { el.attr('data-gs-col-sm', nodeObj.colSm); }
+                  if (typeof nodeObj.colLg !== 'undefined') { el.attr('data-gs-col-lg', nodeObj.colLg); }
+                  if (typeof nodeObj.colXl !== 'undefined') { el.attr('data-gs-col-xl', nodeObj.colXl); }
                   this.container.append(el);
                   this._prepareElement(el, true);
-                  if (typeof resType !== 'undefined') {
-                      el.addClass("grid-stack-item-" + resType);
-                      el[0].children[0].setAttribute("data-gs-resource-type", resType);
+                  if (typeof nodeObj.resourceType !== 'undefined') {
+                      el.addClass("grid-stack-item-" + nodeObj.resourceType);
+                      el[0].children[0].setAttribute("data-gs-resource-type", nodeObj.resourceType);
                   }
                   
-                  let textNode = document.createTextNode(resType);
+                  let textNode = document.createTextNode(null != nodeObj.title ? nodeObj.title : nodeObj.resourceType);
                   let elementNode = document.createElement("span");
                   el[0].childNodes[0].appendChild(elementNode);
                   el[0].childNodes[0].appendChild(textNode);
@@ -165,10 +215,12 @@
                 this.serializedData = <%=(null != savedData ? savedData : "[]")%>;
                 var items = GridStackUI.Utils.sort(this.serializedData);
                 _.each(items, function (node) {
-                        let element = this.grid.addWidget($('<div><div class="grid-stack-item-content" /><div/>'),
-                            node.x, node.y, node.width, node.height, undefined, undefined,
-                            undefined, undefined, undefined, undefined, node.resourceType,
-                            node.resourceId);
+//                        let element = this.grid.addWidget($('<div><div class="grid-stack-item-content" /><div/>'),
+//                            node.x, node.y, node.width, node.height, undefined, undefined,
+//                            undefined, undefined, undefined, undefined, node.resourceType,
+//                            node.resourceId);
+                        let element = this.grid.addWidget(
+                                $('<div><div class="grid-stack-item-content" /><div/>'), node);
                     }, this);
                     return false;
                 }.bind(this);
@@ -185,10 +237,23 @@
                   height: node.height,
                   resourceType: el[0].firstElementChild.getAttribute("data-gs-resource-type"),
                   resourceId: null !== el[0].getAttribute("data-gs-resource-id")
-                              ? el[0].getAttribute("data-gs-resource-id") : ""
+                              ? el[0].getAttribute("data-gs-resource-id") : "",
+                  title: null !== el[0].firstElementChild.childNodes[1].nodeValue
+                              ? el[0].firstElementChild.childNodes[1].nodeValue : "",
+                  classname: null !== el[0].getAttribute("data-gs-class-name")
+                              ? el[0].getAttribute("data-gs-class-name") : "",
+                  colXs: null !== el[0].getAttribute("data-gs-col-xs")
+                              ? el[0].getAttribute("data-gs-col-xs") : "",
+                  colSm: null !== el[0].getAttribute("data-gs-col-sm")
+                              ? el[0].getAttribute("data-gs-col-sm") : "",
+                  colLg: null !== el[0].getAttribute("data-gs-col-lg")
+                              ? el[0].getAttribute("data-gs-col-lg") : "",
+                  colXl: null !== el[0].getAttribute("data-gs-col-xl")
+                              ? el[0].getAttribute("data-gs-col-xl") : ""
                 };
               }, this);
               document.forms["saveConf"].jsongrid.value = JSON.stringify(GridStackUI.Utils.sort(this.serializedData));
+              console.log(JSON.stringify(GridStackUI.Utils.sort(this.serializedData), 4));
               if (document.forms["saveConf"].jsongrid.value !== "" &&
                       document.forms["saveConf"].suri.value !== "") {
                 document.forms["saveConf"].submit();
@@ -205,8 +270,6 @@
 <%          
             }
 %>
-            let lastClicked = null;
-            
             closeBtn.onclick = function() {
               modal.style.display = "none";
             }
@@ -215,7 +278,7 @@
               ctxtmenu.classList.add('off');
               ctxtmenu.style.top = '-200%';
               ctxtmenu.style.left = '-200%';
-              lastClicked = null;
+              //lastClicked = null;
             }.bind(this);
             
             this.showmenu = function(ev) {
@@ -230,30 +293,40 @@
             }.bind(this);
             
             this.openAdmin = function(ev) {
-                
-                //console.log(lastClicked);
-                
                 let urlToOpen = '<%=resAdminRenderedUrl%>';
+                let resType = lastClicked.firstElementChild.getAttribute("data-gs-resource-type");
                 urlToOpen = urlToOpen.replace("resIdValue",
                         lastClicked.getAttribute("data-gs-resource-id"));
-//                alert(urlToOpen.replace("resIdValue",
-//                        lastClicked.getAttribute("data-gs-resource-id")));
-                //let container = document.getElementById("admModalBody");
-                console.log("URL llamada: " + urlToOpen.substring(0, urlToOpen.indexOf("?")));
-                console.log("Parametros: " + urlToOpen.substring(urlToOpen.indexOf("?") + 1, urlToOpen.length));
-                $("#admModalBody").load(urlToOpen.substring(0, urlToOpen.indexOf("?")),
-                            urlToOpen.substring(urlToOpen.indexOf("?") + 1, urlToOpen.length));
+                if ("htmlContent" === resType) {
+                    $("#admModalBody").load(urlToOpen.substring(0, urlToOpen.indexOf("?")),
+                                urlToOpen.substring(urlToOpen.indexOf("?") + 1, urlToOpen.length) +
+                                        "&resType=htmlContent");
+                } else {
+                    $("#admModalBody").load(urlToOpen.substring(0, urlToOpen.indexOf("?")),
+                                urlToOpen.substring(urlToOpen.indexOf("?") + 1, urlToOpen.length));
+                }
                 modal.style.display = "block";
-//                location.assign(urlToOpen.replace("resIdValue",
-//                        lastClicked.getAttribute("data-gs-resource-id")));
-                //mostrar un div cuyo contenido sea el de la ruta de arriba
-                
-                
-                
+            }.bind(this);
+            
+            this.openAdminHtmlEditor = function(ev) {
+                let resType = lastClicked.firstElementChild.getAttribute("data-gs-resource-type");
+                if ("htmlContent" === resType) {
+                    let urlToOpen = '<%=resAdminRenderedUrl%>';
+                    urlToOpen = urlToOpen.replace("resIdValue",
+                            lastClicked.getAttribute("data-gs-resource-id"));
+                    $("#admModalBody").load(urlToOpen.substring(0, urlToOpen.indexOf("?")),
+                                urlToOpen.substring(urlToOpen.indexOf("?") + 1, urlToOpen.length) +
+                                        "&resType=htmlContent");
+                    modal.style.display = "block";
+                } else {
+                    alert("El recurso no es un contenido de HTML!");
+                }
             }.bind(this);
             
             this.addMenuListeners = function() {
               $('#resAdm').click(this.openAdmin);
+              $('#dispOptns').click(openDispOptnsModal);
+//              $('#resAdmTest').click(this.openAdminHtmlEditor);
             }.bind(this);
             
             this.hidemenu();
@@ -274,11 +347,62 @@
               helper: 'clone',
               opacity: 0.35
           });
+          $('.trash').on('dragenter', function() {
+            $('.trash').addClass('drop');
+          });
+          $('.trash').on('dragend', function() {
+              $('.trash').removeClass('drop');
+          });
 
       });
+      
+      closeDisp.onclick = function() {
+        modalDisp.style.display = "none";
+      };
+      
+      
+      function openDispOptnsModal() {
+        modalDisp.style.display = "block";
+        let el = $(lastClicked);
+        if (el !== undefined) {
+            let formEle = document.querySelector('#cellData');
+            formEle.title.value = lastClicked.firstElementChild.childNodes[1].nodeValue;
+            formEle.className2Use.value = el.attr('data-gs-class-name') !== undefined ? el.attr('data-gs-class-name') : "";
+            formEle.elements['col-xs'].value = el.attr('data-gs-col-xs') !== undefined ? el.attr('data-gs-col-xs') : "";
+            formEle.elements['col-sm'].value = el.attr('data-gs-col-sm') !== undefined ? el.attr('data-gs-col-sm') : "";
+            formEle.elements['col-lg'].value = el.attr('data-gs-col-lg') !== undefined ? el.attr('data-gs-col-lg') : "";
+            formEle.elements['col-xl'].value = el.attr('data-gs-col-xl') !== undefined ? el.attr('data-gs-col-xl') : "";
+        }
+      }
+      function persistCols(form) {
+          console.log(form);
+          console.log(lastClicked);
+          let el = $(lastClicked);
+          if (form.title.value !== "") {
+              console.log(lastClicked.firstElementChild.childNodes);
+              lastClicked.firstElementChild.childNodes[1].nodeValue = form.title.value;
+          }
+          el.attr('data-gs-class-name', form.className2Use.value);
+          
+          if (form.elements['col-xs'].value !== "") {
+              el.attr('data-gs-col-xs', form.elements['col-xs'].value);
+          }
+          if (form.elements['col-sm'].value !== "") {
+              el.attr('data-gs-col-sm', form.elements['col-sm'].value);
+          }
+          if (form.elements['col-lg'].value !== "") {
+              el.attr('data-gs-col-lg', form.elements['col-lg'].value);
+          }
+          if (form.elements['col-xl'].value !== "") {
+              el.attr('data-gs-col-xl', form.elements['col-xl'].value);
+          }
+          alert("Información guardada!");
+      }
       window.onclick = function(e){
-        if (e.target == modal) {
-          modal.style.display = "none"
+        if (e.target === modal) {
+          modal.style.display = "none";
+        } else if (e.target === modalDisp) {
+            modalDisp.style.display = "none";
         }
       }
   </script>

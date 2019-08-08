@@ -5,10 +5,11 @@
 --%>
 
 <%@page import="org.semanticwb.portal.admin.resources.SWBAComposer"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <%@page import="org.semanticwb.portal.api.SWBParamRequest, org.semanticwb.SWBPortal,
-        org.semanticwb.SWBPlatform, org.semanticwb.model.SWBContext, org.semanticwb.model.User,
-        java.util.Locale, org.semanticwb.model.WebPage, org.semanticwb.portal.api.SWBResource"%>
+        org.semanticwb.SWBPlatform, org.semanticwb.model.*, 
+        java.util.Locale, org.semanticwb.model.base.*, org.semanticwb.portal.api.*,
+        org.semanticwb.portal.resources.sem.HTMLContent, org.semanticwb.platform.*"%>
 <%
     User user = SWBContext.getAdminUser();
     SWBParamRequest paramRequest = (SWBParamRequest) request.getAttribute("paramRequest");
@@ -16,17 +17,41 @@
     SWBResource res = null;
     String path = null;
     String webSiteId = request.getParameter("webSiteId");
+    String resType = request.getParameter("resType"); //htmlContent
+    
     System.out.println("websiteId: " + webSiteId + "\nresourceId: " + resId);
+    
     if (null == user) {
         response.sendError(403);
         return;
     }
-    if (null != resId && !"".equals(resId)) {
+    if (null != resId && !"".equals(resId) && (null == resType || !"htmlContent".equals(resType))) {
+        //Despliegue de la administracion de los recursos de SWB
         res = SWBPortal.getResourceMgr()
                 .getResource(webSiteId, resId);
         System.out.println("res:" + res.toString());
         path = SWBPlatform.getContextPath() + "/" + user.getLanguage() +
             "/SWBAdmin/bh_AdminPorltet?suri=" + res.getResourceBase().getEncodedURI();
+    } else if (null != resType && "htmlContent".equals(resType)) {
+        //Despliegue del modo edicion para los contenidos de HTML
+        res = SWBPortal.getResourceMgr()
+                .getResource(webSiteId, resId);
+        
+        SemanticOntology ont = SWBPlatform.getSemanticMgr().getOntology();
+        SemanticObject obj = ont.getSemanticObject(res.getResourceBase().getURI());
+        SemanticClass cls = obj.getSemanticClass();
+        SemanticObject aux = obj;
+        
+        Resource simpleRes = (Resource) obj.createGenericInstance();
+        SWBResource swbres = SWBPortal.getResourceMgr().getResource(simpleRes);
+        SemanticObject robj= ((GenericSemResource) swbres).getSemanticObject();
+        if (robj != null) {
+            aux = robj;
+        }
+        System.out.println("Resource uri: " + aux.getEncodedURI());
+        
+        path = SWBPlatform.getContextPath() + "/" + user.getLanguage() +
+            "/SWBAdmin/EditVersionWithDojo?suri=" + aux.getEncodedURI();
     }
     
 %>
@@ -37,7 +62,7 @@
     System.out.println("path: " + path);
     if (null != path) {
 %>
-<iframe id="admFrame" src="<%=path%>" style="border:none;"></iframe>
+<iframe id="admFrame" src="<%=path%>" style="border:none;" name="admRsrcFrame"></iframe>
 <%
     }
 %>
