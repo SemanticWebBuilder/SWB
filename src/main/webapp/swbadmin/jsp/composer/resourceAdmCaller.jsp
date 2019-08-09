@@ -19,8 +19,6 @@
     String webSiteId = request.getParameter("webSiteId");
     String resType = request.getParameter("resType"); //htmlContent
     
-    System.out.println("websiteId: " + webSiteId + "\nresourceId: " + resId);
-    
     if (null == user) {
         response.sendError(403);
         return;
@@ -29,7 +27,6 @@
         //Despliegue de la administracion de los recursos de SWB
         res = SWBPortal.getResourceMgr()
                 .getResource(webSiteId, resId);
-        System.out.println("res:" + res.toString());
         path = SWBPlatform.getContextPath() + "/" + user.getLanguage() +
             "/SWBAdmin/bh_AdminPorltet?suri=" + res.getResourceBase().getEncodedURI();
     } else if (null != resType && "htmlContent".equals(resType)) {
@@ -48,7 +45,6 @@
         if (robj != null) {
             aux = robj;
         }
-        System.out.println("Resource uri: " + aux.getEncodedURI());
         
         path = SWBPlatform.getContextPath() + "/" + user.getLanguage() +
             "/SWBAdmin/EditVersionWithDojo?suri=" + aux.getEncodedURI();
@@ -59,7 +55,6 @@
     <button type="button" onclick="window.history.back();" name="back">Regresar</button>
 < / form --%>
 <%
-    System.out.println("path: " + path);
     if (null != path) {
 %>
 <iframe id="admFrame" src="<%=path%>" style="border:none;" name="admRsrcFrame"></iframe>

@@ -42,6 +42,19 @@
                                 .setParameter("resId", "resIdValue")
                                 .setParameter("webSiteId", webSiteId)
                                 .toString();
+    String lbl_bttn_save = paramRequest.getLocaleString("lbl_bttn_save");  //Guardar
+    String mnu_opt_admin = paramRequest.getLocaleString("mnu_opt_admin");  // Administrar recurso
+    String mnu_opt_display = paramRequest.getLocaleString("mnu_opt_display");  //Opciones de despliegue 
+    String hdng_modal_admin = paramRequest.getLocaleString("hdng_modal_admin");  //Administraci&oacute;n del recurso
+    String hdng_modal_display = paramRequest.getLocaleString("hdng_modal_display");  //Opciones de despliegue para la celda 
+    String lbl_title = paramRequest.getLocaleString("lbl_title"); //T&iacute;tulo del recurso
+    String lbl_cssClass = paramRequest.getLocaleString("lbl_cssClass");  //Nombre de clase de estilos
+    String lbl_modal_subTitle = paramRequest.getLocaleString("lbl_modal_subTitle");  //Columnas utilizadas por la celda en las diferentes resoluciones
+    String lbl_xtraSmall = paramRequest.getLocaleString("lbl_xtraSmall");  //Extra chica
+    String lbl_small = paramRequest.getLocaleString("lbl_small");  //Chica
+    String lbl_large = paramRequest.getLocaleString("lbl_large");  //Grande
+    String lbl_xtraLarge = paramRequest.getLocaleString("lbl_xtraLarge");  //Extra grande
+    String error_notHtmlcontent = paramRequest.getLocaleString("error_notHtmlcontent");  //El recurso no es un contenido de HTML!
 %>
 <%!
     public String getLocaleString(String key, String lang) {
@@ -58,8 +71,8 @@
         <div class="col-xs-2 col-md-2 tools">
           <div class="guardar">
             <form action="<%=actionUri%>" name="saveConf" method="POST">
-              <button class="" id="save-grid" type="button" name="save" value="Save">
-                Guardar
+              <button id="save-grid" type="button" name="save">
+                <%=lbl_bttn_save%>
               </button>
               <input type="hidden" name="suri" value="<%=suri%>">
               <input type="hidden" name="jsongrid" value="">
@@ -93,14 +106,14 @@
       </div>
       
       <ul class="ctxtmenu">
-        <li class="ctxtmenu-item" id="resAdm">Administrar recurso</li>
-        <li class="ctxtmenu-item" id="dispOptns">Opciones de despliegue</li>
+        <li class="ctxtmenu-item" id="resAdm"><%=mnu_opt_admin%></li>
+        <li class="ctxtmenu-item" id="dispOptns"><%=mnu_opt_display%></li>
       </ul>
       <div class="modalW" id="modalAdm">
         <div class="modalW-dialog">
           <div class="modalW-header">
             <span class="close-btn" id="closeW">&times;</span>
-            <h4>Administraci&oacute;n del recurso</h4>
+            <h4><%=hdng_modal_admin%></h4>
           </div>
           <div class="modalW-content" id="admModalBody">
 	  </div>
@@ -110,39 +123,39 @@
         <div class="modalDisp-dialog">
           <div class="modalW-header">
             <span class="close-btn" id="closeDisp">&times;</span>
-            <h4>Opciones de despliegue para la celda</h4>
+            <h4><%=hdng_modal_display%></h4>
           </div>
           <div class="modalDisp-content" id="dispModalBody">
             <form name="cellData" id="cellData">
               <div>
-                  <label>T&iacute;tulo del recurso</label>
+                  <label><%=lbl_title%></label>
                   <input type="text" name="title" value="" placeholder="" maxlength="25" required>
               </div>
               <div>
-                  <label>Nombre de clase de estilos</label>
+                  <label><%=lbl_cssClass%></label>
                   <input type="text" name="className2Use" value="">
               </div>
               <div class="modal-text">
-                <span>Columnas utilizadas por la celda en las diferentes resoluciones</span>
+                <span><%=lbl_modal_subTitle%></span>
               </div>
               <div>
-                  <label>Extra chica</label>
-                  <input type="number" name="col-xs" value="" min="1" max="12" placeholder="col-">
+                  <label><%=lbl_xtraSmall%><span>col-xs-</span></label>
+                  <input type="number" name="col-xs" value="" min="1" max="12">
               </div>
               <div>
-                  <label>Chica</label>
-                  <input type="number" name="col-sm" value="" min="1" max="12" placeholder="col-sm-">
+                  <label><%=lbl_small%><span>col-sm-</span></label>
+                  <input type="number" name="col-sm" value="" min="1" max="12">
               </div>
               <div>
-                  <label>Grande</label>
-                  <input type="number" name="col-lg" value="" min="1" max="12" placeholder="col-lg-">
+                  <label><%=lbl_large%><span>col-lg-</span></label>
+                  <input type="number" name="col-lg" value="" min="1" max="12">
               </div>
+              <%--div>
+                  <label><%=lbl_xtraLarge%><span>col-xl-</span></label>
+                  <input type="number" name="col-xl" value="" min="1" max="12">
+              </div--%>
               <div>
-                  <label>Extra grande</label>
-                  <input type="number" name="col-xl" value="" min="1" max="12" placeholder="col-xl-">
-              </div>
-              <div>
-                  <button type="button" onclick="persistCols(this.form);">Guardar</button>
+                  <button type="button" onclick="persistCols(this.form);"><%=lbl_bttn_save%></button>
               </div>
             </form>
 	  </div>
@@ -190,7 +203,7 @@
                   if (typeof nodeObj.colXs !== 'undefined') { el.attr('data-gs-col-xs', nodeObj.colXs); }
                   if (typeof nodeObj.colSm !== 'undefined') { el.attr('data-gs-col-sm', nodeObj.colSm); }
                   if (typeof nodeObj.colLg !== 'undefined') { el.attr('data-gs-col-lg', nodeObj.colLg); }
-                  if (typeof nodeObj.colXl !== 'undefined') { el.attr('data-gs-col-xl', nodeObj.colXl); }
+                  //if (typeof nodeObj.colXl !== 'undefined') { el.attr('data-gs-col-xl', nodeObj.colXl); }
                   this.container.append(el);
                   this._prepareElement(el, true);
                   if (typeof nodeObj.resourceType !== 'undefined') {
@@ -247,9 +260,9 @@
                   colSm: null !== el[0].getAttribute("data-gs-col-sm")
                               ? el[0].getAttribute("data-gs-col-sm") : "",
                   colLg: null !== el[0].getAttribute("data-gs-col-lg")
-                              ? el[0].getAttribute("data-gs-col-lg") : "",
-                  colXl: null !== el[0].getAttribute("data-gs-col-xl")
-                              ? el[0].getAttribute("data-gs-col-xl") : ""
+                              ? el[0].getAttribute("data-gs-col-lg") : ""
+//                  colXl: null !== el[0].getAttribute("data-gs-col-xl")
+//                              ? el[0].getAttribute("data-gs-col-xl") : ""
                 };
               }, this);
               document.forms["saveConf"].jsongrid.value = JSON.stringify(GridStackUI.Utils.sort(this.serializedData));
@@ -289,7 +302,6 @@
               ctxtmenu.style.left = (ev.clientX - 20) + 'px';
               ctxtmenu.classList.remove('off');
               lastClicked = ev.target.parentElement;
-              console.log(ev);
             }.bind(this);
             
             this.openAdmin = function(ev) {
@@ -319,7 +331,7 @@
                                         "&resType=htmlContent");
                     modal.style.display = "block";
                 } else {
-                    alert("El recurso no es un contenido de HTML!");
+                    alert("<%=error_notHtmlcontent%>");
                 }
             }.bind(this);
             
@@ -371,15 +383,12 @@
             formEle.elements['col-xs'].value = el.attr('data-gs-col-xs') !== undefined ? el.attr('data-gs-col-xs') : "";
             formEle.elements['col-sm'].value = el.attr('data-gs-col-sm') !== undefined ? el.attr('data-gs-col-sm') : "";
             formEle.elements['col-lg'].value = el.attr('data-gs-col-lg') !== undefined ? el.attr('data-gs-col-lg') : "";
-            formEle.elements['col-xl'].value = el.attr('data-gs-col-xl') !== undefined ? el.attr('data-gs-col-xl') : "";
+            //formEle.elements['col-xl'].value = el.attr('data-gs-col-xl') !== undefined ? el.attr('data-gs-col-xl') : "";
         }
       }
       function persistCols(form) {
-          console.log(form);
-          console.log(lastClicked);
           let el = $(lastClicked);
           if (form.title.value !== "") {
-              console.log(lastClicked.firstElementChild.childNodes);
               lastClicked.firstElementChild.childNodes[1].nodeValue = form.title.value;
           }
           el.attr('data-gs-class-name', form.className2Use.value);
@@ -393,9 +402,9 @@
           if (form.elements['col-lg'].value !== "") {
               el.attr('data-gs-col-lg', form.elements['col-lg'].value);
           }
-          if (form.elements['col-xl'].value !== "") {
-              el.attr('data-gs-col-xl', form.elements['col-xl'].value);
-          }
+//          if (form.elements['col-xl'].value !== "") {
+//              el.attr('data-gs-col-xl', form.elements['col-xl'].value);
+//          }
           alert("Información guardada!");
       }
       window.onclick = function(e){
@@ -404,5 +413,5 @@
         } else if (e.target === modalDisp) {
             modalDisp.style.display = "none";
         }
-      }
+      };
   </script>
