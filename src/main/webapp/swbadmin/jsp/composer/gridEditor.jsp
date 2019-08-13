@@ -55,6 +55,7 @@
     String lbl_large = paramRequest.getLocaleString("lbl_large");  //Grande
     String lbl_xtraLarge = paramRequest.getLocaleString("lbl_xtraLarge");  //Extra grande
     String error_notHtmlcontent = paramRequest.getLocaleString("error_notHtmlcontent");  //El recurso no es un contenido de HTML!
+    String msg_dataSaved = paramRequest.getLocaleString("msg_dataSaved");  //Información guardada!
 %>
 <%!
     public String getLocaleString(String key, String lang) {
@@ -298,8 +299,9 @@
               //stop real right click menu
               ev.preventDefault();
               //show custom menu, instead
+              let leftCrnr = $(ev.view.document.body).width() - ev.clientX < 150 ? ev.clientX - 100 : ev.clientX - 20;
               ctxtmenu.style.top = (ev.clientY - 20) + 'px';
-              ctxtmenu.style.left = (ev.clientX - 20) + 'px';
+              ctxtmenu.style.left = leftCrnr + 'px';
               ctxtmenu.classList.remove('off');
               lastClicked = ev.target.parentElement;
             }.bind(this);
@@ -405,7 +407,7 @@
 //          if (form.elements['col-xl'].value !== "") {
 //              el.attr('data-gs-col-xl', form.elements['col-xl'].value);
 //          }
-          alert("Información guardada!");
+          alert("<%=msg_dataSaved%>");
       }
       window.onclick = function(e){
         if (e.target === modal) {
