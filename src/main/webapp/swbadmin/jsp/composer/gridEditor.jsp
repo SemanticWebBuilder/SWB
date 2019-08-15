@@ -171,7 +171,7 @@
       let closeDisp = document.querySelector("#closeDisp");
       let lastClicked = null;
 
-      $(function () {
+      $(document).ready(function() {
           var options = {
               width: 12,
               float: false,
