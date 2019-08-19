@@ -53,7 +53,7 @@
     String lbl_xtraSmall = paramRequest.getLocaleString("lbl_xtraSmall");  //Extra chica
     String lbl_small = paramRequest.getLocaleString("lbl_small");  //Chica
     String lbl_large = paramRequest.getLocaleString("lbl_large");  //Grande
-    String lbl_xtraLarge = paramRequest.getLocaleString("lbl_xtraLarge");  //Extra grande
+    String lbl_xtraLarge = paramRequest.getLocaleString("lbl_xtraLarge");  //Extra grande :solo para Bootstrap 4
     String error_notHtmlcontent = paramRequest.getLocaleString("error_notHtmlcontent");  //El recurso no es un contenido de HTML!
     String msg_dataSaved = paramRequest.getLocaleString("msg_dataSaved");  //Información guardada!
 %>
@@ -204,6 +204,7 @@
                   if (typeof nodeObj.colXs !== 'undefined') { el.attr('data-gs-col-xs', nodeObj.colXs); }
                   if (typeof nodeObj.colSm !== 'undefined') { el.attr('data-gs-col-sm', nodeObj.colSm); }
                   if (typeof nodeObj.colLg !== 'undefined') { el.attr('data-gs-col-lg', nodeObj.colLg); }
+                  //solo para Bootstrap 4:
                   //if (typeof nodeObj.colXl !== 'undefined') { el.attr('data-gs-col-xl', nodeObj.colXl); }
                   this.container.append(el);
                   this._prepareElement(el, true);
@@ -243,6 +244,10 @@
               this.serializedData = _.map($('.grid-stack > .grid-stack-item:visible'), function (el) {
                 el = $(el);
                 
+                if (el.data('_gridstack_node') === undefined) {
+                    this.recoverNode(el);
+                }
+                
                 var node = el.data('_gridstack_node');
                 return {
                   x: node.x,
@@ -262,12 +267,13 @@
                               ? el[0].getAttribute("data-gs-col-sm") : "",
                   colLg: null !== el[0].getAttribute("data-gs-col-lg")
                               ? el[0].getAttribute("data-gs-col-lg") : ""
+//solo para Bootstrap 4:
 //                  colXl: null !== el[0].getAttribute("data-gs-col-xl")
 //                              ? el[0].getAttribute("data-gs-col-xl") : ""
                 };
               }, this);
               document.forms["saveConf"].jsongrid.value = JSON.stringify(GridStackUI.Utils.sort(this.serializedData));
-              console.log(JSON.stringify(GridStackUI.Utils.sort(this.serializedData), 4));
+//              console.log(JSON.stringify(GridStackUI.Utils.sort(this.serializedData), 4));
               if (document.forms["saveConf"].jsongrid.value !== "" &&
                       document.forms["saveConf"].suri.value !== "") {
                 document.forms["saveConf"].submit();
@@ -275,12 +281,23 @@
               return false;
             }.bind(this);
 
+            this.recoverNode = function(el) {
+                let theNode = GridStackUI.Engine.prototype._prepareNode({
+                    x: el[0].getAttribute("data-gs-x"),
+                    y: el[0].getAttribute("data-gs-y"),
+                    width: el[0].getAttribute("data-gs-width"),
+                    height: el[0].getAttribute("data-gs-height")
+                });
+                
+                el.data('_gridstack_node', theNode);
+            }.bind(this);
+
             $('#save-grid').click(this.saveGrid);
             $('#load-grid').click(this.loadGrid);
 <%          
             if (renderSavedData) {
 %>
-                this.loadGrid();
+            this.loadGrid();
 <%          
             }
 %>
@@ -292,7 +309,6 @@
               ctxtmenu.classList.add('off');
               ctxtmenu.style.top = '-200%';
               ctxtmenu.style.left = '-200%';
-              //lastClicked = null;
             }.bind(this);
             
             this.showmenu = function(ev) {
@@ -303,37 +319,54 @@
               ctxtmenu.style.top = (ev.clientY - 20) + 'px';
               ctxtmenu.style.left = leftCrnr + 'px';
               ctxtmenu.classList.remove('off');
-              lastClicked = ev.target.parentElement;
+              
+              if ($(ev.target).hasClass('ui-draggable-handle')) {
+                  lastClicked = ev.target.parentElement;
+              } else if ($(ev.target).is('.grid-stack-item-content.ui-draggable-handle span')) {
+                  lastClicked = ev.target.parentElement.parentElement;
+              }
             }.bind(this);
             
             this.openAdmin = function(ev) {
                 let urlToOpen = '<%=resAdminRenderedUrl%>';
-                let resType = lastClicked.firstElementChild.getAttribute("data-gs-resource-type");
-                urlToOpen = urlToOpen.replace("resIdValue",
-                        lastClicked.getAttribute("data-gs-resource-id"));
-                if ("htmlContent" === resType) {
-                    $("#admModalBody").load(urlToOpen.substring(0, urlToOpen.indexOf("?")),
-                                urlToOpen.substring(urlToOpen.indexOf("?") + 1, urlToOpen.length) +
-                                        "&resType=htmlContent");
+//                    console.log(lastClicked);
+                let domElement = lastClicked.getAttribute("data-gs-resource-id") !== null ? lastClicked : $(lastClicked);
+                if (domElement !== undefined) {
+                    let resType = domElement.firstElementChild.getAttribute("data-gs-resource-type");
+                    urlToOpen = urlToOpen.replace("resIdValue",
+                            domElement.getAttribute("data-gs-resource-id"));
+
+                    if ("htmlContent" === resType) {
+                        $("#admModalBody").load(urlToOpen.substring(0, urlToOpen.indexOf("?")),
+                                    urlToOpen.substring(urlToOpen.indexOf("?") + 1, urlToOpen.length) +
+                                            "&resType=htmlContent");
+                    } else {
+                        $("#admModalBody").load(urlToOpen.substring(0, urlToOpen.indexOf("?")),
+                                    urlToOpen.substring(urlToOpen.indexOf("?") + 1, urlToOpen.length));
+                    }
+                    modal.style.display = "block";
                 } else {
-                    $("#admModalBody").load(urlToOpen.substring(0, urlToOpen.indexOf("?")),
-                                urlToOpen.substring(urlToOpen.indexOf("?") + 1, urlToOpen.length));
+                    this.hidemenu();
                 }
-                modal.style.display = "block";
             }.bind(this);
             
             this.openAdminHtmlEditor = function(ev) {
-                let resType = lastClicked.firstElementChild.getAttribute("data-gs-resource-type");
-                if ("htmlContent" === resType) {
-                    let urlToOpen = '<%=resAdminRenderedUrl%>';
-                    urlToOpen = urlToOpen.replace("resIdValue",
-                            lastClicked.getAttribute("data-gs-resource-id"));
-                    $("#admModalBody").load(urlToOpen.substring(0, urlToOpen.indexOf("?")),
-                                urlToOpen.substring(urlToOpen.indexOf("?") + 1, urlToOpen.length) +
-                                        "&resType=htmlContent");
-                    modal.style.display = "block";
+                let domElement = lastClicked.getAttribute("data-gs-resource-id") !== null ? lastClicked : $(lastClicked);
+                let resType = domElement.firstElementChild.getAttribute("data-gs-resource-type");
+                if (domElement !== undefined) {
+                    if ("htmlContent" === resType) {
+                        let urlToOpen = '<%=resAdminRenderedUrl%>';
+                        urlToOpen = urlToOpen.replace("resIdValue",
+                                domElement.getAttribute("data-gs-resource-id"));
+                        $("#admModalBody").load(urlToOpen.substring(0, urlToOpen.indexOf("?")),
+                                    urlToOpen.substring(urlToOpen.indexOf("?") + 1, urlToOpen.length) +
+                                            "&resType=htmlContent");
+                        modal.style.display = "block";
+                    } else {
+                        alert("<%=error_notHtmlcontent%>");
+                    }
                 } else {
-                    alert("<%=error_notHtmlcontent%>");
+                    this.hidemenu();
                 }
             }.bind(this);
             
@@ -371,7 +404,6 @@
       });
       
       closeDisp.onclick = function() {
-        reload('<%=suri%>');
         modalDisp.style.display = "none";
       };
       
@@ -386,6 +418,7 @@
             formEle.elements['col-xs'].value = el.attr('data-gs-col-xs') !== undefined ? el.attr('data-gs-col-xs') : "";
             formEle.elements['col-sm'].value = el.attr('data-gs-col-sm') !== undefined ? el.attr('data-gs-col-sm') : "";
             formEle.elements['col-lg'].value = el.attr('data-gs-col-lg') !== undefined ? el.attr('data-gs-col-lg') : "";
+            //solo para Bootstrap 4:
             //formEle.elements['col-xl'].value = el.attr('data-gs-col-xl') !== undefined ? el.attr('data-gs-col-xl') : "";
         }
       }
@@ -405,6 +438,7 @@
           if (form.elements['col-lg'].value !== "") {
               el.attr('data-gs-col-lg', form.elements['col-lg'].value);
           }
+//solo para Bootstrap 4:
 //          if (form.elements['col-xl'].value !== "") {
 //              el.attr('data-gs-col-xl', form.elements['col-xl'].value);
 //          }
