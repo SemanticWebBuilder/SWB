@@ -280,7 +280,7 @@
 <%          
             if (renderSavedData) {
 %>
-            this.loadGrid();
+                this.loadGrid();
 <%          
             }
 %>
@@ -371,6 +371,7 @@
       });
       
       closeDisp.onclick = function() {
+        reload('<%=suri%>');
         modalDisp.style.display = "none";
       };
       
